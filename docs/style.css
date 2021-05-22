@@ -1,0 +1,59 @@
+body{
+	font-family: Courier New;
+	color: white;
+	background-color: black;
+}
+
+li{
+	list-style: none;
+}
+
+a:link {
+  color: #d5b8ff;
+  text-decoration: underline;
+}
+
+a:link:hover {
+  color: #f6f0ff;
+}
+
+a:visited{
+	color: #48344f;
+}
+
+.attributeName {
+	color: #d5b8ff;
+}
+
+#main {
+	padding: 20px;
+	margin: 50px;
+	border-radius: 25px;
+	background-image: url(background.png);
+}
+
+#home {
+	color: white;
+	text-decoration: none;
+}
+
+#properties li:not(:last-child) {
+	border-bottom: 1px solid white;
+}
+
+#inheritance > ul{
+	padding: 0;
+	margin: 0;
+}
+
+#inheritance > ul > li{
+	display: inline-block;
+}
+
+#inherits > li:nth-child(n+3):before{
+	content: "< ";
+}
+
+#inheritedBy > li:nth-child(n+3):before{
+	content: ",";
+}

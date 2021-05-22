@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/creature/creature.gd" type="Script" id=1]
+
+[node name="Creature" type="Node"]
+script = ExtResource( 1 )
