@@ -14,8 +14,8 @@ func add_items() -> void:
 		remove_child(child)
 	for i in range(button_count):
 		var new_button = Button.new() if not button_scene else button_scene.instance()
-		intialize_button(new_button, i)
 		add_child(new_button)
+		intialize_button(new_button, i)
 	for i in range(button_count):
 		match neighbor_type:
 			"horizontal":

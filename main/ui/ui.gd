@@ -7,6 +7,7 @@ export(NodePath) var active_party
 export(NodePath) var inactive_party
 export(NodePath) var effect_handler
 export(NodePath) var action_selection
+export(NodePath) var party_skill_container
 
 var input: Dictionary
 var state = "default"
@@ -55,14 +56,11 @@ func input_pressed(key_name: String) -> void:
 		"Skills":
 			match state:
 				"default": show_skills()
-		"Return":
-			match state:
-				"party":
-					return_member()
 		"Summon":
 			match state:
 				"party":
-					state = "summon_member"
+					summon_member()
+					
 		"Confirm":
 			pass
 
@@ -91,14 +89,28 @@ func hide_skills() -> void:
 	effect_handler.fade(action_selection, "hide", effect_handler.default_fade_time)
 	state = "default"
 
-func return_member() -> void:
+func summon_member() -> void:
 	var creature_button := get_focus_owner()
+	if party.in_active_party(creature_button.creature):
+		return_member()
+		return
+	var scroll = input["FullPartyContainer"].get_parent().get_h_scroll()
 	var index := creature_button.get_index()
-	var success: bool = party.return_creature(creature_button.creature)
+	var success: bool = party.summon_member(creature_button.creature)
 	if success:
 		update_party()
-		input["FullPartyContainer"].grab_focus_at(index-1)
-	state = "party"
+		input["FullPartyContainer"].grab_focus_at(index)
+		input["FullPartyContainer"].get_parent().set_h_scroll(scroll)
+
+func return_member():
+	var creature_button := get_focus_owner()
+	var scroll = input["FullPartyContainer"].get_parent().get_h_scroll()
+	var index := creature_button.get_index()
+	var success: bool = party.return_member(creature_button.creature)
+	if success:
+		update_party()
+		input["FullPartyContainer"].grab_focus_at(index)
+		input["FullPartyContainer"].get_parent().set_h_scroll(scroll)
 
 func select_active_member() -> void:
 	input["PartyHotKeyContainer"].disable_input()

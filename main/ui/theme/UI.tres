@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=2]
+[gd_resource type="Theme" load_steps=11 format=2]
 
 [ext_resource path="res://main/ui/theme/font/MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://main/ui/theme/style_box/Regular.tres" type="StyleBox" id=2]
@@ -31,17 +31,19 @@ bg_color = Color( 0.109804, 0.0941176, 0.160784, 1 )
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=4]
-
-[sub_resource type="StyleBoxFlat" id=5]
-
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 3 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id=7]
+content_margin_top = 10.0
+bg_color = Color( 0.109804, 0.0941176, 0.160784, 1 )
+anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=8]
-
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=4]
 content_margin_left = 3.0
 content_margin_right = 3.0
 content_margin_top = 3.0
@@ -54,7 +56,7 @@ margin_top = 3.0
 margin_bottom = 3.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=5]
 content_margin_left = 3.0
 content_margin_right = 3.0
 content_margin_top = 3.0
@@ -84,11 +86,11 @@ HScrollBar/icons/decrement = null
 HScrollBar/icons/decrement_highlight = null
 HScrollBar/icons/increment = null
 HScrollBar/icons/increment_highlight = null
-HScrollBar/styles/grabber = SubResource( 4 )
-HScrollBar/styles/grabber_highlight = SubResource( 5 )
-HScrollBar/styles/grabber_pressed = SubResource( 6 )
+HScrollBar/styles/grabber = SubResource( 6 )
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
 HScrollBar/styles/scroll = SubResource( 7 )
-HScrollBar/styles/scroll_focus = SubResource( 8 )
+HScrollBar/styles/scroll_focus = null
 PanelContainer/styles/panel = ExtResource( 2 )
 ScrollContainer/styles/bg = null
 TabContainer/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )
@@ -107,6 +109,6 @@ TabContainer/icons/increment_highlight = null
 TabContainer/icons/menu = null
 TabContainer/icons/menu_highlight = null
 TabContainer/styles/panel = ExtResource( 2 )
-TabContainer/styles/tab_bg = SubResource( 9 )
+TabContainer/styles/tab_bg = SubResource( 4 )
 TabContainer/styles/tab_disabled = null
-TabContainer/styles/tab_fg = SubResource( 10 )
+TabContainer/styles/tab_fg = SubResource( 5 )

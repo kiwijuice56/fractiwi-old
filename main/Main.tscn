@@ -27,6 +27,7 @@ margin_top = -165.0
 margin_right = 280.0
 margin_bottom = 165.0
 rect_pivot_offset = Vector2( 280, 165 )
+mouse_filter = 2
 stretch = true
 script = ExtResource( 4 )
 __meta__ = {

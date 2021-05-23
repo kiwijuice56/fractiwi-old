@@ -5,7 +5,7 @@ export var default_fade_time: float
 export var default_slide_time: float
 
 func fade(node: Node, direction: String, fade_time: float) -> void:
-	node.visible = true
+	#node.visible = true
 	if direction == "hide":
 		$FadeTween.interpolate_property(node, "modulate", node.modulate, Color(0,0,0,0), fade_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	else:
