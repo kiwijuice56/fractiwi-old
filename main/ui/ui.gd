@@ -9,17 +9,19 @@ export(NodePath) var effect_handler
 export(NodePath) var action_selection
 export(NodePath) var party_skill_container
 
-var input: Dictionary
-var state = "default"
-var open = false
+var input := {}
+var state := "default"
+var open := false
+var can_open := false
+
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("open_menu"):
+	if Input.is_action_just_pressed("open_menu") and can_open:
 		if open:
 			close_menu()
 		else:
 			open_menu()
-	if Input.is_action_just_pressed("back"):
+	if Input.is_action_just_pressed("back") and open:
 		input_pressed("Back")
 
 func _ready():
@@ -35,6 +37,7 @@ func _ready():
 # Each input_container connects to this function
 # Used to receive input and change state of UI
 func input_pressed(key_name: String) -> void:
+	if not open: return
 	match(key_name):
 		"Party":
 			match state:

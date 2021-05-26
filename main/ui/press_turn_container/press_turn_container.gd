@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Container
 class_name PressTurnContainer
 
 func set_turns(full: int, half: int) -> void:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Misty.png-1e75316f8eee63a8fb223b6f6dae66e3.stex"
+path="res://.import/background2.png-d025e4b36c6f2940c0120a71ddf18bd9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/ui/theme/style_box/Misty.png"
-dest_files=[ "res://.import/Misty.png-1e75316f8eee63a8fb223b6f6dae66e3.stex" ]
+source_file="res://main/ui/theme/style_box/background2.png"
+dest_files=[ "res://.import/background2.png-d025e4b36c6f2940c0120a71ddf18bd9.stex" ]
 
 [params]
 

@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/ui/theme/UI.tres" type="Theme" id=1]
+[ext_resource path="res://main/ui/theme/font/rainyhearts.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://main/ui/main_menu/main_menu.gd" type="Script" id=3]
+[ext_resource path="res://main/ui/input_container/button_container/text_button_container/text_button_container.gd" type="Script" id=4]
+[ext_resource path="res://main/ui/save_files/SaveFiles.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 2
+outline_color = Color( 0.164706, 0.101961, 0.180392, 1 )
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.0
+margin_top = -20.0
+margin_right = 51.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 102.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 1 )
+text = "fractiwi"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainTextButtonContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 34.0
+margin_right = 102.0
+margin_bottom = 34.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+controller = NodePath("../..")
+neighbor_type = "vertical"
+button_names = [ "New Game", "Load Game", "Settings" ]
+
+[node name="Version" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -15.0
+text = "ver a1.0"
+
+[node name="SaveFiles" parent="." instance=ExtResource( 5 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
