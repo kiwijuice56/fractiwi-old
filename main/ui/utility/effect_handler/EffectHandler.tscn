@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/ui/utility/effect_handler/effect_handler.gd" type="Script" id=1]
+
+[node name="EffectHandler" type="Node"]
+script = ExtResource( 1 )
+default_fade_time = 0.13
+default_slide_time = 0.1
+
+[node name="FadeTween" type="Tween" parent="."]
+
+[node name="SlideTween" type="Tween" parent="."]

@@ -1,0 +1,3 @@
+extends PanelContainer
+
+var input := {}

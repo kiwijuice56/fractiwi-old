@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/ui/game_menu/creature_check_screen/affinity_panel_container/affinity_panel/AffinityPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/ui/game_menu/creature_check_screen/affinity_panel_container/affinity_container.gd" type="Script" id=2]
+
+[node name="AffinityContainer" type="PanelContainer"]
+margin_top = 60.0
+margin_right = 312.0
+margin_bottom = 116.0
+script = ExtResource( 2 )
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 305.0
+margin_bottom = 49.0
+
+[node name="Label" type="Label" parent="HSplitContainer"]
+margin_top = 14.0
+margin_right = 26.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 26, 0 )
+text = "OFF"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer"]
+margin_left = 38.0
+margin_right = 298.0
+margin_bottom = 42.0
+custom_constants/separation = 1
+
+[node name="AffinityPanel" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 28.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel2" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 29.0
+margin_right = 57.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel3" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 58.0
+margin_right = 86.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel4" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 87.0
+margin_right = 115.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel5" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 116.0
+margin_right = 144.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel6" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 145.0
+margin_right = 173.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel7" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 174.0
+margin_right = 202.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel8" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 203.0
+margin_right = 231.0
+margin_bottom = 42.0
+
+[node name="AffinityPanel9" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 232.0
+margin_right = 260.0
+margin_bottom = 42.0
