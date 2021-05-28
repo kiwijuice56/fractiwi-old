@@ -1,4 +1,4 @@
-extends Control
+extends UIController
 # Main controller for in-game UI
 
 export(NodePath) var pop_out_party
@@ -9,11 +9,8 @@ export(NodePath) var effect_handler
 export(NodePath) var action_selection
 export(NodePath) var party_skill_container
 
-var input := {}
-var state := "default"
 var open := false
-var can_open := true
-
+var can_open := false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_menu", false) and can_open:
@@ -34,8 +31,6 @@ func _ready():
 	yield(get_tree().root, "ready")
 	close_menu()
 
-# Each input_container connects to this function
-# Used to receive input and change state of UI
 func input_pressed(key_name: String) -> void:
 	if not open: return
 	match(key_name):

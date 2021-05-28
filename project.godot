@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/game_menu/creature_button_panel/creature_button_panel.gd"
 }, {
-"base": "PanelContainer",
+"base": "UIController",
 "class": "CreatureCheckScreen",
 "language": "GDScript",
 "path": "res://main/ui/game_menu/creature_check_screen/creature_check_screen.gd"
@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "IntViewportContainer",
 "language": "GDScript",
 "path": "res://main/ui/utility/int_viewport_container/int_viewport_container.gd"
+}, {
+"base": "Node",
+"class": "Main",
+"language": "GDScript",
+"path": "res://main/main.gd"
 }, {
 "base": "ButtonContainer",
 "class": "PartyButtonContainer",
@@ -89,6 +94,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/utility/input_container/button_container/text_button_container/text_button_container.gd"
 }, {
+"base": "Node",
+"class": "Transition",
+"language": "GDScript",
+"path": "res://main/ui/utility/transition/transition.gd"
+}, {
+"base": "Control",
+"class": "UIController",
+"language": "GDScript",
+"path": "res://main/ui/utility/ui_controller/ui_controller.gd"
+}, {
+"base": "ButtonPanel",
+"class": "UISaveFile",
+"language": "GDScript",
+"path": "res://main/ui/save_file_menu/save_file/save_file.gd"
+}, {
 "base": "ScrollContainer",
 "class": "UnclickableScrollContainer",
 "language": "GDScript",
@@ -109,6 +129,7 @@ _global_script_class_icons={
 "HotKeyContainer": "",
 "InputContainer": "",
 "IntViewportContainer": "",
+"Main": "",
 "PartyButtonContainer": "",
 "PartySkillContainer": "",
 "PointBar": "",
@@ -116,6 +137,9 @@ _global_script_class_icons={
 "PressTurnContainer": "",
 "PsxImport": "",
 "TextButtonContainer": "",
+"Transition": "",
+"UIController": "",
+"UISaveFile": "",
 "UnclickableScrollContainer": "",
 "VisibleResizeContainer": ""
 }
@@ -129,7 +153,6 @@ config/icon="res://icon.png"
 
 [debug]
 
-settings/stdout/verbose_stdout=true
 gdscript/warnings/return_value_discarded=false
 
 [display]

@@ -1,3 +1,1 @@
-extends PanelContainer
-
-var input := {}
+extends UIController
