@@ -1,28 +1,25 @@
 extends Node
-class_name Main
+# Root node of game
+# Handles setting up the state of the game
 
-export (NodePath) var main_menu
-export (NodePath) var game_menu
 export (NodePath) var party
 export (NodePath) var main_viewport
-export (NodePath) var transition
 
+# Creature
 export var default_player: PackedScene
 
 func _ready() -> void:
-	main_menu = get_node(main_menu)
-	game_menu = get_node(game_menu)
 	party = get_node(party)
 	main_viewport = get_node(main_viewport)
-	transition = get_node(transition)
 
-# Set up state for new game
 func new_game() -> void:
-	transition.transition_in()
-	yield(transition, "in_finished")
+	main_viewport.transition.transition_in()
+	yield(main_viewport.transition, "in_finished")
 	### Set up starting room ###
 	party.delete_all()
-	party.add_child(default_player.instance())
-	main_menu.visible = false
-	game_menu.can_open = true
-	transition.transition_out()
+	party.add_member(default_player.instance())
+	
+	main_viewport.hide_menu("Main")
+	main_viewport.get_menu("Game").update_party()
+	main_viewport.show_menu("Game")
+	main_viewport.transition.transition_out()

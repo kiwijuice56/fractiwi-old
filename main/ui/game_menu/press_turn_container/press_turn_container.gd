@@ -1,8 +1,6 @@
 extends Container
 class_name PressTurnContainer
 
-
-
 func set_turns(full: int, half: int) -> void:
 	for i in range(get_child_count()):
 		get_child(i).visible = false

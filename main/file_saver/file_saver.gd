@@ -1,5 +1,6 @@
 extends Node
-
+class_name FileSaver
+# Handles saving game to file
 
 # Declare member variables here. Examples:
 # var a = 2

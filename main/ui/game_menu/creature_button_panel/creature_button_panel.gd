@@ -1,5 +1,4 @@
 extends ButtonPanel
-class_name CreatureButtonPanel
 # Maintains a CreatureButtonPanel's elements
 
 export var active_style: Resource

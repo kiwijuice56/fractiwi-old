@@ -1,9 +1,7 @@
 extends UIController
-
-var main
+# Main controller for start screen
 
 func _ready() -> void:
-	main = get_tree().get_root().get_child(0)
 	yield(get_tree().root, "ready")
 	input["MainTextButtonContainer"].enable_input()
 	input["MainTextButtonContainer"].grab_focus_at(0)
@@ -13,6 +11,10 @@ func input_pressed(key_name: String) -> void:
 		"New Game":
 			main.new_game()
 		"Load Game":
-			pass
+			main_viewport.transition.transition_in()
+			yield(main_viewport.transition, "in_finished")
+			main_viewport.hide_menu("Main")
+			main_viewport.show_menu("Save")
+			main_viewport.transition.transition_out()
 		"Settings":
 			pass

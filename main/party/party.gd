@@ -1,4 +1,5 @@
 extends Node
+# Contains functions to allow other nodes to modify party
 
 func add_member(creature: Creature) -> void:
 	if $Active.get_child_count() >= 4:

@@ -1,5 +1,5 @@
 extends Node
-class_name Transition
+# Smooth transition for scene loading/changing
 
 signal in_finished
 signal out_finished

@@ -1,5 +1,4 @@
 extends UIController
-class_name CreatureCheckScreen
 
 export(NodePath) var off_affinity
 export(NodePath) var def_affinity

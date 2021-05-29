@@ -1,5 +1,5 @@
 extends UIController
-# Main controller for in-game UI
+# Main controller for combat/game UI 
 
 export(NodePath) var pop_out_party
 export(NodePath) var party
@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 			close_menu()
 		else:
 			open_menu()
-	if event.is_action_pressed("ui_cancel", false) and open:
+	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
 
 func _ready():
@@ -67,6 +67,7 @@ func open_menu() -> void:
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
 	open = true
+
 func close_menu() -> void:
 	hide_party()
 	hide_skills()

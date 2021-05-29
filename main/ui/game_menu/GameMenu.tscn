@@ -110,14 +110,15 @@ hotkeys = {
 mouse_filter = 2
 
 [node name="PressTurnContainer" parent="VBoxContainer" instance=ExtResource( 12 )]
+visible = false
 margin_top = 197.0
 margin_bottom = 225.0
 size_flags_vertical = 8
 
 [node name="MainPanel" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 227.0
+margin_top = 197.0
 margin_right = 560.0
-margin_bottom = 265.0
+margin_bottom = 235.0
 mouse_filter = 2
 size_flags_vertical = 8
 custom_constants/margin_right = 3
@@ -189,9 +190,10 @@ margin_right = 550.0
 margin_bottom = 34.0
 
 [node name="ActivePartyContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 267.0
+margin_top = 237.0
 margin_right = 560.0
-margin_bottom = 332.0
+margin_bottom = 302.0
+rect_min_size = Vector2( 0, 65 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -206,9 +208,10 @@ margin_right = 345.0
 margin_bottom = 65.0
 
 [node name="PopOutPartyContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 334.0
+margin_top = 304.0
 margin_right = 560.0
-margin_bottom = 446.0
+margin_bottom = 416.0
+rect_min_size = Vector2( 0, 112 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8

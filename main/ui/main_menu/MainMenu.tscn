@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/theme/font/rainyhearts.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://main/ui/main_menu/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://main/ui/utility/input_container/button_container/text_button_container/text_button_container.gd" type="Script" id=4]
-[ext_resource path="res://main/ui/save_file_menu/SaveFileMenu.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -73,6 +72,3 @@ anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -15.0
 text = "ver a1.0"
-
-[node name="SaveFiles" parent="." instance=ExtResource( 5 )]
-visible = false
