@@ -2,6 +2,18 @@ extends Node
 class_name Party
 # Contains functions to allow other nodes to modify party
 
+func load_data() -> void:
+	pass
+
+func save_data() -> Dictionary:
+	var active = {}
+	for i in range($Active.get_child_count()):
+		active[i] = $Active.get_child(i).to_dict()
+	var inactive = {}
+	for i in range($Inactive.get_child_count()):
+		inactive[i] = $Inactive.get_child(i).to_dict()
+	return {"party": {"active": active, "inactive": inactive}}
+
 func add_member(creature: Creature) -> void:
 	if $Active.get_child_count() >= 4:
 		$Inactive.add_child(creature)

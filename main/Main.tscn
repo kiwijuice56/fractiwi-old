@@ -32,6 +32,7 @@ default_room = ExtResource( 15 )
 
 [node name="FileSaver" type="Node" parent="."]
 script = ExtResource( 7 )
+path = "res://main/save_data/save_file/"
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -96,12 +97,15 @@ main_viewport = NodePath("..")
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 11 )]
 visible = false
 main_viewport = NodePath("..")
+file_saver = NodePath("../../../FileSaver")
 
 [node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
 visible = false
 main_viewport = NodePath("..")
 
-[node name="Party" type="Node" parent="ViewportContainer/MainViewport"]
+[node name="Party" type="Node" parent="ViewportContainer/MainViewport" groups=[
+"Save",
+]]
 script = ExtResource( 5 )
 
 [node name="Active" type="Node" parent="ViewportContainer/MainViewport/Party"]

@@ -2,10 +2,12 @@ extends UIController
 class_name SaveFileMenu
 # Main controller for save file menu
 
+export (NodePath) var file_saver
 export (NodePath) var desc_label
 
 func _ready():
 	desc_label = get_node(desc_label)
+	file_saver = get_node(file_saver)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel", false) and not disabled: 

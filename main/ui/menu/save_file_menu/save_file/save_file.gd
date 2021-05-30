@@ -1,9 +1,30 @@
 extends ButtonPanel
 class_name UISaveFile
 
+export(NodePath) var name_label
+export(NodePath) var empty_label
+export(NodePath) var num_label
 export(NodePath) var time_label
 
-var file: Resource
+
+func _ready():
+	name_label = get_node(name_label)
+	empty_label = get_node(empty_label)
+	num_label = get_node(num_label)
+	time_label = get_node(time_label)
+
+func initialize(path: String, index: int) -> void:
+	if not path:
+		empty_label.text = "%02d EMPTY" % (index)
+		$VBoxContainer.visible = false
+		$EmptyLabel.visible = true
+		return
+	else:
+		var file = File.new()
+		file.open(path, File.READ)
+		file.close()
+		$VBoxContainer.visible = true
+		$EmptyLabel.visible = false
 
 func set_time(time: int) -> void:
 	#warning-ignore:integer_division

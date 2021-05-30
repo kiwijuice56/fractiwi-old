@@ -6,6 +6,7 @@
 [node name="SaveFile" type="PanelContainer"]
 margin_right = 14.0
 margin_bottom = 14.0
+rect_min_size = Vector2( 0, 64 )
 focus_mode = 1
 size_flags_horizontal = 3
 script = ExtResource( 1 )
@@ -13,6 +14,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 focused_style = ExtResource( 2 )
+name_label = NodePath("VBoxContainer/IDContainer/Name")
+empty_label = NodePath("EmptyLabel")
+num_label = NodePath("VBoxContainer/IDContainer/Number")
 time_label = NodePath("VBoxContainer/Time")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -47,3 +51,10 @@ margin_top = 36.0
 margin_right = 120.0
 margin_bottom = 50.0
 text = "Area"
+
+[node name="EmptyLabel" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 25.0
+margin_right = 127.0
+margin_bottom = 39.0
+text = "00 EMPTY"

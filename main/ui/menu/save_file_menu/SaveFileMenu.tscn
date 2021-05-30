@@ -10,6 +10,7 @@
 [ext_resource path="res://main/ui/menu/save_file_menu/save_file_button_container/save_file_button_container.gd" type="Script" id=8]
 
 [node name="SaveFileMenu" type="PanelContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
@@ -57,6 +58,8 @@ size_flags_vertical = 3
 margin_right = 514.0
 margin_bottom = 273.0
 size_flags_horizontal = 3
+follow_focus = true
+scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 
 [node name="SaveFileContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer"]
@@ -66,21 +69,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 8 )
 controller = NodePath("../../../../../..")
+button_scene = ExtResource( 7 )
 neighbor_type = "vertical"
 
 [node name="SaveFile" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_right = 514.0
-margin_bottom = 57.0
+margin_bottom = 64.0
 
 [node name="SaveFile2" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
-margin_top = 61.0
+margin_top = 68.0
 margin_right = 514.0
-margin_bottom = 118.0
+margin_bottom = 132.0
 
 [node name="SaveFile3" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
-margin_top = 122.0
+margin_top = 136.0
 margin_right = 514.0
-margin_bottom = 179.0
+margin_bottom = 200.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 margin_left = 518.0

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://main/battle/creature/creature.gd" type="Script" id=1]
+[ext_resource path="res://main/battle/creature/skills.gd" type="Script" id=2]
 
 [node name="Creature" type="Node"]
 script = ExtResource( 1 )
+
+[node name="Skills" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Active" type="Node" parent="Skills"]
+
+[node name="Passive" type="Node" parent="Skills"]
