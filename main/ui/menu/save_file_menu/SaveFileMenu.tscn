@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://main/ui/theme/style_box/Misty.tres" type="StyleBox" id=1]
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://main/ui/utility_classes/unclickable_scoll_container/unclickable_scroll_container.gd" type="Script" id=5]
 [ext_resource path="res://main/ui/menu/save_file_menu/save_file_menu.gd" type="Script" id=6]
 [ext_resource path="res://main/ui/menu/save_file_menu/save_file/SaveFile.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/ui/menu/save_file_menu/save_file_button_container/save_file_button_container.gd" type="Script" id=8]
 
 [node name="SaveFileMenu" type="PanelContainer"]
 anchor_right = 1.0
@@ -17,6 +18,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+desc_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 560.0
@@ -33,65 +35,80 @@ margin_right = 550.0
 margin_bottom = 320.0
 custom_styles/panel = ExtResource( 3 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
 margin_left = 9.0
 margin_top = 9.0
 margin_right = 531.0
 margin_bottom = 301.0
 
-[node name="UnclickableScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
-margin_right = 514.0
-margin_bottom = 292.0
-size_flags_horizontal = 3
-script = ExtResource( 5 )
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_right = 522.0
+margin_bottom = 15.0
+text = "Load which file?"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/UnclickableScrollContainer"]
-margin_right = 514.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 19.0
+margin_right = 522.0
 margin_bottom = 292.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SaveFile" parent="MarginContainer/PanelContainer/HBoxContainer/UnclickableScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
+[node name="UnclickableScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 514.0
+margin_bottom = 273.0
+size_flags_horizontal = 3
+script = ExtResource( 5 )
+
+[node name="SaveFileContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer"]
+margin_right = 514.0
+margin_bottom = 273.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 8 )
+controller = NodePath("../../../../../..")
+neighbor_type = "vertical"
+
+[node name="SaveFile" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_right = 514.0
 margin_bottom = 57.0
 
-[node name="SaveFile2" parent="MarginContainer/PanelContainer/HBoxContainer/UnclickableScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
+[node name="SaveFile2" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_top = 61.0
 margin_right = 514.0
 margin_bottom = 118.0
 
-[node name="SaveFile3" parent="MarginContainer/PanelContainer/HBoxContainer/UnclickableScrollContainer/VBoxContainer" instance=ExtResource( 7 )]
+[node name="SaveFile3" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_top = 122.0
 margin_right = 514.0
 margin_bottom = 179.0
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 margin_left = 518.0
 margin_right = 522.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_vertical = 0
 
-[node name="SaveFileTerminalHotkeyContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/PanelContainer"]
+[node name="SaveFileTerminalHotkeyContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 visible = false
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 2.0
 margin_bottom = 290.0
 script = ExtResource( 4 )
-controller = NodePath("../../../../..")
+controller = NodePath("../../../../../..")
 hotkeys = {
 "Load": "ui_accept",
 "Save": "ui_accept2"
 }
 
-[node name="SaveFileMainHotkeyContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/PanelContainer"]
+[node name="SaveFileMainHotkeyContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 2.0
 margin_bottom = 98.0
 script = ExtResource( 4 )
-controller = NodePath("../../../../..")
+controller = NodePath("../../../../../..")
 hotkeys = {
 "Load": "ui_accept"
 }

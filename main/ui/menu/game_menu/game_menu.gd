@@ -17,8 +17,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_menu", false) and can_open:
 		if open:
 			close_menu()
+			main_viewport.world_node.player.can_move = true
 		else:
 			open_menu()
+			main_viewport.interact.disable()
+			main_viewport.world_node.player.can_move = false
 	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
 
@@ -52,6 +55,7 @@ func input_pressed(key_name: String) -> void:
 					show_party(false)
 				"default":
 					close_menu()
+					main_viewport.world_node.player.can_move = true
 		"Skills":
 			match state:
 				"default": show_skills()
@@ -83,6 +87,7 @@ func show_skills() -> void:
 	input["CreatureA"].grab_focus_at(0)
 	effect_handler.fade(action_selection, "visible", effect_handler.default_fade_time)
 	state = "skills"
+	
 func hide_skills() -> void:
 	input["ActionHotkeyContainer"].disable_input()
 	input["CreatureA"].disable_input()
@@ -130,6 +135,7 @@ func show_party(anim: bool) -> void:
 	input["PartySelectHotKeyContainer"].visible = false
 	input["FullPartyContainer"].grab_focus_at(0)
 	state = "party"
+	
 func hide_party() -> void:
 	effect_handler.slide(self, "y", pop_out_party.rect_size.y, effect_handler.default_slide_time)
 	input["PartyHotKeyContainer"].disable_input()
@@ -138,3 +144,9 @@ func hide_party() -> void:
 func update_party() -> void:
 	input["FullPartyContainer"].add_items()
 	input["ActivePartyContainer"].add_items()
+
+func disable() -> void:
+	can_open = false
+
+func enable() -> void:
+	can_open = true

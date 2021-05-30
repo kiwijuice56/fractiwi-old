@@ -69,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/int_viewport_container/int_viewport_container.gd"
 }, {
+"base": "UIController",
+"class": "InteractMenu",
+"language": "GDScript",
+"path": "res://main/ui/menu/interact_menu/interact_menu.gd"
+}, {
+"base": "Area",
+"class": "Interactable",
+"language": "GDScript",
+"path": "res://main/world/props/interactable/interactable.gd"
+}, {
 "base": "Node",
 "class": "Main",
 "language": "GDScript",
@@ -124,10 +134,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/world/rooms/room.gd"
 }, {
+"base": "ButtonContainer",
+"class": "SaveFileButtonContainer",
+"language": "GDScript",
+"path": "res://main/ui/menu/save_file_menu/save_file_button_container/save_file_button_container.gd"
+}, {
 "base": "UIController",
 "class": "SaveFileMenu",
 "language": "GDScript",
 "path": "res://main/ui/menu/save_file_menu/save_file_menu.gd"
+}, {
+"base": "Interactable",
+"class": "Terminal",
+"language": "GDScript",
+"path": "res://main/world/props/interactable/terminal/terminal.gd"
 }, {
 "base": "UIController",
 "class": "TerminalMenu",
@@ -177,6 +197,8 @@ _global_script_class_icons={
 "HotKeyContainer": "",
 "InputContainer": "",
 "IntViewportContainer": "",
+"InteractMenu": "",
+"Interactable": "",
 "Main": "",
 "MainMenu": "",
 "MainViewport": "",
@@ -188,7 +210,9 @@ _global_script_class_icons={
 "PressTurnContainer": "",
 "PsxImport": "",
 "Room": "",
+"SaveFileButtonContainer": "",
 "SaveFileMenu": "",
+"Terminal": "",
 "TerminalMenu": "",
 "TextButtonContainer": "",
 "Transition": "",
@@ -332,6 +356,49 @@ ui_accept3={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"unicode":0,"echo":false,"script":null)
  ]
 }
+move_forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+move_backward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+turn_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+turn_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Map"
+3d_physics/layer_3="Enemy"
+3d_physics/layer_4="Interact"
 
 [rendering]
 
