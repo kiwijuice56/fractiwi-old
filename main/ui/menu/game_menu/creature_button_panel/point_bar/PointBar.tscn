@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/point_bar.gd" type="Script" id=1]
+[ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/BarUnder.png" type="Texture" id=2]
+[ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/BarProgress.png" type="Texture" id=3]
+
+[node name="PointBar" type="HBoxContainer"]
+margin_top = 18.0
+margin_right = 38.0
+margin_bottom = 32.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="."]
+margin_top = 1.0
+margin_right = 18.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 18, 0 )
+text = "HP"
+
+[node name="PointLabel" type="Label" parent="."]
+margin_left = 22.0
+margin_top = 1.0
+margin_right = 46.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 21, 0 )
+text = "999"
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 50.0
+margin_right = 106.0
+margin_bottom = 16.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 10.0
+value = 3.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )

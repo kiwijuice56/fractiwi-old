@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/ui/menu/terminal_menu/backgrounds/terminal1.png" type="Texture" id=1]
+[ext_resource path="res://main/ui/menu/terminal_menu/terminal_menu.gd" type="Script" id=2]
+[ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=3]
+[ext_resource path="res://main/ui/utility_classes/input_container/button_container/text_button_container/text_button_container.gd" type="Script" id=4]
+[ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=5]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 560, 290 )
+
+[node name="TerminalMenu" type="PanelContainer"]
+margin_right = 560.0
+margin_bottom = 330.0
+theme = ExtResource( 5 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 560.0
+margin_bottom = 330.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 138.0
+margin_bottom = 51.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 119.0
+margin_bottom = 32.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_right = 110.0
+margin_bottom = 15.0
+text = "What will you do?"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 19.0
+margin_right = 110.0
+margin_bottom = 23.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 108.0
+margin_bottom = 2.0
+script = ExtResource( 4 )
+controller = NodePath("../../../../..")
+neighbor_type = "vertical"
+button_names = [ "Save", "Load", "Leave" ]

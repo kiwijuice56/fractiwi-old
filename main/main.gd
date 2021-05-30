@@ -1,4 +1,5 @@
 extends Node
+class_name Main
 # Root node of game
 # Handles setting up the state of the game
 
@@ -7,6 +8,7 @@ export (NodePath) var main_viewport
 
 # Creature
 export var default_player: PackedScene
+export var default_room: PackedScene
 
 func _ready() -> void:
 	party = get_node(party)

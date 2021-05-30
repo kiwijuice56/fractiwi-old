@@ -2,7 +2,7 @@ tool
 extends EditorScript
 class_name PsxImport
 
-var psx_shader_path := load("res://main/shared/psx.shader")
+var psx_shader_path := load("res://main/environment/psx.shader")
 
 func _run():
 	for node in get_scene().get_children():
