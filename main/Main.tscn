@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/ui/theme/background.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/utility_classes/int_viewport_container/int_viewport_container.gd" type="Script" id=4]
 [ext_resource path="res://main/battle/party/party.gd" type="Script" id=5]
@@ -14,7 +14,6 @@
 [ext_resource path="res://main/ui/main_viewport/main_viewport.gd" type="Script" id=12]
 [ext_resource path="res://main/ui/menu/terminal_menu/TerminalMenu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/world/player/Player.tscn" type="PackedScene" id=14]
-[ext_resource path="res://main/world/rooms/block/Room.tscn" type="PackedScene" id=15]
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=16]
 [ext_resource path="res://main/ui/menu/interact_menu/InteractMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://main/ui/utility_classes/music_player/MusicPlayer.tscn" type="PackedScene" id=18]
@@ -26,13 +25,14 @@ party = NodePath("ViewportContainer/MainViewport/Party")
 main_viewport = NodePath("ViewportContainer/MainViewport")
 world = NodePath("ViewportContainer/MainViewport/World")
 default_player = ExtResource( 9 )
-default_room = ExtResource( 15 )
+default_room = "block"
 
 [node name="GameTime" type="Timer" parent="."]
 
 [node name="FileSaver" type="Node" parent="."]
 script = ExtResource( 7 )
 path = "res://main/save_data/save_file/"
+default_path = "res://main/save_data/default"
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -79,8 +79,6 @@ world_node = NodePath("World")
 
 [node name="MusicPlayer" parent="ViewportContainer/MainViewport" instance=ExtResource( 18 )]
 
-[node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
-
 [node name="GameMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 1 )]
 main_viewport = NodePath("..")
 party = NodePath("../Party")
@@ -90,55 +88,38 @@ inactive_party = NodePath("../Party/Inactive")
 [node name="MainMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 8 )]
 main_viewport = NodePath("..")
 
+[node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
+main_viewport = NodePath("..")
+
 [node name="TerminalMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 13 )]
-visible = false
 main_viewport = NodePath("..")
 
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 11 )]
-visible = false
 main_viewport = NodePath("..")
 file_saver = NodePath("../../../FileSaver")
 
-[node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
-visible = false
-main_viewport = NodePath("..")
+[node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
 
 [node name="Party" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
 ]]
 script = ExtResource( 5 )
+creature_path = "res://main/battle/creature/"
 
 [node name="Active" type="Node" parent="ViewportContainer/MainViewport/Party"]
 
-[node name="CreatureA" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 2 )]
+[node name="Yun" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 9 )]
 
-[node name="CreatureB" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 2 )]
-
-[node name="CreatureA2" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 2 )]
-
-[node name="CreatureB2" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 2 )]
+[node name="Orange" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 2 )]
 
 [node name="Inactive" type="Node" parent="ViewportContainer/MainViewport/Party"]
 
-[node name="CreatureC" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="CreatureD" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="CreatureE" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="CreatureF" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="CreatureG" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="CreatureH" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="CreatureI" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="CreatureJ" parent="ViewportContainer/MainViewport/Party/Inactive" instance=ExtResource( 2 )]
-
-[node name="World" type="Node" parent="ViewportContainer/MainViewport"]
+[node name="World" type="Node" parent="ViewportContainer/MainViewport" groups=[
+"Save",
+]]
 script = ExtResource( 19 )
 player = NodePath("Player")
+room_path = "res://main/world/rooms/"
 
 [node name="Player" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 14 )]
 main_viewport = NodePath("../..")

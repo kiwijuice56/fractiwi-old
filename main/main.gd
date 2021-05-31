@@ -9,7 +9,7 @@ export (NodePath) var world
 
 # Creature
 export var default_player: PackedScene
-export var default_room: PackedScene
+export var default_room: String
 
 func _ready() -> void:
 	party = get_node(party)
@@ -18,14 +18,13 @@ func _ready() -> void:
 	yield(get_tree().root, "ready")
 	main_viewport.main.enable()
 
-func new_game() -> void:
-	main_viewport.transition.transition_in()
+func start() -> void:
+	main_viewport.transition.transition_in_heavy()
 	yield(main_viewport.transition, "in_finished")
-	world.add_child(default_room.instance())
-	party.delete_all()
-	party.add_member(default_player.instance())
 	world.player.can_move = true
 	main_viewport.main.disable()
+	main_viewport.save_file.disable()
+	main_viewport.terminal.disable()
 	main_viewport.game.update_party()
 	main_viewport.game.enable()
-	main_viewport.transition.transition_out()
+	main_viewport.transition.transition_out_heavy()

@@ -2,8 +2,10 @@ extends Control
 class_name UIController
 # UIControllers function as an abstraction of large sections of UI -  
 # essentially act as one menu
+# They contain the mess of many hard coded paths into one node that is 
+# accessible through functions
 # They serve as a controller for InputContainers, as they can change the
-# state of other UI elements without many hard coded paths
+# state of other UI elements 
 
 export(NodePath) var main_viewport
 

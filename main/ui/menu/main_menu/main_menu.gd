@@ -8,7 +8,8 @@ func _ready() -> void:
 func input_pressed(key_name: String) -> void:
 	match key_name:
 		"New Game":
-			main_viewport.root.new_game()
+			main_viewport.save_file.file_saver.load_file(-1)
+			main_viewport.root.start()
 		"Load Game":
 			main_viewport.transition.transition_in()
 			yield(main_viewport.transition, "in_finished")

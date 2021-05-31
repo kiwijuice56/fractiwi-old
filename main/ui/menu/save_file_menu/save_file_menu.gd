@@ -17,9 +17,35 @@ func _input(event: InputEvent) -> void:
 		back.enable()
 		main_viewport.transition.transition_out()
 
+func input_pressed(key_name: String) -> void:
+	var index := get_focus_owner().get_index()
+	var scroll = input["SaveFileContainer"].get_parent().scroll_vertical
+	match key_name:
+		"Save":
+			file_saver.save_file(index)
+		"Load":
+			file_saver.load_file(index)
+			main_viewport.root.start()
+	input["SaveFileContainer"].add_items()
+	input["SaveFileContainer"].grab_focus_at(index)
+	input["SaveFileContainer"].get_parent().scroll_vertical = scroll
+
 func set_up(event: String) -> void:
 	if event == "Load":
 		desc_label.text = "Load which file?"
+		input["SaveFileHotkeyContainer"].hotkeys = {"Load":"ui_accept"}
 	elif event == "Save":
 		desc_label.text = "Save over which file?"
+		input["SaveFileHotkeyContainer"].hotkeys = {"Save":"ui_accept"}
+	input["SaveFileHotkeyContainer"].add_items()
 	input["SaveFileContainer"].grab_focus_at(0)
+
+func enable() -> void:
+	visible = true
+	disabled = false
+	input["SaveFileHotkeyContainer"].enable_input()
+
+func disable() -> void:
+	visible = false
+	disabled = true
+	input["SaveFileHotkeyContainer"].disable_input()

@@ -5,6 +5,16 @@ class_name Transition
 signal in_finished
 signal out_finished
 
+func transition_in_heavy() -> void:
+	$AnimationPlayer.current_animation = "in_heavy"
+	yield($AnimationPlayer, "animation_finished")
+	emit_signal("in_finished")
+
+func transition_out_heavy() -> void:
+	$AnimationPlayer.current_animation = "out_heavy"
+	yield($AnimationPlayer, "animation_finished")
+	emit_signal("out_finished")
+
 func transition_in() -> void:
 	$AnimationPlayer.current_animation = "in"
 	yield($AnimationPlayer, "animation_finished")

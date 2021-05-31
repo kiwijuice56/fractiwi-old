@@ -14,7 +14,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 focused_style = ExtResource( 2 )
-name_label = NodePath("VBoxContainer/IDContainer/Name")
+location_label = NodePath("VBoxContainer/IDContainer/Location")
 empty_label = NodePath("EmptyLabel")
 num_label = NodePath("VBoxContainer/IDContainer/Number")
 time_label = NodePath("VBoxContainer/Time")
@@ -22,37 +22,32 @@ time_label = NodePath("VBoxContainer/Time")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 127.0
+margin_right = 109.0
 margin_bottom = 57.0
 
 [node name="IDContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 120.0
+margin_right = 102.0
 margin_bottom = 14.0
 
 [node name="Number" type="Label" parent="VBoxContainer/IDContainer"]
-margin_right = 24.0
+margin_right = 16.0
 margin_bottom = 14.0
-text = "000"
+text = "00"
 
-[node name="Name" type="Label" parent="VBoxContainer/IDContainer"]
-margin_left = 28.0
-margin_right = 120.0
+[node name="Location" type="Label" parent="VBoxContainer/IDContainer"]
+margin_left = 20.0
+margin_right = 49.0
 margin_bottom = 14.0
-text = "SaveFile name"
+text = "Area"
 
 [node name="Time" type="Label" parent="VBoxContainer"]
 margin_top = 18.0
-margin_right = 120.0
+margin_right = 102.0
 margin_bottom = 32.0
 text = "00:00:00 played"
 
-[node name="Location" type="Label" parent="VBoxContainer"]
-margin_top = 36.0
-margin_right = 120.0
-margin_bottom = 50.0
-text = "Area"
-
 [node name="EmptyLabel" type="Label" parent="."]
+visible = false
 margin_left = 7.0
 margin_top = 25.0
 margin_right = 127.0

@@ -2,8 +2,9 @@
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 
-[node name="Yun" instance=ExtResource( 1 )]
-level = 1
+[node name="Orange" instance=ExtResource( 1 )]
+race = "Inanimate"
+level = 5
 hp_growth = 9
 mp_growth = 5
 stre = 2

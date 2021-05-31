@@ -13,6 +13,16 @@ export(NodePath) var party_skill_container
 var open := false
 var can_open := false
 
+func _ready():
+	party = get_node(party)
+	active_party = get_node(active_party)
+	inactive_party = get_node(inactive_party)
+	pop_out_party = get_node(pop_out_party)
+	effect_handler = get_node(effect_handler)
+	action_selection = get_node(action_selection)
+	yield(get_tree().root, "ready")
+	close_menu()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_menu", false) and can_open:
 		if open:
@@ -24,16 +34,6 @@ func _input(event: InputEvent) -> void:
 			main_viewport.world_node.player.can_move = false
 	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
-
-func _ready():
-	party = get_node(party)
-	active_party = get_node(active_party)
-	inactive_party = get_node(inactive_party)
-	pop_out_party = get_node(pop_out_party)
-	effect_handler = get_node(effect_handler)
-	action_selection = get_node(action_selection)
-	yield(get_tree().root, "ready")
-	close_menu()
 
 func input_pressed(key_name: String) -> void:
 	if not open: return
@@ -146,7 +146,9 @@ func update_party() -> void:
 	input["ActivePartyContainer"].add_items()
 
 func disable() -> void:
+	disabled = true
 	can_open = false
 
 func enable() -> void:
+	disabled = false
 	can_open = true

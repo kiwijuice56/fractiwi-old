@@ -22,10 +22,15 @@ func to_dict() -> Dictionary:
 				  "Active": $Skills.get_skill_names("Active")}
 	var stats = {"level": level, "stre": stre, "magi": magi, "vita": vita,
 				 "luck": luck, "agil": agil, "hp": hp, "mp": mp}
-	return {name: {"skills": skills, "stats": stats}}
+	return {"skills": skills, "stats": stats}
+
+func set_skills(data: Dictionary) -> void:
+	pass
+
+func set_stats(data: Dictionary) -> void:
+	pass
 
 func set_level(new_level):
 	level = new_level
 	max_hp = hp_growth * level
 	max_mp = mp_growth * level
-
