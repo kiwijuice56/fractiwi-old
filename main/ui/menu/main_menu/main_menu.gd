@@ -2,6 +2,8 @@ extends UIController
 class_name MainMenu
 # Main controller for start screen
 
+export var music: Resource
+
 func _ready() -> void:
 	yield(get_tree().root, "ready")
 

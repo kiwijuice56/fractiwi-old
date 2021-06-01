@@ -4,7 +4,8 @@ class_name ButtonPanel
 
 export var focused_style: Resource
 export var disabled_style: Resource
-var disabled: bool = false
+export var disbaled_focus_style: Resource
+var disabled: bool = false setget set_disabled
 
 signal pressed
 
@@ -19,8 +20,21 @@ func _input(_event: InputEvent) -> void:
 
 func focus_entered() -> void:
 	set_process_input(true)
-	set("custom_styles/panel", focused_style)
+	if disabled:
+		set("custom_styles/panel", disbaled_focus_style)
+	else:
+		set("custom_styles/panel", focused_style)
 
 func focus_exited() -> void:
 	set_process_input(false)
-	set("custom_styles/panel", null)
+	if disabled:
+		set("custom_styles/panel", disabled_style)
+	else:
+		set("custom_styles/panel", null)
+
+func set_disabled(value: bool) -> void:
+	disabled = value
+	if disabled:
+		set("custom_styles/panel", disabled_style)
+	else:
+		set("custom_styles/panel", null)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
@@ -14,10 +14,14 @@
 [ext_resource path="res://main/ui/main_viewport/main_viewport.gd" type="Script" id=12]
 [ext_resource path="res://main/ui/menu/terminal_menu/TerminalMenu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/world/player/Player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://main/save_data/game_time/game_time.gd" type="Script" id=15]
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=16]
 [ext_resource path="res://main/ui/menu/interact_menu/InteractMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://main/ui/utility_classes/music_player/MusicPlayer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://main/world/world.gd" type="Script" id=19]
+[ext_resource path="res://main/world/rooms/block/Room.tscn" type="PackedScene" id=20]
+[ext_resource path="res://main/ui/menu/main_menu/title_music.wav" type="AudioStream" id=21]
+[ext_resource path="res://main/ui/menu/terminal_menu/terminal.ogg" type="AudioStream" id=22]
 
 [node name="Main" type="Node"]
 script = ExtResource( 6 )
@@ -27,12 +31,17 @@ world = NodePath("ViewportContainer/MainViewport/World")
 default_player = ExtResource( 9 )
 default_room = "block"
 
-[node name="GameTime" type="Timer" parent="."]
-
-[node name="FileSaver" type="Node" parent="."]
+[node name="FileSaver" type="Node" parent="." groups=[
+"Save",
+]]
 script = ExtResource( 7 )
 path = "res://main/save_data/save_file/"
-default_path = "res://main/save_data/default"
+default_path = "res://main/save_data/default.tres"
+
+[node name="GameTime" type="Node" parent="FileSaver"]
+script = ExtResource( 15 )
+
+[node name="Timer" type="Timer" parent="FileSaver/GameTime"]
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -78,6 +87,17 @@ terminal = NodePath("TerminalMenu")
 world_node = NodePath("World")
 
 [node name="MusicPlayer" parent="ViewportContainer/MainViewport" instance=ExtResource( 18 )]
+volume_db = -50.0
+autoplay = true
+volume = 5
+transition_duration = 1.5
+
+[node name="MainMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 8 )]
+main_viewport = NodePath("..")
+music = ExtResource( 21 )
+
+[node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
+main_viewport = NodePath("..")
 
 [node name="GameMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 1 )]
 main_viewport = NodePath("..")
@@ -85,14 +105,9 @@ party = NodePath("../Party")
 active_party = NodePath("../Party/Active")
 inactive_party = NodePath("../Party/Inactive")
 
-[node name="MainMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 8 )]
-main_viewport = NodePath("..")
-
-[node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
-main_viewport = NodePath("..")
-
 [node name="TerminalMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 13 )]
 main_viewport = NodePath("..")
+music = ExtResource( 22 )
 
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 11 )]
 main_viewport = NodePath("..")
@@ -123,3 +138,5 @@ room_path = "res://main/world/rooms/"
 
 [node name="Player" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 14 )]
 main_viewport = NodePath("../..")
+
+[node name="Room" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 20 )]

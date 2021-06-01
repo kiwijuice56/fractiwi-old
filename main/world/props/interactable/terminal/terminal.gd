@@ -1,6 +1,7 @@
 extends Interactable
 class_name Terminal
 
+
 func interacted() -> void:
 	get_viewport().transition.transition_in_heavy()
 	get_viewport().game.disable()

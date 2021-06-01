@@ -23,5 +23,5 @@ func enable() -> void:
 
 func disable() -> void:
 	disabled = true
-	$AnimationPlayer.current_animation = "fade_out"
+	if is_inside_tree() and modulate != Color(1,1,1,0): $AnimationPlayer.current_animation = "fade_out"
 	input["HotkeyContainer"].disable_input()

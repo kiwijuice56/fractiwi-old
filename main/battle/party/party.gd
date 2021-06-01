@@ -51,11 +51,10 @@ func save_data() -> Dictionary:
 	var inactive = {}
 	for i in range($Inactive.get_child_count()):
 		inactive[("%02d"%i)+$Inactive.get_child(i).name]  = $Inactive.get_child(i).to_dict()
-	return {"party": {"active": active, "inactive": inactive}}
+	return {"active": active, "inactive": inactive}
 
 func load_data(data: Dictionary) -> void:
 	delete_all()
-	data = data["party"]
 	for creature_name in data["inactive"].keys():
 		$Inactive.add_child(instance_member(creature_name, data["inactive"][creature_name]))
 	for creature_name in data["active"].keys():

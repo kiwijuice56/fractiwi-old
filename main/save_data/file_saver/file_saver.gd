@@ -5,7 +5,7 @@ class_name FileSaver
 export var path: String
 export var default_path: String
 
-func _ready() -> void:
+func _ready():
 	save_file(0)
 
 func get_files() -> Array:
@@ -20,38 +20,32 @@ func get_files() -> Array:
 		if file == "" or file == "save_file.gd":
 			break
 		elif not file.begins_with("."):
-			files[int(file)] = file
+			files[int(file.substr(0,2))] = load(path+file)
 	dir.list_dir_end()
 	return files
 
 func save_file(index: int) -> void:
-	var file = File.new()
-	file.open(path + "%02d" % index, File.WRITE)
-	file.store_line(to_json(initialize_file(index)))
+	
+	var file = SaveFile.new()
 	for node in get_tree().get_nodes_in_group("Save"):
-		var node_data = node.save_data()
-		file.store_line(to_json(node_data))
-	file.close()
-
-func initialize_file(index: int) -> Dictionary:
-	var file_data = {}
-	file_data["id"] = index
-	file_data["time"] = 0
-	return file_data
+		file.data[node.name] = node.save_data()
+	var dir = Directory.new()
+	dir.remove(path + "%02d.tres" % index)
+	print(path + "%02d.tres" % index)
+	ResourceSaver.save(path + "%02d.tres" % index, file)
 
 func load_file(index: int) -> void:
-	var file = File.new()
+	var file
 	if index == -1:
-		file.open(default_path, File.READ)
+		file = load(default_path)
 	else:
-		file.open(path + "%02d" % (index), File.READ)
-	var save_node_index = 0
-	var nodes = get_tree().get_nodes_in_group("Save")
-	file.get_line() # ID line
-	while true:
-		var node_data = file.get_line()
-		if node_data == "":
-			break
-		nodes[save_node_index].load_data(parse_json(node_data))
-		save_node_index += 1
-	file.close()
+		file = load(path + "%02d.tres" % (index)) 
+	for node in get_tree().get_nodes_in_group("Save"):
+		node.load_data(file.data[node.name])
+
+func load_data(data: Dictionary) -> void:
+	$GameTime.time = data["time"]
+	$GameTime.start()
+
+func save_data() -> Dictionary:
+	return {"time": $GameTime.time}

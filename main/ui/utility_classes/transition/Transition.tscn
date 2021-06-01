@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "in_heavy"
 length = 0.8
 tracks/0/type = "value"
@@ -34,8 +34,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "out"
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -52,7 +51,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "out_heavy"
-length = 0.8
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -60,10 +59,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
 [node name="Transition" type="CanvasLayer"]
@@ -80,6 +79,6 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.25
 anims/in = SubResource( 1 )
-anims/in_heavy = SubResource( 3 )
-anims/out = SubResource( 2 )
+anims/in_heavy = SubResource( 2 )
+anims/out = SubResource( 3 )
 anims/out_heavy = SubResource( 4 )

@@ -29,3 +29,4 @@ func _ready() -> void:
 	terminal.disable()
 	save_file.disable()
 	interact.disable()
+	music_player.play_audio(main.music)

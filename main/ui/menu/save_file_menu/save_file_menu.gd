@@ -24,13 +24,17 @@ func input_pressed(key_name: String) -> void:
 		"Save":
 			file_saver.save_file(index)
 		"Load":
-			file_saver.load_file(index)
-			main_viewport.root.start()
+			if input["SaveFileContainer"].files[index]:
+				file_saver.load_file(index)
+				main_viewport.root.start()
 	input["SaveFileContainer"].add_items()
+	set_up(key_name)
 	input["SaveFileContainer"].grab_focus_at(index)
 	input["SaveFileContainer"].get_parent().scroll_vertical = scroll
+	
 
 func set_up(event: String) -> void:
+	input["SaveFileContainer"].add_items()
 	if event == "Load":
 		desc_label.text = "Load which file?"
 		input["SaveFileHotkeyContainer"].hotkeys = {"Load":"ui_accept"}

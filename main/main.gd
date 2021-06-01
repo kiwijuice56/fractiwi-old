@@ -15,6 +15,7 @@ func _ready() -> void:
 	party = get_node(party)
 	main_viewport = get_node(main_viewport)
 	world = get_node(world)
+	
 	yield(get_tree().root, "ready")
 	main_viewport.main.enable()
 

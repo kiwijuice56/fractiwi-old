@@ -1,8 +1,9 @@
 extends UIController
 class_name TerminalMenu
 
+export var music: Resource
+
 func input_pressed(key_name: String) -> void:
-	
 	match key_name:
 		"Save":
 			main_viewport.transition.transition_in()
@@ -24,6 +25,7 @@ func input_pressed(key_name: String) -> void:
 			main_viewport.terminal.disable()
 			main_viewport.interact.finish_interaction()
 			main_viewport.game.enable()
+			main_viewport.world_node.play_room_music()
 			main_viewport.transition.transition_out_heavy()
 
 func enable() -> void:
@@ -31,6 +33,7 @@ func enable() -> void:
 	disabled = false
 	input["TextButtonContainer"].enable_input()
 	input["TextButtonContainer"].grab_focus_at(0)
+	main_viewport.music_player.play_audio(music)
 
 func disable() -> void:
 	visible = false
