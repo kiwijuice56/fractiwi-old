@@ -25,8 +25,8 @@ func _ready() -> void:
 	world_node = get_node(world_node)
 	
 	yield(get_tree().root, "ready")
-	game.disable()
-	terminal.disable()
-	save_file.disable()
-	interact.disable()
+	game.disable(false)
+	terminal.disable(false)
+	save_file.disable(false)
+	interact.disable(false)
 	music_player.play_audio(main.music)

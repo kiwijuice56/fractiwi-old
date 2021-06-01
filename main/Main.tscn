@@ -92,12 +92,12 @@ autoplay = true
 volume = 5
 transition_duration = 1.5
 
+[node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
+main_viewport = NodePath("..")
+
 [node name="MainMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 8 )]
 main_viewport = NodePath("..")
 music = ExtResource( 21 )
-
-[node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
-main_viewport = NodePath("..")
 
 [node name="GameMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 1 )]
 main_viewport = NodePath("..")
@@ -140,3 +140,5 @@ room_path = "res://main/world/rooms/"
 main_viewport = NodePath("../..")
 
 [node name="Room" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 20 )]
+
+[node name="BattleQueue" type="Node" parent="ViewportContainer/MainViewport"]

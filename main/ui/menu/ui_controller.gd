@@ -26,10 +26,10 @@ func _input(_event: InputEvent) -> void:
 func input_pressed(_key_name: String) -> void:
 	if disabled: return
 
-func disable() -> void:
-	disabled = true
-	visible = false
-
-func enable() -> void:
+func enable(show: bool) -> void:
 	disabled = false
-	visible = true
+	if show: visible = true
+
+func disable(show: bool) -> void:
+	disabled = true
+	if not show: visible = false

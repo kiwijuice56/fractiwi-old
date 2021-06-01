@@ -13,8 +13,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel", false) and not disabled: 
 		main_viewport.transition.transition_in()
 		yield(main_viewport.transition, "in_finished")
-		main_viewport.save_file.disable()
-		back.enable()
+		main_viewport.save_file.disable(false)
+		back.enable(true)
 		main_viewport.transition.transition_out()
 
 func input_pressed(key_name: String) -> void:
@@ -24,6 +24,7 @@ func input_pressed(key_name: String) -> void:
 		"Save":
 			file_saver.save_file(index)
 		"Load":
+			disable(true)
 			if input["SaveFileContainer"].files[index]:
 				file_saver.load_file(index)
 				main_viewport.root.start()
@@ -44,12 +45,10 @@ func set_up(event: String) -> void:
 	input["SaveFileHotkeyContainer"].add_items()
 	input["SaveFileContainer"].grab_focus_at(0)
 
-func enable() -> void:
-	visible = true
-	disabled = false
+func enable(show: bool) -> void:
+	.enable(show)
 	input["SaveFileHotkeyContainer"].enable_input()
 
-func disable() -> void:
-	visible = false
-	disabled = true
+func disable(show: bool) -> void:
+	.disable(show)
 	input["SaveFileHotkeyContainer"].disable_input()

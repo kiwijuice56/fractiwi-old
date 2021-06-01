@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 8
+"time": 5
 },
 "Party": {
 "active": {
@@ -33,6 +33,7 @@ data = {
 "World": {
 "location": "block",
 "memory": {
-}
+},
+"terminal": "Terminal"
 }
 }

@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Skill",
+"class": "ActiveSkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/active/active_skill.gd"
+}, {
 "base": "Container",
 "class": "AffinityContainer",
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/creature_check_screen/affinity_panel_container/affinity_container.gd"
+}, {
+"base": "StatusSkill",
+"class": "BuffSkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/active/status/buff/buff_skill.gd"
 }, {
 "base": "InputContainer",
 "class": "ButtonContainer",
@@ -23,6 +33,11 @@ _global_script_classes=[ {
 "class": "ButtonPanel",
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/button_panel/button_panel.gd"
+}, {
+"base": "StatusSkill",
+"class": "ConditionSkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/active/status/condition/condition_skill.gd"
 }, {
 "base": "Node",
 "class": "Creature",
@@ -114,6 +129,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/creature_button_panel/point_bar/point_bar.gd"
 }, {
+"base": "ActiveSkill",
+"class": "PointSkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/active/point/point_skill.gd"
+}, {
 "base": "TextureRect",
 "class": "PressTurn",
 "language": "GDScript",
@@ -147,12 +167,22 @@ _global_script_classes=[ {
 "base": "ButtonPanel",
 "class": "SaveFileButtonPanel",
 "language": "GDScript",
-"path": "res://main/ui/menu/save_file_menu/save_file/save_file_button_panel.gd"
+"path": "res://main/ui/menu/save_file_menu/save_file_button_panel/save_file_button_panel.gd"
 }, {
 "base": "UIController",
 "class": "SaveFileMenu",
 "language": "GDScript",
 "path": "res://main/ui/menu/save_file_menu/save_file_menu.gd"
+}, {
+"base": "Node",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://main/battle/skill/skill.gd"
+}, {
+"base": "ActiveSkill",
+"class": "StatusSkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/active/status/status_skill.gd"
 }, {
 "base": "Interactable",
 "class": "Terminal",
@@ -190,9 +220,12 @@ _global_script_classes=[ {
 "path": "res://main/ui/utility_classes/visible_resize_container/visible_resize_container.gd"
 } ]
 _global_script_class_icons={
+"ActiveSkill": "",
 "AffinityContainer": "",
+"BuffSkill": "",
 "ButtonContainer": "",
 "ButtonPanel": "",
+"ConditionSkill": "",
 "Creature": "",
 "CreatureButtonPanel": "",
 "CreatureCheckScreen": "",
@@ -211,6 +244,7 @@ _global_script_class_icons={
 "PartyButtonContainer": "",
 "PartySkillContainer": "",
 "PointBar": "",
+"PointSkill": "",
 "PressTurn": "",
 "PressTurnContainer": "",
 "PsxImport": "",
@@ -219,6 +253,8 @@ _global_script_class_icons={
 "SaveFileButtonContainer": "",
 "SaveFileButtonPanel": "",
 "SaveFileMenu": "",
+"Skill": "",
+"StatusSkill": "",
 "Terminal": "",
 "TerminalMenu": "",
 "TextButtonContainer": "",

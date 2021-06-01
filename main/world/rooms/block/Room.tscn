@@ -5,9 +5,15 @@
 [ext_resource path="res://main/world/props/interactable/terminal/Terminal.tscn" type="PackedScene" id=3]
 
 [node name="Room" instance=ExtResource( 1 )]
+terminals = NodePath("Props/Terminals")
 
 [node name="Terminal" parent="Props/Terminals" index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.44245, 0, 0 )
+room = NodePath("../../..")
+
+[node name="TerminalB" parent="Props/Terminals" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28896, -1.07598, 0 )
+room = NodePath("../../..")
 
 [node name="Terrain" parent="." index="1" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.64805, 0 )

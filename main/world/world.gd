@@ -19,10 +19,11 @@ func add_room(room_name: String) -> void:
 	play_room_music()
 
 func play_room_music() -> void:
-	get_viewport().music_player.play_audio(get_node("Room").music)
+	get_viewport().music_player.play_audio($Room.music)
 
 func save_data() -> Dictionary:
-	return {"location" : current_room, "memory": temp_data}
+	return {"location" : current_room, "terminal": $Room.current_terminal, "memory": temp_data}
 
 func load_data(data: Dictionary) -> void:
 	add_room(data["location"])
+	$Player.translation = $Room.terminals.get_node(data["terminal"]).translation

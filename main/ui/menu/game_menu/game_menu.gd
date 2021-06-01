@@ -24,19 +24,20 @@ func _ready():
 	close_menu()
 
 func _input(event: InputEvent) -> void:
+	if disabled: return
 	if event.is_action_pressed("open_menu", false) and can_open:
 		if open:
 			close_menu()
 			main_viewport.world_node.player.can_move = true
 		else:
 			open_menu()
-			main_viewport.interact.disable()
+			main_viewport.interact.disable(false)
 			main_viewport.world_node.player.can_move = false
 	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
 
 func input_pressed(key_name: String) -> void:
-	if not open: return
+	if disabled or not open: return
 	match(key_name):
 		"Party":
 			match state:
@@ -145,10 +146,10 @@ func update_party() -> void:
 	input["FullPartyContainer"].add_items()
 	input["ActivePartyContainer"].add_items()
 
-func disable() -> void:
-	disabled = true
-	can_open = false
-
-func enable() -> void:
-	disabled = false
+func enable(show: bool) -> void:
+	.enable(show)
 	can_open = true
+
+func disable(show: bool) -> void:
+	.disable(show)
+	can_open = false

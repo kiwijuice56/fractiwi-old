@@ -12,6 +12,7 @@ var can_move: bool = false
 
 func _ready() -> void:
 	main_viewport = get_node(main_viewport)
+	disable_collision()
 
 func _physics_process(delta) -> void:
 	if not can_move:
@@ -37,3 +38,9 @@ func input():
 	if Input.is_action_pressed("turn_left"):
 		cam_direction.y += 1
 	direction = direction.normalized()
+
+func disable_collision() -> void:
+	set_collision_layer(0)
+
+func enable_collision() -> void:
+	set_collision_layer(1)

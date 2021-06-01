@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/skill/active/status/buff/buff_skill.gd" type="Script" id=1]
+[ext_resource path="res://main/battle/skill/active/status/StatusSkill.tscn" type="PackedScene" id=2]
+
+[node name="BuffSkill" instance=ExtResource( 2 )]
+script = ExtResource( 1 )

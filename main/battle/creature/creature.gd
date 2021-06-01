@@ -24,10 +24,10 @@ func to_dict() -> Dictionary:
 				 "luck": luck, "agil": agil, "hp": hp, "mp": mp}
 	return {"skills": skills, "stats": stats}
 
-func set_skills(data: Dictionary) -> void:
+func set_skills(_data: Dictionary) -> void:
 	pass
 
-func set_stats(data: Dictionary) -> void:
+func set_stats(_data: Dictionary) -> void:
 	pass
 
 func set_level(new_level):

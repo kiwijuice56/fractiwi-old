@@ -33,6 +33,7 @@ data = {
 "World": {
 "location": "block",
 "memory": {
-}
+},
+"terminal": "Terminal"
 }
 }

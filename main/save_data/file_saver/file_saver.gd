@@ -5,8 +5,8 @@ class_name FileSaver
 export var path: String
 export var default_path: String
 
-func _ready():
-	save_file(0)
+#func _ready():
+#	save_file(0)
 
 func get_files() -> Array:
 	var files := []
@@ -17,7 +17,7 @@ func get_files() -> Array:
 	dir.list_dir_begin()
 	while true:
 		var file = dir.get_next()
-		if file == "" or file == "save_file.gd":
+		if file == "":
 			break
 		elif not file.begins_with("."):
 			files[int(file.substr(0,2))] = load(path+file)
@@ -25,13 +25,11 @@ func get_files() -> Array:
 	return files
 
 func save_file(index: int) -> void:
-	
 	var file = SaveFile.new()
 	for node in get_tree().get_nodes_in_group("Save"):
 		file.data[node.name] = node.save_data()
 	var dir = Directory.new()
 	dir.remove(path + "%02d.tres" % index)
-	print(path + "%02d.tres" % index)
 	ResourceSaver.save(path + "%02d.tres" % index, file)
 
 func load_file(index: int) -> void:

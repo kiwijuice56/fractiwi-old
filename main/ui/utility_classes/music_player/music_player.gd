@@ -13,18 +13,19 @@ func play_audio(audio: AudioStream) -> void:
 		fade_out()
 		yield($OutTween, "tween_completed")
 	stream = audio
+	volume_db = -80
 	playing = true
 	fade_in()
 
 func fade_out():
 	# tween music volume down to 0
-	$OutTween.interpolate_property(self, "volume_db", volume_db, -50, transition_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
+	$OutTween.interpolate_property(self, "volume_db", volume_db, -80, transition_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	$OutTween.start()
 	# when the tween ends, the music will be stopped
 
 func fade_in():
 	# tween music volume up to volume 
-	$InTween.interpolate_property(self, "volume_db", -50, volume, transition_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
+	$InTween.interpolate_property(self, "volume_db", -80, volume, transition_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	$InTween.start()
 	# when the tween ends, the music will be stopped
 
