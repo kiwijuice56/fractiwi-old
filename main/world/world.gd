@@ -8,6 +8,10 @@ var current_terminal: String # set by terminal on menu_open
 
 func _ready() -> void:
 	player = get_node(player)
+	get_viewport().connect("battle_start", self, "battle_started")
+
+func battle_started(_creatures: Array) -> void:
+	player.can_move = false
 
 func add_room(room_name: String) -> void:
 	if has_node("Room"):

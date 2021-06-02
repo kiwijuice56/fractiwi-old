@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/ui/theme/tunnel_vision.png" type="Texture" id=1]
+[ext_resource path="res://main/ui/utility_classes/vision_effects/vision_effects.gd" type="Script" id=2]
+
+[node name="VisionEffects" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TunnelVision" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )

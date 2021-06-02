@@ -32,6 +32,8 @@ __meta__ = {
 pop_out_party = NodePath("VBoxContainer/PopOutPartyContainer")
 effect_handler = NodePath("EffectHandler")
 action_selection = NodePath("VBoxContainer/ActionSelection")
+party_skill_container = NodePath("VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer")
+press_turn_container = NodePath("VBoxContainer/PressTurnContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 1.0

@@ -9,9 +9,11 @@ export(NodePath) var inactive_party
 export(NodePath) var effect_handler
 export(NodePath) var action_selection
 export(NodePath) var party_skill_container
+export(NodePath) var press_turn_container
 
 var open := false
 var can_open := false
+var in_battle := false
 
 func _ready():
 	party = get_node(party)
@@ -20,12 +22,14 @@ func _ready():
 	pop_out_party = get_node(pop_out_party)
 	effect_handler = get_node(effect_handler)
 	action_selection = get_node(action_selection)
+	press_turn_container = get_node(press_turn_container)
+	main_viewport.connect("battle_start", self, "battle_started")
 	yield(get_tree().root, "ready")
 	close_menu()
 
 func _input(event: InputEvent) -> void:
 	if disabled: return
-	if event.is_action_pressed("open_menu", false) and can_open:
+	if event.is_action_pressed("open_menu", false) and can_open and not in_battle:
 		if open:
 			close_menu()
 			main_viewport.world_node.player.can_move = true
@@ -55,6 +59,7 @@ func input_pressed(key_name: String) -> void:
 				"return_member":
 					show_party(false)
 				"default":
+					if in_battle: return
 					close_menu()
 					main_viewport.world_node.player.can_move = true
 		"Skills":
@@ -67,6 +72,11 @@ func input_pressed(key_name: String) -> void:
 					
 		"Confirm":
 			pass
+
+func battle_started(_creatures: Array) -> void:
+	in_battle = true
+	press_turn_container.visible = true
+	open_menu()
 
 func open_menu() -> void:
 	effect_handler.fade(self, "visible", effect_handler.default_fade_time)

@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/creature_check_screen/affinity_panel_container/affinity_container.gd"
 }, {
+"base": "Node",
+"class": "BattleQueue",
+"language": "GDScript",
+"path": "res://main/battle/battle_queue/battle_queue.gd"
+}, {
 "base": "StatusSkill",
 "class": "BuffSkill",
 "language": "GDScript",
@@ -59,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/effect_handler/effect_handler.gd"
 }, {
+"base": "Area",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://main/world/enemy/Enemy.gd"
+}, {
 "base": "Node",
 "class": "FileSaver",
 "language": "GDScript",
@@ -92,7 +102,7 @@ _global_script_classes=[ {
 "base": "Area",
 "class": "Interactable",
 "language": "GDScript",
-"path": "res://main/world/props/interactable/interactable.gd"
+"path": "res://main/world/prop/interactable/interactable.gd"
 }, {
 "base": "Node",
 "class": "Main",
@@ -152,7 +162,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Room",
 "language": "GDScript",
-"path": "res://main/world/rooms/room.gd"
+"path": "res://main/world/room/room.gd"
 }, {
 "base": "Resource",
 "class": "SaveFile",
@@ -187,7 +197,7 @@ _global_script_classes=[ {
 "base": "Interactable",
 "class": "Terminal",
 "language": "GDScript",
-"path": "res://main/world/props/interactable/terminal/terminal.gd"
+"path": "res://main/world/prop/interactable/terminal/terminal.gd"
 }, {
 "base": "UIController",
 "class": "TerminalMenu",
@@ -218,10 +228,16 @@ _global_script_classes=[ {
 "class": "VisibleResizeContainer",
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/visible_resize_container/visible_resize_container.gd"
+}, {
+"base": "Control",
+"class": "VisionEffects",
+"language": "GDScript",
+"path": "res://main/ui/utility_classes/vision_effects/vision_effects.gd"
 } ]
 _global_script_class_icons={
 "ActiveSkill": "",
 "AffinityContainer": "",
+"BattleQueue": "",
 "BuffSkill": "",
 "ButtonContainer": "",
 "ButtonPanel": "",
@@ -230,6 +246,7 @@ _global_script_class_icons={
 "CreatureButtonPanel": "",
 "CreatureCheckScreen": "",
 "EffectHandler": "",
+"Enemy": "",
 "FileSaver": "",
 "GameMenu": "",
 "HotKeyContainer": "",
@@ -261,13 +278,15 @@ _global_script_class_icons={
 "Transition": "",
 "UIController": "",
 "UnclickableScrollContainer": "",
-"VisibleResizeContainer": ""
+"VisibleResizeContainer": "",
+"VisionEffects": ""
 }
 
 [application]
 
 config/name="fractiwi"
 run/main_scene="res://main/Main.tscn"
+boot_splash/image="res://main/ui/theme/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 

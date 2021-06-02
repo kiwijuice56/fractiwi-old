@@ -9,6 +9,8 @@ height = 0.25
 [node name="Player" type="KinematicBody"]
 collision_mask = 0
 script = ExtResource( 1 )
+speed = 4
+cam_speed = 80
 
 [node name="Camera" type="Camera" parent="."]
 current = true

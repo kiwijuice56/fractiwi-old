@@ -7,10 +7,6 @@ export (NodePath) var party
 export (NodePath) var main_viewport
 export (NodePath) var world
 
-# Creature
-export var default_player: PackedScene
-export var default_room: String
-
 func _ready() -> void:
 	party = get_node(party)
 	main_viewport = get_node(main_viewport)

@@ -15,6 +15,7 @@ func _input(event: InputEvent) -> void:
 		yield(main_viewport.transition, "in_finished")
 		main_viewport.save_file.disable(false)
 		back.enable(true)
+		disable(false)
 		main_viewport.transition.transition_out()
 
 func input_pressed(key_name: String) -> void:
@@ -32,7 +33,6 @@ func input_pressed(key_name: String) -> void:
 	set_up(key_name)
 	input["SaveFileContainer"].grab_focus_at(index)
 	input["SaveFileContainer"].get_parent().scroll_vertical = scroll
-	
 
 func set_up(event: String) -> void:
 	input["SaveFileContainer"].add_items()
