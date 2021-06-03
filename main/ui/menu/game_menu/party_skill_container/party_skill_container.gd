@@ -4,6 +4,22 @@ class_name PartySkillContainer
 
 export var skill_button_container: PackedScene
 
+func _input(event: InputEvent) -> void:
+	if not get("tabs_visible"):
+		return
+	var tab = get("current_tab")
+	if event.is_action_pressed("ui_right") and !event.is_echo():
+		tab += 1
+	if event.is_action_pressed("ui_left") and !event.is_echo():
+		tab -= 1
+	if tab == -1:
+		tab = get_child_count()-1
+	if tab == get_child_count():
+		tab = 0
+	if tab != get("current_tab"):
+		get_child(tab).grab_focus_at(0)
+	set("current_tab", tab)
+
 func add_items() -> void:
 	for container in get_children():
 		controller.input.erase(container.name)

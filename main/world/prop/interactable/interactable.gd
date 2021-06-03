@@ -17,7 +17,7 @@ func body_entered(player: KinematicBody) -> void:
 func body_exited(player: KinematicBody) -> void:
 	player.main_viewport.interact.current_interactable = null
 	player.main_viewport.interact.state = "default"
-	player.main_viewport.interact.disable(false)
+	player.main_viewport.interact.disable(true)
 
 func interacted() -> void:
 	pass

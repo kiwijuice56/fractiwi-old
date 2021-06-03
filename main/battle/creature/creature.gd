@@ -27,7 +27,7 @@ func do_turn(same: Node, opposite: Node) -> int:
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),
-				  "Active": $Skills.get_skill_names("Active1")}
+				  "Active": $Skills.get_skill_names("Active")}
 	var stats = {"level": level, "stre": stre, "magi": magi, "vita": vita,
 				 "luck": luck, "agil": agil, "hp": hp, "mp": mp}
 	return {"skills": skills, "stats": stats}

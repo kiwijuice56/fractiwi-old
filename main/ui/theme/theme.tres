@@ -10,6 +10,10 @@ content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
 bg_color = Color( 0.0901961, 0.0862745, 0.105882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -18,7 +22,10 @@ content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
 bg_color = Color( 0.219608, 0.2, 0.290196, 1 )
-corner_detail = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 anti_aliasing = false
 anti_aliasing_size = 2
 
@@ -28,7 +35,10 @@ content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
 bg_color = Color( 0.109804, 0.0941176, 0.160784, 1 )
-corner_detail = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 anti_aliasing = false
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -87,7 +97,7 @@ Button/styles/disabled = SubResource( 1 )
 Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 2 )
 Button/styles/normal = SubResource( 3 )
-Button/styles/pressed = null
+Button/styles/pressed = SubResource( 3 )
 HScrollBar/icons/decrement = null
 HScrollBar/icons/decrement_highlight = null
 HScrollBar/icons/increment = null

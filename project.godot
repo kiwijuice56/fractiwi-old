@@ -77,7 +77,7 @@ _global_script_classes=[ {
 "base": "Area",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://main/world/enemy/Enemy.gd"
+"path": "res://main/world/enemy/enemy.gd"
 }, {
 "base": "Node",
 "class": "FileSaver",

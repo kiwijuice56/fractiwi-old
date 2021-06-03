@@ -93,7 +93,7 @@ world_node = NodePath("World")
 volume_db = -50.0
 autoplay = true
 volume = 5
-transition_duration = 1.5
+transition_duration = 0.75
 
 [node name="VisionEffects" parent="ViewportContainer/MainViewport" instance=ExtResource( 23 )]
 
@@ -117,6 +117,10 @@ music = ExtResource( 22 )
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 11 )]
 main_viewport = NodePath("..")
 file_saver = NodePath("../../../FileSaver")
+
+[node name="TargetSelect" type="Control" parent="ViewportContainer/MainViewport"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
 

@@ -12,10 +12,10 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel", false) and not disabled: 
 		main_viewport.transition.transition_in()
+		disable(true)
 		yield(main_viewport.transition, "in_finished")
-		main_viewport.save_file.disable(false)
-		back.enable(true)
 		disable(false)
+		back.enable(true)
 		main_viewport.transition.transition_out()
 
 func input_pressed(key_name: String) -> void:
@@ -25,8 +25,8 @@ func input_pressed(key_name: String) -> void:
 		"Save":
 			file_saver.save_file(index)
 		"Load":
-			disable(true)
 			if input["SaveFileContainer"].files[index]:
+				disable(true)
 				file_saver.load_file(index)
 				main_viewport.root.start()
 	input["SaveFileContainer"].add_items()

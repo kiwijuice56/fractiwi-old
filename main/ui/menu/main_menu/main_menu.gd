@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func input_pressed(key_name: String) -> void:
 	if disabled: return
+	disable(true)
 	match key_name:
 		"New Game":
 			main_viewport.save_file.file_saver.load_file(-1)

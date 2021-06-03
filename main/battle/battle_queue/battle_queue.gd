@@ -18,11 +18,10 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 	# Add creatures to appropriate party node
 	for creature in enemy_party:
 		$EnemyParty.add_child(creature)
-		player_party_node.get_node("Active").displaced = true
 	for creature in player_party:
 		player_party_node.get_node("Active").remove_child(creature)
 		$PlayerParty.add_child(creature)
-	
+	player_party_node.get_node("Active").displaced = true
 	# Return fastest party
 	if $EnemyParty.get_child(0).agil < $PlayerParty.get_child(0).agil:
 		return $PlayerParty

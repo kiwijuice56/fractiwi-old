@@ -86,6 +86,7 @@ func battle_input(current_creature: Creature):
 	open_menu()
 
 func open_menu() -> void:
+	enable(true)
 	effect_handler.fade(self, "visible", effect_handler.default_fade_time)
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
@@ -102,6 +103,7 @@ func show_skills() -> void:
 	input["MainButtonContainer"].disable_input()
 	input["ActionHotkeyContainer"].enable_input()
 	input["PartySkillContainer"].add_items()
+	input["PartySkillContainer"].enable_input()
 	if not in_battle:
 		input[input["PartySkillContainer"].get_child(0).name].enable_input()
 		input[input["PartySkillContainer"].get_child(0).name].grab_focus_at(0)
@@ -114,6 +116,7 @@ func show_skills() -> void:
 func hide_skills() -> void:
 	input["ActionHotkeyContainer"].disable_input()
 	input["PartySkillContainer"].get_child(input["PartySkillContainer"].current_tab).disable_input()
+	input["PartySkillContainer"].disable_input()
 	effect_handler.fade(action_selection, "hide", effect_handler.default_fade_time)
 	state = "default"
 
