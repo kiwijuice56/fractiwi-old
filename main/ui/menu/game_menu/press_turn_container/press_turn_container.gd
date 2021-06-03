@@ -1,5 +1,6 @@
 extends Container
 class_name PressTurnContainer
+# Sets UI for press turns
 
 func set_turns(full: int, half: int) -> void:
 	for i in range(get_child_count()):

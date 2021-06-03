@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends ButtonContainer
+class_name TextButtonContainer
+# Instances basic buttons with text
+
+export (Array, String) var button_names: Array
+
+func intialize_button(new_button, index: int) -> void:
+	new_button.text = button_names[index]
+	new_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	new_button.connect(\"button_down\", controller, \"input_pressed\", [button_names[index]])
+	new_button.set_h_size_flags(SIZE_EXPAND_FILL)
+	new_button.set_v_size_flags(SIZE_EXPAND_FILL)
+
+func add_items() -> void:
+	button_count = len(button_names)
+	.add_items()
+"
+
+[node name="Creature" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+neighbor_type = "vertical"
+button_names = [ "Attack", "Megido", "Origin Pulse", "Hellfire", "Glare", "Dragon Pulse" ]

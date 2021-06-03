@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=2]
@@ -10,9 +10,10 @@
 [ext_resource path="res://main/ui/menu/game_menu/party_button_container/party_button_container.gd" type="Script" id=8]
 [ext_resource path="res://main/ui/theme/font/SecondaryFont.tres" type="DynamicFont" id=9]
 [ext_resource path="res://main/ui/utility_classes/effect_handler/EffectHandler.tscn" type="PackedScene" id=10]
-[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/PartySkillContainer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/party_skill_container.gd" type="Script" id=11]
 [ext_resource path="res://main/ui/menu/game_menu/press_turn_container/PressTurnContainer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/CreatureButtonPanel.tscn" type="PackedScene" id=13]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/SkillButtonContainer.tscn" type="PackedScene" id=14]
 
 [node name="GameMenu" type="Control"]
 anchor_right = 1.0
@@ -32,14 +33,13 @@ __meta__ = {
 pop_out_party = NodePath("VBoxContainer/PopOutPartyContainer")
 effect_handler = NodePath("EffectHandler")
 action_selection = NodePath("VBoxContainer/ActionSelection")
-party_skill_container = NodePath("VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer")
 press_turn_container = NodePath("VBoxContainer/PressTurnContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -416.0
+margin_top = -287.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -52,7 +52,7 @@ __meta__ = {
 [node name="ActionSelection" type="PanelContainer" parent="VBoxContainer"]
 margin_left = 92.0
 margin_right = 467.0
-margin_bottom = 195.0
+margin_bottom = 66.0
 grow_vertical = 0
 rect_min_size = Vector2( 375, 0 )
 mouse_filter = 2
@@ -64,7 +64,7 @@ custom_styles/panel = ExtResource( 2 )
 margin_left = 9.0
 margin_top = 9.0
 margin_right = 366.0
-margin_bottom = 186.0
+margin_bottom = 57.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
@@ -77,25 +77,35 @@ align = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer"]
 margin_top = 19.0
 margin_right = 357.0
-margin_bottom = 177.0
+margin_bottom = 48.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 2
 
-[node name="PartySkillContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer" instance=ExtResource( 11 )]
+[node name="PartySkillContainer" type="TabContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer"]
+margin_right = 351.0
+margin_bottom = 29.0
+mouse_filter = 2
+size_flags_horizontal = 3
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+controller = NodePath("../../../../..")
+skill_button_container = ExtResource( 14 )
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer"]
 margin_left = 353.0
 margin_right = 357.0
-margin_bottom = 158.0
+margin_bottom = 29.0
 mouse_filter = 2
 
 [node name="ActionHotkeyContainer" type="VBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PanelContainer"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 2.0
-margin_bottom = 156.0
+margin_bottom = 27.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -118,9 +128,9 @@ margin_bottom = 225.0
 size_flags_vertical = 8
 
 [node name="MainPanel" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 197.0
+margin_top = 68.0
 margin_right = 560.0
-margin_bottom = 235.0
+margin_bottom = 106.0
 mouse_filter = 2
 size_flags_vertical = 8
 custom_constants/margin_right = 3
@@ -192,9 +202,9 @@ margin_right = 550.0
 margin_bottom = 34.0
 
 [node name="ActivePartyContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 237.0
+margin_top = 108.0
 margin_right = 560.0
-margin_bottom = 302.0
+margin_bottom = 173.0
 rect_min_size = Vector2( 0, 65 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -210,9 +220,9 @@ margin_right = 345.0
 margin_bottom = 65.0
 
 [node name="PopOutPartyContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 304.0
+margin_top = 175.0
 margin_right = 560.0
-margin_bottom = 416.0
+margin_bottom = 287.0
 rect_min_size = Vector2( 0, 112 )
 mouse_filter = 2
 size_flags_horizontal = 3

@@ -8,12 +8,14 @@ export(NodePath) var active_party
 export(NodePath) var inactive_party
 export(NodePath) var effect_handler
 export(NodePath) var action_selection
-export(NodePath) var party_skill_container
 export(NodePath) var press_turn_container
 
 var open := false
 var can_open := false
 var in_battle := false
+var creature: Creature
+
+signal battle_action_chosen
 
 func _ready():
 	party = get_node(party)
@@ -75,7 +77,12 @@ func input_pressed(key_name: String) -> void:
 
 func battle_started(_creatures: Array) -> void:
 	in_battle = true
+	input["PartySkillContainer"].tabs_visible = false
 	press_turn_container.visible = true
+	open_menu()
+
+func battle_input(current_creature: Creature):
+	creature = current_creature
 	open_menu()
 
 func open_menu() -> void:
@@ -94,14 +101,19 @@ func close_menu() -> void:
 func show_skills() -> void:
 	input["MainButtonContainer"].disable_input()
 	input["ActionHotkeyContainer"].enable_input()
-	input["CreatureA"].enable_input()
-	input["CreatureA"].grab_focus_at(0)
+	input["PartySkillContainer"].add_items()
+	if not in_battle:
+		input[input["PartySkillContainer"].get_child(0).name].enable_input()
+		input[input["PartySkillContainer"].get_child(0).name].grab_focus_at(0)
+	else:
+		input[creature.name].enable_input()
+		input[creature.name].grab_focus_at(0)
 	effect_handler.fade(action_selection, "visible", effect_handler.default_fade_time)
 	state = "skills"
 	
 func hide_skills() -> void:
 	input["ActionHotkeyContainer"].disable_input()
-	input["CreatureA"].disable_input()
+	input["PartySkillContainer"].get_child(input["PartySkillContainer"].current_tab).disable_input()
 	effect_handler.fade(action_selection, "hide", effect_handler.default_fade_time)
 	state = "default"
 

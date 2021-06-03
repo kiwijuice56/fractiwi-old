@@ -1,4 +1,5 @@
 extends Node
+# Contains all 3d elements of the environment
 
 export (NodePath) var player
 export var room_path: String

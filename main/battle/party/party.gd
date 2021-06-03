@@ -8,7 +8,7 @@ func instance_member(creature: String, data: Dictionary) -> Creature:
 	creature = creature.substr(2) # remove party order
 	var scene = load( creature_path + ("%s/%s.tscn" % [creature.to_lower(), creature])).instance()
 	scene.set_stats(data["stats"])
-	scene.set_skills(data["skills"])
+	scene.get_node("Skills").set_skills(data["skills"])
 	return scene
 
 func add_member(creature: Creature) -> void:

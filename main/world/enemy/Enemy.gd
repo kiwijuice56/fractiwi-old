@@ -7,5 +7,8 @@ func _ready() -> void:
 	connect("body_entered", self, "body_entered")
 
 func body_entered(_player: KinematicBody) -> void:
-	get_viewport().battle_started(creatures)
+	var instanced_creatures := []
+	for i in range(len(creatures)):
+		instanced_creatures.append(creatures[i].instance())
+	get_viewport().battle_started(instanced_creatures)
 	call_deferred("queue_free")

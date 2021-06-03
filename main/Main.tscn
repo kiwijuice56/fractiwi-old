@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://main/ui/menu/terminal_menu/terminal.ogg" type="AudioStream" id=22]
 [ext_resource path="res://main/ui/utility_classes/vision_effects/VisionEffects.tscn" type="PackedScene" id=23]
 [ext_resource path="res://main/battle/battle_queue/battle_queue.gd" type="Script" id=24]
+[ext_resource path="res://main/battle/creature/orange/orange.png" type="Texture" id=25]
+[ext_resource path="res://main/battle/party/active/active.gd" type="Script" id=26]
 
 [node name="Main" type="Node"]
 script = ExtResource( 6 )
@@ -125,6 +127,8 @@ script = ExtResource( 5 )
 creature_path = "res://main/battle/creature/"
 
 [node name="Active" type="Node" parent="ViewportContainer/MainViewport/Party"]
+script = ExtResource( 26 )
+battle_party_node = NodePath("../../BattleQueue/PlayerParty")
 
 [node name="Yun" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 9 )]
 
@@ -146,8 +150,18 @@ main_viewport = NodePath("../..")
 
 [node name="BattleQueue" type="Node" parent="ViewportContainer/MainViewport"]
 script = ExtResource( 24 )
-player_party = NodePath("../Party")
+player_party_node = NodePath("../Party")
 
 [node name="PlayerParty" type="Node" parent="ViewportContainer/MainViewport/BattleQueue"]
 
 [node name="EnemyParty" type="Node" parent="ViewportContainer/MainViewport/BattleQueue"]
+
+[node name="Sprite" type="Sprite" parent="ViewportContainer/MainViewport"]
+visible = false
+position = Vector2( 240, 175 )
+texture = ExtResource( 25 )
+
+[node name="Sprite2" type="Sprite" parent="ViewportContainer/MainViewport"]
+visible = false
+position = Vector2( 300, 175 )
+texture = ExtResource( 25 )

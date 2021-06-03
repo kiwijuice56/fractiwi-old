@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AI",
+"language": "GDScript",
+"path": "res://main/battle/ai/ai.gd"
+}, {
+"base": "Node",
+"class": "ActiveParty",
+"language": "GDScript",
+"path": "res://main/battle/party/active/active.gd"
+}, {
 "base": "Skill",
 "class": "ActiveSkill",
 "language": "GDScript",
@@ -44,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/skill/active/status/condition/condition_skill.gd"
 }, {
-"base": "Node",
+"base": "Sprite",
 "class": "Creature",
 "language": "GDScript",
 "path": "res://main/battle/creature/creature.gd"
@@ -129,10 +139,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/party_button_container/party_button_container.gd"
 }, {
-"base": "TabContainer",
+"base": "InputContainer",
 "class": "PartySkillContainer",
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/party_skill_container/party_skill_container.gd"
+}, {
+"base": "AI",
+"class": "PlayerAI",
+"language": "GDScript",
+"path": "res://main/battle/ai/player/player_ai.gd"
 }, {
 "base": "HBoxContainer",
 "class": "PointBar",
@@ -235,6 +250,8 @@ _global_script_classes=[ {
 "path": "res://main/ui/utility_classes/vision_effects/vision_effects.gd"
 } ]
 _global_script_class_icons={
+"AI": "",
+"ActiveParty": "",
 "ActiveSkill": "",
 "AffinityContainer": "",
 "BattleQueue": "",
@@ -260,6 +277,7 @@ _global_script_class_icons={
 "Party": "",
 "PartyButtonContainer": "",
 "PartySkillContainer": "",
+"PlayerAI": "",
 "PointBar": "",
 "PointSkill": "",
 "PressTurn": "",

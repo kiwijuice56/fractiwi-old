@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/skill/active/point/stab/Stab.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/ai/player/player_ai.gd" type="Script" id=3]
 
 [node name="Yun" instance=ExtResource( 1 )]
 level = 1
@@ -10,4 +12,11 @@ stre = 2
 magi = 2
 vita = 2
 luck = 2
-agil = 2
+agil = 4
+
+[node name="Stab" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
+
+[node name="Stab2" parent="Skills/Active" index="1" instance=ExtResource( 2 )]
+
+[node name="AI" parent="." index="1"]
+script = ExtResource( 3 )
