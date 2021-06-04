@@ -25,7 +25,7 @@ func add_items() -> void:
 		controller.input.erase(container.name)
 		remove_child(container)
 		container.queue_free()
-	for creature in controller.active_party.get_children():
+	for creature in controller.party.get_node("Active").get_children():
 		var container = skill_button_container.instance()
 		container.name = creature.name
 		container.controller = controller.get_path()

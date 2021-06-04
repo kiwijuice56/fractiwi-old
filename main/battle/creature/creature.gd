@@ -32,7 +32,6 @@ func to_dict() -> Dictionary:
 				 "luck": luck, "agil": agil, "hp": hp, "mp": mp}
 	return {"skills": skills, "stats": stats}
 
-
 func set_stats(_data: Dictionary) -> void:
 	pass
 

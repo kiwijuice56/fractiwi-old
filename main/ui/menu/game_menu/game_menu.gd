@@ -4,11 +4,11 @@ class_name GameMenu
 
 export(NodePath) var pop_out_party
 export(NodePath) var party
-export(NodePath) var active_party
-export(NodePath) var inactive_party
+export(NodePath) var enemy_party
 export(NodePath) var effect_handler
 export(NodePath) var action_selection
 export(NodePath) var press_turn_container
+export(NodePath) var selector
 
 var open := false
 var can_open := false
@@ -19,12 +19,12 @@ signal battle_action_chosen
 
 func _ready():
 	party = get_node(party)
-	active_party = get_node(active_party)
-	inactive_party = get_node(inactive_party)
+	enemy_party = get_node(enemy_party)
 	pop_out_party = get_node(pop_out_party)
 	effect_handler = get_node(effect_handler)
 	action_selection = get_node(action_selection)
 	press_turn_container = get_node(press_turn_container)
+	selector = get_node(selector)
 	main_viewport.connect("battle_start", self, "battle_started")
 	yield(get_tree().root, "ready")
 	close_menu()
@@ -74,6 +74,18 @@ func input_pressed(key_name: String) -> void:
 					
 		"Confirm":
 			pass
+		_:
+			if key_name in creature.get_node("Skills").get_skill_names("Active"):
+				hide_skills()
+				var skill: Node = creature.get_node("Skills/Active/" + key_name)
+				state = "selection"
+				set_process_input(false)
+				var targets: Array = yield(selector.select(skill.target_type, skill.side), "completed")
+				set_process_input(true)
+				if len(targets) == 0:
+					show_skills()
+					return
+				emit_signal("battle_action_chosen", key_name, targets)
 
 func battle_started(_creatures: Array) -> void:
 	in_battle = true
@@ -112,7 +124,7 @@ func show_skills() -> void:
 		input[creature.name].grab_focus_at(0)
 	effect_handler.fade(action_selection, "visible", effect_handler.default_fade_time)
 	state = "skills"
-	
+
 func hide_skills() -> void:
 	input["ActionHotkeyContainer"].disable_input()
 	input["PartySkillContainer"].get_child(input["PartySkillContainer"].current_tab).disable_input()
