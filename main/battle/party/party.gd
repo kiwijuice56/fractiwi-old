@@ -38,7 +38,7 @@ func summon_member(creature: Creature) -> bool:
 	return true
 
 func return_member(creature: Creature) -> bool:
-	if creature.get_index() == 0:
+	if creature.name == "Yun":
 		return false
 	$Active.remove_child(creature)
 	$Inactive.add_child(creature)

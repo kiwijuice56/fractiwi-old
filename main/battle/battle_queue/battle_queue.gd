@@ -48,7 +48,7 @@ func turn_logic(turns_used: int, full: int, half: int) -> Array:
 				full = 0
 				half = 0
 			-1: # nullify
-				for i in range(2):
+				for _i in range(2):
 					if half > 0:
 						half -= 1
 					else:
@@ -80,6 +80,10 @@ func battle(enemy_creatures: Array) -> void:
 	var full: int = current.get_child_count()
 	var half: int = 0
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
+		if current == $PlayerParty:
+			get_viewport().game.enable(true)
+		else:
+			get_viewport().game.disable(true)
 		get_viewport().game.press_turn_container.set_turns(full, half)
 		var turns: Array = turn_logic(yield(current.get_child(0).do_turn(current, opposite), "completed"), full, half)
 		full = turns[0]
@@ -90,6 +94,10 @@ func battle(enemy_creatures: Array) -> void:
 			opposite = temp
 			full = current.get_child_count()
 			half = 0
+			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "hide", 0.25)
+			yield(get_viewport().game.effect_handler, "complete")
+			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "show", 0.25)
 		else:
-			var front = current.remove_child(0)
+			var front = current.get_child(0)
+			current.remove_child(front)
 			current.add_child(front)

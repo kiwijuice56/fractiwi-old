@@ -13,6 +13,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+p_color = Color( 0.564706, 0.635294, 1, 1 )
+e_color = Color( 1, 0.521569, 0.47451, 1 )
 
 [node name="PressTurn1" parent="." instance=ExtResource( 1 )]
 

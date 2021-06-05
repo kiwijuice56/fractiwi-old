@@ -20,10 +20,20 @@ var max_mp: int
 # Returns press turns used
 func do_turn(same: Node, opposite: Node) -> int:
 	var action = $AI.do_turn(same, opposite, self)
-	if $AI.yielded:
-		yield(action, "completed")
-	yield()
+	if $AI.yielded: # if player, wait until taken input
+		action = yield(action, "completed")
+	else: # if enemy, flash self to indicate turn
+		$AnimationPlayer.current_animation = "my_turn"
+		yield($AnimationPlayer, "animation_finished")
+	var tag: String = action[0]
+	if tag == "Summon" or tag == "Return" or tag == "Pass":
+		get_viewport().game.label_container.show_text(tag)
+		yield(get_viewport().game.label_container, "complete")
+		return 1
 	return 0
+
+func use_skill() -> void:
+	pass
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),

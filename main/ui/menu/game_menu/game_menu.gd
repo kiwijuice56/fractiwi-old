@@ -9,6 +9,7 @@ export(NodePath) var effect_handler
 export(NodePath) var action_selection
 export(NodePath) var press_turn_container
 export(NodePath) var selector
+export(NodePath) var label_container
 
 var open := false
 var can_open := false
@@ -25,6 +26,7 @@ func _ready():
 	action_selection = get_node(action_selection)
 	press_turn_container = get_node(press_turn_container)
 	selector = get_node(selector)
+	label_container = get_node(label_container)
 	main_viewport.connect("battle_start", self, "battle_started")
 	yield(get_tree().root, "ready")
 	close_menu()
@@ -36,7 +38,7 @@ func _input(event: InputEvent) -> void:
 			close_menu()
 			main_viewport.world_node.player.can_move = true
 		else:
-			open_menu()
+			open_menu(true)
 			main_viewport.interact.disable(false)
 			main_viewport.world_node.player.can_move = false
 	if event.is_action_pressed("ui_cancel", false) and open: 
@@ -66,18 +68,23 @@ func input_pressed(key_name: String) -> void:
 					main_viewport.world_node.player.can_move = true
 		"Skills":
 			match state:
-				"default": show_skills()
+				"default":
+					if not in_battle:
+						creature = party.get_node("Active").get_child(0)
+					show_skills()
 		"Summon":
 			match state:
 				"party":
 					summon_member()
 					
-		"Confirm":
-			pass
+		"Pass":
+			emit_signal("battle_action_chosen", ["Pass", null, []])
 		_:
 			if key_name in creature.get_node("Skills").get_skill_names("Active"):
-				hide_skills()
 				var skill: Node = creature.get_node("Skills/Active/" + key_name)
+				if skill.side == "opposite" and not in_battle:
+					return
+				hide_skills()
 				state = "selection"
 				set_process_input(false)
 				var targets: Array = yield(selector.select(skill.target_type, skill.side), "completed")
@@ -85,21 +92,24 @@ func input_pressed(key_name: String) -> void:
 				if len(targets) == 0:
 					show_skills()
 					return
-				emit_signal("battle_action_chosen", key_name, targets)
+				emit_signal("battle_action_chosen", ["Skill", skill, targets])
 
 func battle_started(_creatures: Array) -> void:
 	in_battle = true
 	input["PartySkillContainer"].tabs_visible = false
 	press_turn_container.visible = true
-	open_menu()
+	input["MainButtonContainer"].button_names = ["Skills", "Items", "Party", "Pass", "Run"]
+	input["MainButtonContainer"].add_items()
+	open_menu(true)
 
 func battle_input(current_creature: Creature):
 	creature = current_creature
-	open_menu()
+	open_menu(false)
 
-func open_menu() -> void:
+func open_menu(anim: bool) -> void:
 	enable(true)
-	effect_handler.fade(self, "visible", effect_handler.default_fade_time)
+	if anim:
+		effect_handler.fade(self, "visible", effect_handler.default_fade_time)
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
 	open = true
@@ -144,6 +154,10 @@ func summon_member() -> void:
 		update_party()
 		input["FullPartyContainer"].grab_focus_at(index)
 		input["FullPartyContainer"].get_parent().set_h_scroll(scroll)
+		if in_battle:
+			hide_party()
+			yield(effect_handler, "complete")
+			emit_signal("battle_action_chosen", ["Summon", null, []])
 
 func return_member():
 	var creature_button := get_focus_owner()
@@ -154,6 +168,10 @@ func return_member():
 		update_party()
 		input["FullPartyContainer"].grab_focus_at(index)
 		input["FullPartyContainer"].get_parent().set_h_scroll(scroll)
+		if in_battle:
+			hide_party()
+			yield(effect_handler, "complete")
+			emit_signal("battle_action_chosen", ["Return", null, []])
 
 func select_active_member() -> void:
 	input["PartyHotKeyContainer"].disable_input()

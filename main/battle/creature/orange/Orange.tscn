@@ -1,40 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/orange.png" type="Texture" id=2]
-
-[sub_resource type="Animation" id=1]
-resource_name = "deselected"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "selected"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
+[ext_resource path="res://main/battle/skill/active/point/stab/Stab.tscn" type="PackedScene" id=3]
 
 [node name="Orange" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
@@ -48,6 +16,4 @@ vita = 2
 luck = 2
 agil = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-anims/deselected = SubResource( 1 )
-anims/selected = SubResource( 2 )
+[node name="Stab" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

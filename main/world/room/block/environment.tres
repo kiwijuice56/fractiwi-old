@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=3 format=2]
+
+[ext_resource path="res://main/world/room/block/block.png" type="Texture" id=2]
+
+[sub_resource type="PanoramaSky" id=2]
+radiance_size = 3
+panorama = ExtResource( 2 )
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 2 )
+background_sky_orientation = Basis( 1, 0, 0, 2, 1, 0, 0, 0, 1 )
+adjustment_enabled = true

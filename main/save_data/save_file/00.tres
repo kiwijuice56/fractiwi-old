@@ -28,9 +28,9 @@ data = {
 }
 },
 "inactive": {
-"00Yun": {
+"01Orange": {
 "skills": {
-"Active": [ "Stab", "Stab2" ],
+"Active": [ "Stab" ],
 "Passive": [  ]
 },
 "stats": {

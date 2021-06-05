@@ -12,13 +12,16 @@ func _input(event: InputEvent) -> void:
 		tab += 1
 	if event.is_action_pressed("ui_left") and !event.is_echo():
 		tab -= 1
+	if get("current_tab") == tab:
+		return
 	if tab == -1:
 		tab = get_child_count()-1
 	if tab == get_child_count():
 		tab = 0
-	if tab != get("current_tab"):
-		get_child(tab).grab_focus_at(0)
+	get_child(tab).grab_focus_at(0)
 	set("current_tab", tab)
+	controller.creature = controller.party.get_node("Active").get_node(get_child(tab).name)
+	print(controller.creature.name)
 
 func add_items() -> void:
 	for container in get_children():
