@@ -80,18 +80,33 @@ func battle(enemy_creatures: Array) -> void:
 	var full: int = current.get_child_count()
 	var half: int = 0
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
+		# display menu
 		if current == $PlayerParty:
 			get_viewport().game.enable(true)
 		else:
 			get_viewport().game.disable(true)
 		get_viewport().game.press_turn_container.set_turns(full, half)
+		
+		# get turns used
 		var turns: Array = turn_logic(yield(current.get_child(0).do_turn(current, opposite), "completed"), full, half)
 		full = turns[0]
 		half = turns[1]
+		
 		if full + half <= 0:
+			#swap parties
 			var temp = current
 			current = opposite
 			opposite = temp
+			
+			# resort
+			var creatures: Array = current.get_children()
+			for creature in creatures:
+				current.remove_child(creature)
+			creatures.sort_custom(self, "agility_sort")
+			for creature in creatures:
+				current.add_child(creature)
+			
+			# initialize values
 			full = current.get_child_count()
 			half = 0
 			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "hide", 0.25)

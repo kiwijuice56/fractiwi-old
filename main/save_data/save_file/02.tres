@@ -1,0 +1,55 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://main/save_data/save_file.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+data = {
+"FileSaver": {
+"time": 38
+},
+"Party": {
+"active": {
+"00Yun": {
+"skills": {
+"Active": [ "Stab", "Stab2" ],
+"Passive": [  ]
+},
+"stats": {
+"agil": 4,
+"hp": 3,
+"level": 1,
+"luck": 2,
+"magi": 2,
+"mp": 0,
+"stre": 2,
+"vita": 2
+}
+}
+},
+"inactive": {
+"00Orange": {
+"skills": {
+"Active": [ "Stab" ],
+"Passive": [  ]
+},
+"stats": {
+"agil": 3,
+"hp": 3,
+"level": 5,
+"luck": 2,
+"magi": 2,
+"mp": 0,
+"stre": 2,
+"vita": 2
+}
+}
+}
+},
+"World": {
+"location": "block",
+"memory": {
+},
+"terminal": "Terminal"
+}
+}

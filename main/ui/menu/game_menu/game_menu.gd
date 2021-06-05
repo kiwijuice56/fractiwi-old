@@ -107,6 +107,7 @@ func battle_input(current_creature: Creature):
 	open_menu(false)
 
 func open_menu(anim: bool) -> void:
+	state = "default"
 	enable(true)
 	if anim:
 		effect_handler.fade(self, "visible", effect_handler.default_fade_time)
