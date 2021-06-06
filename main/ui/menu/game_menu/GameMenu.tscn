@@ -39,6 +39,7 @@ action_selection = NodePath("VBoxContainer/ActionSelection")
 press_turn_container = NodePath("VBoxContainer/PressTurnContainer")
 selector = NodePath("Selector")
 label_container = NodePath("LabelLayer/LabelContainer")
+text_label = NodePath("VBoxContainer/MainPanel/PanelContainer/VBoxContainer/Text")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 1.0
@@ -371,9 +372,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -21.5
-margin_top = 5.0
+margin_top = 15.0
 margin_right = 21.5
-margin_bottom = 33.0
+margin_bottom = 43.0
 theme = ExtResource( 1 )
 script = ExtResource( 17 )
 __meta__ = {

@@ -11,6 +11,7 @@ func _ready() -> void:
 func position_enemies() -> void:
 	for i in range($EnemyParty.get_child_count()):
 		$EnemyParty.get_child(i).position.x += i*48
+# warning-ignore:integer_division
 	$EnemyParty.position.x = 280 - ((($EnemyParty.get_child_count()-1)*48)/2)
 
 func agility_sort(a: Creature, b: Creature) -> bool:
@@ -80,11 +81,6 @@ func battle(enemy_creatures: Array) -> void:
 	var full: int = current.get_child_count()
 	var half: int = 0
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
-		# display menu
-		if current == $PlayerParty:
-			get_viewport().game.enable(true)
-		else:
-			get_viewport().game.disable(true)
 		get_viewport().game.press_turn_container.set_turns(full, half)
 		
 		# get turns used

@@ -6,5 +6,5 @@ func get_skill_names(type: String) -> Array:
 		names.append(skill.name)
 	return names
 
-func set_skills(data: Dictionary) -> void:
+func set_skills(_data: Dictionary) -> void:
 	pass

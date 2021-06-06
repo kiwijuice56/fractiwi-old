@@ -17,23 +17,39 @@ var max_hp: int = 10
 var mp: int
 var max_mp: int
 
+signal updated
+
+# Set by skills targeted at this creature to use in appropriate time of animation
+var targeted_skill_data: Array
+
 # Returns press turns used
 func do_turn(same: Node, opposite: Node) -> int:
 	var action = $AI.do_turn(same, opposite, self)
-	if $AI.yielded: # if player, wait until taken input
+	if $AI.yielded: # if player, ai must be yielded for
 		action = yield(action, "completed")
 	else: # if enemy, flash self to indicate turn
 		$AnimationPlayer.current_animation = "my_turn"
 		yield($AnimationPlayer, "animation_finished")
 	var tag: String = action[0]
+	var object: Node = action[1]
+	var targets: Array = action[2]
 	if tag == "Summon" or tag == "Return" or tag == "Pass":
 		get_viewport().game.label_container.show_text(tag)
 		yield(get_viewport().game.label_container, "complete")
 		return 1
+	if tag == "Skill":
+		get_viewport().game.label_container.show_text(object.name)
+		return yield(object.use(self, targets, true), "completed")
 	return 0
 
-func use_skill() -> void:
-	pass
+func target_skill_effect() -> void:
+	if visible: $AnimationPlayer.current_animation = "hurt_normal"
+	targeted_skill_data = []
+
+func update() -> void:
+	emit_signal("updated")
+
+# Save data / stats function
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),

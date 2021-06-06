@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://main/battle/skill/active/point/PointSkill.tscn" type="PackedScene" id=1]
-
-[node name="Stab" instance=ExtResource( 1 )]
-accuracy = 95
-power = 20

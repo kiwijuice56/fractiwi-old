@@ -10,6 +10,7 @@ export(NodePath) var action_selection
 export(NodePath) var press_turn_container
 export(NodePath) var selector
 export(NodePath) var label_container
+export(NodePath) var text_label
 
 var open := false
 var can_open := false
@@ -27,7 +28,9 @@ func _ready():
 	press_turn_container = get_node(press_turn_container)
 	selector = get_node(selector)
 	label_container = get_node(label_container)
+	text_label = get_node(text_label)
 	main_viewport.connect("battle_start", self, "battle_started")
+	connect("battle_action_chosen", self, "battle_action_chosen")
 	yield(get_tree().root, "ready")
 	close_menu()
 
@@ -104,7 +107,13 @@ func battle_started(_creatures: Array) -> void:
 
 func battle_input(current_creature: Creature):
 	creature = current_creature
+	text_label.text = "What will %s do?" % creature.name
+	enable(true)
 	open_menu(false)
+
+func battle_action_chosen(_ui_info: Array) -> void:
+	text_label.text = ""
+	disable(true)
 
 func open_menu(anim: bool) -> void:
 	state = "default"

@@ -21,7 +21,7 @@ func add_child(node: Node, legible: bool = false):
 	else:
 		.add_child(node, legible)
 
-func remove_child(node: Node, legible: bool = false):
+func remove_child(node: Node, _legible: bool = false):
 	if displaced:
 		battle_party_node.remove_child(node)
 	else:

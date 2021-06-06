@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/skill/active/active_skill.gd"
 }, {
+"base": "Sprite",
+"class": "ActiveSkillEffect",
+"language": "GDScript",
+"path": "res://main/battle/effect/active_skill/active_skill_effect.gd"
+}, {
 "base": "Container",
 "class": "AffinityContainer",
 "language": "GDScript",
@@ -263,6 +268,7 @@ _global_script_class_icons={
 "AI": "",
 "ActiveParty": "",
 "ActiveSkill": "",
+"ActiveSkillEffect": "",
 "AffinityContainer": "",
 "BattleQueue": "",
 "BuffSkill": "",

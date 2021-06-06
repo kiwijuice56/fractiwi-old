@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/effect/active_skill/ActiveSkillEffect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/effect/active_skill/slash/slash.png" type="Texture" id=2]
+
+[node name="Slash" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+hframes = 11
+count = "multiple"
+delay = 0.1
+
+[node name="AnimationPlayer" parent="." index="0"]
+playback_speed = 1.4
