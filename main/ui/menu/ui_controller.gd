@@ -32,6 +32,6 @@ func enable(show: bool) -> void:
 
 func disable(show: bool) -> void:
 	disabled = true
-	if get_focus_owner() and is_a_parent_of(get_focus_owner()):
+	if is_inside_tree() and get_focus_owner() and is_a_parent_of(get_focus_owner()):
 		get_focus_owner().release_focus()
 	if not show: visible = false

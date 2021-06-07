@@ -14,6 +14,9 @@ stre = 2
 magi = 2
 vita = 2
 luck = 2
-agil = 3
+agil = 5
+def_affinity = {
+"phys": "weak"
+}
 
-[node name="Stab" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+[node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

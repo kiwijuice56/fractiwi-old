@@ -11,6 +11,8 @@ export var magi: int
 export var vita: int
 export var luck: int
 export var agil: int
+export var def_affinity: Dictionary
+export var off_affinity: Dictionary
 
 var hp: int = 3
 var max_hp: int = 10
@@ -21,6 +23,8 @@ signal updated
 
 # Set by skills targeted at this creature to use in appropriate time of animation
 var targeted_skill_data: Array
+
+var panel: ButtonPanel
 
 # Returns press turns used
 func do_turn(same: Node, opposite: Node) -> int:
@@ -43,7 +47,16 @@ func do_turn(same: Node, opposite: Node) -> int:
 	return 0
 
 func target_skill_effect() -> void:
-	if visible: $AnimationPlayer.current_animation = "hurt_normal"
+	#[point_change, is_miss, is_crit, def]
+	#print(name + ": " + str(targeted_skill_data[0]) + " " + targeted_skill_data[3] + " crit:" + str(targeted_skill_data[2]) + " miss:" + str(targeted_skill_data[1]))
+	if not panel:
+		$AnimationPlayer.current_animation = "hurt_normal"
+		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3])
+		$PointLabel.get_node("AnimationPlayer").current_animation = "show"
+	else:
+		panel.get_node("AnimationPlayer").current_animation = "hurt_normal"
+		panel.get_node("PointLabel").set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3])
+		panel.get_node("PointLabel/AnimationPlayer").current_animation = "show"
 	targeted_skill_data = []
 
 func update() -> void:

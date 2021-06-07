@@ -164,6 +164,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/creature_button_panel/point_bar/point_bar.gd"
 }, {
+"base": "CanvasLayer",
+"class": "PointLabel",
+"language": "GDScript",
+"path": "res://main/ui/menu/game_menu/point_label/point_label.gd"
+}, {
 "base": "ActiveSkill",
 "class": "PointSkill",
 "language": "GDScript",
@@ -174,7 +179,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/press_turn_container/press_turn/press_turn.gd"
 }, {
-"base": "Container",
+"base": "Control",
 "class": "PressTurnContainer",
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/press_turn_container/press_turn_container.gd"
@@ -296,6 +301,7 @@ _global_script_class_icons={
 "PartySkillContainer": "",
 "PlayerAI": "",
 "PointBar": "",
+"PointLabel": "",
 "PointSkill": "",
 "PressTurn": "",
 "PressTurnContainer": "",

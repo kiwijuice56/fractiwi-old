@@ -18,6 +18,7 @@ var in_battle := false
 var creature: Creature
 
 signal battle_action_chosen
+signal selection_complete
 
 func _ready():
 	party = get_node(party)
@@ -69,6 +70,13 @@ func input_pressed(key_name: String) -> void:
 					if in_battle: return
 					close_menu()
 					main_viewport.world_node.player.can_move = true
+				"select_active_member":
+					emit_signal("selection_complete", [])
+					for active in input["ActivePartyContainer"].get_children():
+						active.focus_style_lock = false
+						active.focus_exited()
+					input["PartySelectHotKeyContainer"].disable_input()
+					input["PartySelectHotKeyContainer"].visible = false
 		"Skills":
 			match state:
 				"default":
@@ -82,6 +90,14 @@ func input_pressed(key_name: String) -> void:
 					
 		"Pass":
 			emit_signal("battle_action_chosen", ["Pass", null, []])
+		"Confirm":
+			if state == "select_active_member":
+				emit_signal("selection_complete", [get_focus_owner().creature])
+				for active in input["ActivePartyContainer"].get_children():
+					active.focus_style_lock = false
+					active.focus_exited()
+				input["PartySelectHotKeyContainer"].disable_input()
+				input["PartySelectHotKeyContainer"].visible = false
 		_:
 			if key_name in creature.get_node("Skills").get_skill_names("Active"):
 				var skill: Node = creature.get_node("Skills/Active/" + key_name)
@@ -110,6 +126,8 @@ func battle_input(current_creature: Creature):
 	text_label.text = "What will %s do?" % creature.name
 	enable(true)
 	open_menu(false)
+	input["MainButtonContainer"].enable_input()
+	input["MainButtonContainer"].grab_focus_at(0)
 
 func battle_action_chosen(_ui_info: Array) -> void:
 	text_label.text = ""
@@ -120,8 +138,11 @@ func open_menu(anim: bool) -> void:
 	enable(true)
 	if anim:
 		effect_handler.fade(self, "visible", effect_handler.default_fade_time)
-	input["MainButtonContainer"].enable_input()
-	input["MainButtonContainer"].grab_focus_at(0)
+	if in_battle:
+		input["MainButtonContainer"].disable_input()
+	else:
+		input["MainButtonContainer"].enable_input()
+		input["MainButtonContainer"].grab_focus_at(0)
 	open = true
 
 func close_menu() -> void:
@@ -191,6 +212,12 @@ func select_active_member() -> void:
 	input["PartySelectHotKeyContainer"].visible = true
 	state = "select_active_member"
 
+func select_all_active() -> void:
+	select_active_member()
+	for active in input["ActivePartyContainer"].get_children():
+		active.focus_entered()
+		active.focus_style_lock = true
+
 func show_party(anim: bool) -> void:
 	if anim:
 		effect_handler.slide(self, "y", 0, effect_handler.default_slide_time)
@@ -217,4 +244,5 @@ func enable(show: bool) -> void:
 
 func disable(show: bool) -> void:
 	.disable(show)
+	input["MainButtonContainer"].disable_input()
 	can_open = false

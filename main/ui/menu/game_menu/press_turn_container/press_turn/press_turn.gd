@@ -16,6 +16,6 @@ func set_half(is_half: bool) -> void:
 		$HalfPlayer.current_animation = "become_half"
 		yield($HalfPlayer, "animation_finished")
 		$HalfPlayer.current_animation = "half"
-	else:
+	elif not is_half:
 		$HalfPlayer.current_animation = ""
 		$HalfTurn.modulate = Color(0,0,0,0)

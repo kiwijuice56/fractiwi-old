@@ -7,7 +7,6 @@ export var delay: float
 var targets: Array
 
 func _ready() -> void:
-	visible = false
 	$AnimationPlayer.connect("animation_finished", self, "animation_finished")
 
 func animation_finished(anim: String) -> void:
@@ -15,10 +14,10 @@ func animation_finished(anim: String) -> void:
 	queue_free()
 
 func start(given_position: Vector2, given_targets: Array) -> void:
-	visible = true
+	$AnimationPlayer.current_animation = "start"
 	targets = given_targets
 	global_position = given_position
-	$AnimationPlayer.current_animation = "start"
+	visible = true
 
 func impact_point() -> void:
 	for target in targets:

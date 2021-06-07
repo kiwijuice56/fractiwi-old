@@ -5,9 +5,10 @@
 
 [node name="Slash" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
+offset = Vector2( 5, -10 )
 hframes = 11
 count = "multiple"
-delay = 0.1
+delay = 0.4
 
 [node name="AnimationPlayer" parent="." index="0"]
-playback_speed = 1.4
+playback_speed = 1.2

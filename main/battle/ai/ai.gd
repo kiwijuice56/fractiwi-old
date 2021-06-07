@@ -5,5 +5,5 @@ class_name AI
 var yielded := false
 
 # Returns array with action for creature to take
-func do_turn(_same: Node, _opposite: Node, _controller: Creature) -> Array:
-	return ["Pass", null, []]
+func do_turn(_same: Node, opposite: Node, _controller: Creature) -> Array:
+	return ["Skill", get_parent().get_node("Skills/Active/Slash"), [opposite.get_child(0)]]

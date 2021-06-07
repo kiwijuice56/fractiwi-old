@@ -22,7 +22,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28896, -1.07598, 0 )
 room = NodePath("../../..")
 
 [node name="Enemy" parent="Enemies" index="0" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69832, 0, -2.85423 )
 creatures = [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ]
 
 [node name="WorldEnvironment" parent="." index="3"]

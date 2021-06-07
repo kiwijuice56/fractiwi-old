@@ -13,11 +13,21 @@ magi = 2
 vita = 2
 luck = 2
 agil = 4
+def_affinity = {
+"phys": "repel"
+}
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
 
-[node name="Roundtrip" parent="Skills/Active" index="1" instance=ExtResource( 2 )]
+[node name="Multi Slash" parent="Skills/Active" index="1" instance=ExtResource( 2 )]
 target_type = "all"
+
+[node name="Self Slash" parent="Skills/Active" index="2" instance=ExtResource( 2 )]
+side = "same"
+
+[node name="Multi Self Slash" parent="Skills/Active" index="3" instance=ExtResource( 2 )]
+target_type = "all"
+side = "same"
 
 [node name="AI" parent="." index="1"]
 script = ExtResource( 3 )

@@ -43,7 +43,6 @@ func _input(event: InputEvent) -> void:
 			pass
 
 func select(target_type: String, side: String) -> Array:
-	set_process_input(true)
 	index = 0
 	current_side = side
 	current_target_type = target_type
@@ -52,6 +51,7 @@ func select(target_type: String, side: String) -> Array:
 			var enemies: Array = controller.enemy_party.get_children()
 			match target_type:
 				"single":
+					set_process_input(true)
 					enemies[0].get_node("AnimationPlayer").current_animation = "selected"
 					var success: bool = yield(self, "selection_complete")
 					enemies[index].get_node("AnimationPlayer").current_animation = "deselected"
@@ -59,6 +59,7 @@ func select(target_type: String, side: String) -> Array:
 						return []
 					return [enemies[index]]
 				"all":
+					set_process_input(true)
 					for enemy in enemies:
 						enemy.get_node("AnimationPlayer").current_animation = "selected"
 					var success: bool = yield(self, "selection_complete")
@@ -70,9 +71,14 @@ func select(target_type: String, side: String) -> Array:
 		"same":
 			match target_type:
 				"single":
-					pass
+					controller.select_active_member()
+					var target = yield(controller, "selection_complete")
+					return target
 				"all":
-					yield(self, "selection_complete")
+					controller.select_all_active()
+					var target = yield(controller, "selection_complete")
+					if len(target) == 0:
+						return target
 					return controller.party.get_node("Active").get_children()
 	return []
 

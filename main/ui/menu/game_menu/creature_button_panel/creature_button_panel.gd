@@ -10,11 +10,20 @@ export var creature_icon: NodePath
 export var status_icon: NodePath
 export var in_party_indicator: NodePath
 var creature: Creature setget set_creature
+var focus_style_lock: bool
 
 func set_creature(new_creature: Creature) -> void:
 	creature = new_creature
 	creature.connect("updated", self, "update_content")
+	creature.panel = self
 
+func focus_entered() -> void:
+	if focus_style_lock: return
+	.focus_entered()
+
+func focus_exited() -> void:
+	if focus_style_lock: return
+	.focus_exited()
 
 func update_content() -> void:
 	get_node(name_label).text = creature.name

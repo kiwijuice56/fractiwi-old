@@ -45,10 +45,10 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 
 func turn_logic(turns_used: int, full: int, half: int) -> Array:
 	match turns_used:
-			-2: # drains, repels
+			-2: # repels
 				full = 0
 				half = 0
-			-1: # nullify
+			-1: # nullify, absorb
 				for _i in range(2):
 					if half > 0:
 						half -= 1
@@ -81,7 +81,9 @@ func battle(enemy_creatures: Array) -> void:
 	var full: int = current.get_child_count()
 	var half: int = 0
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
+		get_viewport().game.press_turn_container.set_side(current == $PlayerParty)
 		get_viewport().game.press_turn_container.set_turns(full, half)
+		get_viewport().game.disable(true)
 		
 		# get turns used
 		var turns: Array = turn_logic(yield(current.get_child(0).do_turn(current, opposite), "completed"), full, half)
