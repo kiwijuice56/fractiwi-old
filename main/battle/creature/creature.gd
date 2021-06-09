@@ -20,6 +20,8 @@ var mp: int
 var max_mp: int
 
 signal updated
+signal target_action_complete
+signal death
 
 # Set by skills targeted at this creature to use in appropriate time of animation
 var targeted_skill_data: Array
@@ -46,7 +48,7 @@ func do_turn(same: Node, opposite: Node) -> int:
 		return yield(object.use(self, targets, true), "completed")
 	return 0
 
-func target_skill_effect() -> void:
+func target_action() -> void:
 	#[point_change, is_miss, is_crit, def]
 	#print(name + ": " + str(targeted_skill_data[0]) + " " + targeted_skill_data[3] + " crit:" + str(targeted_skill_data[2]) + " miss:" + str(targeted_skill_data[1]))
 	if not panel:
@@ -58,6 +60,33 @@ func target_skill_effect() -> void:
 		panel.get_node("PointLabel").set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3])
 		panel.get_node("PointLabel/AnimationPlayer").current_animation = "show"
 	targeted_skill_data = []
+	var function = check_hp()
+	if function:
+		yield(function, "completed")
+	emit_signal("target_action_complete")
+
+func check_hp() -> void:
+	if hp <= 0:
+		death()
+		yield(self, "death")
+
+func death() -> void:
+	if panel:
+		var viewport = get_viewport()
+		get_parent().remove_child(self)
+		viewport.party.get_node("Inactive").add_child(self)
+		panel.get_node("AnimationPlayer").stop()
+		panel.get_node("AnimationPlayer").current_animation = "death"
+		yield(panel.get_node("AnimationPlayer"), "animation_finished")
+		viewport.game.update_party()
+		emit_signal("death")
+	else:
+		$AnimationPlayer.stop()
+		$AnimationPlayer.current_animation = "death"
+		yield($AnimationPlayer, "animation_finished")
+		get_parent().remove_child(self)
+		emit_signal("death")
+		queue_free()
 
 func update() -> void:
 	emit_signal("updated")

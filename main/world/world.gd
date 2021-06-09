@@ -10,9 +10,13 @@ var current_terminal: String # set by terminal on menu_open
 func _ready() -> void:
 	player = get_node(player)
 	get_viewport().connect("battle_start", self, "battle_started")
+	get_viewport().connect("battle_end", self, "battle_ended")
 
 func battle_started(_creatures: Array) -> void:
 	player.can_move = false
+
+func battle_ended() -> void:
+	player.can_move = true
 
 func add_room(room_name: String) -> void:
 	if has_node("Room"):
@@ -31,4 +35,4 @@ func save_data() -> Dictionary:
 
 func load_data(data: Dictionary) -> void:
 	add_room(data["location"])
-	$Player.translation = $Room.terminals.get_node(data["terminal"]).translation
+	$Player.global_transform.origin = $Room.terminals.get_node(data["terminal"]).global_transform.origin

@@ -1,88 +1,59 @@
-[gd_resource type="Theme" load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=14 format=2]
 
 [ext_resource path="res://main/ui/theme/font/MainFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://main/ui/theme/style_box/Regular.tres" type="StyleBox" id=2]
-[ext_resource path="res://main/ui/theme/style_box/regular.png" type="Texture" id=3]
+[ext_resource path="res://main/ui/theme/style_box/regular/Regular.tres" type="StyleBox" id=2]
+[ext_resource path="res://main/ui/theme/style_box/regular/regular.png" type="Texture" id=3]
+[ext_resource path="res://main/ui/theme/style_box/scrollbar/bar.png" type="Texture" id=4]
+[ext_resource path="res://main/ui/theme/style_box/selected/Selected.tres" type="StyleBox" id=5]
+[ext_resource path="res://main/ui/theme/style_box/thin/tab/Tab.tres" type="StyleBox" id=6]
+[ext_resource path="res://main/ui/theme/style_box/thin/tab/DisabledTab.tres" type="StyleBox" id=7]
 
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 0.0
-content_margin_right = 0.0
-content_margin_top = 0.0
-content_margin_bottom = 0.0
-bg_color = Color( 0.0901961, 0.0862745, 0.105882, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-anti_aliasing = false
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 0.0
 content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
-bg_color = Color( 0.219608, 0.2, 0.290196, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-anti_aliasing = false
-anti_aliasing_size = 2
-
-[sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 0.0
-content_margin_right = 0.0
-content_margin_top = 0.0
-content_margin_bottom = 0.0
-bg_color = Color( 0.109804, 0.0941176, 0.160784, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 32, 32 )
-margin_left = 3.0
-margin_right = 3.0
-margin_top = 3.0
-margin_bottom = 3.0
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 8, 8 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 content_margin_top = 10.0
 bg_color = Color( 0.109804, 0.0941176, 0.160784, 1 )
 anti_aliasing = false
 
-[sub_resource type="StyleBoxTexture" id=6]
-content_margin_left = 3.0
-content_margin_right = 3.0
-content_margin_top = 3.0
-content_margin_bottom = 3.0
+[sub_resource type="StyleBoxTexture" id=5]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 32, 32 )
-margin_left = 3.0
-margin_right = 3.0
-margin_top = 3.0
-margin_bottom = 3.0
-expand_margin_bottom = 1.0
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
 
-[sub_resource type="StyleBoxTexture" id=7]
-content_margin_left = 3.0
-content_margin_right = 3.0
-content_margin_top = 3.0
-content_margin_bottom = 3.0
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 32, 32 )
-margin_left = 3.0
-margin_right = 3.0
-margin_top = 3.0
-margin_bottom = 3.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=6]
 content_margin_right = 10.0
-bg_color = Color( 0.109804, 0.0941176, 0.160784, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 anti_aliasing = false
 
 [resource]
@@ -94,18 +65,18 @@ Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = SubResource( 1 )
-Button/styles/focus = SubResource( 2 )
-Button/styles/hover = SubResource( 2 )
-Button/styles/normal = SubResource( 3 )
-Button/styles/pressed = SubResource( 3 )
+Button/styles/focus = ExtResource( 5 )
+Button/styles/hover = ExtResource( 5 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = ExtResource( 5 )
 HScrollBar/icons/decrement = null
 HScrollBar/icons/decrement_highlight = null
 HScrollBar/icons/increment = null
 HScrollBar/icons/increment_highlight = null
-HScrollBar/styles/grabber = SubResource( 4 )
+HScrollBar/styles/grabber = SubResource( 3 )
 HScrollBar/styles/grabber_highlight = null
 HScrollBar/styles/grabber_pressed = null
-HScrollBar/styles/scroll = SubResource( 5 )
+HScrollBar/styles/scroll = SubResource( 4 )
 HScrollBar/styles/scroll_focus = null
 PanelContainer/styles/panel = ExtResource( 2 )
 ScrollContainer/styles/bg = null
@@ -124,16 +95,16 @@ TabContainer/icons/increment = null
 TabContainer/icons/increment_highlight = null
 TabContainer/icons/menu = null
 TabContainer/icons/menu_highlight = null
-TabContainer/styles/panel = ExtResource( 2 )
-TabContainer/styles/tab_bg = SubResource( 6 )
+TabContainer/styles/panel = SubResource( 5 )
+TabContainer/styles/tab_bg = ExtResource( 7 )
 TabContainer/styles/tab_disabled = null
-TabContainer/styles/tab_fg = SubResource( 7 )
+TabContainer/styles/tab_fg = ExtResource( 6 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 4 )
+VScrollBar/styles/grabber = SubResource( 3 )
 VScrollBar/styles/grabber_highlight = null
 VScrollBar/styles/grabber_pressed = null
-VScrollBar/styles/scroll = SubResource( 8 )
+VScrollBar/styles/scroll = SubResource( 6 )
 VScrollBar/styles/scroll_focus = null

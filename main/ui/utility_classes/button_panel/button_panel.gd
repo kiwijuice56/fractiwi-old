@@ -32,6 +32,10 @@ func focus_exited() -> void:
 	else:
 		set("custom_styles/panel", null)
 
+func release_focus() -> void:
+	.release_focus()
+	focus_exited()
+
 func set_disabled(value: bool) -> void:
 	disabled = value
 	if disabled:

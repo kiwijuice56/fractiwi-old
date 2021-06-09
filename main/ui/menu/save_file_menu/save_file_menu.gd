@@ -29,6 +29,7 @@ func input_pressed(key_name: String) -> void:
 				disable(true)
 				file_saver.load_file(index)
 				main_viewport.root.start()
+				return
 	input["SaveFileContainer"].add_items()
 	set_up(key_name)
 	input["SaveFileContainer"].grab_focus_at(index)
@@ -50,5 +51,5 @@ func enable(show: bool) -> void:
 	input["SaveFileHotkeyContainer"].enable_input()
 
 func disable(show: bool) -> void:
-	.disable(show)
 	input["SaveFileHotkeyContainer"].disable_input()
+	.disable(show)

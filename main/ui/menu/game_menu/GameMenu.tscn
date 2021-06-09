@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=2]
@@ -15,8 +15,9 @@
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/CreatureButtonPanel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/SkillButtonContainer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/ui/menu/game_menu/selector/selector.gd" type="Script" id=15]
-[ext_resource path="res://main/ui/theme/style_box/MarginRegular.tres" type="StyleBox" id=16]
+[ext_resource path="res://main/ui/theme/style_box/regular/margin/MarginRegular.tres" type="StyleBox" id=16]
 [ext_resource path="res://main/ui/menu/game_menu/label_container/label_container.gd" type="Script" id=17]
+[ext_resource path="res://main/ui/theme/style_box/thin/margin/MarginThin.tres" type="StyleBox" id=18]
 
 [node name="GameMenu" type="Control"]
 anchor_right = 1.0
@@ -49,7 +50,7 @@ margin_top = -312.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-custom_constants/separation = 6
+custom_constants/separation = 5
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -58,7 +59,7 @@ __meta__ = {
 [node name="ActionSelection" type="PanelContainer" parent="VBoxContainer"]
 margin_left = 92.0
 margin_right = 467.0
-margin_bottom = 203.0
+margin_bottom = 191.0
 grow_vertical = 0
 rect_min_size = Vector2( 375, 0 )
 mouse_filter = 2
@@ -67,22 +68,22 @@ size_flags_vertical = 8
 custom_styles/panel = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ActionSelection"]
-margin_left = 11.0
-margin_top = 11.0
-margin_right = 364.0
-margin_bottom = 192.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 370.0
+margin_bottom = 186.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="SelectionLabel" type="Label" parent="VBoxContainer/ActionSelection/VBoxContainer"]
-margin_right = 353.0
+margin_right = 365.0
 margin_bottom = 15.0
 text = "Skills"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer"]
 margin_top = 19.0
-margin_right = 353.0
+margin_right = 365.0
 margin_bottom = 181.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -90,7 +91,7 @@ size_flags_vertical = 3
 custom_constants/separation = 6
 
 [node name="PartySkillContainer" type="TabContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer"]
-margin_right = 343.0
+margin_right = 351.0
 margin_bottom = 162.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -111,57 +112,58 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Button2" type="Button" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer/VBoxContainer"]
-margin_right = 335.0
+margin_right = 343.0
 margin_bottom = 15.0
 text = "adsadasd"
 
 [node name="Button3" type="Button" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer/VBoxContainer"]
 margin_top = 19.0
-margin_right = 335.0
+margin_right = 343.0
 margin_bottom = 34.0
 text = "adsadasd"
 
 [node name="Button4" type="Button" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer/VBoxContainer"]
 margin_top = 38.0
-margin_right = 335.0
+margin_right = 343.0
 margin_bottom = 53.0
 text = "adsadasd"
 
 [node name="Button5" type="Button" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer/VBoxContainer"]
 margin_top = 57.0
-margin_right = 335.0
+margin_right = 343.0
 margin_bottom = 72.0
 text = "adsadasd"
 
 [node name="Button6" type="Button" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer/VBoxContainer"]
 margin_top = 76.0
-margin_right = 335.0
+margin_right = 343.0
 margin_bottom = 91.0
 text = "adsadasd"
 
 [node name="Button7" type="Button" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer/VBoxContainer"]
 margin_top = 95.0
-margin_right = 335.0
+margin_right = 343.0
 margin_bottom = 110.0
 text = "adsadasd"
 
 [node name="Button8" type="Button" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PartySkillContainer/VBoxContainer"]
 margin_top = 114.0
-margin_right = 335.0
+margin_right = 343.0
 margin_bottom = 129.0
 text = "adsadasd"
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer"]
-margin_left = 349.0
-margin_right = 353.0
+margin_left = 357.0
+margin_right = 365.0
 margin_bottom = 162.0
 mouse_filter = 2
+custom_styles/panel = ExtResource( 16 )
 
 [node name="ActionHotkeyContainer" type="VBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PanelContainer"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 2.0
-margin_bottom = 160.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 158.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -184,20 +186,20 @@ margin_bottom = 225.0
 size_flags_vertical = 8
 
 [node name="MainPanel" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 209.0
+margin_top = 196.0
 margin_right = 560.0
-margin_bottom = 251.0
+margin_bottom = 238.0
 mouse_filter = 2
 size_flags_vertical = 8
-custom_constants/margin_right = 3
-custom_constants/margin_left = 3
+custom_constants/margin_right = 4
+custom_constants/margin_left = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainPanel"]
-margin_left = 3.0
-margin_right = 557.0
+margin_left = 4.0
+margin_right = 556.0
 margin_bottom = 42.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -207,12 +209,12 @@ custom_styles/panel = ExtResource( 16 )
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainPanel/PanelContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 550.0
+margin_right = 548.0
 margin_bottom = 38.0
 mouse_filter = 2
 
 [node name="MainButtonContainer" type="HBoxContainer" parent="VBoxContainer/MainPanel/PanelContainer/VBoxContainer"]
-margin_right = 546.0
+margin_right = 544.0
 margin_bottom = 15.0
 mouse_filter = 2
 script = ExtResource( 7 )
@@ -220,7 +222,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 controller = NodePath("../../../../..")
-button_names = [ "Party", "Skills", "Items", "Settings", "Quit" ]
+button_names = [ "Effects", "Skills", "Items", "Party", "Settings" ]
 
 [node name="Skills" type="Button" parent="VBoxContainer/MainPanel/PanelContainer/VBoxContainer/MainButtonContainer"]
 margin_right = 133.0
@@ -231,23 +233,23 @@ text = "Skills"
 
 [node name="Party" type="Button" parent="VBoxContainer/MainPanel/PanelContainer/VBoxContainer/MainButtonContainer"]
 margin_left = 137.0
-margin_right = 271.0
+margin_right = 270.0
 margin_bottom = 15.0
 mouse_filter = 2
 size_flags_horizontal = 3
 text = "Party"
 
 [node name="Items" type="Button" parent="VBoxContainer/MainPanel/PanelContainer/VBoxContainer/MainButtonContainer"]
-margin_left = 275.0
-margin_right = 408.0
+margin_left = 274.0
+margin_right = 407.0
 margin_bottom = 15.0
 mouse_filter = 2
 size_flags_horizontal = 3
 text = "Items"
 
 [node name="MainMenu" type="Button" parent="VBoxContainer/MainPanel/PanelContainer/VBoxContainer/MainButtonContainer"]
-margin_left = 412.0
-margin_right = 546.0
+margin_left = 411.0
+margin_right = 544.0
 margin_bottom = 15.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -255,13 +257,13 @@ text = "Main Menu"
 
 [node name="Text" type="Label" parent="VBoxContainer/MainPanel/PanelContainer/VBoxContainer"]
 margin_top = 19.0
-margin_right = 546.0
+margin_right = 544.0
 margin_bottom = 34.0
 
 [node name="ActivePartyContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 257.0
+margin_top = 243.0
 margin_right = 560.0
-margin_bottom = 322.0
+margin_bottom = 308.0
 rect_min_size = Vector2( 0, 65 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -273,14 +275,13 @@ button_scene = ExtResource( 13 )
 
 [node name="CreatureButtonPanel" parent="VBoxContainer/ActivePartyContainer" instance=ExtResource( 13 )]
 margin_left = 215.0
-margin_top = 0.0
 margin_right = 345.0
 margin_bottom = 65.0
 
 [node name="PopOutPartyContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 328.0
+margin_top = 313.0
 margin_right = 560.0
-margin_bottom = 449.0
+margin_bottom = 434.0
 rect_min_size = Vector2( 0, 121 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -288,30 +289,30 @@ size_flags_vertical = 8
 custom_styles/panel = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PopOutPartyContainer"]
-margin_left = 11.0
-margin_top = 11.0
-margin_right = 549.0
-margin_bottom = 110.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 555.0
+margin_bottom = 104.0
 rect_min_size = Vector2( 0, 99 )
 mouse_filter = 2
 size_flags_vertical = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer"]
-margin_right = 538.0
+margin_right = 550.0
 margin_bottom = 15.0
 text = "Party"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer"]
 margin_top = 19.0
-margin_right = 538.0
+margin_right = 550.0
 margin_bottom = 99.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer"]
-margin_right = 530.0
+margin_right = 542.0
 margin_bottom = 80.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -332,36 +333,42 @@ button_scene = ExtResource( 13 )
 full_party = true
 
 [node name="CreatureButtonPanel" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer/ScrollContainer/FullPartyContainer" instance=ExtResource( 13 )]
+margin_top = 5.0
 margin_right = 130.0
 margin_bottom = 70.0
 
 [node name="CreatureButtonPanel2" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer/ScrollContainer/FullPartyContainer" instance=ExtResource( 13 )]
 margin_left = 134.0
+margin_top = 5.0
 margin_right = 264.0
 margin_bottom = 70.0
 
 [node name="CreatureButtonPanel3" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer/ScrollContainer/FullPartyContainer" instance=ExtResource( 13 )]
 margin_left = 268.0
+margin_top = 5.0
 margin_right = 398.0
 margin_bottom = 70.0
 
 [node name="CreatureButtonPanel4" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer/ScrollContainer/FullPartyContainer" instance=ExtResource( 13 )]
 margin_left = 402.0
+margin_top = 5.0
 margin_right = 532.0
 margin_bottom = 70.0
 
 [node name="CreatureButtonPanel5" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer/ScrollContainer/FullPartyContainer" instance=ExtResource( 13 )]
 margin_left = 536.0
+margin_top = 5.0
 margin_right = 666.0
 margin_bottom = 70.0
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer"]
-margin_left = 534.0
-margin_right = 538.0
+margin_left = 546.0
+margin_right = 550.0
 margin_bottom = 80.0
 mouse_filter = 2
 size_flags_horizontal = 9
 size_flags_vertical = 3
+custom_styles/panel = ExtResource( 18 )
 
 [node name="PartySelectHotKeyContainer" type="VBoxContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 visible = false
@@ -410,6 +417,8 @@ script = ExtResource( 15 )
 controller = NodePath("..")
 
 [node name="LabelLayer" type="CanvasLayer" parent="."]
+offset = Vector2( 0, 35 )
+transform = Transform2D( 1, 0, 0, 1, 0, 35 )
 
 [node name="LabelContainer" type="PanelContainer" parent="LabelLayer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -417,10 +426,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -21.5
-margin_top = 15.0
-margin_right = 21.5
-margin_bottom = 43.0
+margin_left = -88.5
+margin_top = -14.0
+margin_right = 88.5
+margin_bottom = 5.0
 theme = ExtResource( 1 )
 script = ExtResource( 17 )
 __meta__ = {
@@ -430,10 +439,11 @@ effect_handler = NodePath("../../EffectHandler")
 
 [node name="Label" type="Label" parent="LabelLayer/LabelContainer"]
 margin_left = 2.0
-margin_top = 6.0
-margin_right = 41.0
-margin_bottom = 21.0
-text = "Pass"
+margin_top = 2.0
+margin_right = 175.0
+margin_bottom = 17.0
+size_flags_horizontal = 4
+text = "Passsaaaaaaaaaaaaaaaaa"
 align = 1
 valign = 1
 

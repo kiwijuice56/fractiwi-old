@@ -19,7 +19,7 @@
 [ext_resource path="res://main/ui/menu/interact_menu/InteractMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://main/ui/utility_classes/music_player/MusicPlayer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://main/world/world.gd" type="Script" id=19]
-[ext_resource path="res://main/battle/creature/orange/orange.png" type="Texture" id=20]
+[ext_resource path="res://main/ui/menu/game_menu/creature_check_screen/CreatureCheckScreen.tscn" type="PackedScene" id=20]
 [ext_resource path="res://main/ui/menu/main_menu/title_music.wav" type="AudioStream" id=21]
 [ext_resource path="res://main/ui/menu/terminal_menu/terminal.ogg" type="AudioStream" id=22]
 [ext_resource path="res://main/ui/utility_classes/vision_effects/VisionEffects.tscn" type="PackedScene" id=23]
@@ -94,6 +94,8 @@ main = NodePath("MainMenu")
 terminal = NodePath("TerminalMenu")
 vision_effects = NodePath("VisionEffects")
 world_node = NodePath("World")
+party = NodePath("Party")
+creature_check = NodePath("CreatureCheckScreen")
 
 [node name="MusicPlayer" parent="ViewportContainer/MainViewport" instance=ExtResource( 18 )]
 volume_db = -50.0
@@ -109,7 +111,7 @@ player = NodePath("Player")
 room_path = "res://main/world/room/"
 
 [node name="Player" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.1143, 0 )
 main_viewport = NodePath("../..")
 
 [node name="BattleQueue" type="Node" parent="ViewportContainer/MainViewport"]
@@ -139,7 +141,6 @@ def_affinity = {
 }
 
 [node name="Orange" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 2 )]
-texture = ExtResource( 20 )
 def_affinity = {
 "phys": "repel"
 }
@@ -168,6 +169,10 @@ music = ExtResource( 22 )
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 11 )]
 main_viewport = NodePath("..")
 file_saver = NodePath("../../../FileSaver")
+
+[node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport" instance=ExtResource( 20 )]
+visible = false
+main_viewport = NodePath("..")
 
 [node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
 layer = 2

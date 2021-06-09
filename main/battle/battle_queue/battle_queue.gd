@@ -4,6 +4,8 @@ class_name BattleQueue
 
 export (NodePath) var player_party_node
 
+signal battle_ended
+
 func _ready() -> void:
 	get_viewport().connect("battle_start", self, "battle")
 	player_party_node = get_node(player_party_node)
@@ -43,6 +45,10 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 	else:
 		return $EnemyParty
 
+func return_player_party(player_party: Array) -> void:
+	for creature in player_party:
+		player_party_node.get_node("Active").add_child(creature)
+
 func turn_logic(turns_used: int, full: int, half: int) -> Array:
 	match turns_used:
 			-2: # repels
@@ -80,10 +86,10 @@ func battle(enemy_creatures: Array) -> void:
 	
 	var full: int = current.get_child_count()
 	var half: int = 0
+	yield(get_viewport().game, "battle_ready") # becaused called from battle_start signal, game may start before menu is initialized
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
 		get_viewport().game.press_turn_container.set_side(current == $PlayerParty)
 		get_viewport().game.press_turn_container.set_turns(full, half)
-		get_viewport().game.disable(true)
 		
 		# get turns used
 		var turns: Array = turn_logic(yield(current.get_child(0).do_turn(current, opposite), "completed"), full, half)
@@ -114,3 +120,4 @@ func battle(enemy_creatures: Array) -> void:
 			var front = current.get_child(0)
 			current.remove_child(front)
 			current.add_child(front)
+	get_parent().battle_ended()

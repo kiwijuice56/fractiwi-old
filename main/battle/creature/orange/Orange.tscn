@@ -7,14 +7,14 @@
 [node name="Orange" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
 race = "Inanimate"
-level = 5
+level = 3
 hp_growth = 9
 mp_growth = 5
-stre = 2
+stre = 1
 magi = 2
-vita = 2
-luck = 2
-agil = 5
+vita = 1
+luck = 1
+agil = 6
 def_affinity = {
 "phys": "weak"
 }

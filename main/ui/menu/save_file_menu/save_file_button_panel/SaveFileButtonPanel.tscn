@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/ui/theme/style_box/focus/Focus.tres" type="StyleBox" id=1]
+[ext_resource path="res://main/ui/theme/style_box/focus/disabled/FocusDisabled.tres" type="StyleBox" id=2]
+[ext_resource path="res://main/ui/theme/style_box/regular/disabled/RegularDisabled.tres" type="StyleBox" id=3]
+[ext_resource path="res://main/ui/menu/save_file_menu/save_file_button_panel/save_file_button_panel.gd" type="Script" id=4]
+
+[node name="SaveFileButtonPanel" type="PanelContainer"]
+margin_right = 14.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 64 )
+focus_mode = 1
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+focused_style = ExtResource( 1 )
+disabled_style = ExtResource( 3 )
+disbaled_focus_style = ExtResource( 2 )
+location_label = NodePath("MarginContainer/VBoxContainer/IDContainer/Location")
+empty_label = NodePath("MarginContainer/EmptyLabel")
+num_label = NodePath("MarginContainer/VBoxContainer/IDContainer/Number")
+time_label = NodePath("MarginContainer/VBoxContainer/Time")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 117.0
+margin_bottom = 57.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="EmptyLabel" type="Label" parent="MarginContainer"]
+visible = false
+margin_left = 4.0
+margin_top = 18.0
+margin_right = 106.0
+margin_bottom = 32.0
+text = "00 EMPTY"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 106.0
+margin_bottom = 46.0
+
+[node name="IDContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 102.0
+margin_bottom = 14.0
+
+[node name="Number" type="Label" parent="MarginContainer/VBoxContainer/IDContainer"]
+margin_right = 16.0
+margin_bottom = 14.0
+text = "00"
+
+[node name="Location" type="Label" parent="MarginContainer/VBoxContainer/IDContainer"]
+margin_left = 20.0
+margin_right = 49.0
+margin_bottom = 14.0
+text = "Area"
+
+[node name="Time" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 102.0
+margin_bottom = 32.0
+text = "00:00:00 played"

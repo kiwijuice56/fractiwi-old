@@ -16,14 +16,14 @@ func initialize(file: SaveFile, index: int) -> void:
 	var str_index = "%02d" % index
 	if not file:
 		empty_label.text = str_index + " EMPTY"
-		$VBoxContainer.visible = false
-		$EmptyLabel.visible = true
+		$MarginContainer/VBoxContainer.visible = false
+		$MarginContainer/EmptyLabel.visible = true
 	else:
 		num_label.text = str_index
 		location_label.text = file.data["World"]["location"] + ":" + file.data["World"]["terminal"]
 		set_time(file.data["FileSaver"]["time"])
-		$VBoxContainer.visible = true
-		$EmptyLabel.visible = false
+		$MarginContainer/VBoxContainer.visible = true
+		$MarginContainer/EmptyLabel.visible = false
 
 func set_time(time: int) -> void:
 	#warning-ignore:integer_division

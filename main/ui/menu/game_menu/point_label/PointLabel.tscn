@@ -34,13 +34,19 @@ tracks/1/keys = {
 font_path = "res://main/ui/theme/font/rainyhearts.ttf"
 
 [sub_resource type="DynamicFont" id=3]
-outline_size = 2
-outline_color = Color( 0.439216, 0.321569, 0.470588, 1 )
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 2 )
 
 [node name="PointLabel" type="CanvasLayer"]
 layer = 2
 script = ExtResource( 2 )
+miss = Color( 1, 0.584314, 0.584314, 1 )
+repel = Color( 0.976471, 0.270588, 0.270588, 1 )
+nullc = Color( 0.976471, 0.270588, 0.270588, 1 )
+absorb = Color( 0.384314, 0.937255, 0.741176, 1 )
+weak = Color( 0.996078, 0.964706, 0.192157, 1 )
+crit = Color( 0.996078, 0.964706, 0.192157, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/show = SubResource( 1 )
@@ -49,6 +55,7 @@ anims/show = SubResource( 1 )
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

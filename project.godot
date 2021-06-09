@@ -224,6 +224,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/skill/skill.gd"
 }, {
+"base": "Button",
+"class": "StatBar",
+"language": "GDScript",
+"path": "res://main/ui/menu/game_menu/creature_check_screen/stat_bar/stat_bar.gd"
+}, {
 "base": "ActiveSkill",
 "class": "StatusSkill",
 "language": "GDScript",
@@ -313,6 +318,7 @@ _global_script_class_icons={
 "SaveFileMenu": "",
 "Selector": "",
 "Skill": "",
+"StatBar": "",
 "StatusSkill": "",
 "Terminal": "",
 "TerminalMenu": "",

@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/PointBar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://main/ui/theme/style_box/Focus.tres" type="StyleBox" id=2]
+[ext_resource path="res://main/ui/theme/style_box/focus/Focus.tres" type="StyleBox" id=2]
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/creature_button_panel.gd" type="Script" id=3]
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/buff_indicator/buff_indicator.gd" type="Script" id=4]
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/status_icons/OK.png" type="Texture" id=5]
@@ -9,7 +9,22 @@
 [ext_resource path="res://main/ui/menu/game_menu/point_label/PointLabel.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
-resource_name = "hurt_normal"
+resource_name = "death"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_rotation")
@@ -25,9 +40,8 @@ tracks/0/keys = {
 }
 
 [node name="CreatureButtonPanel" type="PanelContainer"]
-margin_top = 5.0
 margin_right = 222.0
-margin_bottom = 100.0
+margin_bottom = 95.0
 rect_pivot_offset = Vector2( 65, 32.5 )
 focus_mode = 2
 mouse_filter = 2
@@ -43,7 +57,7 @@ name_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer
 hp_bar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HP")
 mp_bar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MP")
 status_icon = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/StatusIcon")
-in_party_indicator = NodePath("InPartyIndicator")
+in_party_indicator = NodePath("MarginContainer2/InPartyIndicator")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 2.0
@@ -170,14 +184,31 @@ margin_bottom = 58.0
 size_flags_horizontal = 10
 text = "HIT/EVA: 0"
 
-[node name="InPartyIndicator" type="Control" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.25
+anims/death = SubResource( 1 )
+anims/hurt_normal = SubResource( 2 )
+
+[node name="PointLabel" parent="." instance=ExtResource( 7 )]
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 220.0
 margin_bottom = 93.0
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="InPartyIndicator" type="Control" parent="MarginContainer2"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 215.0
+margin_bottom = 88.0
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="InPartyIndicator"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer2/InPartyIndicator"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -186,7 +217,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="InPartyIndicator"]
+[node name="Label" type="Label" parent="MarginContainer2/InPartyIndicator"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "SUMMONED"
@@ -195,9 +226,3 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 1.25
-anims/hurt_normal = SubResource( 1 )
-
-[node name="PointLabel" parent="." instance=ExtResource( 7 )]

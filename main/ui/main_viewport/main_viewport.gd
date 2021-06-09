@@ -13,8 +13,11 @@ export (NodePath) var main
 export (NodePath) var terminal
 export (NodePath) var vision_effects
 export (NodePath) var world_node
+export (NodePath) var party
+export (NodePath) var creature_check
 
 signal battle_start
+signal battle_end
 
 func _ready() -> void:
 	root = get_node(root)
@@ -27,6 +30,8 @@ func _ready() -> void:
 	terminal = get_node(terminal)
 	vision_effects = get_node(vision_effects)
 	world_node = get_node(world_node)
+	party = get_node(party)
+	creature_check = get_node(creature_check)
 	yield(get_tree().root, "ready")
 	game.disable(false)
 	terminal.disable(false)
@@ -39,3 +44,10 @@ func battle_started(creatures: Array) -> void:
 	yield(transition, "in_finished")
 	emit_signal("battle_start", creatures)
 	transition.transition_out()
+
+func battle_ended() -> void:
+	transition.transition_in()
+	yield(transition, "in_finished")
+	emit_signal("battle_end")
+	transition.transition_out()
+

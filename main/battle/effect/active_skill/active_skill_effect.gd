@@ -21,4 +21,4 @@ func start(given_position: Vector2, given_targets: Array) -> void:
 
 func impact_point() -> void:
 	for target in targets:
-		target.target_skill_effect()
+		target.target_action()

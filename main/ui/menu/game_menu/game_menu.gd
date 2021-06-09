@@ -19,6 +19,7 @@ var creature: Creature
 
 signal battle_action_chosen
 signal selection_complete
+signal battle_ready
 
 func _ready():
 	party = get_node(party)
@@ -31,6 +32,7 @@ func _ready():
 	label_container = get_node(label_container)
 	text_label = get_node(text_label)
 	main_viewport.connect("battle_start", self, "battle_started")
+	main_viewport.connect("battle_end", self, "battle_ended")
 	connect("battle_action_chosen", self, "battle_action_chosen")
 	yield(get_tree().root, "ready")
 	close_menu()
@@ -43,7 +45,6 @@ func _input(event: InputEvent) -> void:
 			main_viewport.world_node.player.can_move = true
 		else:
 			open_menu(true)
-			main_viewport.interact.disable(false)
 			main_viewport.world_node.player.can_move = false
 	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
@@ -87,7 +88,10 @@ func input_pressed(key_name: String) -> void:
 			match state:
 				"party":
 					summon_member()
-					
+		"Check":
+			match state:
+				"party":
+					show_check_screen()
 		"Pass":
 			emit_signal("battle_action_chosen", ["Pass", null, []])
 		"Confirm":
@@ -119,15 +123,26 @@ func battle_started(_creatures: Array) -> void:
 	press_turn_container.visible = true
 	input["MainButtonContainer"].button_names = ["Skills", "Items", "Party", "Pass", "Run"]
 	input["MainButtonContainer"].add_items()
+	disable(true)
 	open_menu(true)
+	emit_signal("battle_ready")
+
+func battle_ended() -> void:
+	in_battle = false
+	input["PartySkillContainer"].tabs_visible = true
+	press_turn_container.visible = false
+	input["MainButtonContainer"].button_names = ["Effects", "Skills", "Items", "Party", "Settings"]
+	input["MainButtonContainer"].add_items()
+	close_menu()
+	enable(false)
 
 func battle_input(current_creature: Creature):
 	creature = current_creature
 	text_label.text = "What will %s do?" % creature.name
-	enable(true)
 	open_menu(false)
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
+	
 
 func battle_action_chosen(_ui_info: Array) -> void:
 	text_label.text = ""
@@ -136,11 +151,10 @@ func battle_action_chosen(_ui_info: Array) -> void:
 func open_menu(anim: bool) -> void:
 	state = "default"
 	enable(true)
+	main_viewport.interact.disable(false)
 	if anim:
 		effect_handler.fade(self, "visible", effect_handler.default_fade_time)
-	if in_battle:
-		input["MainButtonContainer"].disable_input()
-	else:
+	if not in_battle:
 		input["MainButtonContainer"].enable_input()
 		input["MainButtonContainer"].grab_focus_at(0)
 	open = true
@@ -233,6 +247,19 @@ func hide_party() -> void:
 	effect_handler.slide(self, "y", pop_out_party.rect_size.y, effect_handler.default_slide_time)
 	input["PartyHotKeyContainer"].disable_input()
 	state = "default"
+
+func show_check_screen() -> void:
+	var focus = get_focus_owner()
+	disable(true)
+	main_viewport.transition.transition_in()
+	yield(main_viewport.transition, "in_finished")
+	main_viewport.creature_check.enable(true)
+	main_viewport.creature_check.index = focus.get_index()
+	main_viewport.creature_check.show_creature(focus.creature)
+	main_viewport.creature_check.back = self
+	disable(false)
+	main_viewport.transition.transition_out()
+	state = "check_screen"
 
 func update_party() -> void:
 	input["FullPartyContainer"].add_items()

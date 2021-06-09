@@ -14,6 +14,7 @@ func finish_interaction() -> void:
 		current_interactable.finish_interaction()
 
 func enable(show: bool) -> void:
+	if main_viewport.game.open: return
 	.enable(show)
 	if current_interactable:
 		$AnimationPlayer.current_animation = "fade_in"

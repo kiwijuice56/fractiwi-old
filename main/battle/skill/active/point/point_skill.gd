@@ -24,6 +24,7 @@ func use(user: Creature, targets: Array, anim: bool) -> void:
 		if def == "repel":
 			def = get_def_affinity(user)
 			point_change = calculate_points(user, user, def, off, is_crit)
+			user.hp += point_change
 			if not user in targets:
 				targets.append(user)
 				user.targeted_skill_data = [point_change, false, is_crit, def]
@@ -32,7 +33,6 @@ func use(user: Creature, targets: Array, anim: bool) -> void:
 		else:
 			target.hp += point_change
 	var effect: ActiveSkillEffect = effect_packed.instance()
-	var last_effect: ActiveSkillEffect = effect
 	var place_timer = Timer.new()
 	add_child(place_timer)
 	match effect.count:
@@ -48,12 +48,11 @@ func use(user: Creature, targets: Array, anim: bool) -> void:
 				else:
 					var panel_position = target.panel.get_global_transform_with_canvas().get_origin() + (target.panel.rect_size/2)
 					new_effect.start(panel_position, [target])
-				last_effect = new_effect
 				place_timer.start(effect.delay)
 				if index != len(targets)-1:
 					yield(place_timer, "timeout")
 				index += 1
-	yield(last_effect, "tree_exited")
+	yield(targets[len(targets)-1], "target_action_complete")
 	call_deferred("remove_child", place_timer)
 	place_timer.call_deferred("queue_free")
 	return turns_used
