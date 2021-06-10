@@ -20,6 +20,9 @@ func _input(event: InputEvent) -> void:
 		tab = 0
 	get_child(tab).grab_focus_at(0)
 	set("current_tab", tab)
+	for child in controller.party.get_node("Active").get_children():
+		print(child.name, get_child(tab).name)
+		print( controller.party.get_node("Active").get_node(get_child(tab).name).name)
 	controller.creature = controller.party.get_node("Active").get_node(get_child(tab).name)
 
 func add_items() -> void:

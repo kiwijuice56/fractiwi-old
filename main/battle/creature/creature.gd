@@ -14,7 +14,7 @@ export var agil: int
 export var def_affinity: Dictionary
 export var off_affinity: Dictionary
 
-var hp: int = 3
+var hp: int = 7
 var max_hp: int = 10
 var mp: int
 var max_mp: int

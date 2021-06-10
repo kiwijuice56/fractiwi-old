@@ -16,7 +16,7 @@ vita = 1
 luck = 1
 agil = 2
 def_affinity = {
-"phys": "weak"
+"phys": "resist"
 }
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

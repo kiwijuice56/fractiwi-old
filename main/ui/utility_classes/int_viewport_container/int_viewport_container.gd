@@ -16,3 +16,4 @@ func on_vp_size_change():
 	if new_scaling_factor != scaling_factor:
 		scaling_factor = new_scaling_factor
 		rect_scale = Vector2(1,1) * scaling_factor
+	rect_pivot_offset = (resolution * scaling_factor)/4

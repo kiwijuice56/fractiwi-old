@@ -69,13 +69,12 @@ margin_left = -245.0
 margin_top = -138.0
 margin_right = 245.0
 margin_bottom = 138.0
-rect_pivot_offset = Vector2( 280, 165 )
 mouse_filter = 2
 theme = ExtResource( 16 )
 stretch = true
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="MainViewport" type="Viewport" parent="ViewportContainer"]
@@ -148,7 +147,7 @@ player_party_node = NodePath("../../Party")
 visible = false
 
 [node name="EnemyParty" type="Node2D" parent="ViewportContainer/MainViewport/Battle/BattleQueue"]
-position = Vector2( 280, 165 )
+position = Vector2( 245, 125 )
 
 [node name="UI" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 

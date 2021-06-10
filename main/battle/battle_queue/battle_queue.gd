@@ -4,8 +4,6 @@ class_name BattleQueue
 
 export (NodePath) var player_party_node
 
-signal battle_ended
-
 func _ready() -> void:
 	get_viewport().connect("battle_start", self, "battle")
 	player_party_node = get_node(player_party_node)
@@ -14,7 +12,7 @@ func position_enemies() -> void:
 	for i in range($EnemyParty.get_child_count()):
 		$EnemyParty.get_child(i).position.x += i*48
 # warning-ignore:integer_division
-	$EnemyParty.position.x = 280 - ((($EnemyParty.get_child_count()-1)*48)/2)
+	$EnemyParty.position.x = 245 - ((($EnemyParty.get_child_count()-1)*48)/2)
 
 func agility_sort(a: Creature, b: Creature) -> bool:
 	return a.agil > b.agil
@@ -46,6 +44,7 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 		return $EnemyParty
 
 func return_player_party(player_party: Array) -> void:
+	player_party_node.get_node("Active").displaced = false
 	for creature in player_party:
 		creature.get_parent().remove_child(creature)
 		player_party_node.get_node("Active").add_child(creature)
