@@ -47,6 +47,7 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 
 func return_player_party(player_party: Array) -> void:
 	for creature in player_party:
+		creature.get_parent().remove_child(creature)
 		player_party_node.get_node("Active").add_child(creature)
 
 func turn_logic(turns_used: int, full: int, half: int) -> Array:
@@ -120,4 +121,5 @@ func battle(enemy_creatures: Array) -> void:
 			var front = current.get_child(0)
 			current.remove_child(front)
 			current.add_child(front)
-	get_parent().battle_ended()
+	return_player_party($PlayerParty.get_children())
+	get_viewport().battle_ended()

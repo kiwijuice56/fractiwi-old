@@ -1,4 +1,4 @@
-extends Spatial
+extends Node2D
 class_name Room
 
 export (NodePath) var terminals

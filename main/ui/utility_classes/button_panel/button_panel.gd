@@ -2,6 +2,7 @@ extends PanelContainer
 class_name ButtonPanel
 # Adds button functionality to PanelContainers
 
+export var regular_style: Resource
 export var focused_style: Resource
 export var disabled_style: Resource
 export var disbaled_focus_style: Resource
@@ -30,7 +31,7 @@ func focus_exited() -> void:
 	if disabled:
 		set("custom_styles/panel", disabled_style)
 	else:
-		set("custom_styles/panel", null)
+		set("custom_styles/panel", regular_style)
 
 func release_focus() -> void:
 	.release_focus()
@@ -41,4 +42,4 @@ func set_disabled(value: bool) -> void:
 	if disabled:
 		set("custom_styles/panel", disabled_style)
 	else:
-		set("custom_styles/panel", null)
+		set("custom_styles/panel", regular_style)

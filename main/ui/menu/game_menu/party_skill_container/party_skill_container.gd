@@ -21,7 +21,6 @@ func _input(event: InputEvent) -> void:
 	get_child(tab).grab_focus_at(0)
 	set("current_tab", tab)
 	controller.creature = controller.party.get_node("Active").get_node(get_child(tab).name)
-	print(controller.creature.name)
 
 func add_items() -> void:
 	for container in get_children():
@@ -33,5 +32,5 @@ func add_items() -> void:
 		container.name = creature.name
 		container.controller = controller.get_path()
 		add_child(container)
-		container.button_names = creature.get_node("Skills").get_skill_names("Active")
+		container.creature = creature
 		container.add_items()

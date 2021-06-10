@@ -2,6 +2,8 @@ extends Skill
 class_name ActiveSkill
 
 export var effect_packed: PackedScene 
+export(String, "hp", "mp") var cost_type := "mp"
+export var cost := 0
 export(String, "phys", "fire", "ice", "elec", "wind", "light", "death", "mind", "flesh") var affinity := "phys"
 export(String, "all", "single", "random") var target_type := "single"
 export(String, "opposite", "same") var side := "opposite"

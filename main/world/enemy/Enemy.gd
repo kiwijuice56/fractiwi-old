@@ -1,4 +1,4 @@
-extends Area
+extends Area2D
 class_name Enemy
 
 export(Array, PackedScene) var creatures: Array

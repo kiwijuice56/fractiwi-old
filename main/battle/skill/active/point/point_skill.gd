@@ -4,7 +4,7 @@ class_name PointSkill
 export(int, 0, 100) var critical := 0
 export(int, -100, 100) var power := 0
 
-func use(user: Creature, targets: Array, anim: bool) -> void:
+func use(user: Creature, targets: Array, _anim: bool) -> void:
 	var turns_used:= 0
 	for i in range(len(targets)):
 		var target = targets[i]
@@ -16,8 +16,10 @@ func use(user: Creature, targets: Array, anim: bool) -> void:
 		target.targeted_skill_data = [point_change, is_miss, is_crit, def]
 		var new_turns_used = turn_logic(def, is_miss, is_crit)
 		if new_turns_used < 0 or turns_used < 0:
+			# warning-ignore:narrowing_conversion
 			turns_used = min(new_turns_used, turns_used)
 		else:
+			# warning-ignore:narrowing_conversion
 			turns_used = max(new_turns_used, turns_used)
 		if is_miss:
 			continue
@@ -57,12 +59,12 @@ func use(user: Creature, targets: Array, anim: bool) -> void:
 	place_timer.call_deferred("queue_free")
 	return turns_used
 
-func is_crit(user: Creature, targer: Creature) -> bool:
+func is_crit(_user: Creature, _target: Creature) -> bool:
 	return rand_range(0,1) <= critical/100.0
 
 func calculate_points(user: Creature, target: Creature, def: String, off: int, is_crit: bool) -> int:
 	var neg = power < 0
-	var base = abs(power) + (user.level/3) + user.stre - (target.level/5)
+	var base = abs(power) + (user.level/3.0) + user.stre - (target.level/5.0)
 	if def == "weak":
 		base *= 2
 	elif def == "resist":

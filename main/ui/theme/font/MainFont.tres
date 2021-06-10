@@ -5,5 +5,5 @@ font_path = "res://main/ui/theme/font/rainyhearts.ttf"
 
 [resource]
 outline_size = 1
-outline_color = Color( 0.317647, 0.298039, 0.329412, 1 )
+outline_color = Color( 0.227451, 0.215686, 0.235294, 1 )
 font_data = SubResource( 1 )

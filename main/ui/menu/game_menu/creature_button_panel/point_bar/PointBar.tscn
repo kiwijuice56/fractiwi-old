@@ -9,30 +9,30 @@ margin_top = 18.0
 margin_right = 38.0
 margin_bottom = 32.0
 mouse_filter = 2
+size_flags_horizontal = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NameLabel" type="Label" parent="."]
-margin_top = 1.0
 margin_right = 18.0
-margin_bottom = 15.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 18, 0 )
 text = "HP"
 
 [node name="PointLabel" type="Label" parent="."]
 margin_left = 22.0
-margin_top = 1.0
 margin_right = 46.0
-margin_bottom = 15.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 21, 0 )
 text = "999"
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
 margin_left = 50.0
-margin_right = 106.0
-margin_bottom = 16.0
+margin_top = 1.0
+margin_right = 89.0
+margin_bottom = 13.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6

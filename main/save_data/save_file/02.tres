@@ -47,7 +47,7 @@ data = {
 }
 },
 "World": {
-"location": "block",
+"location": "protist",
 "memory": {
 },
 "terminal": "Terminal"

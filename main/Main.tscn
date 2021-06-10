@@ -19,7 +19,7 @@
 [ext_resource path="res://main/ui/menu/interact_menu/InteractMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://main/ui/utility_classes/music_player/MusicPlayer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://main/world/world.gd" type="Script" id=19]
-[ext_resource path="res://main/ui/menu/game_menu/creature_check_screen/CreatureCheckScreen.tscn" type="PackedScene" id=20]
+[ext_resource path="res://main/ui/menu/creature_check_screen_menu/CreatureCheckScreen.tscn" type="PackedScene" id=20]
 [ext_resource path="res://main/ui/menu/main_menu/title_music.wav" type="AudioStream" id=21]
 [ext_resource path="res://main/ui/menu/terminal_menu/terminal.ogg" type="AudioStream" id=22]
 [ext_resource path="res://main/ui/utility_classes/vision_effects/VisionEffects.tscn" type="PackedScene" id=23]
@@ -65,10 +65,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -280.0
-margin_top = -165.0
-margin_right = 280.0
-margin_bottom = 165.0
+margin_left = -245.0
+margin_top = -138.0
+margin_right = 245.0
+margin_bottom = 138.0
 rect_pivot_offset = Vector2( 280, 165 )
 mouse_filter = 2
 theme = ExtResource( 16 )
@@ -79,23 +79,22 @@ __meta__ = {
 }
 
 [node name="MainViewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 560, 330 )
-size_override_stretch = true
+size = Vector2( 490, 276 )
 handle_input_locally = false
 render_target_update_mode = 3
 script = ExtResource( 12 )
 root = NodePath("../..")
 transition = NodePath("Transition")
 music_player = NodePath("MusicPlayer")
-save_file = NodePath("SaveFileMenu")
-game = NodePath("GameMenu")
-interact = NodePath("InteractMenu")
-main = NodePath("MainMenu")
-terminal = NodePath("TerminalMenu")
-vision_effects = NodePath("VisionEffects")
+save_file = NodePath("UI/SaveFileMenu")
+game = NodePath("UI/GameMenu")
+interact = NodePath("UI/InteractMenu")
+main = NodePath("UI/MainMenu")
+terminal = NodePath("UI/TerminalMenu")
+vision_effects = NodePath("UI/VisionEffects")
 world_node = NodePath("World")
 party = NodePath("Party")
-creature_check = NodePath("CreatureCheckScreen")
+creature_check = NodePath("UI/CreatureCheckScreen")
 
 [node name="MusicPlayer" parent="ViewportContainer/MainViewport" instance=ExtResource( 18 )]
 volume_db = -50.0
@@ -111,18 +110,9 @@ player = NodePath("Player")
 room_path = "res://main/world/room/"
 
 [node name="Player" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.1143, 0 )
+position = Vector2( 0, 13.1143 )
+z_index = 1
 main_viewport = NodePath("../..")
-
-[node name="BattleQueue" type="Node" parent="ViewportContainer/MainViewport"]
-script = ExtResource( 24 )
-player_party_node = NodePath("../Party")
-
-[node name="PlayerParty" type="Node2D" parent="ViewportContainer/MainViewport/BattleQueue"]
-visible = false
-
-[node name="EnemyParty" type="Node2D" parent="ViewportContainer/MainViewport/BattleQueue"]
-position = Vector2( 280, 165 )
 
 [node name="Party" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
@@ -133,7 +123,7 @@ creature_path = "res://main/battle/creature/"
 [node name="Active" type="Node2D" parent="ViewportContainer/MainViewport/Party"]
 visible = false
 script = ExtResource( 26 )
-battle_party_node = NodePath("../../BattleQueue/PlayerParty")
+battle_party_node = NodePath("../../Battle/BattleQueue/PlayerParty")
 
 [node name="Yun" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 9 )]
 def_affinity = {
@@ -148,31 +138,54 @@ def_affinity = {
 [node name="Inactive" type="Node2D" parent="ViewportContainer/MainViewport/Party"]
 visible = false
 
-[node name="VisionEffects" parent="ViewportContainer/MainViewport" instance=ExtResource( 23 )]
+[node name="Battle" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 
-[node name="InteractMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 17 )]
-main_viewport = NodePath("..")
+[node name="BattleQueue" type="Node" parent="ViewportContainer/MainViewport/Battle"]
+script = ExtResource( 24 )
+player_party_node = NodePath("../../Party")
 
-[node name="MainMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 8 )]
-main_viewport = NodePath("..")
+[node name="PlayerParty" type="Node2D" parent="ViewportContainer/MainViewport/Battle/BattleQueue"]
+visible = false
+
+[node name="EnemyParty" type="Node2D" parent="ViewportContainer/MainViewport/Battle/BattleQueue"]
+position = Vector2( 280, 165 )
+
+[node name="UI" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
+
+[node name="VisionEffects" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 23 )]
+visible = false
+
+[node name="InteractMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 17 )]
+margin_top = -36.0
+margin_bottom = -13.0
+main_viewport = NodePath("../..")
+
+[node name="MainMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 8 )]
+visible = false
+main_viewport = NodePath("../..")
 music = ExtResource( 21 )
 
-[node name="GameMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 1 )]
-main_viewport = NodePath("..")
-party = NodePath("../Party")
-enemy_party = NodePath("../BattleQueue/EnemyParty")
+[node name="GameMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 1 )]
+visible = false
+main_viewport = NodePath("../..")
+party = NodePath("../../Party")
+enemy_party = NodePath("../../Battle/BattleQueue/EnemyParty")
 
-[node name="TerminalMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 13 )]
-main_viewport = NodePath("..")
+[node name="TerminalMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 13 )]
+visible = false
+margin_right = 490.0
+margin_bottom = 276.0
+main_viewport = NodePath("../..")
 music = ExtResource( 22 )
 
-[node name="SaveFileMenu" parent="ViewportContainer/MainViewport" instance=ExtResource( 11 )]
-main_viewport = NodePath("..")
-file_saver = NodePath("../../../FileSaver")
-
-[node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport" instance=ExtResource( 20 )]
+[node name="SaveFileMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 11 )]
 visible = false
-main_viewport = NodePath("..")
+main_viewport = NodePath("../..")
+file_saver = NodePath("../../../../FileSaver")
+
+[node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 20 )]
+visible = false
+main_viewport = NodePath("../..")
 
 [node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
 layer = 2

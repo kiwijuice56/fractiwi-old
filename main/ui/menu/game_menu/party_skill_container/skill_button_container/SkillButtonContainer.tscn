@@ -1,21 +1,57 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://main/ui/utility_classes/input_container/button_container/text_button_container/text_button_container.gd" type="Script" id=1]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_container.gd" type="Script" id=1]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/SkillButtonPanel.tscn" type="PackedScene" id=2]
 
 [node name="Creature" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -556.0
-margin_bottom = -169.0
-rect_min_size = Vector2( 0, 129 )
+margin_right = -367.0
+margin_bottom = -154.0
+rect_min_size = Vector2( 0, 90 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
+custom_constants/separation = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+button_scene = ExtResource( 2 )
 neighbor_type = "vertical"
-expand_v = false
+
+[node name="SkillButtonPanel" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_right = 119.0
+
+[node name="SkillButtonPanel2" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 15.0
+margin_right = 119.0
+margin_bottom = 30.0
+
+[node name="SkillButtonPanel3" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 30.0
+margin_right = 119.0
+margin_bottom = 45.0
+
+[node name="SkillButtonPanel4" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 45.0
+margin_right = 119.0
+margin_bottom = 60.0
+
+[node name="SkillButtonPanel5" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 60.0
+margin_right = 119.0
+margin_bottom = 75.0
+
+[node name="SkillButtonPanel6" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 75.0
+margin_right = 119.0
+margin_bottom = 90.0

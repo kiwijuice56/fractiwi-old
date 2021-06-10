@@ -43,12 +43,10 @@ func add_items() -> void:
 
 func disable_input() -> void:
 	.disable_input()
-	print(name, "disable", get_stack())
 	for button in get_children():
 		button.disabled = true
 func enable_input() -> void:
 	.enable_input()
-	print(name, "enable", get_stack())
 	for button in get_children():
 		button.disabled = false
 

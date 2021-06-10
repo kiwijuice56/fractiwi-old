@@ -14,7 +14,7 @@ stre = 1
 magi = 2
 vita = 1
 luck = 1
-agil = 6
+agil = 2
 def_affinity = {
 "phys": "weak"
 }

@@ -1,4 +1,4 @@
-extends Sprite
+extends CanvasLayer
 class_name ActiveSkillEffect
 
 export(String, "single", "multiple") var count: String
@@ -16,8 +16,8 @@ func animation_finished(anim: String) -> void:
 func start(given_position: Vector2, given_targets: Array) -> void:
 	$AnimationPlayer.current_animation = "start"
 	targets = given_targets
-	global_position = given_position
-	visible = true
+	$Sprite.global_position = given_position
+	$Sprite.visible = true
 
 func impact_point() -> void:
 	for target in targets:

@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/skill/active/active_skill.gd"
 }, {
-"base": "Sprite",
+"base": "CanvasLayer",
 "class": "ActiveSkillEffect",
 "language": "GDScript",
 "path": "res://main/battle/effect/active_skill/active_skill_effect.gd"
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Container",
 "class": "AffinityContainer",
 "language": "GDScript",
-"path": "res://main/ui/menu/game_menu/creature_check_screen/affinity_panel_container/affinity_container.gd"
+"path": "res://main/ui/menu/creature_check_screen_menu/affinity_panel_container/affinity_container.gd"
 }, {
 "base": "Node",
 "class": "BattleQueue",
@@ -72,14 +72,14 @@ _global_script_classes=[ {
 "base": "UIController",
 "class": "CreatureCheckScreen",
 "language": "GDScript",
-"path": "res://main/ui/menu/game_menu/creature_check_screen/creature_check_screen.gd"
+"path": "res://main/ui/menu/creature_check_screen_menu/creature_check_screen.gd"
 }, {
 "base": "Node",
 "class": "EffectHandler",
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/effect_handler/effect_handler.gd"
 }, {
-"base": "Area",
+"base": "Area2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://main/world/enemy/enemy.gd"
@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/interact_menu/interact_menu.gd"
 }, {
-"base": "Area",
+"base": "Area2D",
 "class": "Interactable",
 "language": "GDScript",
 "path": "res://main/world/prop/interactable/interactable.gd"
@@ -189,7 +189,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://tool/psx_import.gd"
 }, {
-"base": "Spatial",
+"base": "Node2D",
 "class": "Room",
 "language": "GDScript",
 "path": "res://main/world/room/room.gd"
@@ -224,10 +224,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/skill/skill.gd"
 }, {
+"base": "ButtonContainer",
+"class": "SkillButtonContainer",
+"language": "GDScript",
+"path": "res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_container.gd"
+}, {
+"base": "ButtonPanel",
+"class": "SkillButtonPanel",
+"language": "GDScript",
+"path": "res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/skill_button_panel.gd"
+}, {
 "base": "Button",
 "class": "StatBar",
 "language": "GDScript",
-"path": "res://main/ui/menu/game_menu/creature_check_screen/stat_bar/stat_bar.gd"
+"path": "res://main/ui/menu/creature_check_screen_menu/stat_bar/stat_bar.gd"
 }, {
 "base": "ActiveSkill",
 "class": "StatusSkill",
@@ -318,6 +328,8 @@ _global_script_class_icons={
 "SaveFileMenu": "",
 "Selector": "",
 "Skill": "",
+"SkillButtonContainer": "",
+"SkillButtonPanel": "",
 "StatBar": "",
 "StatusSkill": "",
 "Terminal": "",
@@ -348,8 +360,8 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/width=560
-window/size/height=330
+window/size/width=490
+window/size/height=276
 
 [importer_defaults]
 
@@ -511,8 +523,6 @@ turn_left={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
-2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://main/world/default_env.tres"

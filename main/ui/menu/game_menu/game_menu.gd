@@ -102,9 +102,9 @@ func input_pressed(key_name: String) -> void:
 					active.focus_exited()
 				input["PartySelectHotKeyContainer"].disable_input()
 				input["PartySelectHotKeyContainer"].visible = false
-		_:
-			if key_name in creature.get_node("Skills").get_skill_names("Active"):
-				var skill: Node = creature.get_node("Skills/Active/" + key_name)
+		"Use":
+			if state == "skills":
+				var skill: Node = creature.get_node("Skills/Active").get_child(get_focus_owner().get_index())
 				if skill.side == "opposite" and not in_battle:
 					return
 				hide_skills()
@@ -235,6 +235,7 @@ func select_all_active() -> void:
 func show_party(anim: bool) -> void:
 	if anim:
 		effect_handler.slide(self, "y", 0, effect_handler.default_slide_time)
+	update_party()
 	input["MainButtonContainer"].disable_input()
 	input["PartyHotKeyContainer"].enable_input()
 	input["PartyHotKeyContainer"].visible = true

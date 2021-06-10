@@ -10,7 +10,6 @@ func _input(event: InputEvent) -> void:
 	for key in hotkeys.keys():
 		if event.is_action_pressed(hotkeys[key], false):
 			controller.input_pressed(key)
-			
 
 func add_items() -> void:
 	for child in get_children():
