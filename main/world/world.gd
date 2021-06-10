@@ -2,6 +2,7 @@ extends Node
 # Contains all 3d elements of the environment
 
 export (NodePath) var player
+export (NodePath) var backdrop
 export var room_path: String
 var current_room: String = "block"
 var temp_data: Dictionary
@@ -9,14 +10,18 @@ var current_terminal: String # set by terminal on menu_open
 
 func _ready() -> void:
 	player = get_node(player)
+	backdrop = get_node(backdrop)
 	get_viewport().connect("battle_start", self, "battle_started")
 	get_viewport().connect("battle_end", self, "battle_ended")
 
 func battle_started(_creatures: Array) -> void:
 	player.can_move = false
+	backdrop.visible = true
+	backdrop.texture = $Room.backdrop
 
 func battle_ended() -> void:
 	player.can_move = true
+	backdrop.visible = false
 
 func add_room(room_name: String) -> void:
 	if has_node("Room"):

@@ -6,7 +6,7 @@ export(NodePath) var def_affinity
 export(NodePath) var main_vbox
 export(NodePath) var stat_bar_container
 export(NodePath) var skill_button_container
-
+export(NodePath) var exp_info_container
 
 var index := 0
 var party: Array
@@ -19,6 +19,7 @@ func _ready() -> void:
 	main_vbox = get_node(main_vbox)
 	stat_bar_container = get_node(stat_bar_container)
 	skill_button_container = get_node(skill_button_container)
+	exp_info_container = get_node(exp_info_container)
 	disable(false)
 
 func _input(event: InputEvent) -> void:
@@ -61,7 +62,12 @@ func show_creature(creature: Creature) -> void:
 	main_vbox.add_child(creature.panel)
 	main_vbox.move_child(creature.panel, 1)
 	main_vbox.get_child(0).texture = creature.texture
+	exp_info_container.get_node("LevelLabel").text = "Level: " + str(creature.level)
+	exp_info_container.get_node("ExpBar").set_data("EXP", creature.expe, creature.expe_to_level)
+	exp_info_container.get_node("NextLabel").text = "Next: " + str(creature.expe_to_level-creature.expe)
 	skill_button_container.creature = creature
+	def_affinity.set_affinities("DEF", creature.def_affinity)
+	off_affinity.set_affinities("OFF", creature.off_affinity)
 	skill_button_container.add_items()
 
 func return_panel(creature: Creature) -> void:

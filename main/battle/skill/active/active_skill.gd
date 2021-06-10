@@ -4,12 +4,12 @@ class_name ActiveSkill
 export var effect_packed: PackedScene 
 export(String, "hp", "mp") var cost_type := "mp"
 export var cost := 0
-export(String, "phys", "fire", "ice", "elec", "wind", "light", "death", "mind", "flesh") var affinity := "phys"
+export(String, "phys", "fire", "water", "elec", "wind", "light", "death", "mind", "flesh") var affinity := "phys"
 export(String, "all", "single", "random") var target_type := "single"
 export(String, "opposite", "same") var side := "opposite"
 export(int, 0, 100) var accuracy := 0
 
-func use(user: Creature, targets: Array, anim: bool) -> void:
+func use(_user: Creature, _targets: Array, _anim: bool) -> void:
 	pass
 
 func is_miss(user: Creature, target: Creature) -> bool:

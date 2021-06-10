@@ -1,10 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/ui/theme/background.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/utility_classes/int_viewport_container/int_viewport_container.gd" type="Script" id=4]
-[ext_resource path="res://main/battle/party/party.gd" type="Script" id=5]
+[ext_resource path="res://main/battle/party.gd" type="Script" id=5]
 [ext_resource path="res://main/main.gd" type="Script" id=6]
 [ext_resource path="res://main/save_data/file_saver/file_saver.gd" type="Script" id=7]
 [ext_resource path="res://main/ui/menu/main_menu/MainMenu.tscn" type="PackedScene" id=8]
@@ -24,12 +24,13 @@
 [ext_resource path="res://main/ui/menu/terminal_menu/terminal.ogg" type="AudioStream" id=22]
 [ext_resource path="res://main/ui/utility_classes/vision_effects/VisionEffects.tscn" type="PackedScene" id=23]
 [ext_resource path="res://main/battle/battle_queue/battle_queue.gd" type="Script" id=24]
+[ext_resource path="res://main/world/room/protist/background.png" type="Texture" id=25]
 [ext_resource path="res://main/battle/party/active/active.gd" type="Script" id=26]
 [ext_resource path="res://main/world/shader/chromatic.shader" type="Shader" id=27]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
-shader_param/apply = true
+shader_param/apply = false
 shader_param/amount = 0.13
 
 [node name="Main" type="Node"]
@@ -106,12 +107,25 @@ transition_duration = 0.75
 ]]
 script = ExtResource( 19 )
 player = NodePath("Player")
+backdrop = NodePath("CanvasLayer/Backdrop")
 room_path = "res://main/world/room/"
 
 [node name="Player" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 14 )]
 position = Vector2( 0, 13.1143 )
 z_index = 1
 main_viewport = NodePath("../..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ViewportContainer/MainViewport/World"]
+
+[node name="Backdrop" type="TextureRect" parent="ViewportContainer/MainViewport/World/CanvasLayer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 3
 
 [node name="Party" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
@@ -127,6 +141,9 @@ battle_party_node = NodePath("../../Battle/BattleQueue/PlayerParty")
 [node name="Yun" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 9 )]
 def_affinity = {
 "phys": "absorb"
+}
+off_affinity = {
+"phys": 120
 }
 
 [node name="Orange" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 2 )]

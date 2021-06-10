@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/creature_check_screen_menu/affinity_panel_container/affinity_container.gd"
 }, {
+"base": "PanelContainer",
+"class": "AffinityPanel",
+"language": "GDScript",
+"path": "res://main/ui/menu/creature_check_screen_menu/affinity_panel_container/affinity_panel/affinity_panel.gd"
+}, {
 "base": "Node",
 "class": "BattleQueue",
 "language": "GDScript",
@@ -142,7 +147,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Party",
 "language": "GDScript",
-"path": "res://main/battle/party/party.gd"
+"path": "res://main/battle/party.gd"
 }, {
 "base": "ButtonContainer",
 "class": "PartyButtonContainer",
@@ -290,6 +295,7 @@ _global_script_class_icons={
 "ActiveSkill": "",
 "ActiveSkillEffect": "",
 "AffinityContainer": "",
+"AffinityPanel": "",
 "BattleQueue": "",
 "BuffSkill": "",
 "ButtonContainer": "",
@@ -523,6 +529,7 @@ turn_left={
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://main/world/default_env.tres"

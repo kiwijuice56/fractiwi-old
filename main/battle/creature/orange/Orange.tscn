@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/orange.png" type="Texture" id=2]
 [ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=4]
 
 [node name="Orange" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
@@ -14,9 +15,12 @@ stre = 1
 magi = 2
 vita = 1
 luck = 1
-agil = 2
+agil = 7
 def_affinity = {
-"phys": "resist"
+"phys": "resist",
+"water": "weak"
 }
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+
+[node name="Bubble" parent="Skills/Active" index="1" instance=ExtResource( 4 )]

@@ -13,4 +13,5 @@ func _ready() -> void:
 func set_content(skill: Skill) -> void:
 	name_label.text = skill.name
 	if "cost_type" in skill:
-		cost_label.text = str(skill.cost) + " " + skill.cost_type 
+		cost_label.text = str(skill.cost) + " " + skill.cost_type
+	icon.set_icon(skill.affinity)

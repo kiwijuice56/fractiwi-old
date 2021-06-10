@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/PointBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/ui/theme/style_box/focus/Focus.tres" type="StyleBox" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/status_icons/OK.png" type="Texture" id=5]
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=6]
 [ext_resource path="res://main/ui/menu/game_menu/point_label/PointLabel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/status_icons/dead.png" type="Texture" id=8]
+[ext_resource path="res://main/ui/theme/style_box/focus/disabled/FocusDisabled.tres" type="StyleBox" id=9]
+[ext_resource path="res://main/ui/theme/style_box/regular/disabled/RegularDisabled.tres" type="StyleBox" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -53,11 +56,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 focused_style = ExtResource( 2 )
+disabled_style = ExtResource( 10 )
+disbaled_focus_style = ExtResource( 9 )
 name_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameLabel")
 hp_bar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HP")
 mp_bar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MP")
 status_icon = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/StatusIcon")
 in_party_indicator = NodePath("MarginContainer2/InPartyIndicator")
+icons = {
+"dead": ExtResource( 8 ),
+"ok": ExtResource( 5 )
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 2.0

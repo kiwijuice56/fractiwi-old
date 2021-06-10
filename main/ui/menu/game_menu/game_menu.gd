@@ -243,7 +243,7 @@ func show_party(anim: bool) -> void:
 	input["PartySelectHotKeyContainer"].visible = false
 	input["FullPartyContainer"].grab_focus_at(0)
 	state = "party"
-	
+
 func hide_party() -> void:
 	effect_handler.slide(self, "y", pop_out_party.rect_size.y, effect_handler.default_slide_time)
 	input["PartyHotKeyContainer"].disable_input()

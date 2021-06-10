@@ -69,6 +69,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -40.0
+margin_left = -43.0
 margin_top = -15.0
 text = "ver a1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

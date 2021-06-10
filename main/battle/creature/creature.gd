@@ -14,10 +14,14 @@ export var agil: int
 export var def_affinity: Dictionary
 export var off_affinity: Dictionary
 
-var hp: int = 7
+var hp: int = 10
 var max_hp: int = 10
 var mp: int
 var max_mp: int
+var status := "ok"
+
+var expe := 0
+var expe_to_level := 25
 
 signal updated
 signal target_action_complete
@@ -79,7 +83,11 @@ func death() -> void:
 		panel.get_node("AnimationPlayer").current_animation = "death"
 		yield(panel.get_node("AnimationPlayer"), "animation_finished")
 		viewport.game.update_party()
+		status = "dead"
+		hp = 0
 		emit_signal("death")
+		if name == "Yun":
+			get_tree().quit()
 	else:
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"
@@ -87,6 +95,7 @@ func death() -> void:
 		get_parent().remove_child(self)
 		emit_signal("death")
 		queue_free()
+
 
 func update() -> void:
 	emit_signal("updated")

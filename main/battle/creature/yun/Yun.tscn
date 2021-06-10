@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/battle/ai/player/player_ai.gd" type="Script" id=3]
+[ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/creature/yun/yun.png" type="Texture" id=5]
 
 [node name="Yun" instance=ExtResource( 1 )]
+texture = ExtResource( 5 )
 level = 1
 hp_growth = 9
 mp_growth = 5
@@ -14,19 +17,15 @@ vita = 2
 luck = 2
 agil = 4
 def_affinity = {
-"phys": "repel"
+"water": "null"
+}
+off_affinity = {
+"phys": 120
 }
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
 
-[node name="Slash2" parent="Skills/Active" index="1" instance=ExtResource( 2 )]
-
-[node name="Slash3" parent="Skills/Active" index="2" instance=ExtResource( 2 )]
-
-[node name="Slash4" parent="Skills/Active" index="3" instance=ExtResource( 2 )]
-
-[node name="Multi Slash" parent="Skills/Active" index="4" instance=ExtResource( 2 )]
-target_type = "all"
+[node name="Bubble" parent="Skills/Active" index="1" instance=ExtResource( 4 )]
 
 [node name="AI" parent="." index="1"]
 script = ExtResource( 3 )

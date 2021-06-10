@@ -31,7 +31,7 @@ func in_active_party(creature: Creature) -> bool:
 	return creature in $Active.get_children()
 
 func summon_member(creature: Creature) -> bool:
-	if $Active.get_child_count() >= 4:
+	if $Active.get_child_count() >= 4 or creature.status == "dead":
 		return false
 	$Inactive.remove_child(creature)
 	$Active.add_child(creature)
