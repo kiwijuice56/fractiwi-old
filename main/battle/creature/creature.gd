@@ -33,7 +33,7 @@ var targeted_skill_data: Array
 var panel: ButtonPanel
 
 # Returns press turns used
-func do_turn(same: Node, opposite: Node) -> int:
+func do_turn(same: Array, opposite: Array) -> int:
 	var action = $AI.do_turn(same, opposite, self)
 	if $AI.yielded: # if player, ai must be yielded for
 		action = yield(action, "completed")

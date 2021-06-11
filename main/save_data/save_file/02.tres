@@ -25,10 +25,26 @@ data = {
 "stre": 2,
 "vita": 2
 }
+},
+"01Grape": {
+"skills": {
+"Active": [ "Stab", "Stab2" ],
+"Passive": [  ]
+},
+"stats": {
+"agil": 4,
+"hp": 3,
+"level": 1,
+"luck": 2,
+"magi": 2,
+"mp": 0,
+"stre": 2,
+"vita": 2
+}
 }
 },
 "inactive": {
-"00Orange": {
+"02Orange": {
 "skills": {
 "Active": [ "Stab" ],
 "Passive": [  ]

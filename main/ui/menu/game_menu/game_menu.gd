@@ -190,8 +190,10 @@ func show_skills() -> void:
 		input[input["PartySkillContainer"].get_child(0).name].enable_input()
 		input[input["PartySkillContainer"].get_child(0).name].grab_focus_at(0)
 	else:
+		input["PartySkillContainer"].current_tab = creature.get_index()
 		input[creature.name].enable_input()
 		input[creature.name].grab_focus_at(0)
+		
 	effect_handler.fade(action_selection, "visible", effect_handler.default_fade_time)
 	state = "skills"
 

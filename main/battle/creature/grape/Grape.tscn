@@ -5,7 +5,7 @@
 [ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=4]
 
-[node name="Orange" instance=ExtResource( 1 )]
+[node name="Grape" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
 race = "Inanimate"
 level = 3
@@ -15,7 +15,7 @@ stre = 1
 magi = 2
 vita = 1
 luck = 1
-agil = 10
+agil = 12
 def_affinity = {
 "phys": "weak",
 "water": "null"

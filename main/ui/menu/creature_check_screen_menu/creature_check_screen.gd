@@ -73,10 +73,10 @@ func show_creature(creature: Creature) -> void:
 	def_affinity.set_affinities("DEF", creature.def_affinity)
 	off_affinity.set_affinities("OFF", creature.off_affinity)
 	skill_button_container.add_items()
-	
 
 func return_panel(creature: Creature) -> void:
 	creature.panel.size_flags_vertical = Control.SIZE_SHRINK_END
+	print(creature.name, creature.panel.get_parent().name)
 	main_vbox.remove_child(creature.panel)
 	parent.add_child(creature.panel)
 
@@ -96,10 +96,10 @@ func stat_increase(stat: String) -> void:
 		emit_signal("level_finished")
 
 func level_up(creature: Creature, levels: int) -> void:
-	index = creature.panel.get_index()
+	index = creature.get_index()
 	levels_left = levels
-	show_creature(creature)
 	enable(true)
+	show_creature(creature)
 	move_enabled = false
 	stat_bar_container.grab_focus_at(0)
 

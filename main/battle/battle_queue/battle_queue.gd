@@ -4,6 +4,7 @@ class_name BattleQueue
 
 export (NodePath) var player_party_node
 var expe := 0
+var pointer := 0
 
 func _ready() -> void:
 	get_viewport().connect("battle_start", self, "battle")
@@ -19,9 +20,6 @@ func agility_sort(a: Creature, b: Creature) -> bool:
 	return a.agil > b.agil
 
 func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
-	enemy_party.sort_custom(self, "agility_sort")
-	player_party.sort_custom(self, "agility_sort")
-	
 	# Removing existing creatures
 	for child in $PlayerParty.get_children():
 		$PlayerParty.remove_child(child)
@@ -38,17 +36,33 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 		player_party_node.get_node("Active").remove_child(creature)
 		$PlayerParty.add_child(creature)
 	player_party_node.get_node("Active").displaced = true
-	# Return fastest party
-	if $EnemyParty.get_child(0).agil < $PlayerParty.get_child(0).agil:
-		return $PlayerParty
-	else:
-		return $EnemyParty
+	return $PlayerParty
+#	# Return fastest party
+#	if $EnemyParty.get_child(0).agil < $PlayerParty.get_child(0).agil:
+#		return $PlayerParty
+#	else:
+#		return $EnemyParty
 
 func return_player_party(player_party: Array) -> void:
 	player_party_node.get_node("Active").displaced = false
 	for creature in player_party:
 		creature.get_parent().remove_child(creature)
 		player_party_node.get_node("Active").add_child(creature)
+
+func to_array(party: Node, old_arr: Array) -> Array:
+	var l_p = pointer-1
+	var arr = party.get_children()
+	arr.sort_custom(self, "agility_sort")
+	if not len(old_arr) == 0:
+		# if removed
+		for i in range(len(old_arr)):
+			if (not old_arr[i] in arr) and i <= l_p:
+				pointer -= 1
+		# if added:
+		for i in range(len(arr)):
+			if (not arr[i] in old_arr) and i <= l_p:
+				pointer += 1
+	return arr
 
 func turn_logic(turns_used: int, full: int, half: int) -> Array:
 	match turns_used:
@@ -80,21 +94,31 @@ func turn_logic(turns_used: int, full: int, half: int) -> Array:
 					half -= 1
 	return [full, half]
 
+
 func battle(enemy_creatures: Array) -> void:
 	expe = 0
 	var player_creatures = player_party_node.get_node("Active").get_children()
 	var current = initialize_parties(enemy_creatures, player_creatures)
 	var opposite = $EnemyParty if current == $PlayerParty else $PlayerParty
 	
+	var current_array = to_array(current, [])
+	var opposite_array = to_array(opposite, [])
+	
 	var full: int = current.get_child_count()
 	var half: int = 0
+	pointer = 0
 	yield(get_viewport().game, "battle_ready") # becaused called from battle_start signal, game may start before menu is initialized
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
 		get_viewport().game.press_turn_container.set_side(current == $PlayerParty)
 		get_viewport().game.press_turn_container.set_turns(full, half)
 		
+		current_array = to_array(current, current_array)
+		
+		if pointer >= len(current_array):
+			pointer = 0
+		
 		# get turns used
-		var turns: Array = turn_logic(yield(current.get_child(0).do_turn(current, opposite), "completed"), full, half)
+		var turns: Array = turn_logic(yield(current_array[pointer].do_turn(current_array, opposite_array), "completed"), full, half)
 		full = turns[0]
 		half = turns[1]
 		
@@ -104,13 +128,9 @@ func battle(enemy_creatures: Array) -> void:
 			current = opposite
 			opposite = temp
 			
-			# resort
-			var creatures: Array = current.get_children()
-			for creature in creatures:
-				current.remove_child(creature)
-			creatures.sort_custom(self, "agility_sort")
-			for creature in creatures:
-				current.add_child(creature)
+			pointer = 0
+			current_array = to_array(current, [])
+			opposite_array = to_array(opposite, [])
 			
 			# initialize values
 			full = current.get_child_count()
@@ -119,9 +139,7 @@ func battle(enemy_creatures: Array) -> void:
 			yield(get_viewport().game.effect_handler, "complete")
 			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "show", 0.25)
 		else:
-			var front = current.get_child(0)
-			current.remove_child(front)
-			current.add_child(front)
+			pointer += 1
 	for child in $PlayerParty.get_children():
 		child.expe += expe
 	return_player_party($PlayerParty.get_children())

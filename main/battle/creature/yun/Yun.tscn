@@ -15,7 +15,7 @@ stre = 2
 magi = 2
 vita = 2
 luck = 2
-agil = 4
+agil = 7
 def_affinity = {
 "water": "null"
 }
