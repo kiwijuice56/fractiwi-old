@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tutorial_next.WAV-9e2888243839df809fb295e24989ee3f.sample"
+
+[deps]
+
+source_file="res://main/ui/utility_classes/menu_sound_player/tutorial_next.WAV"
+dest_files=[ "res://.import/tutorial_next.WAV-9e2888243839df809fb295e24989ee3f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

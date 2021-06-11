@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/PointBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/SkillButtonContainer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar/StatBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar_container/stat_bar/StatBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/battle/creature/orange/orange.png" type="Texture" id=5]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=6]
 [ext_resource path="res://main/ui/menu/creature_check_screen_menu/creature_check_screen.gd" type="Script" id=7]
@@ -11,6 +11,7 @@
 [ext_resource path="res://main/ui/theme/style_box/regular/margin/MarginRegular.tres" type="StyleBox" id=9]
 [ext_resource path="res://main/ui/menu/creature_check_screen_menu/affinity_panel_container/AffinityContainer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/SkillButtonPanel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar_container/stat_bar_container.gd" type="Script" id=12]
 
 [node name="CreatureCheckScreen" type="PanelContainer"]
 anchor_right = 1.0
@@ -51,13 +52,13 @@ margin_bottom = 263.0
 custom_constants/separation = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 260.0
 size_flags_horizontal = 0
 custom_constants/separation = 7
 
 [node name="ExpInfoContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 custom_constants/separation = 15
@@ -81,51 +82,55 @@ text = "Next: 999999"
 
 [node name="StatBarContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 margin_top = 21.0
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 107.0
 rect_min_size = Vector2( 237, 0 )
 size_flags_vertical = 0
 custom_constants/separation = 4
+script = ExtResource( 12 )
+controller = NodePath("../../../../..")
+button_scene = ExtResource( 4 )
+neighbor_type = "vertical"
 
 [node name="StatBar" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/StatBarContainer" instance=ExtResource( 4 )]
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 14.0
 stat = "stre"
 
 [node name="StatBar2" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/StatBarContainer" instance=ExtResource( 4 )]
 margin_top = 18.0
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 32.0
 stat = "magi"
 
 [node name="StatBar3" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/StatBarContainer" instance=ExtResource( 4 )]
 margin_top = 36.0
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 50.0
 stat = "vita"
 
 [node name="StatBar4" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/StatBarContainer" instance=ExtResource( 4 )]
 margin_top = 54.0
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 68.0
 stat = "agil"
 
 [node name="StatBar5" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/StatBarContainer" instance=ExtResource( 4 )]
 margin_top = 72.0
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 86.0
 stat = "luck"
 
 [node name="SkillContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 margin_top = 114.0
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 260.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
 
 [node name="CurrentSkillContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/SkillContainer"]
-margin_right = 124.0
+margin_right = 146.0
 margin_bottom = 146.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -135,7 +140,7 @@ custom_styles/panel = ExtResource( 9 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 4.0
-margin_right = 120.0
+margin_right = 142.0
 margin_bottom = 102.0
 size_flags_vertical = 2
 controller = NodePath("../../../../../../..")
@@ -144,52 +149,48 @@ neighbor_type = "horizontal"
 [node name="SkillButtonPanel" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/SkillContainer/CurrentSkillContainer/SkillButtonContainer" instance=ExtResource( 11 )]
 margin_left = 0.0
 margin_top = 84.0
-margin_right = 116.0
+margin_right = 138.0
 margin_bottom = 98.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/SkillContainer"]
-margin_left = 132.0
-margin_right = 239.0
+margin_left = 154.0
+margin_right = 237.0
 margin_bottom = 146.0
 custom_constants/separation = 8
 
 [node name="SkillDescriptionContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/SkillContainer/VBoxContainer"]
-margin_right = 107.0
-margin_bottom = 39.0
+margin_right = 83.0
+margin_bottom = 22.0
 custom_styles/panel = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/SkillContainer/VBoxContainer/SkillDescriptionContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 103.0
-margin_bottom = 35.0
-text = "Pow: 100, Acc: 100
-Can instant-kill"
+margin_right = 79.0
+margin_bottom = 18.0
+text = "               "
 
 [node name="NextSkillContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/SkillContainer/VBoxContainer"]
-margin_top = 47.0
-margin_right = 107.0
+margin_top = 30.0
+margin_right = 83.0
 margin_bottom = 146.0
 size_flags_vertical = 3
 custom_styles/panel = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/SkillContainer/VBoxContainer/NextSkillContainer"]
 margin_left = 4.0
-margin_top = 25.0
-margin_right = 103.0
-margin_bottom = 73.0
-text = "Next:
-Recarmdra
-...."
+margin_top = 51.0
+margin_right = 79.0
+margin_bottom = 65.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
-margin_left = 247.0
+margin_left = 245.0
 margin_right = 474.0
 margin_bottom = 260.0
 size_flags_horizontal = 3
 
 [node name="Sprite" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 227.0
+margin_right = 229.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -201,17 +202,17 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 172.0
-margin_right = 227.0
+margin_right = 229.0
 margin_bottom = 260.0
 size_flags_vertical = 10
 custom_constants/separation = 8
 
 [node name="DefenseAffinityContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 10 )]
 margin_top = 0.0
-margin_right = 227.0
+margin_right = 229.0
 margin_bottom = 40.0
 
 [node name="OffenseAffinityContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 10 )]
 margin_top = 48.0
-margin_right = 227.0
+margin_right = 229.0
 margin_bottom = 88.0

@@ -37,6 +37,7 @@ tracks/1/keys = {
 [node name="Bubble" instance=ExtResource( 1 )]
 count = "multiple"
 delay = 0.8
+anim_name = "Bubble"
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/startBubble = SubResource( 1 )

@@ -33,7 +33,6 @@ func out_tween_completed(object, key):
 	# stop the music -- otherwise it continues to run at silent volume
 	$OutTween.stop(object, key)
 
-
 func in_tween_completed(object, key):
 	# stop the music -- otherwise it continues to run at silent volume
 	$InTween.stop(object, key)

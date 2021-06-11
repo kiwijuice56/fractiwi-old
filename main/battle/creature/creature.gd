@@ -3,7 +3,7 @@ class_name Creature
 # Contains data for a creature and functions to edit them
 
 export(String, "Demon", "Human", "Inanimate", "Beast") var race: String = "Human"
-export var level: int setget set_level
+export var level: int
 export var hp_growth: int
 export var mp_growth: int
 export var stre: int
@@ -16,12 +16,13 @@ export var off_affinity: Dictionary
 
 var hp: int = 10
 var max_hp: int = 10
-var mp: int
+var mp: int = 20
 var max_mp: int
 var status := "ok"
 
 var expe := 0
 var expe_to_level := 25
+export var expe_given := 10
 
 signal updated
 signal target_action_complete
@@ -29,7 +30,6 @@ signal death
 
 # Set by skills targeted at this creature to use in appropriate time of animation
 var targeted_skill_data: Array
-
 var panel: ButtonPanel
 
 # Returns press turns used
@@ -75,6 +75,7 @@ func check_hp() -> void:
 		yield(self, "death")
 
 func death() -> void:
+	get_parent().get_parent().expe += expe_given #battle queue
 	if panel:
 		var viewport = get_viewport()
 		get_parent().remove_child(self)
@@ -96,7 +97,6 @@ func death() -> void:
 		emit_signal("death")
 		queue_free()
 
-
 func update() -> void:
 	emit_signal("updated")
 
@@ -112,7 +112,12 @@ func to_dict() -> Dictionary:
 func set_stats(_data: Dictionary) -> void:
 	pass
 
-func set_level(new_level) -> void:
-	level = new_level
+func set_level() -> int:
+	var levels_changed := 0
+	while expe > expe_to_level:
+		expe -= expe_to_level
+		levels_changed += 1
+	level += levels_changed
 	max_hp = hp_growth * level
 	max_mp = mp_growth * level
+	return levels_changed

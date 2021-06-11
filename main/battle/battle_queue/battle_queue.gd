@@ -3,6 +3,7 @@ class_name BattleQueue
 # Main loop for battle; cycles through all creatures
 
 export (NodePath) var player_party_node
+var expe := 0
 
 func _ready() -> void:
 	get_viewport().connect("battle_start", self, "battle")
@@ -80,6 +81,7 @@ func turn_logic(turns_used: int, full: int, half: int) -> Array:
 	return [full, half]
 
 func battle(enemy_creatures: Array) -> void:
+	expe = 0
 	var player_creatures = player_party_node.get_node("Active").get_children()
 	var current = initialize_parties(enemy_creatures, player_creatures)
 	var opposite = $EnemyParty if current == $PlayerParty else $PlayerParty
@@ -120,5 +122,7 @@ func battle(enemy_creatures: Array) -> void:
 			var front = current.get_child(0)
 			current.remove_child(front)
 			current.add_child(front)
+	for child in $PlayerParty.get_children():
+		child.expe += expe
 	return_player_party($PlayerParty.get_children())
 	get_viewport().battle_ended()

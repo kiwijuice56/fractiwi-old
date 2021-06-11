@@ -10,8 +10,11 @@ export(NodePath) var exp_info_container
 
 var index := 0
 var party: Array
-var back_enabled := true
+var move_enabled := true
 var parent 
+var levels_left := 0
+
+signal level_finished
 
 func _ready() -> void:
 	def_affinity = get_node(def_affinity)
@@ -24,8 +27,9 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if disabled: return
-	
-	if event.is_action_pressed("ui_cancel", false) and back_enabled:
+	if not move_enabled: return
+	if event.is_action_pressed("ui_cancel", false):
+		._input(event)
 		main_viewport.transition.transition_in()
 		disable(true)
 		yield(main_viewport.transition, "in_finished")
@@ -56,8 +60,8 @@ func show_creature(creature: Creature) -> void:
 	parent = creature.panel.get_parent()
 	creature.panel.size_flags_vertical = Control.SIZE_FILL
 	creature.panel.update_content()
-	for child in stat_bar_container.get_children():
-		child.set_stat(creature)
+	stat_bar_container.add_items()
+	stat_bar_container.update_all(creature)
 	parent.remove_child(creature.panel)
 	main_vbox.add_child(creature.panel)
 	main_vbox.move_child(creature.panel, 1)
@@ -69,16 +73,35 @@ func show_creature(creature: Creature) -> void:
 	def_affinity.set_affinities("DEF", creature.def_affinity)
 	off_affinity.set_affinities("OFF", creature.off_affinity)
 	skill_button_container.add_items()
+	
 
 func return_panel(creature: Creature) -> void:
 	creature.panel.size_flags_vertical = Control.SIZE_SHRINK_END
 	main_vbox.remove_child(creature.panel)
 	parent.add_child(creature.panel)
 
-func set_affinities() -> void:
-	pass
-	#off_affinity.set_affinity_panels(creature.off_affinity)
-	#def_affinity.set_affinity_panels(creature.def_affinity)
+func stat_increase(stat: String) -> void:
+	party[index].set(stat, party[index].get(stat)+1)
+	return_panel(party[index])
+	show_creature(party[index])
+	levels_left -= 1
+	disable(true)
+	if levels_left == 0:
+		main_viewport.transition.transition_in()
+		yield(main_viewport.transition, "in_finished")
+		disable(false)
+		return_panel(party[index])
+		move_enabled = true
+		main_viewport.transition.transition_out()
+		emit_signal("level_finished")
+
+func level_up(creature: Creature, levels: int) -> void:
+	index = creature.panel.get_index()
+	levels_left = levels
+	show_creature(creature)
+	enable(true)
+	move_enabled = false
+	stat_bar_container.grab_focus_at(0)
 
 func get_party() -> Array:
 	return main_viewport.party.get_node("Active").get_children() + main_viewport.party.get_node("Inactive").get_children()

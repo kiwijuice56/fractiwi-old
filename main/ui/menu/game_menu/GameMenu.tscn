@@ -237,6 +237,7 @@ button_scene = ExtResource( 13 )
 margin_top = 3.0
 margin_right = 121.0
 margin_bottom = 65.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -247,6 +248,7 @@ margin_left = 123.0
 margin_top = 3.0
 margin_right = 244.0
 margin_bottom = 65.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -257,6 +259,7 @@ margin_left = 245.0
 margin_top = 3.0
 margin_right = 366.0
 margin_bottom = 65.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -267,6 +270,7 @@ margin_left = 368.0
 margin_top = 3.0
 margin_right = 489.0
 margin_bottom = 65.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -330,6 +334,7 @@ full_party = true
 margin_top = 9.0
 margin_right = 121.0
 margin_bottom = 71.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -340,6 +345,7 @@ margin_left = 125.0
 margin_top = 9.0
 margin_right = 246.0
 margin_bottom = 71.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -350,6 +356,7 @@ margin_left = 250.0
 margin_top = 9.0
 margin_right = 371.0
 margin_bottom = 71.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -360,6 +367,7 @@ margin_left = 375.0
 margin_top = 9.0
 margin_right = 496.0
 margin_bottom = 71.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -370,6 +378,7 @@ margin_left = 500.0
 margin_top = 9.0
 margin_right = 621.0
 margin_bottom = 71.0
+rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )

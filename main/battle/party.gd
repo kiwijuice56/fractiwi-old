@@ -3,12 +3,17 @@ class_name Party
 # Contains functions to allow other nodes to modify party
 
 export var creature_path: String
+export var player_ai: Script
+
+func _ready() -> void:
+	get_viewport().connect("battle_end", self, "battle_ended")
 
 func instance_member(creature: String, data: Dictionary) -> Creature:
 	creature = creature.substr(2) # remove party order
 	var scene = load( creature_path + ("%s/%s.tscn" % [creature.to_lower(), creature])).instance()
 	scene.set_stats(data["stats"])
 	scene.get_node("Skills").set_skills(data["skills"])
+	scene.get_node("AI").set_script(player_ai)
 	return scene
 
 func add_member(creature: Creature) -> void:
@@ -43,6 +48,16 @@ func return_member(creature: Creature) -> bool:
 	$Active.remove_child(creature)
 	$Inactive.add_child(creature)
 	return true
+
+func check_level_ups() -> void:
+	for child in $Active.get_children():
+		var changed :int = child.set_level()
+		if changed > 0:
+			get_viewport().creature_check.level_up(child, changed)
+			yield(get_viewport().creature_check, "level_finished")
+
+func battle_ended() -> void:
+	check_level_ups()
 
 func save_data() -> Dictionary:
 	var active = {}

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nextforreal.WAV-6c0b1ce9bada3950180e8d80b01b4546.sample"
+
+[deps]
+
+source_file="res://main/ui/utility_classes/menu_sound_player/nextforreal.WAV"
+dest_files=[ "res://.import/nextforreal.WAV-6c0b1ce9bada3950180e8d80b01b4546.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

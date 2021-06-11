@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toggle2.wav-7626292dd6126e4ce2b2df19b24c77af.sample"
+
+[deps]
+
+source_file="res://main/ui/utility_classes/menu_sound_player/toggle2.wav"
+dest_files=[ "res://.import/toggle2.wav-7626292dd6126e4ce2b2df19b24c77af.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

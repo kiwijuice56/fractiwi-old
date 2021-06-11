@@ -1,31 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/skill_button_panel.gd" type="Script" id=1]
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=2]
-[ext_resource path="res://main/ui/theme/style_box/selected/selected.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/AffinityIcon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/water.png" type="Texture" id=5]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/phys.png" type="Texture" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=1]
+[ext_resource path="res://main/ui/theme/style_box/selected/Selected.tres" type="StyleBox" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=2]
-content_margin_left = 0.0
-content_margin_right = 3.0
+content_margin_left = 4.0
+content_margin_right = 4.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
-
-[sub_resource type="StyleBoxTexture" id=3]
-content_margin_left = 0.0
-content_margin_right = 3.0
-content_margin_top = 0.0
-content_margin_bottom = 0.0
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 16, 16 )
-margin_left = 3.0
-margin_right = 3.0
-margin_top = 3.0
-margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -39,13 +25,13 @@ focus_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme = ExtResource( 2 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 7 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 regular_style = SubResource( 2 )
-focused_style = SubResource( 3 )
+focused_style = ExtResource( 7 )
 disabled_style = SubResource( 4 )
 disbaled_focus_style = SubResource( 5 )
 icon = NodePath("HBoxContainer/AffinityIcon")
@@ -53,7 +39,8 @@ name_label = NodePath("HBoxContainer/Name")
 cost_label = NodePath("HBoxContainer/Cost")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 119.0
+margin_left = 4.0
+margin_right = 120.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -74,8 +61,8 @@ align = 1
 valign = 1
 
 [node name="Cost" type="Label" parent="HBoxContainer"]
-margin_left = 79.0
-margin_right = 118.0
+margin_left = 77.0
+margin_right = 116.0
 margin_bottom = 14.0
 size_flags_horizontal = 10
 text = "999 mp"

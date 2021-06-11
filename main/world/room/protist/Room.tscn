@@ -198,7 +198,15 @@ room = NodePath("../../..")
 position = Vector2( 0, 69.3818 )
 
 [node name="Enemy" parent="Enemies" index="0" instance=ExtResource( 1 )]
-position = Vector2( 584.39, 169.622 )
+position = Vector2( 464, 202.618 )
+creatures = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ]
+
+[node name="Enemy2" parent="Enemies" index="1" instance=ExtResource( 1 )]
+position = Vector2( 528, 170.618 )
+creatures = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ]
+
+[node name="Enemy3" parent="Enemies" index="2" instance=ExtResource( 1 )]
+position = Vector2( 592, 202.618 )
 creatures = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ]
 
 [node name="TileMap" parent="." index="2"]

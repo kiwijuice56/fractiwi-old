@@ -27,5 +27,9 @@ off_affinity = {
 
 [node name="Bubble" parent="Skills/Active" index="1" instance=ExtResource( 4 )]
 
+[node name="Splash" parent="Skills/Active" index="2" instance=ExtResource( 4 )]
+cost = 2
+target_type = "all"
+
 [node name="AI" parent="." index="1"]
 script = ExtResource( 3 )

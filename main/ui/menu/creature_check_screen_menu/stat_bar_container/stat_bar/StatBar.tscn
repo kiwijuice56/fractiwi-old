@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar/progress.png" type="Texture" id=1]
-[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar/stat_bar.gd" type="Script" id=2]
-[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar/under.png" type="Texture" id=3]
+[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar_container/stat_bar/progress.png" type="Texture" id=1]
+[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar_container/stat_bar/stat_bar.gd" type="Script" id=2]
+[ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar_container/stat_bar/under.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 

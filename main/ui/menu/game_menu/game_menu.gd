@@ -43,9 +43,13 @@ func _input(event: InputEvent) -> void:
 		if open:
 			close_menu()
 			main_viewport.world_node.player.can_move = true
+			main_viewport.menu_sound_player.play_sound("Back")
 		else:
 			open_menu(true)
 			main_viewport.world_node.player.can_move = false
+			main_viewport.menu_sound_player.play_sound("Next")
+	if not open:
+		return
 	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
 
@@ -54,7 +58,9 @@ func input_pressed(key_name: String) -> void:
 	match(key_name):
 		"Party":
 			match state:
-				"default": show_party(true)
+				"default": 
+					main_viewport.menu_sound_player.play_sound("Next")
+					show_party(true)
 		"Back":
 			match state:
 				"party":
@@ -81,6 +87,7 @@ func input_pressed(key_name: String) -> void:
 		"Skills":
 			match state:
 				"default":
+					main_viewport.menu_sound_player.play_sound("Next")
 					if not in_battle:
 						creature = party.get_node("Active").get_child(0)
 					show_skills()
@@ -89,12 +96,16 @@ func input_pressed(key_name: String) -> void:
 				"party":
 					summon_member()
 		"Check":
+			main_viewport.menu_sound_player.play_sound("Next")
 			match state:
 				"party":
 					show_check_screen()
+					main_viewport.menu_sound_player.play_sound("Next")
 		"Pass":
+			main_viewport.menu_sound_player.play_sound("Next")
 			emit_signal("battle_action_chosen", ["Pass", null, []])
 		"Confirm":
+			main_viewport.menu_sound_player.play_sound("Next")
 			if state == "select_active_member":
 				emit_signal("selection_complete", [get_focus_owner().creature])
 				for active in input["ActivePartyContainer"].get_children():
@@ -103,10 +114,15 @@ func input_pressed(key_name: String) -> void:
 				input["PartySelectHotKeyContainer"].disable_input()
 				input["PartySelectHotKeyContainer"].visible = false
 		"Use":
+			
 			if state == "skills":
 				var skill: Node = creature.get_node("Skills/Active").get_child(get_focus_owner().get_index())
 				if skill.side == "opposite" and not in_battle:
 					return
+				if skill.cost > creature.get(skill.cost_type):
+					main_viewport.menu_sound_player.play_sound("Can't")
+					return
+				main_viewport.menu_sound_player.play_sound("Next")
 				hide_skills()
 				state = "selection"
 				set_process_input(false)
@@ -142,7 +158,6 @@ func battle_input(current_creature: Creature):
 	open_menu(false)
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
-	
 
 func battle_action_chosen(_ui_info: Array) -> void:
 	text_label.text = ""
@@ -197,12 +212,15 @@ func summon_member() -> void:
 	var success: bool = party.summon_member(creature_button.creature)
 	if success:
 		update_party()
+		main_viewport.menu_sound_player.play_sound("Summon")
 		input["FullPartyContainer"].grab_focus_at(index)
 		input["FullPartyContainer"].get_parent().set_h_scroll(scroll)
 		if in_battle:
 			hide_party()
 			yield(effect_handler, "complete")
 			emit_signal("battle_action_chosen", ["Summon", null, []])
+	else:
+		main_viewport.menu_sound_player.play_sound("Can't")
 
 func return_member():
 	var creature_button := get_focus_owner()
@@ -210,6 +228,7 @@ func return_member():
 	var index := creature_button.get_index()
 	var success: bool = party.return_member(creature_button.creature)
 	if success:
+		main_viewport.menu_sound_player.play_sound("Summon")
 		update_party()
 		input["FullPartyContainer"].grab_focus_at(index)
 		input["FullPartyContainer"].get_parent().set_h_scroll(scroll)
@@ -217,6 +236,8 @@ func return_member():
 			hide_party()
 			yield(effect_handler, "complete")
 			emit_signal("battle_action_chosen", ["Return", null, []])
+	else:
+		main_viewport.menu_sound_player.play_sound("Can't")
 
 func select_active_member() -> void:
 	input["PartyHotKeyContainer"].disable_input()

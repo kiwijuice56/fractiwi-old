@@ -15,6 +15,7 @@ export (NodePath) var vision_effects
 export (NodePath) var world_node
 export (NodePath) var party
 export (NodePath) var creature_check
+export (NodePath) var menu_sound_player
 
 signal battle_start
 signal battle_end
@@ -32,6 +33,7 @@ func _ready() -> void:
 	world_node = get_node(world_node)
 	party = get_node(party)
 	creature_check = get_node(creature_check)
+	menu_sound_player = get_node(menu_sound_player)
 	yield(get_tree().root, "ready")
 	game.disable(false)
 	terminal.disable(false)

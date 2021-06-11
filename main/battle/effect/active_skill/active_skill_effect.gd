@@ -3,6 +3,7 @@ class_name ActiveSkillEffect
 
 export(String, "single", "multiple") var count: String = "single"
 export var delay: float
+export var anim_name: String
 
 var targets: Array
 
@@ -14,7 +15,7 @@ func animation_finished(_anim: String) -> void:
 	queue_free()
 
 func start(given_position: Vector2, given_targets: Array) -> void:
-	$AnimationPlayer.current_animation = "start" + name
+	$AnimationPlayer.current_animation = "start" + anim_name
 	targets = given_targets
 	$Sprite.global_position = given_position
 	$Sprite.visible = true

@@ -39,6 +39,7 @@ offset = Vector2( 5, -10 )
 transform = Transform2D( 1, 0, 0, 1, 5, -10 )
 count = "multiple"
 delay = 0.4
+anim_name = "Slash"
 
 [node name="AnimationPlayer" parent="." index="0"]
 playback_speed = 1.2

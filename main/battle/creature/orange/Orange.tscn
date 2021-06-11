@@ -15,10 +15,10 @@ stre = 1
 magi = 2
 vita = 1
 luck = 1
-agil = 7
+agil = 5
 def_affinity = {
-"phys": "resist",
-"water": "weak"
+"phys": "weak",
+"water": "null"
 }
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

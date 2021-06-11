@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
@@ -27,6 +27,13 @@
 [ext_resource path="res://main/world/room/protist/background.png" type="Texture" id=25]
 [ext_resource path="res://main/battle/party/active/active.gd" type="Script" id=26]
 [ext_resource path="res://main/world/shader/chromatic.shader" type="Shader" id=27]
+[ext_resource path="res://main/ui/utility_classes/menu_sound_player/menu_sound_player.gd" type="Script" id=28]
+[ext_resource path="res://main/ui/utility_classes/menu_sound_player/back.WAV" type="AudioStream" id=29]
+[ext_resource path="res://main/ui/utility_classes/menu_sound_player/nextforreal.WAV" type="AudioStream" id=30]
+[ext_resource path="res://main/ui/utility_classes/menu_sound_player/toggle2.wav" type="AudioStream" id=31]
+[ext_resource path="res://main/ui/utility_classes/menu_sound_player/next.WAV" type="AudioStream" id=32]
+[ext_resource path="res://main/ui/utility_classes/menu_sound_player/cant.WAV" type="AudioStream" id=33]
+[ext_resource path="res://main/battle/ai/player/player_ai.gd" type="Script" id=34]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -95,12 +102,14 @@ vision_effects = NodePath("UI/VisionEffects")
 world_node = NodePath("World")
 party = NodePath("Party")
 creature_check = NodePath("UI/CreatureCheckScreen")
+menu_sound_player = NodePath("UI/MenuSoundPlayer")
 
 [node name="MusicPlayer" parent="ViewportContainer/MainViewport" instance=ExtResource( 18 )]
 volume_db = -50.0
 autoplay = true
-volume = 5
-transition_duration = 0.75
+mix_target = 1
+volume = -5
+transition_duration = 0.5
 
 [node name="World" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
@@ -132,6 +141,7 @@ stretch_mode = 3
 ]]
 script = ExtResource( 5 )
 creature_path = "res://main/battle/creature/"
+player_ai = ExtResource( 34 )
 
 [node name="Active" type="Node2D" parent="ViewportContainer/MainViewport/Party"]
 visible = false
@@ -179,11 +189,17 @@ main_viewport = NodePath("../..")
 [node name="MainMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 8 )]
 visible = false
 main_viewport = NodePath("../..")
+next_sound = true
+select_sound = true
 music = ExtResource( 21 )
 
 [node name="GameMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 1 )]
 visible = false
 main_viewport = NodePath("../..")
+next_sound = true
+back_sound = true
+select_sound = true
+override_next_sound = true
 party = NodePath("../../Party")
 enemy_party = NodePath("../../Battle/BattleQueue/EnemyParty")
 
@@ -192,16 +208,47 @@ visible = false
 margin_right = 490.0
 margin_bottom = 276.0
 main_viewport = NodePath("../..")
+next_sound = true
+select_sound = true
 music = ExtResource( 22 )
 
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 11 )]
 visible = false
 main_viewport = NodePath("../..")
+next_sound = true
+back_sound = true
+select_sound = true
 file_saver = NodePath("../../../../FileSaver")
 
 [node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 20 )]
 visible = false
 main_viewport = NodePath("../..")
+back_sound = true
+select_sound = true
+
+[node name="MenuSoundPlayer" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI"]
+volume_db = -10.0
+script = ExtResource( 28 )
+
+[node name="Select" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+stream = ExtResource( 31 )
+volume_db = -20.0
+
+[node name="Next" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+stream = ExtResource( 30 )
+volume_db = -20.0
+
+[node name="Back" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+stream = ExtResource( 29 )
+volume_db = -20.0
+
+[node name="Summon" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+stream = ExtResource( 32 )
+volume_db = -20.0
+
+[node name="Can\'t" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+stream = ExtResource( 33 )
+volume_db = -20.0
 
 [node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
 layer = 2

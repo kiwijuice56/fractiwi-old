@@ -11,16 +11,28 @@
 [ext_resource path="res://main/ui/theme/style_box/focus/disabled/FocusDisabled.tres" type="StyleBox" id=9]
 [ext_resource path="res://main/ui/theme/style_box/regular/disabled/RegularDisabled.tres" type="StyleBox" id=10]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "death"
 length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath(".:rect_rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 10.0, -7.0, 4.0, -1.0, 0.5, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -45,6 +57,7 @@ tracks/0/keys = {
 [node name="CreatureButtonPanel" type="PanelContainer"]
 margin_right = 222.0
 margin_bottom = 95.0
+rect_rotation = 10.0
 rect_pivot_offset = Vector2( 65, 32.5 )
 focus_mode = 2
 mouse_filter = 2
@@ -196,7 +209,7 @@ text = "HIT/EVA: 0"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.25
-anims/death = SubResource( 1 )
+anims/death = SubResource( 3 )
 anims/hurt_normal = SubResource( 2 )
 
 [node name="PointLabel" parent="." instance=ExtResource( 7 )]
