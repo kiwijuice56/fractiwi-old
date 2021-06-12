@@ -109,8 +109,9 @@ func to_dict() -> Dictionary:
 				 "luck": luck, "agil": agil, "hp": hp, "mp": mp}
 	return {"skills": skills, "stats": stats}
 
-func set_stats(_data: Dictionary) -> void:
-	pass
+func set_stats(data: Dictionary) -> void:
+	for stat in data.keys():
+		set(stat, data[stat])
 
 func set_level() -> int:
 	var levels_changed := 0

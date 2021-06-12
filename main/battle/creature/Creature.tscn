@@ -114,6 +114,7 @@ script = ExtResource( 1 )
 
 [node name="Skills" type="Node" parent="."]
 script = ExtResource( 2 )
+skill_paths = [ "res://main/battle/skill/active/point/", "res://main/battle/skill/active/status/buff/", "res://main/battle/skill/active/status/condition/", "res://main/battle/skill/passive/affinity/", "res://main/battle/skill/passive/stat/" ]
 
 [node name="Active" type="Node" parent="Skills"]
 

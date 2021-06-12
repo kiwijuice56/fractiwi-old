@@ -37,11 +37,6 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 		$PlayerParty.add_child(creature)
 	player_party_node.get_node("Active").displaced = true
 	return $PlayerParty
-#	# Return fastest party
-#	if $EnemyParty.get_child(0).agil < $PlayerParty.get_child(0).agil:
-#		return $PlayerParty
-#	else:
-#		return $EnemyParty
 
 func return_player_party(player_party: Array) -> void:
 	player_party_node.get_node("Active").displaced = false

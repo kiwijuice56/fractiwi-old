@@ -53,9 +53,6 @@ func return_member(creature: Creature) -> bool:
 
 func check_level_ups() -> void:
 	for child in $Active.get_children():
-		
-		
-		
 		var changed :int = child.set_level()
 		if changed > 0:
 			get_viewport().transition.transition_in()

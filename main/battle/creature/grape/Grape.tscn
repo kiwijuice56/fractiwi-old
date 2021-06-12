@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/orange.png" type="Texture" id=2]
-[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=4]
 
 [node name="Grape" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
@@ -20,7 +18,3 @@ def_affinity = {
 "phys": "weak",
 "water": "null"
 }
-
-[node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
-
-[node name="Bubble" parent="Skills/Active" index="1" instance=ExtResource( 4 )]
