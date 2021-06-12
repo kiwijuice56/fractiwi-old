@@ -20,6 +20,7 @@ def_affinity = {
 "phys": "weak",
 "water": "null"
 }
+expe_given = 20
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
 

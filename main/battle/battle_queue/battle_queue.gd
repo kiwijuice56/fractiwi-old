@@ -143,4 +143,6 @@ func battle(enemy_creatures: Array) -> void:
 	for child in $PlayerParty.get_children():
 		child.expe += expe
 	return_player_party($PlayerParty.get_children())
+	get_viewport().party.check_level_ups()
+	yield(get_viewport().party, "level_up_complete")
 	get_viewport().battle_ended()

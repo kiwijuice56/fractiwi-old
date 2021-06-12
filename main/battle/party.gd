@@ -2,6 +2,8 @@ extends Node
 class_name Party
 # Contains functions to allow other nodes to modify party
 
+signal level_up_complete
+
 export var creature_path: String
 export var player_ai: Script
 
@@ -51,13 +53,22 @@ func return_member(creature: Creature) -> bool:
 
 func check_level_ups() -> void:
 	for child in $Active.get_children():
+		
+		
+		
 		var changed :int = child.set_level()
 		if changed > 0:
+			get_viewport().transition.transition_in()
+			yield(get_viewport().transition, "in_finished")
+			if get_viewport().creature_check.state == "next":
+				yield(get_viewport().creature_check, "ready_for_next")
+			get_viewport().transition.transition_out()
 			get_viewport().creature_check.level_up(child, changed)
 			yield(get_viewport().creature_check, "level_finished")
+	emit_signal("level_up_complete")
 
 func battle_ended() -> void:
-	check_level_ups()
+	pass#check_level_ups()
 
 func save_data() -> Dictionary:
 	var active = {}

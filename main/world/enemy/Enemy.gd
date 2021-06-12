@@ -11,4 +11,5 @@ func body_entered(_player: KinematicBody) -> void:
 	for i in range(len(creatures)):
 		instanced_creatures.append(creatures[i].instance())
 	get_viewport().battle_started(instanced_creatures)
+	yield(get_viewport().transition, "in_finished")
 	call_deferred("queue_free")

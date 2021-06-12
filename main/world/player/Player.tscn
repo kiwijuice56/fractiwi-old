@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://main/world/player/player.gd" type="Script" id=1]
 [ext_resource path="res://main/world/player/madotsuki.png" type="Texture" id=2]
+[ext_resource path="res://main/world/player/step.WAV" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,6 +34,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "walk_left"
@@ -61,6 +74,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -91,6 +116,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "walk_up"
@@ -120,6 +157,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 0
@@ -133,11 +182,9 @@ shape = SubResource( 1 )
 current = true
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 hframes = 3
 vframes = 3
-frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 3.8
@@ -145,3 +192,8 @@ anims/walk_down = SubResource( 2 )
 anims/walk_left = SubResource( 3 )
 anims/walk_right = SubResource( 4 )
 anims/walk_up = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+pitch_scale = 1.25

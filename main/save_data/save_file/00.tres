@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 375
+"time": 45
 },
 "Party": {
 "active": {
@@ -18,23 +18,37 @@ data = {
 "stats": {
 "agil": 7,
 "hp": 10,
-"level": 4,
+"level": 1,
 "luck": 2,
 "magi": 2,
 "mp": 20,
 "stre": 2,
 "vita": 2
 }
-}
 },
-"inactive": {
-"00Orange": {
+"01Grape": {
 "skills": {
 "Active": [ "Slash", "Bubble" ],
 "Passive": [  ]
 },
 "stats": {
-"agil": 7,
+"agil": 12,
+"hp": 10,
+"level": 3,
+"luck": 1,
+"magi": 2,
+"mp": 20,
+"stre": 1,
+"vita": 1
+}
+},
+"02Orange": {
+"skills": {
+"Active": [ "Slash", "Bubble" ],
+"Passive": [  ]
+},
+"stats": {
+"agil": 10,
 "hp": 10,
 "level": 3,
 "luck": 1,
@@ -44,6 +58,8 @@ data = {
 "vita": 1
 }
 }
+},
+"inactive": {
 }
 },
 "World": {
