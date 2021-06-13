@@ -6,17 +6,17 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 11
+"time": 196
 },
 "Party": {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Slash", "Multi Slash" ],
+"Active": [ "Slash" ],
 "Passive": [  ]
 },
 "stats": {
-"agil": 4,
+"agil": 2,
 "hp": 3,
 "level": 1,
 "luck": 2,
@@ -31,7 +31,7 @@ data = {
 }
 },
 "World": {
-"location": "protist",
+"location": "origin_ocean",
 "memory": {
 },
 "terminal": "Terminal"

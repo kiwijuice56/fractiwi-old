@@ -12,7 +12,7 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [  ],
+"Active": [ "Slash" ],
 "Passive": [  ]
 },
 "stats": {
@@ -31,7 +31,7 @@ data = {
 }
 },
 "World": {
-"location": "protist",
+"location": "origin",
 "memory": {
 },
 "terminal": "Terminal"

@@ -39,12 +39,13 @@ press_turn_container = NodePath("VBoxContainer/PressTurnContainer")
 selector = NodePath("Selector")
 label_container = NodePath("LabelLayer/LabelContainer")
 text_label = NodePath("VBoxContainer/MainPanel/PanelContainer/VBoxContainer/Text")
+skill_description_label = NodePath("VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/DescriptionLabel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -312.0
+margin_top = -332.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -57,7 +58,7 @@ __meta__ = {
 [node name="ActionSelection" type="PanelContainer" parent="VBoxContainer"]
 margin_left = 120.0
 margin_right = 370.0
-margin_bottom = 53.0
+margin_bottom = 58.0
 grow_vertical = 0
 rect_min_size = Vector2( 250, 0 )
 mouse_filter = 2
@@ -66,31 +67,31 @@ size_flags_vertical = 8
 custom_styles/panel = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ActionSelection"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 247.0
-margin_bottom = 50.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 245.0
+margin_bottom = 53.0
 mouse_filter = 2
 size_flags_horizontal = 3
-custom_constants/separation = 1
+custom_constants/separation = 2
 
 [node name="SelectionLabel" type="Label" parent="VBoxContainer/ActionSelection/VBoxContainer"]
-margin_right = 244.0
+margin_right = 240.0
 margin_bottom = 14.0
 text = "Skills"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer"]
-margin_top = 15.0
-margin_right = 244.0
-margin_bottom = 47.0
+margin_top = 16.0
+margin_right = 240.0
+margin_bottom = 48.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 6
+custom_constants/separation = 8
 
 [node name="PartySkillContainer" type="TabContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer"]
-margin_right = 230.0
+margin_right = 149.0
 margin_bottom = 32.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -102,45 +103,67 @@ __meta__ = {
 controller = NodePath("../../../../..")
 skill_button_container = ExtResource( 14 )
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer"]
-margin_left = 236.0
-margin_right = 244.0
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer"]
+margin_left = 157.0
+margin_right = 240.0
 margin_bottom = 32.0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+margin_right = 83.0
+margin_bottom = 8.0
 mouse_filter = 2
 custom_styles/panel = ExtResource( 16 )
 
-[node name="ActionHotkeyContainer" type="VBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="ActionHotkeyContainer" type="VBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 4.0
-margin_bottom = 28.0
+margin_right = 79.0
+margin_bottom = 4.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
-controller = NodePath("../../../../../..")
+controller = NodePath("../../../../../../..")
 hotkey_font = ExtResource( 9 )
 hotkey_color = Color( 1, 1, 1, 1 )
 hotkeys = {
-"Check": "ui_accept2",
 "Use": "ui_accept"
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/PanelContainer/ActionHotkeyContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/ActionHotkeyContainer"]
+margin_right = 75.0
 mouse_filter = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 16 )
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="VBoxContainer/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 79.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 75, 0 )
+fit_content_height = true
 
 [node name="PressTurnContainer" parent="VBoxContainer" instance=ExtResource( 12 )]
 visible = false
-margin_top = 197.0
-margin_bottom = 225.0
-size_flags_vertical = 8
+margin_top = 63.0
+margin_right = 252.0
+margin_bottom = 91.0
+size_flags_horizontal = 2
+size_flags_vertical = 10
 p_color = Color( 0.494118, 0.505882, 0.784314, 1 )
 e_color = Color( 0.670588, 0.423529, 0.588235, 1 )
 
 [node name="MainPanel" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 58.0
+margin_top = 63.0
 margin_right = 490.0
-margin_bottom = 98.0
+margin_bottom = 103.0
 mouse_filter = 2
 size_flags_vertical = 8
 custom_constants/margin_right = 4
@@ -221,9 +244,9 @@ margin_right = 474.0
 margin_bottom = 32.0
 
 [node name="ActivePartyContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 103.0
+margin_top = 108.0
 margin_right = 490.0
-margin_bottom = 168.0
+margin_bottom = 173.0
 rect_min_size = Vector2( 0, 65 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -277,9 +300,9 @@ icons = {
 }
 
 [node name="PopOutPartyContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 173.0
+margin_top = 178.0
 margin_right = 490.0
-margin_bottom = 294.0
+margin_bottom = 299.0
 rect_min_size = Vector2( 0, 121 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -287,30 +310,30 @@ size_flags_vertical = 8
 custom_styles/panel = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PopOutPartyContainer"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 487.0
-margin_bottom = 102.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 485.0
+margin_bottom = 104.0
 rect_min_size = Vector2( 0, 99 )
 mouse_filter = 2
 size_flags_vertical = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer"]
-margin_right = 484.0
+margin_right = 480.0
 margin_bottom = 14.0
 text = "Party"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 484.0
+margin_right = 480.0
 margin_bottom = 99.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer"]
-margin_right = 476.0
+margin_right = 472.0
 margin_bottom = 81.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -385,8 +408,8 @@ icons = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer"]
-margin_left = 480.0
-margin_right = 484.0
+margin_left = 476.0
+margin_right = 480.0
 margin_bottom = 81.0
 mouse_filter = 2
 size_flags_horizontal = 9

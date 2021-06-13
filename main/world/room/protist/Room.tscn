@@ -6,7 +6,7 @@
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/world/room/protist/protist_tiles.png" type="Texture" id=5]
 [ext_resource path="res://main/world/room/protist/background.png" type="Texture" id=6]
-[ext_resource path="res://main/world/room/protist/fd-abyss.wav" type="AudioStream" id=7]
+[ext_resource path="res://main/world/room/origin/fd-abyss.wav" type="AudioStream" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "protist_tiles.png 0"

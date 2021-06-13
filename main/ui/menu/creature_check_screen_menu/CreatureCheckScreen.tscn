@@ -33,7 +33,7 @@ stat_label = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContaine
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 490.0
-margin_bottom = 277.0
+margin_bottom = 281.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -43,14 +43,14 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 485.0
-margin_bottom = 272.0
+margin_bottom = 276.0
 custom_styles/panel = ExtResource( 6 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 477.0
-margin_bottom = 264.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 475.0
+margin_bottom = 266.0
 custom_constants/separation = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
@@ -88,18 +88,10 @@ margin_right = 250.0
 margin_bottom = 35.0
 text = "Race: Inanimate"
 
-[node name="StatLabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="StatBarContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 margin_top = 42.0
 margin_right = 250.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0.52549, 0.486275, 0.886275, 1 )
-custom_colors/font_outline_modulate = Color( 0.309804, 0.341176, 0.776471, 1 )
-text = "---"
-
-[node name="StatBarContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 63.0
-margin_right = 250.0
-margin_bottom = 148.0
+margin_bottom = 127.0
 rect_min_size = Vector2( 237, 0 )
 size_flags_vertical = 0
 custom_constants/separation = 0
@@ -131,6 +123,14 @@ stat = "agil"
 margin_top = 68.0
 margin_bottom = 85.0
 stat = "luck"
+
+[node name="StatLabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+margin_top = 134.0
+margin_right = 250.0
+margin_bottom = 148.0
+custom_colors/font_color = Color( 0.52549, 0.486275, 0.886275, 1 )
+custom_colors/font_outline_modulate = Color( 0.309804, 0.341176, 0.776471, 1 )
+text = "---"
 
 [node name="SkillContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 margin_top = 155.0
@@ -196,12 +196,12 @@ margin_bottom = 45.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
 margin_left = 258.0
-margin_right = 474.0
+margin_right = 470.0
 margin_bottom = 261.0
 size_flags_horizontal = 3
 
 [node name="Sprite" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 216.0
+margin_right = 212.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -213,17 +213,17 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 173.0
-margin_right = 216.0
+margin_right = 212.0
 margin_bottom = 261.0
 size_flags_vertical = 10
 custom_constants/separation = 8
 
 [node name="DefenseAffinityContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 10 )]
 margin_top = 0.0
-margin_right = 216.0
+margin_right = 212.0
 margin_bottom = 40.0
 
 [node name="OffenseAffinityContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 10 )]
 margin_top = 48.0
-margin_right = 216.0
+margin_right = 212.0
 margin_bottom = 88.0

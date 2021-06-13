@@ -6,11 +6,9 @@
 [node name="PressTurnContainer" type="HBoxContainer"]
 margin_right = 560.0
 margin_bottom = 330.0
-custom_constants/separation = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 p_color = Color( 0.643137, 0.6, 0.780392, 1 )
 e_color = Color( 0.682353, 0.509804, 0.623529, 1 )
 

@@ -4,6 +4,9 @@ class_name PointSkill
 export(int, 0, 100) var critical := 0
 export(int, -100, 100) var power := 0
 
+func get_text() -> String:
+	return ("Pow: %d\nHit: %d\nTarget: %s\n" % [power, accuracy, target_type]) + description
+
 func use(user: Creature, targets: Array, _anim: bool) -> void:
 	var turns_used:= 0
 	for i in range(len(targets)):

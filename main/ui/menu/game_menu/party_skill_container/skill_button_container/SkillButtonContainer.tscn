@@ -8,9 +8,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -367.0
-margin_bottom = -154.0
-rect_min_size = Vector2( 0, 90 )
+margin_right = -362.0
+margin_bottom = -160.0
+rect_min_size = Vector2( 0, 84 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
@@ -24,34 +24,35 @@ neighbor_type = "vertical"
 
 [node name="SkillButtonPanel" parent="." instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_right = 119.0
+margin_right = 124.0
+margin_bottom = 14.0
 
 [node name="SkillButtonPanel2" parent="." instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 15.0
-margin_right = 119.0
-margin_bottom = 30.0
+margin_top = 14.0
+margin_right = 124.0
+margin_bottom = 28.0
 
 [node name="SkillButtonPanel3" parent="." instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 30.0
-margin_right = 119.0
-margin_bottom = 45.0
+margin_top = 28.0
+margin_right = 124.0
+margin_bottom = 42.0
 
 [node name="SkillButtonPanel4" parent="." instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 45.0
-margin_right = 119.0
-margin_bottom = 60.0
+margin_top = 42.0
+margin_right = 124.0
+margin_bottom = 56.0
 
 [node name="SkillButtonPanel5" parent="." instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 60.0
-margin_right = 119.0
-margin_bottom = 75.0
+margin_top = 56.0
+margin_right = 124.0
+margin_bottom = 70.0
 
 [node name="SkillButtonPanel6" parent="." instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 75.0
-margin_right = 119.0
-margin_bottom = 90.0
+margin_top = 70.0
+margin_right = 124.0
+margin_bottom = 84.0

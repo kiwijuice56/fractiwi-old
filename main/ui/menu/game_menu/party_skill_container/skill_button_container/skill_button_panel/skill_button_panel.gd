@@ -5,12 +5,19 @@ export(NodePath) var icon
 export(NodePath) var name_label
 export(NodePath) var cost_label
 
+var skill
+
 func _ready() -> void:
 	icon = get_node(icon)
 	name_label = get_node(name_label)
 	cost_label = get_node(cost_label)
+	connect("focus_entered", self, "update_description")
 
-func set_content(skill: Skill) -> void:
+func update_description() -> void:
+	get_viewport().game.skill_description_label.text = skill.get_text()
+
+func set_content(given_skill: Skill) -> void:
+	skill = given_skill
 	name_label.text = skill.name
 	if "cost_type" in skill:
 		cost_label.text = str(skill.cost) + " " + skill.cost_type

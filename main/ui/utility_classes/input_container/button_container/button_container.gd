@@ -51,4 +51,8 @@ func enable_input() -> void:
 		button.disabled = false
 
 func grab_focus_at(index: int) -> void:
+	if index >= get_child_count():
+		if get_focus_owner():
+			get_focus_owner().release_focus()
+		return
 	get_child(index).grab_focus()

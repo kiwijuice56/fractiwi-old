@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/ocean7.png-2e6d57e2f366553f892110bb652a6c3f.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://main/world/room/origin_ocean/ocean_anim/ocean7.png"
+dest_files=[ "res://.import/ocean7.png-2e6d57e2f366553f892110bb652a6c3f.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

@@ -4,6 +4,7 @@ export var speed: int = 3
 
 export (NodePath) var main_viewport
 
+var surface := "Normal"
 var direction := Vector2()
 var can_move: bool = false
 
@@ -11,7 +12,7 @@ func _ready() -> void:
 	main_viewport = get_node(main_viewport)
 	disable_collision()
 
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	if not can_move:
 		$AnimationPlayer.current_animation = "[stop]"
 		return

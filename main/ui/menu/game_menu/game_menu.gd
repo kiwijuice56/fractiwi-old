@@ -11,6 +11,7 @@ export(NodePath) var press_turn_container
 export(NodePath) var selector
 export(NodePath) var label_container
 export(NodePath) var text_label
+export(NodePath) var skill_description_label
 
 var open := false
 var can_open := false
@@ -31,6 +32,7 @@ func _ready():
 	selector = get_node(selector)
 	label_container = get_node(label_container)
 	text_label = get_node(text_label)
+	skill_description_label = get_node(skill_description_label)
 	main_viewport.connect("battle_start", self, "battle_started")
 	main_viewport.connect("battle_end", self, "battle_ended")
 	connect("battle_action_chosen", self, "battle_action_chosen")
@@ -114,8 +116,10 @@ func input_pressed(key_name: String) -> void:
 				input["PartySelectHotKeyContainer"].disable_input()
 				input["PartySelectHotKeyContainer"].visible = false
 		"Use":
-			
 			if state == "skills":
+				if not get_focus_owner():
+					main_viewport.menu_sound_player.play_sound("Can't")
+					return
 				var skill: Node = creature.get_node("Skills/Active").get_child(get_focus_owner().get_index())
 				if skill.side == "opposite" and not in_battle:
 					return
@@ -193,7 +197,6 @@ func show_skills() -> void:
 		input["PartySkillContainer"].current_tab = creature.get_index()
 		input[creature.name].enable_input()
 		input[creature.name].grab_focus_at(0)
-		
 	effect_handler.fade(action_selection, "visible", effect_handler.default_fade_time)
 	state = "skills"
 

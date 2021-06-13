@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/world/prop/dynamic_scenery/follow_eye/Eye.png" type="Texture" id=1]
+[ext_resource path="res://main/world/prop/dynamic_scenery/follow_eye/follow_eye.gd" type="Script" id=2]
+[ext_resource path="res://main/world/prop/dynamic_scenery/DynamicScenery.tscn" type="PackedScene" id=3]
+
+[node name="FollowEye" instance=ExtResource( 3 )]
+texture = ExtResource( 1 )
+hframes = 8
+script = ExtResource( 2 )
+refresh_rate = 0.2

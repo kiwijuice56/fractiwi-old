@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/creature_check_screen_menu/creature_check_screen.gd"
 }, {
+"base": "Sprite",
+"class": "DynamicScenery",
+"language": "GDScript",
+"path": "res://main/world/prop/dynamic_scenery/dynamic_scenery.gd"
+}, {
 "base": "Node",
 "class": "EffectHandler",
 "language": "GDScript",
@@ -93,6 +98,16 @@ _global_script_classes=[ {
 "class": "FileSaver",
 "language": "GDScript",
 "path": "res://main/save_data/file_saver/file_saver.gd"
+}, {
+"base": "CanvasLayer",
+"class": "Filter",
+"language": "GDScript",
+"path": "res://main/world/prop/filter/filter.gd"
+}, {
+"base": "DynamicScenery",
+"class": "FollowEye",
+"language": "GDScript",
+"path": "res://main/world/prop/dynamic_scenery/follow_eye/follow_eye.gd"
 }, {
 "base": "UIController",
 "class": "GameMenu",
@@ -144,11 +159,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/main_viewport/main_viewport.gd"
 }, {
-"base": "AudioStreamPlayer",
-"class": "MenuSoundPlayer",
-"language": "GDScript",
-"path": "res://main/ui/utility_classes/menu_sound_player/menu_sound_player.gd"
-}, {
 "base": "Node",
 "class": "Party",
 "language": "GDScript",
@@ -199,6 +209,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://tool/psx_import.gd"
 }, {
+"base": "Filter",
+"class": "Rain",
+"language": "GDScript",
+"path": "res://main/world/prop/filter/rain/rain.gd"
+}, {
+"base": "Sprite",
+"class": "RainDrop",
+"language": "GDScript",
+"path": "res://main/world/prop/filter/rain/raindrop/raindrop.gd"
+}, {
 "base": "Node2D",
 "class": "Room",
 "language": "GDScript",
@@ -243,6 +263,11 @@ _global_script_classes=[ {
 "class": "SkillButtonPanel",
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/skill_button_panel.gd"
+}, {
+"base": "AudioStreamPlayer",
+"class": "SoundPlayer",
+"language": "GDScript",
+"path": "res://main/ui/utility_classes/sound_player/sound_player.gd"
 }, {
 "base": "Button",
 "class": "StatBar",
@@ -314,9 +339,12 @@ _global_script_class_icons={
 "Creature": "",
 "CreatureButtonPanel": "",
 "CreatureCheckScreen": "",
+"DynamicScenery": "",
 "EffectHandler": "",
 "Enemy": "",
 "FileSaver": "",
+"Filter": "",
+"FollowEye": "",
 "GameMenu": "",
 "HotKeyContainer": "",
 "InputContainer": "",
@@ -327,7 +355,6 @@ _global_script_class_icons={
 "Main": "",
 "MainMenu": "",
 "MainViewport": "",
-"MenuSoundPlayer": "",
 "Party": "",
 "PartyButtonContainer": "",
 "PartySkillContainer": "",
@@ -338,6 +365,8 @@ _global_script_class_icons={
 "PressTurn": "",
 "PressTurnContainer": "",
 "PsxImport": "",
+"Rain": "",
+"RainDrop": "",
 "Room": "",
 "SaveFile": "",
 "SaveFileButtonContainer": "",
@@ -347,6 +376,7 @@ _global_script_class_icons={
 "Skill": "",
 "SkillButtonContainer": "",
 "SkillButtonPanel": "",
+"SoundPlayer": "",
 "StatBar": "",
 "StatBarContainer": "",
 "StatusSkill": "",
@@ -374,6 +404,7 @@ MusicPlayer="*res://main/ui/utility_classes/music_player/MusicPlayer.tscn"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/return_value_discarded=false
 
 [display]
@@ -534,9 +565,13 @@ turn_left={
 
 [layer_names]
 
+2d_physics/layer_1="Player"
 3d_physics/layer_1="Player"
+2d_physics/layer_2="Map"
 3d_physics/layer_2="Map"
+2d_physics/layer_3="Enemy"
 3d_physics/layer_3="Enemy"
+2d_physics/layer_4="Interactable"
 3d_physics/layer_4="Interact"
 
 [rendering]
@@ -546,5 +581,6 @@ quality/intended_usage/framebuffer_allocation=0
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://main/world/default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

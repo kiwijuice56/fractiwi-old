@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cant.WAV-36c7dea23efa7f08d44817f1105593d1.sample"
+
+[deps]
+
+source_file="res://main/ui/theme/sounds/cant.WAV"
+dest_files=[ "res://.import/cant.WAV-36c7dea23efa7f08d44817f1105593d1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

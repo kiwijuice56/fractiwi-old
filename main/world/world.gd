@@ -40,4 +40,4 @@ func save_data() -> Dictionary:
 
 func load_data(data: Dictionary) -> void:
 	add_room(data["location"])
-	$Player.global_transform.origin = $Room.terminals.get_node(data["terminal"]).global_transform.origin
+	$Player.global_position = $Room.terminals.get_node(data["terminal"]).get_node("Spawn").global_position
