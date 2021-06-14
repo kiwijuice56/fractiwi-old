@@ -6,14 +6,12 @@
 
 [node name="Yun" instance=ExtResource( 1 )]
 texture = ExtResource( 5 )
-level = 1
-hp_growth = 9
-mp_growth = 5
+level = 5
 stre = 2
 magi = 2
 vita = 2
 luck = 2
-agil = 7
+agil = 2
 def_affinity = {
 }
 off_affinity = {

@@ -9,3 +9,4 @@ cost = 4
 affinity = "water"
 accuracy = 90
 power = -4
+stat = "magi"

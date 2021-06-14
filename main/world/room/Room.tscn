@@ -20,4 +20,6 @@ format = 1
 
 [node name="Dynamic" type="Node2D" parent="Props"]
 
+[node name="Static" type="Node2D" parent="Props"]
+
 [node name="Enemies" type="Node2D" parent="."]

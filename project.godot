@@ -84,6 +84,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/world/prop/dynamic_scenery/dynamic_scenery.gd"
 }, {
+"base": "ButtonContainer",
+"class": "EffectButtonContainer",
+"language": "GDScript",
+"path": "res://main/ui/menu/game_menu/effect_button_container/effect_button_container.gd"
+}, {
+"base": "ButtonPanel",
+"class": "EffectButtonPanel",
+"language": "GDScript",
+"path": "res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/effect_button_panel.gd"
+}, {
 "base": "Node",
 "class": "EffectHandler",
 "language": "GDScript",
@@ -340,6 +350,8 @@ _global_script_class_icons={
 "CreatureButtonPanel": "",
 "CreatureCheckScreen": "",
 "DynamicScenery": "",
+"EffectButtonContainer": "",
+"EffectButtonPanel": "",
 "EffectHandler": "",
 "Enemy": "",
 "FileSaver": "",
@@ -411,6 +423,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=490
 window/size/height=276
+window/vsync/use_vsync=false
 
 [importer_defaults]
 
@@ -582,5 +595,4 @@ quality/intended_usage/framebuffer_allocation=0
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-environment/default_environment="res://main/world/default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

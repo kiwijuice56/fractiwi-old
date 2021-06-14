@@ -23,7 +23,6 @@ func _ready() -> void:
 
 func set_creature(new_creature: Creature) -> void:
 	creature = new_creature
-	creature.connect("updated", self, "update_content")
 	creature.panel = self
 
 func focus_entered() -> void:

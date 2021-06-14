@@ -3,7 +3,9 @@ extends KinematicBody2D
 export var speed: int = 3
 
 export (NodePath) var main_viewport
+export var effect_textures: Dictionary
 
+var effect: String
 var surface := "Normal"
 var direction := Vector2()
 var can_move: bool = false
@@ -11,13 +13,14 @@ var can_move: bool = false
 func _ready() -> void:
 	main_viewport = get_node(main_viewport)
 	disable_collision()
+	set_effect("Flower")
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if not can_move:
 		$AnimationPlayer.current_animation = "[stop]"
 		return
 	input()
-	move_and_slide(direction * speed)
+	move_and_slide(direction*speed)
 
 func input():
 	direction = Vector2()
@@ -43,6 +46,10 @@ func animation() -> String:
 	elif direction.x < 0:
 		current_animation = "walk_left"
 	return current_animation
+
+func set_effect(new_effect: String) -> void:
+	effect = new_effect
+	$Sprite.texture = effect_textures[effect]
 
 func disable_collision() -> void:
 	set_collision_layer(0)

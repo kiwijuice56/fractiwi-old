@@ -17,11 +17,11 @@ data = {
 },
 "stats": {
 "agil": 2,
-"hp": 3,
-"level": 1,
+"hp": 42,
+"level": 5,
 "luck": 2,
 "magi": 2,
-"mp": 0,
+"mp": 24,
 "stre": 2,
 "vita": 2
 }

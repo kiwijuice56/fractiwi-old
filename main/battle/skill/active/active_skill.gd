@@ -13,7 +13,8 @@ func use(_user: Creature, _targets: Array, _anim: bool) -> void:
 	pass
 
 func is_miss(user: Creature, target: Creature) -> bool:
-	return rand_range(0,1) >= accuracy/100.0
+	print( (accuracy + ((user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0)
+	return rand_range(0,1) >= (accuracy + ((user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0
 
 func turn_logic(def: String, is_miss: bool, is_crit: bool) -> int:
 	if is_miss:

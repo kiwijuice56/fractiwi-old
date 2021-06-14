@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/effect_button_panel.gd" type="Script" id=1]
+[ext_resource path="res://main/ui/theme/style_box/regular/margin/MarginRegular.tres" type="StyleBox" id=2]
+[ext_resource path="res://main/ui/theme/style_box/regular/regular.png" type="Texture" id=3]
+[ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/flower.png" type="Texture" id=4]
+[ext_resource path="res://main/ui/theme/style_box/focus/margin/MarginFocus.tres" type="StyleBox" id=5]
+[ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/normal.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=1]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[node name="EffectButtonPanel" type="PanelContainer"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+focus_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+regular_style = ExtResource( 2 )
+focused_style = ExtResource( 5 )
+icons = {
+"Flower": ExtResource( 4 ),
+"Normal": ExtResource( 6 )
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 54.0
+margin_bottom = 54.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 42.0
+margin_right = 56.0
+margin_bottom = 56.0
+size_flags_vertical = 8
+text = "Flower"
+align = 1

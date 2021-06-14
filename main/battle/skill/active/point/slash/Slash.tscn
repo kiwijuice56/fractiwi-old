@@ -6,5 +6,5 @@
 [node name="Slash" instance=ExtResource( 2 )]
 effect_packed = ExtResource( 1 )
 accuracy = 95
-critical = 10
+critical = 7
 power = -5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://main/ui/theme/sounds/next.WAV" type="AudioStream" id=32]
 [ext_resource path="res://main/ui/theme/sounds/cant.WAV" type="AudioStream" id=33]
 [ext_resource path="res://main/battle/ai/player/player_ai.gd" type="Script" id=34]
+[ext_resource path="res://main/world/player/flower.png" type="Texture" id=35]
+[ext_resource path="res://main/battle/items/items.gd" type="Script" id=36]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -101,6 +103,7 @@ terminal = NodePath("UI/TerminalMenu")
 vision_effects = NodePath("UI/VisionEffects")
 world_node = NodePath("World")
 party = NodePath("Party")
+items = NodePath("Items")
 creature_check = NodePath("UI/CreatureCheckScreen")
 menu_sound_player = NodePath("UI/MenuSoundPlayer")
 
@@ -123,6 +126,9 @@ room_path = "res://main/world/room/"
 position = Vector2( 0, 13.1143 )
 z_index = 1
 main_viewport = NodePath("../..")
+effect_textures = {
+"Flower": ExtResource( 35 )
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ViewportContainer/MainViewport/World"]
 
@@ -163,6 +169,11 @@ def_affinity = {
 
 [node name="Inactive" type="Node2D" parent="ViewportContainer/MainViewport/Party"]
 visible = false
+
+[node name="Items" type="Node" parent="ViewportContainer/MainViewport" groups=[
+"Save",
+]]
+script = ExtResource( 36 )
 
 [node name="Battle" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 

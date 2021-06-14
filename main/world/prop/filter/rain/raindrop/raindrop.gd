@@ -5,5 +5,5 @@ func _ready() -> void:
 	$AnimationPlayer.connect("animation_finished", self, "delete")
 	$AnimationPlayer.current_animation = "drop"
 
-func delete(animation: String) -> void:
+func delete(_animation: String) -> void:
 	queue_free()

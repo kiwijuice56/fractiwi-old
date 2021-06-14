@@ -4,8 +4,6 @@ class_name Creature
 
 export(String, "Demon", "Human", "Inanimate", "Beast") var race: String = "Human"
 export var level: int
-export var hp_growth: int
-export var mp_growth: int
 export var stre: int
 export var magi: int
 export var vita: int
@@ -24,7 +22,6 @@ var expe := 0
 var expe_to_level := 25
 export var expe_given := 10
 
-signal updated
 signal target_action_complete
 signal death
 
@@ -53,8 +50,6 @@ func do_turn(same: Array, opposite: Array) -> int:
 	return 0
 
 func target_action() -> void:
-	#[point_change, is_miss, is_crit, def]
-	#print(name + ": " + str(targeted_skill_data[0]) + " " + targeted_skill_data[3] + " crit:" + str(targeted_skill_data[2]) + " miss:" + str(targeted_skill_data[1]))
 	if not panel:
 		$AnimationPlayer.current_animation = "hurt_normal"
 		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3])
@@ -65,12 +60,14 @@ func target_action() -> void:
 		panel.get_node("PointLabel/AnimationPlayer").current_animation = "show"
 	targeted_skill_data = []
 	var function = check_hp()
+	if panel: panel.update_content()
 	if function:
 		yield(function, "completed")
 	emit_signal("target_action_complete")
 
 func check_hp() -> void:
 	if hp <= 0:
+		hp = 0
 		death()
 		yield(self, "death")
 
@@ -97,11 +94,6 @@ func death() -> void:
 		emit_signal("death")
 		queue_free()
 
-func update() -> void:
-	emit_signal("updated")
-
-# Save data / stats function
-
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),
 				  "Active": $Skills.get_skill_names("Active")}
@@ -112,6 +104,7 @@ func to_dict() -> Dictionary:
 func set_stats(data: Dictionary) -> void:
 	for stat in data.keys():
 		set(stat, data[stat])
+	set_max_points()
 
 func set_level() -> int:
 	var levels_changed := 0
@@ -119,6 +112,16 @@ func set_level() -> int:
 		expe -= expe_to_level
 		levels_changed += 1
 	level += levels_changed
-	max_hp = hp_growth * level
-	max_mp = mp_growth * level
+	set_max_points()
 	return levels_changed
+
+func set_max_points() -> void:
+	max_hp = (level + vita) * 6
+	max_mp = (level*4) + (magi*2)
+	if panel: panel.update_content()
+
+func heal_points() -> void:
+	set_max_points()
+	hp = max_hp
+	mp = max_mp
+	if panel: panel.update_content()

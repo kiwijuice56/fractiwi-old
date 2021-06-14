@@ -8,10 +8,8 @@
 texture = ExtResource( 1 )
 race = "Demon"
 level = 4
-hp_growth = 7
-mp_growth = 7
 stre = 1
-magi = 7
+magi = 5
 vita = 2
 luck = 1
 agil = 1

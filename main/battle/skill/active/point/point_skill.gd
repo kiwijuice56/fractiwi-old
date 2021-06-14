@@ -3,6 +3,7 @@ class_name PointSkill
 
 export(int, 0, 100) var critical := 0
 export(int, -100, 100) var power := 0
+export(String, "stre", "magi") var stat := "stre"
 
 func get_text() -> String:
 	return ("Pow: %d\nHit: %d\nTarget: %s\n" % [power, accuracy, target_type]) + description
@@ -62,12 +63,13 @@ func use(user: Creature, targets: Array, _anim: bool) -> void:
 	place_timer.call_deferred("queue_free")
 	return turns_used
 
-func is_crit(_user: Creature, _target: Creature) -> bool:
-	return rand_range(0,1) <= critical/100.0
+func is_crit(user: Creature, target: Creature) -> bool:
+	print("crit: ", (critical + (user.luck - target.luck/3.0) )/100.0)
+	return not rand_range(0,1) >= (critical + (user.luck - (target.luck/3.0)))/100.0
 
 func calculate_points(user: Creature, target: Creature, def: String, off: int, is_crit: bool) -> int:
 	var neg = power < 0
-	var base = abs(power) + (user.level/3.0) + user.stre - (target.level/5.0)
+	var base = abs(power) + (user.level) + (5*user.get(stat)) - (target.level)
 	if def == "weak":
 		base *= 2
 	elif def == "resist":
@@ -78,4 +80,6 @@ func calculate_points(user: Creature, target: Creature, def: String, off: int, i
 		base *= 0
 	base *= (off/100.0)
 	base *= 2 if is_crit else 1
-	return base * -1 if neg else 1
+	base *= -1 if neg else 1
+	base *= rand_range(1,1.3)
+	return int(base)

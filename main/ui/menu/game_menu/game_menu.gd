@@ -7,6 +7,7 @@ export(NodePath) var party
 export(NodePath) var enemy_party
 export(NodePath) var effect_handler
 export(NodePath) var action_selection
+export(NodePath) var effect_selection
 export(NodePath) var press_turn_container
 export(NodePath) var selector
 export(NodePath) var label_container
@@ -28,6 +29,7 @@ func _ready():
 	pop_out_party = get_node(pop_out_party)
 	effect_handler = get_node(effect_handler)
 	action_selection = get_node(action_selection)
+	effect_selection = get_node(effect_selection)
 	press_turn_container = get_node(press_turn_container)
 	selector = get_node(selector)
 	label_container = get_node(label_container)
@@ -58,6 +60,8 @@ func _input(event: InputEvent) -> void:
 func input_pressed(key_name: String) -> void:
 	if disabled or not open: return
 	match(key_name):
+		"Effects":
+			show_effects()
 		"Party":
 			match state:
 				"default": 
@@ -71,6 +75,10 @@ func input_pressed(key_name: String) -> void:
 					input["MainButtonContainer"].grab_focus_at(0)
 				"skills":
 					hide_skills()
+					input["MainButtonContainer"].enable_input()
+					input["MainButtonContainer"].grab_focus_at(0)
+				"effects":
+					hide_effects()
 					input["MainButtonContainer"].enable_input()
 					input["MainButtonContainer"].grab_focus_at(0)
 				"return_member":
@@ -181,6 +189,7 @@ func open_menu(anim: bool) -> void:
 func close_menu() -> void:
 	hide_party()
 	hide_skills()
+	hide_effects()
 	effect_handler.fade(self, "hide", effect_handler.default_fade_time)
 	input["MainButtonContainer"].disable_input()
 	open = false
@@ -205,6 +214,19 @@ func hide_skills() -> void:
 	input["PartySkillContainer"].get_child(input["PartySkillContainer"].current_tab).disable_input()
 	input["PartySkillContainer"].disable_input()
 	effect_handler.fade(action_selection, "hide", effect_handler.default_fade_time)
+	state = "default"
+
+func show_effects() -> void:
+	input["MainButtonContainer"].disable_input()
+	input["EffectButtonContainer"].enable_input()
+	input["EffectButtonContainer"].add_items()
+	input["EffectButtonContainer"].grab_focus_at(0)
+	effect_handler.fade(effect_selection, "visible", effect_handler.default_fade_time)
+	state = "effects"
+
+func hide_effects() -> void:
+	input["EffectButtonContainer"].disable_input()
+	effect_handler.fade(effect_selection, "hide", effect_handler.default_fade_time)
 	state = "default"
 
 func summon_member() -> void:

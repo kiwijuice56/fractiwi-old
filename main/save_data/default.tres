@@ -8,6 +8,9 @@ data = {
 "FileSaver": {
 "time": 0
 },
+"Items": {
+"effects": [ "Normal", "Flower" ]
+},
 "Party": {
 "active": {
 "00Yun": {

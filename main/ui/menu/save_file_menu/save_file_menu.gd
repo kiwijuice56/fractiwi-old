@@ -4,10 +4,12 @@ class_name SaveFileMenu
 
 export (NodePath) var file_saver
 export (NodePath) var desc_label
+export (NodePath) var scroll_container
 
 func _ready():
 	desc_label = get_node(desc_label)
 	file_saver = get_node(file_saver)
+	scroll_container = get_node(scroll_container)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel", false) and not disabled: 
@@ -47,6 +49,7 @@ func set_up(event: String) -> void:
 		input["SaveFileHotkeyContainer"].hotkeys = {"Save":"ui_accept"}
 	input["SaveFileHotkeyContainer"].add_items()
 	input["SaveFileContainer"].grab_focus_at(0)
+	scroll_container.scroll_vertical = 0
 
 func enable(show: bool) -> void:
 	.enable(show)

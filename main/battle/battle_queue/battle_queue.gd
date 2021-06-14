@@ -31,6 +31,7 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 	# Add creatures to appropriate party node
 	for creature in enemy_party:
 		$EnemyParty.add_child(creature)
+		creature.heal_points()
 	position_enemies()
 	for creature in player_party:
 		player_party_node.get_node("Active").remove_child(creature)
