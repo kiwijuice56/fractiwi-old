@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/AffinityIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/ui/theme/style_box/thin/Thin.tres" type="StyleBox" id=2]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/water.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/phys.png" type="Texture" id=4]
 [ext_resource path="res://main/ui/menu/creature_check_screen_menu/affinity_panel_container/affinity_panel/affinity_panel.gd" type="Script" id=5]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/light.png" type="Texture" id=6]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/dark.png" type="Texture" id=7]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/flesh.png" type="Texture" id=8]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/wind.png" type="Texture" id=9]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/fire.png" type="Texture" id=10]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/heal.png" type="Texture" id=11]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/buff.png" type="Texture" id=12]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/elec.png" type="Texture" id=13]
 
 [node name="AffinityPanel" type="PanelContainer"]
 margin_right = 54.0
@@ -27,8 +35,16 @@ dragger_visibility = 2
 [node name="AffinityIcon" parent="VSplitContainer" instance=ExtResource( 1 )]
 margin_right = 50.0
 icons = {
+"buff": ExtResource( 12 ),
+"dark": ExtResource( 7 ),
+"elec": ExtResource( 13 ),
+"fire": ExtResource( 10 ),
+"flesh": ExtResource( 8 ),
+"heal": ExtResource( 11 ),
+"light": ExtResource( 6 ),
 "phys": ExtResource( 4 ),
-"water": ExtResource( 3 )
+"water": ExtResource( 3 ),
+"wind": ExtResource( 9 )
 }
 
 [node name="Label" type="Label" parent="VSplitContainer"]

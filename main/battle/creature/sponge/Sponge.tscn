@@ -1,25 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/battle/creature/sponge/Sponge.png" type="Texture" id=1]
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=4]
 
 [node name="Sponge" instance=ExtResource( 2 )]
 texture = ExtResource( 1 )
-race = "Demon"
-level = 4
-stre = 1
-magi = 5
-vita = 2
-luck = 1
-agil = 1
-def_affinity = {
-"elec": "weak",
-"water": "resist"
-}
-off_affinity = {
-"water": 130
-}
-expe_given = 7
 
 [node name="Bubble" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+
+[node name="Slash" parent="UnlearnedSkills" index="0" instance=ExtResource( 4 )]

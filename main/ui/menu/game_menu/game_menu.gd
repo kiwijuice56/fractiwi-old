@@ -62,6 +62,8 @@ func input_pressed(key_name: String) -> void:
 	match(key_name):
 		"Effects":
 			show_effects()
+		"Set Effect":
+			update_effect(get_focus_owner().name)
 		"Party":
 			match state:
 				"default": 
@@ -218,6 +220,7 @@ func hide_skills() -> void:
 
 func show_effects() -> void:
 	input["MainButtonContainer"].disable_input()
+	input["EffectHotkeyContainer"].enable_input()
 	input["EffectButtonContainer"].enable_input()
 	input["EffectButtonContainer"].add_items()
 	input["EffectButtonContainer"].grab_focus_at(0)
@@ -226,8 +229,13 @@ func show_effects() -> void:
 
 func hide_effects() -> void:
 	input["EffectButtonContainer"].disable_input()
+	input["EffectHotkeyContainer"].disable_input()
 	effect_handler.fade(effect_selection, "hide", effect_handler.default_fade_time)
 	state = "default"
+
+func update_effect(effect: String) -> void:
+	close_menu()
+	get_viewport().world_node.player.set_effect(effect)
 
 func summon_member() -> void:
 	var creature_button := get_focus_owner()

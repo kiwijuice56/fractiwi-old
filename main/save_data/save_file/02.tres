@@ -12,7 +12,7 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Stab", "Stab2" ],
+"Active": [ "Slash" ],
 "Passive": [  ]
 },
 "stats": {
@@ -28,7 +28,7 @@ data = {
 },
 "01Grape": {
 "skills": {
-"Active": [ "Stab", "Stab2" ],
+"Active": [ "Slash", "Bubble" ],
 "Passive": [  ]
 },
 "stats": {
@@ -46,7 +46,7 @@ data = {
 "inactive": {
 "02Orange": {
 "skills": {
-"Active": [ "Stab" ],
+"Active": [ "Slash" ],
 "Passive": [  ]
 },
 "stats": {
@@ -67,5 +67,8 @@ data = {
 "memory": {
 },
 "terminal": "Terminal"
+},
+"Items":{
+"effects": ["Flower"]
 }
 }

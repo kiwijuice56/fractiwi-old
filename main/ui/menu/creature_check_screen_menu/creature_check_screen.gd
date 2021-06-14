@@ -9,6 +9,7 @@ export(NodePath) var skill_button_container
 export(NodePath) var exp_info_container
 export(NodePath) var race_label
 export(NodePath) var stat_label
+export(NodePath) var unlearned_container
 
 var index := 0
 var party: Array
@@ -30,6 +31,7 @@ func _ready() -> void:
 	exp_info_container = get_node(exp_info_container)
 	race_label = get_node(race_label)
 	stat_label = get_node(stat_label)
+	unlearned_container = get_node(unlearned_container)
 	main_viewport.connect("battle_end", self, "battle_ended")
 	disable(false)
 
@@ -91,8 +93,9 @@ func show_creature(creature: Creature) -> void:
 	exp_info_container.get_node("NextLabel").text = "Next: " + str(creature.expe_to_level-creature.expe)
 	skill_button_container.creature = creature
 	race_label.text = "Race: " + creature.race
-	def_affinity.set_affinities("DEF", creature.def_affinity)
-	off_affinity.set_affinities("OFF", creature.off_affinity)
+	def_affinity.set_affinities("DEF", creature.get_def())
+	off_affinity.set_affinities("OFF", creature.get_off())
+	unlearned_container.initialize(creature)
 	skill_button_container.add_items()
 
 func return_panel(creature: Creature) -> void:

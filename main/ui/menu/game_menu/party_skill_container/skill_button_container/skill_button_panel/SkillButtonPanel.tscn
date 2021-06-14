@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/skill_button_panel.gd" type="Script" id=1]
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=2]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/light.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/AffinityIcon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/water.png" type="Texture" id=5]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/phys.png" type="Texture" id=6]
 [ext_resource path="res://main/ui/theme/style_box/selected/Selected.tres" type="StyleBox" id=7]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/dark.png" type="Texture" id=8]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/flesh.png" type="Texture" id=9]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/wind.png" type="Texture" id=10]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/fire.png" type="Texture" id=11]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/heal.png" type="Texture" id=12]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/buff.png" type="Texture" id=13]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/elec.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 content_margin_left = 4.0
@@ -17,11 +25,13 @@ content_margin_bottom = 0.0
 margin_left = 1.12247
 margin_right = 120.122
 margin_bottom = 15.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
 focus_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme = ExtResource( 2 )
-custom_styles/panel = ExtResource( 7 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -43,8 +53,16 @@ size_flags_vertical = 0
 
 [node name="AffinityIcon" parent="HBoxContainer" instance=ExtResource( 4 )]
 icons = {
+"buff": ExtResource( 13 ),
+"dark": ExtResource( 8 ),
+"elec": ExtResource( 14 ),
+"fire": ExtResource( 11 ),
+"flesh": ExtResource( 9 ),
+"heal": ExtResource( 12 ),
+"light": ExtResource( 3 ),
 "phys": ExtResource( 6 ),
-"water": ExtResource( 5 )
+"water": ExtResource( 5 ),
+"wind": ExtResource( 10 )
 }
 
 [node name="Name" type="Label" parent="HBoxContainer"]

@@ -4,7 +4,6 @@ class_name ActiveSkill
 export var effect_packed: PackedScene 
 export(String, "hp", "mp") var cost_type := "mp"
 export var cost := 0
-export(String, "phys", "fire", "water", "elec", "wind", "light", "death", "mind", "flesh") var affinity := "phys"
 export(String, "all", "single", "random") var target_type := "single"
 export(String, "opposite", "same") var side := "opposite"
 export(int, 0, 100) var accuracy := 0
@@ -33,12 +32,12 @@ func turn_logic(def: String, is_miss: bool, is_crit: bool) -> int:
 	return 0
 
 func get_def_affinity(target: Creature) -> String:
-	if affinity in target.def_affinity:
+	if affinity in target.get_def():
 		return target.def_affinity[affinity]
 	return "normal"
 
 func get_off_affinity(user: Creature) -> int:
-	if affinity in user.off_affinity:
+	if affinity in user.get_off():
 		return user.off_affinity[affinity]
 	return 100
 

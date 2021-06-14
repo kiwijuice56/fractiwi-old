@@ -5,7 +5,7 @@ export var speed: int = 3
 export (NodePath) var main_viewport
 export var effect_textures: Dictionary
 
-var effect: String
+var effect := "Normal"
 var surface := "Normal"
 var direction := Vector2()
 var can_move: bool = false
@@ -13,7 +13,6 @@ var can_move: bool = false
 func _ready() -> void:
 	main_viewport = get_node(main_viewport)
 	disable_collision()
-	set_effect("Flower")
 
 func _physics_process(_delta) -> void:
 	if not can_move:
@@ -49,6 +48,17 @@ func animation() -> String:
 
 func set_effect(new_effect: String) -> void:
 	effect = new_effect
+	can_move = false
+	get_viewport().game.can_open = false
+	get_viewport().items.current_effect = effect
+	set_physics_process(false)
+	$AnimationPlayer.play("set_effect")
+	yield($AnimationPlayer, "animation_finished")
+	set_physics_process(true)
+	can_move = true
+	get_viewport().game.can_open = true
+
+func update_sprite() -> void:
 	$Sprite.texture = effect_textures[effect]
 
 func disable_collision() -> void:

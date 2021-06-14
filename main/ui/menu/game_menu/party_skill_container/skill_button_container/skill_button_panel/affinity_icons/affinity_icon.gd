@@ -1,4 +1,5 @@
 extends TextureRect
+class_name AffinityIcon
 
 export var icons: Dictionary
 

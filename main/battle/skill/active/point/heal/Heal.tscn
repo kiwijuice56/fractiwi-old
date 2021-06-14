@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/battle/skill/active/point/PointSkill.tscn" type="PackedScene" id=1]
+
+[node name="Heal" instance=ExtResource( 1 )]
+affinity = "heal"
+cost = 6
+side = "same"
+accuracy = 100
+power = 5
+stat = "magi"

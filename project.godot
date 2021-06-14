@@ -27,12 +27,17 @@ _global_script_classes=[ {
 "base": "CanvasLayer",
 "class": "ActiveSkillEffect",
 "language": "GDScript",
-"path": "res://main/battle/effect/active_skill/active_skill_effect.gd"
+"path": "res://main/battle/graphic_effect/active_skill/active_skill_effect.gd"
 }, {
 "base": "Container",
 "class": "AffinityContainer",
 "language": "GDScript",
 "path": "res://main/ui/menu/creature_check_screen_menu/affinity_panel_container/affinity_container.gd"
+}, {
+"base": "TextureRect",
+"class": "AffinityIcon",
+"language": "GDScript",
+"path": "res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/affinity_icon.gd"
 }, {
 "base": "PanelContainer",
 "class": "AffinityPanel",
@@ -99,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/effect_handler/effect_handler.gd"
 }, {
+"base": "UnlearnedSkillManager",
+"class": "EffectManager",
+"language": "GDScript",
+"path": "res://main/battle/creature/skill_manager/unlearned_skill_manager/effect_manager/effect_manager.gd"
+}, {
 "base": "Area2D",
 "class": "Enemy",
 "language": "GDScript",
@@ -149,6 +159,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/world/prop/interactable/interactable.gd"
 }, {
+"base": "Node",
+"class": "Items",
+"language": "GDScript",
+"path": "res://main/battle/items/items.gd"
+}, {
 "base": "PanelContainer",
 "class": "LabelContainer",
 "language": "GDScript",
@@ -188,6 +203,11 @@ _global_script_classes=[ {
 "class": "PlayerAI",
 "language": "GDScript",
 "path": "res://main/battle/ai/player/player_ai.gd"
+}, {
+"base": "Creature",
+"class": "PlayerCreature",
+"language": "GDScript",
+"path": "res://main/battle/creature/player_creature.gd"
 }, {
 "base": "HBoxContainer",
 "class": "PointBar",
@@ -274,6 +294,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/skill_button_panel.gd"
 }, {
+"base": "Node",
+"class": "SkillsManager",
+"language": "GDScript",
+"path": "res://main/battle/creature/skill_manager/skills_manager.gd"
+}, {
 "base": "AudioStreamPlayer",
 "class": "SoundPlayer",
 "language": "GDScript",
@@ -324,6 +349,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/unclickable_scoll_container/unclickable_scroll_container.gd"
 }, {
+"base": "PanelContainer",
+"class": "UnlearnedSkillContainer",
+"language": "GDScript",
+"path": "res://main/ui/menu/creature_check_screen_menu/unlearned_skill_container/unlearned_skill_container.gd"
+}, {
+"base": "SkillsManager",
+"class": "UnlearnedSkillManager",
+"language": "GDScript",
+"path": "res://main/battle/creature/skill_manager/unlearned_skill_manager/unlearned_skill_manager.gd"
+}, {
 "base": "Container",
 "class": "VisibleResizeContainer",
 "language": "GDScript",
@@ -340,6 +375,7 @@ _global_script_class_icons={
 "ActiveSkill": "",
 "ActiveSkillEffect": "",
 "AffinityContainer": "",
+"AffinityIcon": "",
 "AffinityPanel": "",
 "BattleQueue": "",
 "BuffSkill": "",
@@ -353,6 +389,7 @@ _global_script_class_icons={
 "EffectButtonContainer": "",
 "EffectButtonPanel": "",
 "EffectHandler": "",
+"EffectManager": "",
 "Enemy": "",
 "FileSaver": "",
 "Filter": "",
@@ -363,6 +400,7 @@ _global_script_class_icons={
 "IntViewportContainer": "",
 "InteractMenu": "",
 "Interactable": "",
+"Items": "",
 "LabelContainer": "",
 "Main": "",
 "MainMenu": "",
@@ -371,6 +409,7 @@ _global_script_class_icons={
 "PartyButtonContainer": "",
 "PartySkillContainer": "",
 "PlayerAI": "",
+"PlayerCreature": "",
 "PointBar": "",
 "PointLabel": "",
 "PointSkill": "",
@@ -388,6 +427,7 @@ _global_script_class_icons={
 "Skill": "",
 "SkillButtonContainer": "",
 "SkillButtonPanel": "",
+"SkillsManager": "",
 "SoundPlayer": "",
 "StatBar": "",
 "StatBarContainer": "",
@@ -398,6 +438,8 @@ _global_script_class_icons={
 "Transition": "",
 "UIController": "",
 "UnclickableScrollContainer": "",
+"UnlearnedSkillContainer": "",
+"UnlearnedSkillManager": "",
 "VisibleResizeContainer": "",
 "VisionEffects": ""
 }

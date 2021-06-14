@@ -33,6 +33,8 @@ __meta__ = {
 }
 regular_style = ExtResource( 2 )
 focused_style = ExtResource( 5 )
+disabled_style = ExtResource( 2 )
+disbaled_focus_style = ExtResource( 2 )
 icons = {
 "Flower": ExtResource( 4 ),
 "Normal": ExtResource( 6 )

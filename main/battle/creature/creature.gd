@@ -21,6 +21,7 @@ var status := "ok"
 var expe := 0
 var expe_to_level := 25
 export var expe_given := 10
+export(Array, int) var skill_levels: Array
 
 signal target_action_complete
 signal death
@@ -28,6 +29,12 @@ signal death
 # Set by skills targeted at this creature to use in appropriate time of animation
 var targeted_skill_data: Array
 var panel: ButtonPanel
+
+func get_def() -> Dictionary:
+	return def_affinity
+
+func get_off() -> Dictionary:
+	return off_affinity
 
 # Returns press turns used
 func do_turn(same: Array, opposite: Array) -> int:

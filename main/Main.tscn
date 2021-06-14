@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
@@ -34,8 +34,10 @@
 [ext_resource path="res://main/ui/theme/sounds/next.WAV" type="AudioStream" id=32]
 [ext_resource path="res://main/ui/theme/sounds/cant.WAV" type="AudioStream" id=33]
 [ext_resource path="res://main/battle/ai/player/player_ai.gd" type="Script" id=34]
-[ext_resource path="res://main/world/player/flower.png" type="Texture" id=35]
+[ext_resource path="res://main/world/player/sprites/flower.png" type="Texture" id=35]
 [ext_resource path="res://main/battle/items/items.gd" type="Script" id=36]
+[ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=37]
+[ext_resource path="res://main/battle/creature/skill_manager/unlearned_skill_manager/effect_manager/effect_manager.gd" type="Script" id=38]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -123,11 +125,10 @@ backdrop = NodePath("CanvasLayer/Backdrop")
 room_path = "res://main/world/room/"
 
 [node name="Player" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 14 )]
-position = Vector2( 0, 13.1143 )
-z_index = 1
 main_viewport = NodePath("../..")
 effect_textures = {
-"Flower": ExtResource( 35 )
+"Flower": ExtResource( 35 ),
+"Normal": ExtResource( 37 )
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ViewportContainer/MainViewport/World"]
@@ -174,6 +175,21 @@ visible = false
 "Save",
 ]]
 script = ExtResource( 36 )
+
+[node name="Effects" type="Node" parent="ViewportContainer/MainViewport/Items"]
+
+[node name="Flower" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
+script = ExtResource( 38 )
+off_affinities = {
+"heal": 120
+}
+def_affinities = {
+"fire": "weak",
+"light": "null"
+}
+
+[node name="Normal" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
+script = ExtResource( 38 )
 
 [node name="Battle" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 

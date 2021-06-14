@@ -1,15 +1,107 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main/world/player/player.gd" type="Script" id=1]
-[ext_resource path="res://main/world/player/step.WAV" type="AudioStream" id=3]
-[ext_resource path="res://main/world/player/StepSoundPlayer.gd" type="Script" id=4]
-[ext_resource path="res://main/world/player/flower.png" type="Texture" id=5]
+[ext_resource path="res://main/world/player/sprites/effect.png" type="Texture" id=2]
+[ext_resource path="res://main/world/player/sounds/step.WAV" type="AudioStream" id=3]
+[ext_resource path="res://main/world/player/step_sound_player.gd" type="Script" id=4]
+[ext_resource path="res://main/world/player/sprites/flower.png" type="Texture" id=5]
+[ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=6]
+[ext_resource path="res://main/world/player/sounds/effect2.WAV" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 14 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "walk_down"
+resource_name = "set_effect"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("EffectSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EffectSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 500.0, 720.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EffectSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("EffectSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_sprite"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.5, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("EffectTransformPlayer:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -54,8 +146,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "walk_left"
+[sub_resource type="Animation" id=4]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -100,8 +191,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "walk_right"
+[sub_resource type="Animation" id=5]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -146,8 +236,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "walk_up"
+[sub_resource type="Animation" id=6]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -193,28 +282,36 @@ tracks/2/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+z_index = 1
 collision_mask = 2
 script = ExtResource( 1 )
 speed = 85
 effect_textures = {
-"Flower": ExtResource( 5 )
+"Flower": ExtResource( 5 ),
+"Normal": ExtResource( 6 )
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 hframes = 3
 vframes = 3
-frame = 8
+frame = 6
+
+[node name="EffectSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 4.2
-anims/walk_down = SubResource( 2 )
-anims/walk_left = SubResource( 3 )
-anims/walk_right = SubResource( 4 )
-anims/walk_up = SubResource( 5 )
+anims/set_effect = SubResource( 2 )
+anims/walk_down = SubResource( 3 )
+anims/walk_left = SubResource( 4 )
+anims/walk_right = SubResource( 5 )
+anims/walk_up = SubResource( 6 )
 
 [node name="StepPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -225,6 +322,11 @@ player = NodePath("..")
 stream = ExtResource( 3 )
 volume_db = -20.0
 pitch_scale = 1.4
+
+[node name="EffectTransformPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0
+pitch_scale = 1.05
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

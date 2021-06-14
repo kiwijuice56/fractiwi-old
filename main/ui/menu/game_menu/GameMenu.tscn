@@ -27,9 +27,9 @@
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/normal.png" type="Texture" id=25]
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/flower.png" type="Texture" id=26]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=2]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -41,7 +41,7 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=3]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -92,7 +92,7 @@ __meta__ = {
 margin_right = 490.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 250, 150 )
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="EffectSelection" type="PanelContainer" parent="VBoxContainer/Control"]
 margin_left = 120.0
@@ -160,12 +160,23 @@ margin_top = 18.0
 margin_right = 130.0
 margin_bottom = 78.0
 size_flags_horizontal = 4
-custom_styles/panel = SubResource( 1 )
-regular_style = SubResource( 1 )
-focused_style = SubResource( 2 )
+custom_styles/panel = SubResource( 2 )
+regular_style = SubResource( 2 )
+focused_style = SubResource( 3 )
 icons = {
 "Flower": ExtResource( 26 ),
 "Normal": ExtResource( 25 )
+}
+
+[node name="EffectHotkeyContainer" type="VBoxContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer"]
+visible = false
+margin_top = 115.0
+margin_right = 240.0
+margin_bottom = 115.0
+script = ExtResource( 3 )
+controller = NodePath("../../../../..")
+hotkeys = {
+"Set Effect": "ui_accept"
 }
 
 [node name="ActionSelection" type="PanelContainer" parent="VBoxContainer/Control"]

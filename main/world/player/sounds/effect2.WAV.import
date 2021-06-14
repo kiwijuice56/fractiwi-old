@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/effect2.WAV-022f71e5bff4c98c2e829914601d10dc.sample"
+
+[deps]
+
+source_file="res://main/world/player/sounds/effect2.WAV"
+dest_files=[ "res://.import/effect2.WAV-022f71e5bff4c98c2e829914601d10dc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

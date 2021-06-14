@@ -8,11 +8,38 @@ data = {
 "FileSaver": {
 "time": 252
 },
+"Items": {
+"effects": [ "Normal", "Flower" ],
+"effect_skills":{
+"Flower":{
+"Unlearned": ["Heal"]
+},
+"Normal":{
+"Unlearned": ["Cry"]
+}
+}
+},
 "Party": {
 "active": {
 "00Yun": {
 "skills": {
 "Active": [ "Slash" ],
+"Passive": [  ]
+},
+"stats": {
+"agil": 2,
+"hp": 18,
+"level": 6,
+"luck": 2,
+"magi": 2,
+"mp": 24,
+"stre": 2,
+"vita": 3
+}
+},
+"01Sponge": {
+"skills": {
+"Active": [  ],
 "Passive": [  ]
 },
 "stats": {
@@ -31,7 +58,7 @@ data = {
 }
 },
 "World": {
-"location": "origin_ocean",
+"location": "sky_temple",
 "memory": {
 },
 "terminal": "Terminal"
