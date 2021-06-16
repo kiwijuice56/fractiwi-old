@@ -6,18 +6,19 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 252
+"time": 270
 },
 "Items": {
-"effects": [ "Normal", "Flower" ],
-"effect_skills":{
-"Flower":{
-"Unlearned": ["Heal"]
+"current_effect": "Flower",
+"effect_skills": {
+"Flower": {
+"Unlearned": [ "Heal" ]
 },
-"Normal":{
-"Unlearned": ["Cry"]
+"Normal": {
+"Unlearned": [ "Cry" ]
 }
-}
+},
+"effects": [ "Normal", "Flower" ]
 },
 "Party": {
 "active": {

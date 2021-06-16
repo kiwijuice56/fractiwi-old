@@ -46,20 +46,30 @@ func animation() -> String:
 		current_animation = "walk_left"
 	return current_animation
 
-func set_effect(new_effect: String) -> void:
+func set_effect(new_effect: String, anim: bool) -> void:
 	effect = new_effect
-	can_move = false
-	get_viewport().game.can_open = false
-	get_viewport().items.current_effect = effect
-	set_physics_process(false)
-	$AnimationPlayer.play("set_effect")
-	yield($AnimationPlayer, "animation_finished")
-	set_physics_process(true)
-	can_move = true
-	get_viewport().game.can_open = true
+	if anim:
+		can_move = false
+		get_viewport().game.can_open = false
+		get_viewport().items.current_effect = effect
+		set_physics_process(false)
+		$AnimationPlayer.play("set_effect")
+		yield($AnimationPlayer, "animation_finished")
+		set_physics_process(true)
+		can_move = true
+		get_viewport().game.can_open = true
+	else:
+		get_viewport().items.current_effect = effect
+		update_sprite()
 
 func update_sprite() -> void:
 	$Sprite.texture = effect_textures[effect]
+
+func tween_sprite(new_position: Vector2, duration: float) -> void:
+	$Tween.interpolate_property($Sprite, "global_position", null, new_position, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Camera2D, "global_position", null, new_position, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+	yield($Tween, "tween_completed")
 
 func disable_collision() -> void:
 	set_collision_layer(0)

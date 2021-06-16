@@ -4,7 +4,8 @@
 
 [node name="Room" type="Node2D"]
 script = ExtResource( 1 )
-terminals = NodePath("Props/Terminals")
+terminals = NodePath("Props/Interactable/Terminals")
+doors = NodePath("Props/Interactable/Doors")
 
 [node name="TileMap" type="TileMap" parent="."]
 cell_size = Vector2( 16, 16 )
@@ -14,12 +15,18 @@ format = 1
 
 [node name="Props" type="Node2D" parent="."]
 
-[node name="Terminals" type="Node2D" parent="Props"]
+[node name="Interactable" type="Node2D" parent="Props"]
+
+[node name="Terminals" type="Node2D" parent="Props/Interactable"]
+
+[node name="Doors" type="Node2D" parent="Props/Interactable"]
 
 [node name="Items" type="Node2D" parent="Props"]
 
 [node name="Dynamic" type="Node2D" parent="Props"]
 
 [node name="Static" type="Node2D" parent="Props"]
+
+[node name="Filters" type="Node2D" parent="Props"]
 
 [node name="Enemies" type="Node2D" parent="."]

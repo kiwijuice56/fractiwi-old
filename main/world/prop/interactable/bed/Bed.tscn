@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/world/prop/interactable/bed/bed.gd" type="Script" id=1]
+[ext_resource path="res://main/world/prop/interactable/bed/bed.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 19 )
+
+[node name="Bed" type="Area2D"]
+collision_layer = 8
+script = ExtResource( 1 )
+state = "Enter bed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 2
+frame = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )

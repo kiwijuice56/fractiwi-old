@@ -282,7 +282,7 @@ tracks/2/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-z_index = 1
+z_index = 2
 collision_mask = 2
 script = ExtResource( 1 )
 speed = 85
@@ -292,13 +292,14 @@ effect_textures = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 6 )
 hframes = 3
 vframes = 3
-frame = 6
+frame = 5
 
 [node name="EffectSprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -330,3 +331,5 @@ pitch_scale = 1.05
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="Tween" type="Tween" parent="."]

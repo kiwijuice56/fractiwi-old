@@ -15,13 +15,14 @@ func _ready() -> void:
 	main_viewport.main.enable(true)
 
 func start() -> void:
-	main_viewport.transition.transition_in_heavy()
+	main_viewport.transition.transition_in_very_heavy()
+	main_viewport.music_player.play_audio(null)
 	yield(main_viewport.transition, "in_finished")
 	main_viewport.main.disable(false)
 	main_viewport.save_file.disable(false)
 	main_viewport.terminal.disable(false)
 	main_viewport.game.update_party()
-	main_viewport.transition.transition_out_heavy()
+	main_viewport.transition.transition_out_very_heavy()
 	yield(main_viewport.transition, "out_finished")
 	world.player.enable_collision()
 	world.player.can_move = true

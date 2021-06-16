@@ -11,13 +11,14 @@ export(NodePath) var main_viewport
 export var next_sound := false
 export var back_sound := false
 export var select_sound := false
+export var override_next_sound := false
 
 # Initialized by InputContainers (name: String, reference: InputContainer)
 var input := {}
 var state := "default"
 var back: UIController
 var disabled := false
-export var override_next_sound := false
+
 
 func _ready() -> void:
 	main_viewport = get_node(main_viewport)

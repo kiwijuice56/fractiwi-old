@@ -6,7 +6,19 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 196
+"time": 272
+},
+"Items": {
+"current_effect": "Flower",
+"effect_skills": {
+"Flower": {
+"Unlearned": [ "Heal" ]
+},
+"Normal": {
+"Unlearned": [ "Cry" ]
+}
+},
+"effects": [ "Normal", "Flower" ]
 },
 "Party": {
 "active": {
@@ -17,13 +29,29 @@ data = {
 },
 "stats": {
 "agil": 2,
-"hp": 42,
-"level": 5,
+"hp": 18,
+"level": 6,
 "luck": 2,
 "magi": 2,
 "mp": 24,
 "stre": 2,
-"vita": 2
+"vita": 3
+}
+},
+"01Sponge": {
+"skills": {
+"Active": [  ],
+"Passive": [  ]
+},
+"stats": {
+"agil": 2,
+"hp": 18,
+"level": 6,
+"luck": 2,
+"magi": 2,
+"mp": 24,
+"stre": 2,
+"vita": 3
 }
 }
 },
@@ -31,7 +59,7 @@ data = {
 }
 },
 "World": {
-"location": "origin_ocean",
+"location": "sky_temple",
 "memory": {
 },
 "terminal": "Terminal"

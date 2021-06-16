@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/start.wav-5f07e1bdbd9f20ce5cc0440e11f3d187.sample"
+
+[deps]
+
+source_file="res://main/ui/menu/main_menu/start.wav"
+dest_files=[ "res://.import/start.wav-5f07e1bdbd9f20ce5cc0440e11f3d187.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

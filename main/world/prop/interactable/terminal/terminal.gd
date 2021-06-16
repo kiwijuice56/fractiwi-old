@@ -1,6 +1,11 @@
 extends Interactable
 class_name Terminal
 
+export(NodePath) var room 
+
+func _ready() -> void:
+	room = get_node(room)
+
 func interacted() -> void:
 	room.current_terminal = name
 	get_viewport().transition.transition_in_heavy()

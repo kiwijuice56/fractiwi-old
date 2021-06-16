@@ -14,8 +14,10 @@ func input_pressed(key_name: String) -> void:
 		"New Game":
 			main_viewport.save_file.file_saver.load_file(-1)
 			main_viewport.root.start()
+			main_viewport.menu_sound_player.play_sound("Start")
 		"Load Game":
 			main_viewport.transition.transition_in()
+			main_viewport.menu_sound_player.play_sound("Next")
 			yield(main_viewport.transition, "in_finished")
 			main_viewport.save_file.enable(true)
 			main_viewport.save_file.set_up("Load")

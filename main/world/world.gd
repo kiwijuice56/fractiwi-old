@@ -23,13 +23,22 @@ func battle_ended() -> void:
 	player.can_move = true
 	backdrop.visible = false
 
-func add_room(room_name: String) -> void:
+func add_room(room_name: String, destination_type: String, destination_name: String) -> void:
 	if has_node("Room"):
 		remove_child(get_node("Room"))
 	current_room = room_name
 	var scene = load(room_path + current_room + "/Room.tscn")
 	var room = scene.instance()
 	add_child(room)
+	match destination_type:
+		"terminal":
+			$Player.global_position = $Room.terminals.get_node(destination_name+"/Spawn").global_position
+		"door":
+			$Player.global_position = $Room.doors.get_node(destination_name+"/Spawn").global_position
+			get_viewport().transition.transition_out()
+			yield(get_viewport().transition, "out_finished")
+			player.can_move = true
+			get_viewport().game.can_open = true
 	play_room_music()
 
 func play_room_music() -> void:
@@ -39,5 +48,7 @@ func save_data() -> Dictionary:
 	return {"location" : current_room, "terminal": $Room.current_terminal, "memory": temp_data}
 
 func load_data(data: Dictionary) -> void:
-	add_room(data["location"])
-	$Player.global_position = $Room.terminals.get_node(data["terminal"]).get_node("Spawn").global_position
+	if data["terminal"] == "":
+		add_room(data["location"], "door", "Start")
+	else:
+		add_room(data["location"], "terminal", data["terminal"])

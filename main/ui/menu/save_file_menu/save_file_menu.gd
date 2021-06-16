@@ -26,9 +26,10 @@ func input_pressed(key_name: String) -> void:
 	var scroll = input["SaveFileContainer"].get_parent().scroll_vertical
 	match key_name:
 		"Save":
+			main_viewport.menu_sound_player.play_sound("Next")
 			file_saver.save_file(index)
 		"Load":
-			main_viewport.menu_sound_player.play_sound("Next")
+			main_viewport.menu_sound_player.play_sound("Start")
 			if input["SaveFileContainer"].files[index]:
 				disable(true)
 				file_saver.load_file(index)

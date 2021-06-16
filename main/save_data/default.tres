@@ -9,24 +9,49 @@ data = {
 "time": 0
 },
 "Items": {
-"effects": [ "Normal", "Flower" ]
+"current_effect": "Normal",
+"effect_skills": {
+"Flower": {
+"Unlearned": [ "Heal" ]
+},
+"Normal": {
+"Unlearned": [ "Cry" ]
+}
+},
+"effects": [ "Normal" ]
 },
 "Party": {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Slash", "Bubble" ],
+"Active": [ "Slash" ],
 "Passive": [  ]
 },
 "stats": {
 "agil": 2,
-"hp": 3,
-"level": 1,
+"hp": 18,
+"level": 6,
 "luck": 2,
 "magi": 2,
-"mp": 0,
+"mp": 24,
 "stre": 2,
-"vita": 2
+"vita": 3
+}
+},
+"01Sponge": {
+"skills": {
+"Active": [  ],
+"Passive": [  ]
+},
+"stats": {
+"agil": 2,
+"hp": 18,
+"level": 6,
+"luck": 2,
+"magi": 2,
+"mp": 24,
+"stre": 2,
+"vita": 3
 }
 }
 },
@@ -37,6 +62,6 @@ data = {
 "location": "origin",
 "memory": {
 },
-"terminal": "Terminal"
+"terminal": ""
 }
 }

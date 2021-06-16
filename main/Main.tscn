@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://main/battle/items/items.gd" type="Script" id=36]
 [ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=37]
 [ext_resource path="res://main/battle/creature/skill_manager/unlearned_skill_manager/effect_manager/effect_manager.gd" type="Script" id=38]
+[ext_resource path="res://main/ui/menu/main_menu/start.wav" type="AudioStream" id=39]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -218,6 +219,7 @@ visible = false
 main_viewport = NodePath("../..")
 next_sound = true
 select_sound = true
+override_next_sound = true
 music = ExtResource( 21 )
 
 [node name="GameMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 1 )]
@@ -245,6 +247,7 @@ main_viewport = NodePath("../..")
 next_sound = true
 back_sound = true
 select_sound = true
+override_next_sound = true
 file_saver = NodePath("../../../../FileSaver")
 
 [node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 20 )]
@@ -276,6 +279,10 @@ volume_db = -20.0
 [node name="Can\'t" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
 stream = ExtResource( 33 )
 volume_db = -20.0
+
+[node name="Start" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+stream = ExtResource( 39 )
+volume_db = -10.0
 
 [node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
 layer = 2

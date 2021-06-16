@@ -24,11 +24,9 @@ func set_effect_skills(data: Dictionary) -> void:
 		effect.set_skills(data[effect.name])
 
 func save_data() -> Dictionary:
-	var data := {}
-	data["effects"] = effects
-	data["effect_skills"] = get_effect_skill_names()
-	return {"effects": effects}
+	return {"effects": effects, "effect_skills": get_effect_skill_names(), "current_effect": current_effect}
 
 func load_data(data: Dictionary) -> void:
 	effects = data["effects"]
 	set_effect_skills(data["effect_skills"])
+	get_viewport().world_node.player.set_effect(data["current_effect"], false)

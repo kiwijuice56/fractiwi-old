@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/battle_queue/battle_queue.gd"
 }, {
+"base": "Interactable",
+"class": "Bed",
+"language": "GDScript",
+"path": "res://main/world/prop/interactable/bed/bed.gd"
+}, {
 "base": "StatusSkill",
 "class": "BuffSkill",
 "language": "GDScript",
@@ -83,6 +88,11 @@ _global_script_classes=[ {
 "class": "CreatureCheckScreen",
 "language": "GDScript",
 "path": "res://main/ui/menu/creature_check_screen_menu/creature_check_screen.gd"
+}, {
+"base": "Interactable",
+"class": "Door",
+"language": "GDScript",
+"path": "res://main/world/prop/interactable/door/door.gd"
 }, {
 "base": "Sprite",
 "class": "DynamicScenery",
@@ -378,6 +388,7 @@ _global_script_class_icons={
 "AffinityIcon": "",
 "AffinityPanel": "",
 "BattleQueue": "",
+"Bed": "",
 "BuffSkill": "",
 "ButtonContainer": "",
 "ButtonPanel": "",
@@ -385,6 +396,7 @@ _global_script_class_icons={
 "Creature": "",
 "CreatureButtonPanel": "",
 "CreatureCheckScreen": "",
+"Door": "",
 "DynamicScenery": "",
 "EffectButtonContainer": "",
 "EffectButtonPanel": "",
@@ -458,6 +470,7 @@ MusicPlayer="*res://main/ui/utility_classes/music_player/MusicPlayer.tscn"
 
 [debug]
 
+settings/fps/force_fps=60
 settings/stdout/print_fps=true
 gdscript/warnings/return_value_discarded=false
 

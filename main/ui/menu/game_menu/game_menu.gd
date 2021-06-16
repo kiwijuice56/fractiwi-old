@@ -61,6 +61,7 @@ func input_pressed(key_name: String) -> void:
 	if disabled or not open: return
 	match(key_name):
 		"Effects":
+			main_viewport.menu_sound_player.play_sound("Next")
 			show_effects()
 		"Set Effect":
 			update_effect(get_focus_owner().name)
@@ -235,7 +236,7 @@ func hide_effects() -> void:
 
 func update_effect(effect: String) -> void:
 	close_menu()
-	get_viewport().world_node.player.set_effect(effect)
+	get_viewport().world_node.player.set_effect(effect, true)
 
 func summon_member() -> void:
 	var creature_button := get_focus_owner()
