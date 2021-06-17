@@ -18,7 +18,8 @@ func interacted() -> void:
 	get_viewport().game.can_open = false
 	get_viewport().items.add_consumable(skill, count)
 	get_viewport().world_node.memory[name] = true
-	get_viewport().interact.show_text("Got item: " + skill + " x"+str(count) )
+	player.main_viewport.interact.disable(true)
+	yield(get_viewport().interact.show_text("Got item: " + skill + " x"+str(count) ), "completed")
 	set_process_input(true)
 	$AudioStreamPlayer.playing = true
 	yield(self, "accepted")

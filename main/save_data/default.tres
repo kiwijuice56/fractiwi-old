@@ -31,13 +31,13 @@ data = {
 },
 "stats": {
 "agil": 2,
-"hp": 500,
-"level": 1,
+"hp": 42,
+"level": 5,
 "luck": 2,
 "magi": 2,
 "mp": 24,
-"stre": 20,
-"vita": 3
+"stre": 2,
+"vita": 2
 }
 }
 },

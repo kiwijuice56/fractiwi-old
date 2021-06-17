@@ -165,7 +165,6 @@ func input_pressed(key_name: String) -> void:
 					main_viewport.menu_sound_player.play_sound("Can't")
 					return
 				var skill: Skill = get_focus_owner().skill
-				print(get_focus_owner().name)
 				if skill.side == "opposite" and not in_battle:
 					return
 				add_child(skill)

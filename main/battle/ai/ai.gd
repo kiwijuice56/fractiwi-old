@@ -6,4 +6,4 @@ var yielded := false
 
 # Returns array with action for creature to take
 func do_turn(_same: Array, opposite: Array, _controller: Creature) -> Array:
-	return ["Skill", get_parent().get_node("Skills/Active/Bubble"), [opposite[0]]]
+	return ["Skill", get_parent().get_node("Skills/Active/Slash"), [opposite[0]]]

@@ -21,7 +21,7 @@ func enable(show: bool) -> void:
 		input["HotkeyContainer"].hotkeys = {current_interactable.state : "ui_accept"}
 		input["HotkeyContainer"].add_items()
 		input["HotkeyContainer"].enable_input()
-		get_viewport().interact.hide_text()
+		hide_text()
 
 func disable(show: bool) -> void:
 	.disable(show)
@@ -32,6 +32,8 @@ func show_text(text: String) -> void:
 	input["HotkeyContainer"].visible = false
 	$PanelContainer/Label.text = text
 	$PanelContainer/Label.visible = true
+	$AnimationPlayer.current_animation = "fade_in"
+	yield($AnimationPlayer, "animation_finished")
 
 func hide_text() -> void:
 	input["HotkeyContainer"].visible = true

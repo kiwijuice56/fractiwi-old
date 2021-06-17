@@ -12,9 +12,9 @@ func _ready() -> void:
 
 func position_enemies() -> void:
 	for i in range($EnemyParty.get_child_count()):
-		$EnemyParty.get_child(i).position.x += i*48
+		$EnemyParty.get_child(i).position.x += i*64
 # warning-ignore:integer_division
-	$EnemyParty.position.x = 245 - ((($EnemyParty.get_child_count()-1)*48)/2)
+	$EnemyParty.position.x = 245 - ((($EnemyParty.get_child_count()-1)*64)/2)
 
 func agility_sort(a: Creature, b: Creature) -> bool:
 	return a.agil > b.agil
@@ -107,7 +107,6 @@ func battle(enemy_creatures: Array) -> void:
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
 		get_viewport().game.press_turn_container.set_side(current == $PlayerParty)
 		get_viewport().game.press_turn_container.set_turns(full, half)
-		
 		
 		current_array = to_array(current, current_array)
 		
