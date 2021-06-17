@@ -396,7 +396,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 controller = NodePath("../../../../..")
-button_names = [ "Effects", "Skills", "Items", "Party", "Settings" ]
+button_names = [ "Effect", "Skill", "Item", "Party", "Setting" ]
 
 [node name="Skills" type="Button" parent="VBoxContainer/MainPanel/PanelContainer/VBoxContainer/MainButtonContainer"]
 margin_right = 91.0
@@ -663,8 +663,8 @@ controller = NodePath("..")
 
 [node name="LabelLayer" type="CanvasLayer" parent="."]
 layer = 2
-offset = Vector2( 0, 35 )
-transform = Transform2D( 1, 0, 0, 1, 0, 35 )
+offset = Vector2( 0, 27 )
+transform = Transform2D( 1, 0, 0, 1, 0, 27 )
 
 [node name="LabelContainer" type="PanelContainer" parent="LabelLayer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -677,6 +677,7 @@ margin_top = -36.0
 margin_right = 88.5
 margin_bottom = -17.0
 theme = ExtResource( 1 )
+custom_styles/panel = ExtResource( 16 )
 script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -685,9 +686,9 @@ effect_handler = NodePath("../../EffectHandler")
 
 [node name="Label" type="Label" parent="LabelLayer/LabelContainer"]
 margin_left = 23.0
-margin_top = 2.0
+margin_top = 4.0
 margin_right = 153.0
-margin_bottom = 16.0
+margin_bottom = 18.0
 size_flags_horizontal = 4
 text = "Passsaaaaaaaaaaaaaaaaa"
 align = 1

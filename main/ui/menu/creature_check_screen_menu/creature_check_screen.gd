@@ -72,7 +72,7 @@ func _input(event: InputEvent) -> void:
 	return_panel(party[old_index])
 	show_creature(party[index])
 
-func battle_ended() -> void:
+func battle_ended(_did_run: bool) -> void:
 	disable(false)
 	stat_label.text = "---"
 	state = "default"

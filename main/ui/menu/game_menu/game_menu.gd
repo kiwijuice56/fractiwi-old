@@ -64,7 +64,7 @@ func _input(event: InputEvent) -> void:
 func input_pressed(key_name: String) -> void:
 	if disabled or not open: return
 	match(key_name):
-		"Effects":
+		"Effect":
 			main_viewport.menu_sound_player.play_sound("Next")
 			show_effects()
 		"Set Effect":
@@ -105,12 +105,12 @@ func input_pressed(key_name: String) -> void:
 						active.focus_exited()
 					input["PartySelectHotKeyContainer"].disable_input()
 					input["PartySelectHotKeyContainer"].visible = false
-		"Items":
+		"Item":
 			match state:
 				"default":
 					main_viewport.menu_sound_player.play_sound("Next")
 					show_items()
-		"Skills":
+		"Skill":
 			match state:
 				"default":
 					main_viewport.menu_sound_player.play_sound("Next")
@@ -127,9 +127,25 @@ func input_pressed(key_name: String) -> void:
 				"party":
 					show_check_screen()
 					main_viewport.menu_sound_player.play_sound("Next")
+		"Recruit":
+			input["MainButtonContainer"].disable_input()
+			get_focus_owner().release_focus()
+			main_viewport.menu_sound_player.play_sound("Next")
+			state = "selection"
+			set_process_input(false)
+			var targets: Array = yield(selector.select("single", "opposite"), "completed")
+			set_process_input(true)
+			if len(targets) == 0:
+				input["MainButtonContainer"].enable_input()
+				input["MainButtonContainer"].grab_focus_at(0)
+				return
+			emit_signal("battle_action_chosen", ["Recruit", null, targets])
 		"Pass":
 			main_viewport.menu_sound_player.play_sound("Next")
 			emit_signal("battle_action_chosen", ["Pass", null, []])
+		"Run":
+			main_viewport.menu_sound_player.play_sound("Next")
+			emit_signal("battle_action_chosen", ["Run", null, []])
 		"Confirm":
 			main_viewport.menu_sound_player.play_sound("Next")
 			if state == "select_active_member":
@@ -193,17 +209,17 @@ func battle_started(_creatures: Array) -> void:
 	in_battle = true
 	input["PartySkillContainer"].tabs_visible = false
 	press_turn_container.visible = true
-	input["MainButtonContainer"].button_names = ["Skills", "Items", "Party", "Pass", "Run"]
+	input["MainButtonContainer"].button_names = ["Skill", "Item", "Party", "Pass", "Run", "Recruit"]
 	input["MainButtonContainer"].add_items()
 	disable(true)
 	open_menu(true)
 	emit_signal("battle_ready")
 
-func battle_ended() -> void:
+func battle_ended(_did_run: bool) -> void:
 	in_battle = false
 	input["PartySkillContainer"].tabs_visible = true
 	press_turn_container.visible = false
-	input["MainButtonContainer"].button_names = ["Effects", "Skills", "Items", "Party", "Settings"]
+	input["MainButtonContainer"].button_names = ["Effect", "Skill", "Item", "Party", "Setting"]
 	input["MainButtonContainer"].add_items()
 	close_menu()
 	enable(false)
@@ -211,9 +227,17 @@ func battle_ended() -> void:
 func battle_input(current_creature: Creature):
 	creature = current_creature
 	text_label.text = "What will %s do?" % creature.name
-	open_menu(false)
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
+	if creature.name == "Yun":
+		for button in input["MainButtonContainer"].get_children():
+			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
+				button.disabled = false
+	else:
+		for button in input["MainButtonContainer"].get_children():
+			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
+				button.disabled = true
+	open_menu(false)
 
 func battle_action_chosen(_ui_info: Array) -> void:
 	text_label.text = ""
@@ -246,6 +270,9 @@ func show_items() -> void:
 	input["ItemContainer"].enable_input()
 	if len(main_viewport.items.consumables):
 		input["ItemContainer"].grab_focus_at(0)
+	else:
+		if get_focus_owner():
+			get_focus_owner().release_focus()
 	effect_handler.fade(item_selection, "visible", effect_handler.default_fade_time)
 	state = "items"
 

@@ -18,3 +18,5 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Spawn" type="Position2D" parent="."]

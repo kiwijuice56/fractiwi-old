@@ -88,6 +88,8 @@ func turn_logic(turns_used: int, full: int, half: int) -> Array:
 					half += 1
 				else:
 					half -= 1
+			8: # ran!
+				full = 100
 	return [full, half]
 
 
@@ -102,6 +104,7 @@ func battle(enemy_creatures: Array) -> void:
 	
 	var full: int = current.get_child_count()
 	var half: int = 0
+	var did_run := false
 	pointer = 0
 	yield(get_viewport().game, "battle_ready") # becaused called from battle_start signal, game may start before menu is initialized
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
@@ -115,8 +118,15 @@ func battle(enemy_creatures: Array) -> void:
 		
 		# get turns used
 		var turns: Array = turn_logic(yield(current_array[pointer].do_turn(current_array, opposite_array), "completed"), full, half)
+		
+		
+		
 		full = turns[0]
 		half = turns[1]
+		
+		if full == 100:
+			did_run = true
+			break
 		
 		if full + half <= 0:
 			#swap parties
@@ -136,10 +146,15 @@ func battle(enemy_creatures: Array) -> void:
 			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "show", 0.25)
 		else:
 			pointer += 1
-	for child in $PlayerParty.get_children():
-		child.expe += expe
+	if not did_run:
+		for child in $PlayerParty.get_children():
+			child.expe += expe
 	return_player_party($PlayerParty.get_children())
 	var function = get_viewport().party.check_level_ups()
 	if function:
 		yield(get_viewport().party, "level_up_complete")
-	get_viewport().battle_ended()
+	get_viewport().battle_ended(did_run)
+	if did_run:
+		yield(get_viewport().transition, "in_finished")
+		for creature in $EnemyParty.get_children():
+			creature.queue_free()

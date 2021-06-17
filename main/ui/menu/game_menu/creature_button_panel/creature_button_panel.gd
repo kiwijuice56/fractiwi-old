@@ -34,7 +34,7 @@ func focus_exited() -> void:
 	.focus_exited()
 
 func update_content() -> void:
-	name_label.text = creature.name
+	name_label.text = creature.creature_name
 	hp_bar.set_data("HP", creature.hp, creature.max_hp)
 	mp_bar.set_data("MP", creature.mp, creature.max_mp)
 	set_status_icon(creature.status)

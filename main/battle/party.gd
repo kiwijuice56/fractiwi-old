@@ -7,9 +7,6 @@ signal level_up_complete
 export var creature_path: String
 export var player_ai: Script
 
-func _ready() -> void:
-	get_viewport().connect("battle_end", self, "battle_ended")
-
 func instance_member(creature: String, data: Dictionary) -> Creature:
 	creature = creature.substr(2) # remove party order
 	var scene = load( creature_path + ("%s/%s.tscn" % [creature.to_lower(), creature])).instance()
@@ -63,9 +60,6 @@ func check_level_ups() -> void:
 			get_viewport().creature_check.level_up(child, changed)
 			yield(get_viewport().creature_check, "level_finished")
 	emit_signal("level_up_complete")
-
-func battle_ended() -> void:
-	pass#check_level_ups()
 
 func save_data() -> Dictionary:
 	var active = {}

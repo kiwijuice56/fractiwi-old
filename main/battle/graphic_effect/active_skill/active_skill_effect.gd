@@ -9,6 +9,7 @@ var targets: Array
 
 func _ready() -> void:
 	$AnimationPlayer.connect("animation_finished", self, "animation_finished")
+	$Sprite.frame = 0
 	$AnimationPlayer.current_animation = "start" + anim_name
 
 func animation_finished(_anim: String) -> void:

@@ -13,5 +13,5 @@ func set_effect(effect: String, on: bool) -> void:
 func battle_started(_creatures: Array) -> void:
 	set_effect("tunnel", true)
 
-func battle_ended() -> void:
+func battle_ended(_did_run: bool) -> void:
 	set_effect("tunnel", false)

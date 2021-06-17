@@ -19,7 +19,7 @@ export (NodePath) var creature_check
 export (NodePath) var menu_sound_player
 
 signal battle_start
-signal battle_end
+signal battle_end(did_run)
 
 func _ready() -> void:
 	root = get_node(root)
@@ -49,9 +49,9 @@ func battle_started(creatures: Array) -> void:
 	emit_signal("battle_start", creatures)
 	transition.transition_out()
 
-func battle_ended() -> void:
+func battle_ended(did_run) -> void:
 	transition.transition_in()
 	yield(transition, "in_finished")
-	emit_signal("battle_end")
+	emit_signal("battle_end", did_run)
 	transition.transition_out()
 

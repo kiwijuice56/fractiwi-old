@@ -7,6 +7,7 @@ export var room_path: String
 var current_room: String = "block"
 var memory: Dictionary
 var current_terminal: String # set by terminal on menu_open
+var current_enemy: Enemy
 
 func _ready() -> void:
 	player = get_node(player)
@@ -19,9 +20,13 @@ func battle_started(_creatures: Array) -> void:
 	backdrop.visible = true
 	backdrop.texture = $Room.backdrop
 
-func battle_ended() -> void:
+func battle_ended(did_run: bool) -> void:
 	player.can_move = true
 	backdrop.visible = false
+	if not did_run:
+		current_enemy.call_deferred("queue_free")
+	else:
+		player.global_position = current_enemy.get_node("Spawn").global_position
 
 func add_room(room_name: String, destination_type: String, destination_name: String) -> void:
 	if has_node("Room"):

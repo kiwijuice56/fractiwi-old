@@ -8,6 +8,7 @@
 [node name="Yun" instance=ExtResource( 1 )]
 texture = ExtResource( 5 )
 script = ExtResource( 2 )
+creature_name = "Yun"
 
 [node name="AI" parent="." index="2"]
 script = ExtResource( 3 )

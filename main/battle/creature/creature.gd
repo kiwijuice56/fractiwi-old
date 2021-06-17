@@ -3,6 +3,7 @@ class_name Creature
 # Contains data for a creature and functions to edit them
 
 export(String, "Demon", "Human", "Inanimate", "Beast") var race: String = "Human"
+export var creature_name: String
 export var level: int
 export var stre: int
 export var magi: int
@@ -54,7 +55,43 @@ func do_turn(same: Array, opposite: Array) -> int:
 	if tag == "Skill":
 		get_viewport().game.label_container.show_text(object.name)
 		return yield(object.use(self, targets, true), "completed")
+	if tag == "Run":
+		if run_attempt():
+			get_viewport().game.label_container.show_text("Yun ran!")
+			yield(get_viewport().game.label_container, "complete")
+			return 8
+		else:
+			get_viewport().game.label_container.show_text("Yun couldn't escape!")
+			yield(get_viewport().game.label_container, "complete")
+			return -2
+	if tag == "Recruit":
+		if recruit_attempt(targets):
+			get_viewport().game.label_container.show_text("Recruit success! " + targets[0].creature_name + " joined you")
+			yield(get_viewport().game.label_container, "complete")
+			targets[0].get_parent().remove_child(targets[0])
+			get_viewport().party.get_node("Inactive").add_child(targets[0])
+			targets[0].get_node("AI").switch_script()
+			return 0
+		else:
+			get_viewport().game.label_container.show_text("Recruit failure!")
+			yield(get_viewport().game.label_container, "complete")
+			return -1
 	return 0
+
+func run_attempt() -> bool:
+	return rand_range(0,1) < .35+ ((luck+agil)/120.0)
+
+func recruit_attempt(targets: Array) -> bool:
+	if targets[0].level > level:
+		return false
+	var names := []
+	for child in get_viewport().party.get_node("Active").get_children() + get_viewport().party.get_node("Inactive").get_children():
+		names.append(child.creature_name)
+	if targets[0].creature_name in names:
+		return false
+	return true
+	return rand_range(0,1) < .35+ ((luck+agil)/120.0)
+
 
 func target_action() -> void:
 	if not panel:
@@ -70,6 +107,10 @@ func target_action() -> void:
 	if panel: panel.update_content()
 	if function:
 		yield(function, "completed")
+	elif not panel:
+		yield($AnimationPlayer, "animation_finished")
+	else:
+		yield(panel.get_node("AnimationPlayer"), "animation_finished")
 	emit_signal("target_action_complete")
 
 func check_hp() -> void:
