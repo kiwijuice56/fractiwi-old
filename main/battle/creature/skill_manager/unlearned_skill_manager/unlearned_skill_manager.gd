@@ -26,12 +26,5 @@ func delete_all_skills() -> void:
 
 func set_skills(data: Dictionary) -> void:
 	delete_all_skills()
-	var dir = Directory.new()
-	for path in skill_paths:
-		dir.open(path)
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while (file_name != ""):
-			if file_name.capitalize() in data["Unlearned"]:
-				add_child(load(path+file_name+"/"+file_name.capitalize() + ".tscn").instance())
-			file_name = dir.get_next()
+	for skill in data["Unlearned"]:
+		add_child(get_skill(skill))

@@ -3,6 +3,7 @@ class_name Items
 
 var current_effect := "Normal"
 var effects: Array
+var consumables: Dictionary
 
 func get_off() -> Dictionary:
 	return get_node("Effects").get_node(current_effect).off_affinities
@@ -23,10 +24,24 @@ func set_effect_skills(data: Dictionary) -> void:
 	for effect in $Effects.get_children():
 		effect.set_skills(data[effect.name])
 
+func add_consumable(skill: String, count: int) -> void:
+	if skill in consumables:
+		consumables[skill] += count
+	else:
+		consumables[skill] = count
+
+func remove_consumable(skill: String) -> void:
+	if skill in consumables:
+		consumables[skill] -= 1
+	if consumables[skill] <= 0:
+		consumables.erase(skill)
+
 func save_data() -> Dictionary:
-	return {"effects": effects, "effect_skills": get_effect_skill_names(), "current_effect": current_effect}
+	return {"effects": effects, "effect_skills": get_effect_skill_names(), "current_effect": current_effect,
+			"consumables": consumables}
 
 func load_data(data: Dictionary) -> void:
 	effects = data["effects"]
+	consumables = data["consumables"]
 	set_effect_skills(data["effect_skills"])
 	get_viewport().world_node.player.set_effect(data["current_effect"], false)

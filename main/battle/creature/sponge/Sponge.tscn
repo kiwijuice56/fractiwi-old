@@ -7,6 +7,13 @@
 
 [node name="Sponge" instance=ExtResource( 2 )]
 texture = ExtResource( 1 )
+race = "Demon"
+level = 4
+stre = 2
+magi = 5
+vita = 2
+luck = 2
+agil = 4
 
 [node name="Bubble" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
 

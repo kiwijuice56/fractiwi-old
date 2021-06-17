@@ -7,9 +7,10 @@ export var cost := 0
 export(String, "all", "single", "random") var target_type := "single"
 export(String, "opposite", "same") var side := "opposite"
 export(int, 0, 100) var accuracy := 0
+signal use_complete
 
 func use(_user: Creature, _targets: Array, _anim: bool) -> void:
-	pass
+	emit_signal("use_complete")
 
 func is_miss(user: Creature, target: Creature) -> bool:
 	print( (accuracy + ((user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0)

@@ -9,6 +9,8 @@ data = {
 "time": 0
 },
 "Items": {
+"consumables": {
+},
 "current_effect": "Normal",
 "effect_skills": {
 "Flower": {
@@ -29,28 +31,12 @@ data = {
 },
 "stats": {
 "agil": 2,
-"hp": 18,
-"level": 6,
+"hp": 500,
+"level": 1,
 "luck": 2,
 "magi": 2,
 "mp": 24,
-"stre": 2,
-"vita": 3
-}
-},
-"01Sponge": {
-"skills": {
-"Active": [  ],
-"Passive": [  ]
-},
-"stats": {
-"agil": 2,
-"hp": 18,
-"level": 6,
-"luck": 2,
-"magi": 2,
-"mp": 24,
-"stre": 2,
+"stre": 20,
 "vita": 3
 }
 }

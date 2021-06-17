@@ -21,8 +21,18 @@ func enable(show: bool) -> void:
 		input["HotkeyContainer"].hotkeys = {current_interactable.state : "ui_accept"}
 		input["HotkeyContainer"].add_items()
 		input["HotkeyContainer"].enable_input()
+		get_viewport().interact.hide_text()
 
 func disable(show: bool) -> void:
 	.disable(show)
 	if is_inside_tree() and modulate != Color(1,1,1,0): $AnimationPlayer.current_animation = "fade_out"
 	input["HotkeyContainer"].disable_input()
+
+func show_text(text: String) -> void:
+	input["HotkeyContainer"].visible = false
+	$PanelContainer/Label.text = text
+	$PanelContainer/Label.visible = true
+
+func hide_text() -> void:
+	input["HotkeyContainer"].visible = true
+	$PanelContainer/Label.visible = false

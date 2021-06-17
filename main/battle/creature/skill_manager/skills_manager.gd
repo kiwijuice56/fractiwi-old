@@ -1,11 +1,6 @@
 extends Node
 class_name SkillsManager
 
-export(Array, String) var skill_paths: Array = ["res://main/battle/skill/active/point/",
-												"res://main/battle/skill/active/status/buff/",
-												"res://main/battle/skill/active/status/condition/",
-												"res://main/battle/skill/passive/affinity/",
-												"res://main/battle/skill/passive/stat/"]
 
 func _ready() -> void:
 	sort_skills()
@@ -35,15 +30,25 @@ func delete_all_skills() -> void:
 
 func set_skills(data: Dictionary) -> void:
 	delete_all_skills()
+	for skill_name in data["Active"]:
+		$Active.add_child(get_skill(skill_name))
+	for skill_name in data["Passive"]:
+		$Passive.add_child(get_skill(skill_name))
+	sort_skills()
+
+static func get_skill(skill_name: String) -> Skill:
+	var skill_paths =  ["res://main/battle/skill/active/point/",
+						"res://main/battle/skill/active/status/buff/",
+						"res://main/battle/skill/active/status/condition/",
+						"res://main/battle/skill/passive/affinity/",
+						"res://main/battle/skill/passive/stat/"]
 	var dir = Directory.new()
 	for path in skill_paths:
 		dir.open(path)
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while (file_name != ""):
-			if file_name.capitalize() in data["Active"]:
-				$Active.add_child(load(path+file_name+"/"+file_name.capitalize() + ".tscn").instance())
-			elif file_name.capitalize() in data["Passive"]:
-				$Passive.add_child(load(path+file_name+"/"+file_name.capitalize() + ".tscn").instance())
+			if file_name.capitalize() == skill_name:
+				return load(path+file_name+"/"+file_name.capitalize() + ".tscn").instance()
 			file_name = dir.get_next()
-	sort_skills()
+	return null

@@ -299,7 +299,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 6 )
 hframes = 3
 vframes = 3
-frame = 5
+frame = 7
 
 [node name="EffectSprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )

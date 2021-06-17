@@ -102,6 +102,7 @@ func return_panel(creature: Creature) -> void:
 	creature.panel.size_flags_vertical = Control.SIZE_SHRINK_END
 	main_vbox.remove_child(creature.panel)
 	parent.add_child(creature.panel)
+	main_viewport.game.update_party()
 
 func stat_increase(stat: String) -> void:
 	party[index].set(stat, party[index].get(stat)+1)

@@ -76,3 +76,18 @@ func disable_collision() -> void:
 
 func enable_collision() -> void:
 	set_collision_layer(1)
+
+func face_direction(face_direction: String) -> void:
+	match face_direction:
+		"up":
+			scale.x = 1
+			$Sprite.frame = 4
+		"down":
+			scale.x = 1
+			$Sprite.frame = 7
+		"left":
+			scale.x = -1
+			$Sprite.frame = 1
+		"right":
+			scale.x = 1
+			$Sprite.frame = 1

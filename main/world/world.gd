@@ -5,7 +5,7 @@ export (NodePath) var player
 export (NodePath) var backdrop
 export var room_path: String
 var current_room: String = "block"
-var temp_data: Dictionary
+var memory: Dictionary
 var current_terminal: String # set by terminal on menu_open
 
 func _ready() -> void:
@@ -30,6 +30,7 @@ func add_room(room_name: String, destination_type: String, destination_name: Str
 	var scene = load(room_path + current_room + "/Room.tscn")
 	var room = scene.instance()
 	add_child(room)
+	get_node("Room").load_memory(memory)
 	match destination_type:
 		"terminal":
 			$Player.global_position = $Room.terminals.get_node(destination_name+"/Spawn").global_position
@@ -45,9 +46,10 @@ func play_room_music() -> void:
 	get_viewport().music_player.play_audio($Room.music)
 
 func save_data() -> Dictionary:
-	return {"location" : current_room, "terminal": $Room.current_terminal, "memory": temp_data}
+	return {"location" : current_room, "terminal": $Room.current_terminal, "memory": memory}
 
 func load_data(data: Dictionary) -> void:
+	memory = data["memory"]
 	if data["terminal"] == "":
 		add_room(data["location"], "door", "Start")
 	else:

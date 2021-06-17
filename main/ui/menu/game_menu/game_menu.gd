@@ -13,6 +13,8 @@ export(NodePath) var selector
 export(NodePath) var label_container
 export(NodePath) var text_label
 export(NodePath) var skill_description_label
+export(NodePath) var item_selection
+export(NodePath) var item_description_label
 
 var open := false
 var can_open := false
@@ -35,6 +37,8 @@ func _ready():
 	label_container = get_node(label_container)
 	text_label = get_node(text_label)
 	skill_description_label = get_node(skill_description_label)
+	item_selection = get_node(item_selection)
+	item_description_label = get_node(item_description_label)
 	main_viewport.connect("battle_start", self, "battle_started")
 	main_viewport.connect("battle_end", self, "battle_ended")
 	connect("battle_action_chosen", self, "battle_action_chosen")
@@ -76,6 +80,10 @@ func input_pressed(key_name: String) -> void:
 					hide_party()
 					input["MainButtonContainer"].enable_input()
 					input["MainButtonContainer"].grab_focus_at(0)
+				"items":
+					hide_items()
+					input["MainButtonContainer"].enable_input()
+					input["MainButtonContainer"].grab_focus_at(0)
 				"skills":
 					hide_skills()
 					input["MainButtonContainer"].enable_input()
@@ -97,6 +105,11 @@ func input_pressed(key_name: String) -> void:
 						active.focus_exited()
 					input["PartySelectHotKeyContainer"].disable_input()
 					input["PartySelectHotKeyContainer"].visible = false
+		"Items":
+			match state:
+				"default":
+					main_viewport.menu_sound_player.play_sound("Next")
+					show_items()
 		"Skills":
 			match state:
 				"default":
@@ -131,7 +144,7 @@ func input_pressed(key_name: String) -> void:
 				if not get_focus_owner():
 					main_viewport.menu_sound_player.play_sound("Can't")
 					return
-				var skill: Node = creature.get_node("Skills/Active").get_child(get_focus_owner().get_index())
+				var skill: Skill = get_focus_owner().skill
 				if skill.side == "opposite" and not in_battle:
 					return
 				if skill.cost > creature.get(skill.cost_type):
@@ -147,6 +160,35 @@ func input_pressed(key_name: String) -> void:
 					show_skills()
 					return
 				emit_signal("battle_action_chosen", ["Skill", skill, targets])
+			if state == "items":
+				if not get_focus_owner():
+					main_viewport.menu_sound_player.play_sound("Can't")
+					return
+				var skill: Skill = get_focus_owner().skill
+				print(get_focus_owner().name)
+				if skill.side == "opposite" and not in_battle:
+					return
+				add_child(skill)
+				main_viewport.menu_sound_player.play_sound("Next")
+				hide_items()
+				state = "selection"
+				set_process_input(false)
+				var targets: Array = yield(selector.select(skill.target_type, skill.side), "completed")
+				set_process_input(true)
+				if len(targets) == 0:
+					show_items()
+					remove_child(skill)
+					return
+				main_viewport.items.remove_consumable(skill.name)
+				emit_signal("battle_action_chosen", ["Skill", skill, targets])
+				if not in_battle:
+					skill.use(main_viewport.party.get_node("Active").get_child(0), targets, true)
+				yield(skill, "use_complete")
+				if not in_battle:
+					enable(true)
+					show_items()
+				remove_child(skill)
+				skill.queue_free()
 
 func battle_started(_creatures: Array) -> void:
 	in_battle = true
@@ -193,9 +235,26 @@ func close_menu() -> void:
 	hide_party()
 	hide_skills()
 	hide_effects()
+	hide_items()
 	effect_handler.fade(self, "hide", effect_handler.default_fade_time)
 	input["MainButtonContainer"].disable_input()
 	open = false
+
+func show_items() -> void:
+	input["MainButtonContainer"].disable_input()
+	input["ActionHotkeyContainer"].enable_input()
+	input["ItemContainer"].add_items()
+	input["ItemContainer"].enable_input()
+	if len(main_viewport.items.consumables):
+		input["ItemContainer"].grab_focus_at(0)
+	effect_handler.fade(item_selection, "visible", effect_handler.default_fade_time)
+	state = "items"
+
+func hide_items() -> void:
+	input["ActionHotkeyContainer"].disable_input()
+	input["ItemContainer"].disable_input()
+	effect_handler.fade(item_selection, "hide", effect_handler.default_fade_time)
+	state = "default"
 
 func show_skills() -> void:
 	input["MainButtonContainer"].disable_input()

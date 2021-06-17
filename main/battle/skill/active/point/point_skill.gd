@@ -3,7 +3,7 @@ class_name PointSkill
 
 export(int, 0, 100) var critical := 0
 export(int, -100, 100) var power := 0
-export(String, "stre", "magi") var stat := "stre"
+export(String, "stre", "magi", "luck", "vita") var stat := "stre"
 
 func get_text() -> String:
 	return ("Pow: %d\nHit: %d\nTarget: %s\n" % [power, accuracy, target_type]) + description
@@ -61,6 +61,7 @@ func use(user: Creature, targets: Array, _anim: bool) -> void:
 	yield(targets[len(targets)-1], "target_action_complete")
 	call_deferred("remove_child", place_timer)
 	place_timer.call_deferred("queue_free")
+	emit_signal("use_complete")
 	return turns_used
 
 func is_crit(user: Creature, target: Creature) -> bool:

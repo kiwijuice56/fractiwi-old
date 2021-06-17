@@ -80,6 +80,13 @@ margin_bottom = 4.0
 script = ExtResource( 2 )
 controller = NodePath("../..")
 
+[node name="Label" type="Label" parent="PanelContainer"]
+visible = false
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 18.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.75
 anims/fade_in = SubResource( 1 )
