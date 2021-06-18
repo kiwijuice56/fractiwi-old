@@ -4,6 +4,7 @@ class_name PointSkill
 export(int, 0, 100) var critical := 0
 export(int, -100, 100) var power := 0
 export(String, "stre", "magi", "luck", "vita") var stat := "stre"
+export(String, "hp", "mp") var point_stat := "hp"
 
 func get_text() -> String:
 	return ("Pow: %d\nHit: %d\nTarget: %s\n" % [power, accuracy, target_type]) + description
@@ -30,14 +31,14 @@ func use(user: Creature, targets: Array, _anim: bool) -> void:
 		if def == "repel":
 			def = get_def_affinity(user)
 			point_change = calculate_points(user, user, def, off, is_crit)
-			user.hp += point_change
+			user.set(point_stat, target.get(point_stat) + point_change)
 			if not user in targets:
 				targets.append(user)
 				user.targeted_skill_data = [point_change, false, is_crit, def]
 			else:
 				user.targeted_skill_data[0] += point_change
 		else:
-			target.hp += point_change
+			target.set(point_stat, target.get(point_stat) + point_change)
 	var effect: ActiveSkillEffect = effect_packed.instance()
 	var place_timer = Timer.new()
 	add_child(place_timer)

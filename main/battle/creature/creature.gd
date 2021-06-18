@@ -2,7 +2,7 @@ extends Sprite
 class_name Creature
 # Contains data for a creature and functions to edit them
 
-export(String, "Demon", "Human", "Inanimate", "Beast") var race: String = "Human"
+export(String, "Human", "Object", "Beast", "Ghoul", "Demon", "Angel", "Plant") var race: String = "Human"
 export var creature_name: String
 export var level: int
 export var stre: int
@@ -18,6 +18,10 @@ var max_hp: int = 10
 var mp: int = 20
 var max_mp: int
 var status := "ok"
+
+var attack: int
+var defense: int
+var hiteva: int
 
 var expe := 0
 var expe_to_level := 25
@@ -44,6 +48,7 @@ func do_turn(same: Array, opposite: Array) -> int:
 		action = yield(action, "completed")
 	else: # if enemy, flash self to indicate turn
 		$AnimationPlayer.current_animation = "my_turn"
+		$NextPlayer.playing = true
 		yield($AnimationPlayer, "animation_finished")
 	var tag: String = action[0]
 	var object: Node = action[1]
@@ -89,9 +94,7 @@ func recruit_attempt(targets: Array) -> bool:
 		names.append(child.creature_name)
 	if targets[0].creature_name in names:
 		return false
-	return true
-	return rand_range(0,1) < .35+ ((luck+agil)/120.0)
-
+	return rand_range(0,1) < .25+ ((luck)/60.0)
 
 func target_action() -> void:
 	if not panel:

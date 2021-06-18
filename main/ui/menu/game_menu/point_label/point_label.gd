@@ -8,9 +8,12 @@ export var absorb: Color
 export var weak: Color
 export var crit: Color
 
-func set_point_text(points: int, is_miss: bool, is_crit: bool, def: String) -> void:
+func set_point_text(points, is_miss: bool, is_crit: bool, def: String) -> void:
 	offset = get_parent().get_global_transform_with_canvas().get_origin()
 	$Label.add_color_override("font_color", Color(1,1,1))
+	if typeof(points) == TYPE_STRING:
+		$Label.text = def + " " + points
+		return
 	if "rect_size" in get_parent():
 		offset += get_parent().rect_size/2
 	if is_miss:

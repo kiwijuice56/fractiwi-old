@@ -202,7 +202,7 @@ player_party_node = NodePath("../../Party")
 visible = false
 
 [node name="EnemyParty" type="Node2D" parent="ViewportContainer/MainViewport/Battle/BattleQueue"]
-position = Vector2( 245, 125 )
+position = Vector2( 245, 100 )
 
 [node name="UI" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 

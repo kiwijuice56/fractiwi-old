@@ -4,7 +4,7 @@
 [ext_resource path="res://main/world/prop/interactable/item/pill_bottle/pill_bottle.png" type="Texture" id=2]
 
 [node name="PillBottle" instance=ExtResource( 1 )]
-skill = "Pill"
+skill = "Hp Pill"
 count = 3
 
 [node name="Sprite" parent="." index="0"]

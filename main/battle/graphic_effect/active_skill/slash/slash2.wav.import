@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slash2.wav-f3db0d9122a3c4fe1421d60c3c407c8c.sample"
+
+[deps]
+
+source_file="res://main/battle/graphic_effect/active_skill/slash/slash2.wav"
+dest_files=[ "res://.import/slash2.wav-f3db0d9122a3c4fe1421d60c3c407c8c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

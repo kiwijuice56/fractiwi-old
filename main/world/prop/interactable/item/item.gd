@@ -22,6 +22,7 @@ func interacted() -> void:
 	yield(get_viewport().interact.show_text("Got item: " + skill + " x"+str(count) ), "completed")
 	set_process_input(true)
 	$AudioStreamPlayer.playing = true
+	yield($AudioStreamPlayer, "finished")
 	yield(self, "accepted")
 	set_process_input(false)
 	player.can_move = true
