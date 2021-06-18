@@ -1,17 +1,21 @@
 extends StatusSkill
 class_name BuffSkill
 
-export(String, "defense", "attack", "hit/eva") var stat := "def"
+export(String, "defense", "attack", "hit/eva") var stat := "defense"
 export(int, -4, 4) var stages := 0
 
 func get_text() -> String:
 	return (("Buff" if stages > 0 else "Debuff") + "\n%d stages" % abs(stages) ) + description
 
 func use(_user: Creature, targets: Array, _anim: bool) -> void:
-	var turns_used:= 0
+	var turns_used := 0
 	for i in range(len(targets)):
-		var target = targets[i]
-		target.targeted_skill_data = [str(stages), false, false, stat.capitalize() + (" up" if stages > 0 else " down")]
+		var current = targets[i].get(stat.replace("/",""))
+		if not ( current + stages > 4 or current + stages < -4):
+			targets[i].targeted_skill_data = [str(stages), false, false, stat.capitalize() + (" up" if stages > 0 else " down")]
+			targets[i].set(stat.replace("/",""), targets[i].get(stat.replace("/","")) + stages)
+		else:
+			targets[i].targeted_skill_data = ["", false, false, "Buffs maximized!" if stages > 0 else "Debuffs maximized!"]
 		var new_turns_used = turn_logic("normal", false, false)
 		if new_turns_used < 0 or turns_used < 0:
 			# warning-ignore:narrowing_conversion
@@ -19,10 +23,7 @@ func use(_user: Creature, targets: Array, _anim: bool) -> void:
 		else:
 			# warning-ignore:narrowing_conversion
 			turns_used = max(new_turns_used, turns_used)
-		if stat == "hit/eva":
-			target.set("hiteva", target.get("hiteva") + stages)
-		else:
-			target.set(stat, target.get(stat) + stages)
+		
 	var effect: ActiveSkillEffect = effect_packed.instance()
 	var place_timer = Timer.new()
 	add_child(place_timer)

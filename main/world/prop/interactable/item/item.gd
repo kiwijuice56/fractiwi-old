@@ -17,7 +17,8 @@ func interacted() -> void:
 	player.can_move = false
 	get_viewport().game.can_open = false
 	get_viewport().items.add_consumable(skill, count)
-	get_viewport().world_node.memory[name] = true
+	var world = get_viewport().world_node
+	world.memory[world.current_room][name] = true
 	player.main_viewport.interact.disable(true)
 	yield(get_viewport().interact.show_text("Got item: " + skill + " x"+str(count) ), "completed")
 	set_process_input(true)
@@ -32,6 +33,6 @@ func interacted() -> void:
 func finish_interaction() -> void:
 	pass
 
-func load_memory(memory: Dictionary) -> void:
-	if name in memory:
+func load_memory(room_memory: Dictionary) -> void:
+	if name in room_memory:
 		queue_free()

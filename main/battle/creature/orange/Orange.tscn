@@ -8,9 +8,8 @@
 [node name="Orange" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
 race = "Inanimate"
+creature_name = "Orange"
 level = 3
-hp_growth = 9
-mp_growth = 5
 stre = 1
 magi = 2
 vita = 1

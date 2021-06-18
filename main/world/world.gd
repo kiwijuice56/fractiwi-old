@@ -35,7 +35,11 @@ func add_room(room_name: String, destination_type: String, destination_name: Str
 	var scene = load(room_path + current_room + "/Room.tscn")
 	var room = scene.instance()
 	add_child(room)
-	get_node("Room").load_memory(memory)
+	if current_room in memory:
+		for child in get_tree().get_nodes_in_group("Memory"):
+			child.load_memory(memory[current_room])
+	else:
+		memory[current_room] = {}
 	match destination_type:
 		"terminal":
 			$Player.global_position = $Room.terminals.get_node(destination_name+"/Spawn").global_position

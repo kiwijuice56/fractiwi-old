@@ -32,7 +32,7 @@ func add_items() -> void:
 		container.queue_free()
 	for creature in controller.party.get_node("Active").get_children():
 		var container = skill_button_container.instance()
-		container.name = creature.name
+		container.name = creature.creature_name
 		container.controller = controller.get_path()
 		add_child(container)
 		container.creature = creature

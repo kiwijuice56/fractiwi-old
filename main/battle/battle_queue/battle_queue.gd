@@ -32,10 +32,12 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 	for creature in enemy_party:
 		$EnemyParty.add_child(creature)
 		creature.heal_points()
+		creature.reset_buffs()
 	position_enemies()
 	for creature in player_party:
 		player_party_node.get_node("Active").remove_child(creature)
 		$PlayerParty.add_child(creature)
+		creature.reset_buffs()
 	player_party_node.get_node("Active").displaced = true
 	return $PlayerParty
 

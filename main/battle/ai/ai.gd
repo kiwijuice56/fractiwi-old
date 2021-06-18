@@ -10,4 +10,6 @@ func switch_script() -> void:
 
 # Returns array with action for creature to take
 func do_turn(_same: Array, opposite: Array, _controller: Creature) -> Array:
-	return ["Skill", get_parent().get_node("Skills/Active/Slash"), [opposite[0]]]
+	var skill_idx := randi() % (get_parent().get_node("Skills/Active").get_child_count())
+	var creature_idx := randi() % (len(opposite))
+	return ["Skill", get_parent().get_node("Skills/Active").get_child(skill_idx), [opposite[creature_idx]]]

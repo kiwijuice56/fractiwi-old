@@ -31,7 +31,9 @@ func use(user: Creature, targets: Array, _anim: bool) -> void:
 		if def == "repel":
 			def = get_def_affinity(user)
 			point_change = calculate_points(user, user, def, off, is_crit)
-			user.set(point_stat, target.get(point_stat) + point_change)
+			user.set(point_stat, user.get(point_stat) + point_change)
+			user.set(point_stat, min(user.get(point_stat), user.get("max_"+point_stat)))
+			user.set(point_stat, max(user.get(point_stat), 0))
 			if not user in targets:
 				targets.append(user)
 				user.targeted_skill_data = [point_change, false, is_crit, def]
@@ -39,6 +41,8 @@ func use(user: Creature, targets: Array, _anim: bool) -> void:
 				user.targeted_skill_data[0] += point_change
 		else:
 			target.set(point_stat, target.get(point_stat) + point_change)
+			target.set(point_stat, min(target.get(point_stat), target.get("max_"+point_stat)))
+			target.set(point_stat, max(target.get(point_stat), 0))
 	var effect: ActiveSkillEffect = effect_packed.instance()
 	var place_timer = Timer.new()
 	add_child(place_timer)
@@ -83,5 +87,12 @@ func calculate_points(user: Creature, target: Creature, def: String, off: int, i
 	base *= (off/100.0)
 	base *= 2 if is_crit else 1
 	base *= -1 if neg else 1
-	base *= rand_range(1,1.3)
+	base *= rand_range(0.9,1.1)
+	var buff_stage := user.attack - target.defense
+	var modifier := 1.0
+	if buff_stage < 0:
+		modifier /= 1+abs(buff_stage*0.23)
+	else:
+		modifier *= 1+abs(buff_stage*0.23)
+	base *= modifier
 	return int(base)

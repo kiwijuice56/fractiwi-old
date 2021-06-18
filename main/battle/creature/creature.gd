@@ -19,9 +19,9 @@ var mp: int = 20
 var max_mp: int
 var status := "ok"
 
-var attack: int
-var defense: int
-var hiteva: int
+var attack: int = 0
+var defense: int = 0
+var hiteva: int = 0
 
 var expe := 0
 var expe_to_level := 25
@@ -75,6 +75,7 @@ func do_turn(same: Array, opposite: Array) -> int:
 			yield(get_viewport().game.label_container, "complete")
 			targets[0].get_parent().remove_child(targets[0])
 			get_viewport().party.get_node("Inactive").add_child(targets[0])
+			targets[0].name = targets[0].creature_name
 			targets[0].get_node("AI").switch_script()
 			return 0
 		else:
@@ -115,6 +116,11 @@ func target_action() -> void:
 	else:
 		yield(panel.get_node("AnimationPlayer"), "animation_finished")
 	emit_signal("target_action_complete")
+
+func reset_buffs() -> void:
+	attack = 0
+	defense = 0
+	hiteva = 0
 
 func check_hp() -> void:
 	if hp <= 0:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/battle/graphic_effect/active_skill/ActiveSkillEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/graphic_effect/active_skill/debuff/debuff.png" type="Texture" id=2]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/debuff/woosh.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "debuff"
@@ -25,7 +26,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.9 ),
+"times": PoolRealArray( 0.7 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -44,6 +45,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Debuff" instance=ExtResource( 1 )]
 count = "multiple"
@@ -55,6 +68,11 @@ playback_speed = 1.15
 anims/debuff = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
-visible = true
 texture = ExtResource( 2 )
 hframes = 11
+frame = 10
+
+[node name="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 2.3

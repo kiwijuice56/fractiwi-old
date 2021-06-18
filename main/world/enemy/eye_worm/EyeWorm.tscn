@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 3, 2, 1, 0 ]
 }
 
-[node name="EyeWorm" instance=ExtResource( 1 )]
+[node name="Eye Worm" instance=ExtResource( 1 )]
 anim_name = "Wriggle"
 
 [node name="Sprite" parent="." index="0"]

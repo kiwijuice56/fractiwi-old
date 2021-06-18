@@ -226,10 +226,10 @@ func battle_ended(_did_run: bool) -> void:
 
 func battle_input(current_creature: Creature):
 	creature = current_creature
-	text_label.text = "What will %s do?" % creature.name
+	text_label.text = "What will %s do?" % creature.creature_name
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
-	if creature.name == "Yun":
+	if creature.creature_name == "Yun":
 		for button in input["MainButtonContainer"].get_children():
 			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
 				button.disabled = false
@@ -292,8 +292,8 @@ func show_skills() -> void:
 		input[input["PartySkillContainer"].get_child(0).name].grab_focus_at(0)
 	else:
 		input["PartySkillContainer"].current_tab = creature.get_index()
-		input[creature.name].enable_input()
-		input[creature.name].grab_focus_at(0)
+		input[creature.creature_name].enable_input()
+		input[creature.creature_name].grab_focus_at(0)
 	effect_handler.fade(action_selection, "visible", effect_handler.default_fade_time)
 	state = "skills"
 
