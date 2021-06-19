@@ -50,14 +50,16 @@ func return_member(creature: Creature) -> bool:
 
 func check_level_ups() -> void:
 	for child in $Active.get_children():
-		var changed :int = child.set_level()
-		if changed > 0:
+		var level_info: Array = child.set_level()
+		var levels_changed = level_info[0]
+		var skills_learned = level_info[1]
+		if levels_changed > 0:
 			get_viewport().transition.transition_in()
 			yield(get_viewport().transition, "in_finished")
 			if get_viewport().creature_check.state == "next":
 				yield(get_viewport().creature_check, "ready_for_next")
 			get_viewport().transition.transition_out()
-			get_viewport().creature_check.level_up(child, changed)
+			get_viewport().creature_check.level_up(child, levels_changed, skills_learned)
 			yield(get_viewport().creature_check, "level_finished")
 	emit_signal("level_up_complete")
 

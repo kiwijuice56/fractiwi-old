@@ -4,7 +4,7 @@
 
 [node name="EffectHandler" type="Node"]
 script = ExtResource( 1 )
-default_fade_time = 0.13
+default_fade_time = 0.06
 default_slide_time = 0.1
 
 [node name="FadeTween" type="Tween" parent="."]

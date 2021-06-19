@@ -5,9 +5,9 @@ export(String, "defense", "attack", "hit/eva") var stat := "defense"
 export(int, -4, 4) var stages := 0
 
 func get_text() -> String:
-	return (("Buff" if stages > 0 else "Debuff") + "\n%d stages" % abs(stages) ) + description
+	return (("Buff\n" if stages > 0 else "Debuff\n") + stat.capitalize() + "\n%d stages" % abs(stages) ) + description
 
-func use(_user: Creature, targets: Array, _anim: bool) -> void:
+func use(_user: Node, targets: Array, _anim: bool) -> void:
 	var turns_used := 0
 	for i in range(len(targets)):
 		var current = targets[i].get(stat.replace("/",""))

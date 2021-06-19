@@ -24,9 +24,8 @@ var defense: int = 0
 var hiteva: int = 0
 
 var expe := 0
-var expe_to_level := 25
+var expe_to_level := 1
 export var expe_given := 10
-export(Array, int) var skill_levels: Array
 
 signal target_action_complete
 signal death
@@ -139,7 +138,6 @@ func death() -> void:
 		yield(panel.get_node("AnimationPlayer"), "animation_finished")
 		viewport.game.update_party()
 		status = "dead"
-		hp = 0
 		emit_signal("death")
 		if name == "Yun":
 			get_tree().quit()
@@ -150,6 +148,16 @@ func death() -> void:
 		get_parent().remove_child(self)
 		emit_signal("death")
 		queue_free()
+
+func learn_skill(to_replace: String) -> void:
+	if to_replace:
+		pass
+	var skill = get_node("UnlearnedSkills").get_child(0)
+	get_node("UnlearnedSkills").remove_child(skill)
+	if skill is ActiveSkill:
+		get_node("Skills/Active").add_child(skill)
+	else:
+		get_node("Skills/Passive").add_child(skill)
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),
@@ -163,14 +171,17 @@ func set_stats(data: Dictionary) -> void:
 		set(stat, data[stat])
 	set_max_points()
 
-func set_level() -> int:
+func set_level() -> Array:
 	var levels_changed := 0
+	var skills_learned := 0
 	while expe > expe_to_level:
 		expe -= expe_to_level
 		levels_changed += 1
-	level += levels_changed
+	if levels_changed != 0:
+		level += levels_changed
+		skills_learned = get_node("UnlearnedSkills").skills_to_learn(self)
 	set_max_points()
-	return levels_changed
+	return [levels_changed, skills_learned]
 
 func set_max_points() -> void:
 	max_hp = (level + vita) * 6

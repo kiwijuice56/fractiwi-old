@@ -138,6 +138,7 @@ func input_pressed(key_name: String) -> void:
 			if len(targets) == 0:
 				input["MainButtonContainer"].enable_input()
 				input["MainButtonContainer"].grab_focus_at(0)
+				state = "default"
 				return
 			emit_signal("battle_action_chosen", ["Recruit", null, targets])
 		"Pass":
@@ -216,11 +217,13 @@ func battle_started(_creatures: Array) -> void:
 	emit_signal("battle_ready")
 
 func battle_ended(_did_run: bool) -> void:
+	yield(main_viewport.transition, "in_finished")
 	in_battle = false
 	input["PartySkillContainer"].tabs_visible = true
 	press_turn_container.visible = false
 	input["MainButtonContainer"].button_names = ["Effect", "Skill", "Item", "Party", "Setting"]
 	input["MainButtonContainer"].add_items()
+	disable(false)
 	close_menu()
 	enable(false)
 

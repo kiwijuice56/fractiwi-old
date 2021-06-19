@@ -9,7 +9,10 @@ export(String, "hp", "mp") var point_stat := "hp"
 func get_text() -> String:
 	return ("Pow: %d\nHit: %d\nTarget: %s\n" % [power, accuracy, target_type]) + description
 
-func use(user: Creature, targets: Array, _anim: bool) -> void:
+func use(user: Node, targets: Array, _anim: bool) -> void:
+	user.set(cost_type, user.get(cost_type)-cost)
+	if user.panel:
+		user.panel.update_content()
 	var turns_used:= 0
 	for i in range(len(targets)):
 		var target = targets[i]
@@ -69,11 +72,11 @@ func use(user: Creature, targets: Array, _anim: bool) -> void:
 	emit_signal("use_complete")
 	return turns_used
 
-func is_crit(user: Creature, target: Creature) -> bool:
+func is_crit(user: Node, target: Node) -> bool:
 	print("crit: ", (critical + (user.luck - target.luck/3.0) )/100.0)
 	return not rand_range(0,1) >= (critical + (user.luck - (target.luck/3.0)))/100.0
 
-func calculate_points(user: Creature, target: Creature, def: String, off: int, is_crit: bool) -> int:
+func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: bool) -> int:
 	var neg = power < 0
 	var base = abs(power) + (user.level) + (5*user.get(stat)) - (target.level)
 	if def == "weak":
@@ -88,11 +91,12 @@ func calculate_points(user: Creature, target: Creature, def: String, off: int, i
 	base *= 2 if is_crit else 1
 	base *= -1 if neg else 1
 	base *= rand_range(0.9,1.1)
-	var buff_stage := user.attack - target.defense
-	var modifier := 1.0
-	if buff_stage < 0:
-		modifier /= 1+abs(buff_stage*0.23)
-	else:
-		modifier *= 1+abs(buff_stage*0.23)
-	base *= modifier
+	if stat == "magi" or stat == "stre":
+		var buff_stage = user.attack - target.defense
+		var modifier := 1.0
+		if buff_stage < 0:
+			modifier /= 1+abs(buff_stage*0.23)
+		else:
+			modifier *= 1+abs(buff_stage*0.23)
+		base *= modifier
 	return int(base)

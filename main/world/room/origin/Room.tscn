@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/world/room/origin/yunroom.png" type="Texture" id=1]
 [ext_resource path="res://main/world/prop/interactable/door/Door.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://main/world/room/origin/light.png" type="Texture" id=7]
 [ext_resource path="res://main/world/prop/interactable/bed/Bed.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/world/room/origin/door.png" type="Texture" id=9]
+[ext_resource path="res://main/world/enemy/eye_worm/EyeWorm.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/battle/creature/eyeworm/EyeWorm.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "loop"
@@ -117,5 +119,9 @@ anims/loop = SubResource( 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Props/Filters" index="0"]
 color = Color( 0.345098, 0.396078, 0.486275, 1 )
+
+[node name="Eye Worm" parent="Enemies" index="0" instance=ExtResource( 10 )]
+position = Vector2( 56, 72 )
+creatures = [ ExtResource( 11 ) ]
 
 [editable path="Props/Interactable/Doors/BalconyDoor"]

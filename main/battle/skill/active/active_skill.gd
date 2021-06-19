@@ -9,10 +9,10 @@ export(String, "opposite", "same") var side := "opposite"
 export(int, 0, 100) var accuracy := 0
 signal use_complete
 
-func use(_user: Creature, _targets: Array, _anim: bool) -> void:
+func use(_user: Node, _targets: Array, _anim: bool) -> void:
 	emit_signal("use_complete")
 
-func is_miss(user: Creature, target: Creature) -> bool:
+func is_miss(user: Node, target: Node) -> bool:
 	print( (accuracy + ((user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0)
 	return rand_range(0,1) >= (accuracy + ((user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0
 
@@ -32,12 +32,12 @@ func turn_logic(def: String, is_miss: bool, is_crit: bool) -> int:
 		return 2
 	return 0
 
-func get_def_affinity(target: Creature) -> String:
+func get_def_affinity(target: Node) -> String:
 	if affinity in target.get_def():
 		return target.def_affinity[affinity]
 	return "normal"
 
-func get_off_affinity(user: Creature) -> int:
+func get_off_affinity(user: Node) -> int:
 	if affinity in user.get_off():
 		return user.off_affinity[affinity]
 	return 100

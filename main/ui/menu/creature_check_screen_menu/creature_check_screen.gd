@@ -16,11 +16,13 @@ var party: Array
 var move_enabled := true
 var parent 
 var levels_left := 0
+var skills_left := 0
 var stats: Dictionary
 
 signal ready_for_next
 signal level_finished
 signal confirm
+signal skills_learned
 
 func _ready() -> void:
 	def_affinity = get_node(def_affinity)
@@ -73,6 +75,7 @@ func _input(event: InputEvent) -> void:
 	show_creature(party[index])
 
 func battle_ended(_did_run: bool) -> void:
+	yield(main_viewport.transition, "in_finished")
 	disable(false)
 	stat_label.text = "---"
 	state = "default"
@@ -123,8 +126,12 @@ func stat_increase(stat: String) -> void:
 				party[index].set(stat, party[index].get(stat) - stats[stat])
 				changes += stats[stat]
 			return_panel(party[index])
-			level_up(party[index], changes)
+			level_up(party[index], changes, skills_left)
 			return
+		if skills_left > 0:
+			state = "skills"
+			learn_skill()
+			yield(self, "skills_learned")
 		state = "next"
 		emit_signal("level_finished")
 		yield(main_viewport.transition, "in_finished")
@@ -133,15 +140,34 @@ func stat_increase(stat: String) -> void:
 	else:
 		stat_bar_container.grab_focus_at(stat_index)
 
-func level_up(creature: Creature, levels: int) -> void:
-	stat_label.text = str(levels) + " stat points to distribute"
+func level_up(creature: Creature, levels_changed: int, skills_learned: int) -> void:
+	levels_left = levels_changed
+	skills_left = skills_learned
+	stat_label.text = str(levels_left) + " stat points to distribute"
 	index = creature.get_index()
-	levels_left = levels
 	enable(true)
 	stats = {"stre": 0, "magi": 0, "agil": 0, "luck": 0, "vita": 0}
 	show_creature(creature)
 	move_enabled = false
 	stat_bar_container.grab_focus_at(0)
+
+func learn_skill() -> void:
+	if input["SkillButtonContainer"].get_child_count() > 6:
+		stat_label.text = party[index].creature_name + " is trying to learn a skill .. Select one to forget"
+		input["SkillButtonContainer"].grab_focus_at(0)
+	else:
+		var learned_skill_name = unlearned_container.get_child(0).get_child(1).name_label.text
+		party[index].learn_skill("")
+		unlearned_container.initialize(party[index])
+		skill_button_container.add_items()
+		stat_label.text = party[index].creature_name + " learned " + learned_skill_name + "!"
+		state = "confirm"
+		yield(self, "confirm")
+	skills_left -= 1
+	if skills_left > 0:
+		learn_skill()
+	else:
+		emit_signal("skills_learned")
 
 func get_party() -> Array:
 	return main_viewport.party.get_node("Active").get_children() + main_viewport.party.get_node("Inactive").get_children()

@@ -121,8 +121,6 @@ func battle(enemy_creatures: Array) -> void:
 		# get turns used
 		var turns: Array = turn_logic(yield(current_array[pointer].do_turn(current_array, opposite_array), "completed"), full, half)
 		
-		
-		
 		full = turns[0]
 		half = turns[1]
 		

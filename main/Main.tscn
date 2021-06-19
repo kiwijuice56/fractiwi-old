@@ -191,6 +191,7 @@ def_affinities = {
 
 [node name="Normal" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
 script = ExtResource( 38 )
+skill_levels = [ 1 ]
 
 [node name="Battle" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 

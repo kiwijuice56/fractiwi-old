@@ -1,7 +1,6 @@
 extends Node
 class_name SkillsManager
 
-
 func _ready() -> void:
 	sort_skills()
 

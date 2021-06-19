@@ -6,9 +6,9 @@ export(Array, int) var skill_levels: Array
 func sort_skills() -> void:
 	return
 
-func skills_to_learn() -> int:
+func skills_to_learn(creature) -> int:
 	var count := 0
-	while len(skill_levels) and skill_levels[0] <= get_parent().level:
+	while len(skill_levels) and skill_levels[0] <= creature.level:
 		count += 1
 		skill_levels.pop_front()
 	return count
