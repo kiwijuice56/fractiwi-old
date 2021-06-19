@@ -5,8 +5,7 @@ class_name FileSaver
 export var path: String
 export var default_path: String
 
-#func _ready():
-#	save_file(0)
+
 
 func get_files() -> Array:
 	var files := []

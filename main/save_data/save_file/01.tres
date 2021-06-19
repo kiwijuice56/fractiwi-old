@@ -6,54 +6,65 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 0
+"time": 80
 },
 "Items": {
-"current_effect": "Flower",
+"consumables": {
+"Hp Pill": 1
+},
+"current_effect": "Normal",
 "effect_skills": {
 "Flower": {
+"Skill Levels": [ 1 ],
 "Unlearned": [ "Heal" ]
 },
 "Normal": {
-"Unlearned": [ "Cry" ]
+"Skill Levels": [  ],
+"Unlearned": [  ]
 }
 },
-"effects": [ "Normal" ],
-"consumables": {}
-
+"effects": [ "Normal" ]
 },
 "Party": {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Slash" ],
-"Passive": [  ]
+"Active": [ "Lightning", "Slash", "Cry" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
 },
 "stats": {
+"age": 0,
 "agil": 2,
-"hp": 500,
-"level": 1,
+"expe": 25,
+"hp": 42,
+"level": 7,
 "luck": 2,
 "magi": 2,
-"mp": 24,
-"stre": 20,
-"vita": 3
+"mp": 12,
+"stre": 2,
+"vita": 4
 }
 },
-"01Sponge": {
+"01Eye Worm": {
 "skills": {
-"Active": [  ],
-"Passive": [  ]
+"Active": [ "Slash", "Cleave" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
 },
 "stats": {
-"agil": 2,
-"hp": 18,
-"level": 6,
-"luck": 2,
-"magi": 2,
-"mp": 24,
+"age": 0,
+"agil": 1,
+"expe": 5,
+"hp": 30,
+"level": 5,
+"luck": 1,
+"magi": 1,
+"mp": 18,
 "stre": 2,
-"vita": 3
+"vita": 1
 }
 }
 },
@@ -63,7 +74,12 @@ data = {
 "World": {
 "location": "origin",
 "memory": {
+"balcony": {
+"PillBottle": true
 },
-"terminal": ""
+"origin": {
+}
+},
+"terminal": "Terminal"
 }
 }

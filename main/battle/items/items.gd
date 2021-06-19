@@ -17,7 +17,8 @@ func get_effect_skill_node() -> Node:
 func get_effect_skill_names() -> Dictionary:
 	var effect_skill_names := {}
 	for effect in $Effects.get_children():
-		effect_skill_names[effect.name] = {"Unlearned" : effect.get_skill_names("all")}
+		effect_skill_names[effect.name] = {"Unlearned" : effect.get_skill_names("all"),
+											"Skill Levels": effect.skill_levels}
 	return effect_skill_names
 
 func set_effect_skills(data: Dictionary) -> void:

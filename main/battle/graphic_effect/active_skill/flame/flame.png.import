@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyeworm.png-003874c345c517897c39109b20cbf47e.stex"
+path="res://.import/flame.png-25bf730c0115163758118c1c71040531.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/battle/creature/eyeworm/eyeworm.png"
-dest_files=[ "res://.import/eyeworm.png-003874c345c517897c39109b20cbf47e.stex" ]
+source_file="res://main/battle/graphic_effect/active_skill/flame/flame.png"
+dest_files=[ "res://.import/flame.png-25bf730c0115163758118c1c71040531.stex" ]
 
 [params]
 

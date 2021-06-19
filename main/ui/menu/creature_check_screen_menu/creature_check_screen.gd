@@ -83,6 +83,7 @@ func battle_ended(_did_run: bool) -> void:
 
 func show_creature(creature: Creature) -> void:
 	parent = creature.panel.get_parent()
+	creature.panel.update_content()
 	creature.panel.size_flags_vertical = Control.SIZE_FILL
 	creature.panel.update_content()
 	stat_bar_container.add_items()

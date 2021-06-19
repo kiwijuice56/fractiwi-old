@@ -6,50 +6,34 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 19
+"time": 0
 },
 "Items": {
 "consumables": {
-"Pill": 6
 },
 "current_effect": "Normal",
 "effect_skills": {
 "Flower": {
-"Unlearned": [ "Heal" ]
+"Skill Levels": [  ],
+"Unlearned": [  ]
 },
 "Normal": {
-"Unlearned": [ "Cry" ]
+"Skill Levels": [ 1 ],
+"Unlearned": [  ]
 }
 },
-"effects": [ "Normal" ]
+"effects": [  ]
 },
 "Party": {
 "active": {
-"00Yun": {
-"skills": {
-"Active": [ "Slash" ],
-"Passive": [  ]
-},
-"stats": {
-"agil": 2,
-"hp": 500,
-"level": 1,
-"luck": 2,
-"magi": 2,
-"mp": 24,
-"stre": 20,
-"vita": 3
-}
-}
 },
 "inactive": {
 }
 },
 "World": {
-"location": "sky_temple",
+"location": "block",
 "memory": {
-"PillBottle": true
 },
-"terminal": "Terminal"
+"terminal": ""
 }
 }

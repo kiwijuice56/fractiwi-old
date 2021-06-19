@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/world/enemy/tv/tv_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://main/world/enemy/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/world/room/origin/light.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "tv_loop"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0 ]
+}
+
+[node name="Tv" instance=ExtResource( 2 )]
+anim_name = "tv_loop"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="AnimationPlayer" parent="." index="2"]
+playback_speed = 0.7
+anims/tv_loop = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="." index="4"]
+visible = false
+position = Vector2( 62.7676, 5.07332 )
+texture = ExtResource( 3 )
+color = Color( 0.827451, 0.827451, 0.831373, 1 )

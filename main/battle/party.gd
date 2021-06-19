@@ -12,6 +12,8 @@ func instance_member(creature: String, data: Dictionary) -> Creature:
 	var scene = load( creature_path + ("%s/%s.tscn" % [creature.to_lower(), creature])).instance()
 	scene.set_stats(data["stats"])
 	scene.get_node("Skills").set_skills(data["skills"])
+	if not scene is PlayerCreature: #player is set by items.gd .. efffects hold their own skills
+		scene.get_node("UnlearnedSkills").set_skills(data["skills"])
 	scene.get_node("AI").set_script(player_ai)
 	return scene
 

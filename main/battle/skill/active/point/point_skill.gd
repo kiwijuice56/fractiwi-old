@@ -10,6 +10,7 @@ func get_text() -> String:
 	return ("Pow: %d\nHit: %d\nTarget: %s\n" % [power, accuracy, target_type]) + description
 
 func use(user: Node, targets: Array, _anim: bool) -> void:
+	randomize()
 	user.set(cost_type, user.get(cost_type)-cost)
 	if user.panel:
 		user.panel.update_content()

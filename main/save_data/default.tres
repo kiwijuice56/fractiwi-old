@@ -14,9 +14,11 @@ data = {
 "current_effect": "Normal",
 "effect_skills": {
 "Flower": {
+"Skill Levels": [ 1 ],
 "Unlearned": [ "Heal" ]
 },
 "Normal": {
+"Skill Levels": [ 1 ],
 "Unlearned": [ "Cry" ]
 }
 },

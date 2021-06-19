@@ -164,9 +164,14 @@ func input_pressed(key_name: String) -> void:
 				var skill: Skill = get_focus_owner().skill
 				if skill.side == "opposite" and not in_battle:
 					return
-				if skill.cost > creature.get(skill.cost_type):
-					main_viewport.menu_sound_player.play_sound("Can't")
-					return
+				if skill.cost_type == "mp":
+					if skill.cost > creature.get(skill.cost_type):
+						main_viewport.menu_sound_player.play_sound("Can't")
+						return
+				elif skill.cost_type == "hp":
+					if skill.cost >= creature.get(skill.cost_type): #can't kill self
+						main_viewport.menu_sound_player.play_sound("Can't")
+						return
 				main_viewport.menu_sound_player.play_sound("Next")
 				hide_skills()
 				state = "selection"

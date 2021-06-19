@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/looker/looker_sprite.png" type="Texture" id=2]
 [ext_resource path="res://main/battle/skill/active/status/buff/glare/Glare.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=4]
 
 [node name="Looker" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
-race = "Demon"
+race = "Angel"
 creature_name = "Looker"
 level = 3
 stre = 1
@@ -16,3 +17,5 @@ luck = 1
 agil = 1
 
 [node name="Glare" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+
+[node name="Slash" parent="Skills/Active" index="1" instance=ExtResource( 4 )]

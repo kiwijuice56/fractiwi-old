@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/creature/eye worm/eyeworm.png" type="Texture" id=3]
+[ext_resource path="res://main/battle/skill/active/point/cleave/Cleave.tscn" type="PackedScene" id=4]
+
+[node name="Eye Worm" instance=ExtResource( 1 )]
+texture = ExtResource( 3 )
+race = "Beast"
+creature_name = "Eye Worm"
+level = 4
+stre = 1
+magi = 1
+vita = 1
+luck = 1
+agil = 1
+def_affinity = {
+"elec": "weak"
+}
+expe_given = 25
+
+[node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
+critical = 4
+
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 0 ]
+
+[node name="Cleave" parent="UnlearnedSkills" index="0" instance=ExtResource( 4 )]

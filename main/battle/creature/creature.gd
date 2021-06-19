@@ -2,7 +2,7 @@ extends Sprite
 class_name Creature
 # Contains data for a creature and functions to edit them
 
-export(String, "Human", "Object", "Beast", "Ghoul", "Demon", "Angel", "Plant") var race: String = "Human"
+export(String, "Human", "Object", "Beast", "Spirit", "Demon", "Angel", "Plant") var race: String = "Human"
 export var creature_name: String
 export var level: int
 export var stre: int
@@ -24,7 +24,8 @@ var defense: int = 0
 var hiteva: int = 0
 
 var expe := 0
-var expe_to_level := 1
+var expe_to_level := 45
+var age := 0
 export var expe_given := 10
 
 signal target_action_complete
@@ -161,15 +162,19 @@ func learn_skill(to_replace: String) -> void:
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),
-				  "Active": $Skills.get_skill_names("Active")}
+					"Active": $Skills.get_skill_names("Active"),
+					"Unlearned": get_node("UnlearnedSkills").get_skill_names("All"),
+					"Skill Levels": get_node("UnlearnedSkills").skill_levels}
 	var stats = {"level": level, "stre": stre, "magi": magi, "vita": vita,
-				 "luck": luck, "agil": agil, "hp": hp, "mp": mp}
+				 "luck": luck, "agil": agil, "hp": hp, "mp": mp,
+				  "expe": expe, "age": age}
 	return {"skills": skills, "stats": stats}
 
 func set_stats(data: Dictionary) -> void:
 	for stat in data.keys():
 		set(stat, data[stat])
 	set_max_points()
+	set_expe_to_level()
 
 func set_level() -> Array:
 	var levels_changed := 0
@@ -183,10 +188,13 @@ func set_level() -> Array:
 	set_max_points()
 	return [levels_changed, skills_learned]
 
+func set_expe_to_level() -> void:
+	expe_to_level = ((3*age) + (5*level))
+
 func set_max_points() -> void:
 	max_hp = (level + vita) * 6
 	max_mp = (level*4) + (magi*2)
-	if panel: panel.update_content()
+	
 
 func heal_points() -> void:
 	set_max_points()

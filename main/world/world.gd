@@ -49,7 +49,7 @@ func add_room(room_name: String, destination_type: String, destination_name: Str
 			yield(get_viewport().transition, "out_finished")
 			player.can_move = true
 			get_viewport().game.can_open = true
-	play_room_music()
+			play_room_music()
 
 func play_room_music() -> void:
 	get_viewport().music_player.play_audio($Room.music)
@@ -63,3 +63,5 @@ func load_data(data: Dictionary) -> void:
 		add_room(data["location"], "door", "Start")
 	else:
 		add_room(data["location"], "terminal", data["terminal"])
+	yield(get_viewport().transition, "out_finished")
+	play_room_music()

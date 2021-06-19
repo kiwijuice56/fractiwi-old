@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyeworm.png-b4c742305d8c6163b28ef7cc70050ed0.stex"
+path="res://.import/tv.png-9b72ebefb4999ecd377fb621107f2d52.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/world/enemy/eye_worm/eyeworm.png"
-dest_files=[ "res://.import/eyeworm.png-b4c742305d8c6163b28ef7cc70050ed0.stex" ]
+source_file="res://main/battle/creature/tv/tv.png"
+dest_files=[ "res://.import/tv.png-9b72ebefb4999ecd377fb621107f2d52.stex" ]
 
 [params]
 
