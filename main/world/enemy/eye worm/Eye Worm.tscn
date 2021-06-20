@@ -30,3 +30,6 @@ hframes = 5
 [node name="AnimationPlayer" parent="." index="2"]
 playback_speed = 2.0
 anims/Wriggle = SubResource( 1 )
+
+[node name="Spawn" parent="." index="3"]
+position = Vector2( -48, 0 )

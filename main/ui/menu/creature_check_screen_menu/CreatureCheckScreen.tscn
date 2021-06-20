@@ -23,6 +23,8 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+back_sound = true
+override_back_sound = true
 off_affinity = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/VBoxContainer/OffenseAffinityContainer")
 def_affinity = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/VBoxContainer/DefenseAffinityContainer")
 main_vbox = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2")

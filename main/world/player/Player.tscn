@@ -285,7 +285,7 @@ tracks/2/keys = {
 z_index = 2
 collision_mask = 2
 script = ExtResource( 1 )
-speed = 85
+speed = 90
 effect_textures = {
 "Flower": ExtResource( 5 ),
 "Normal": ExtResource( 6 )

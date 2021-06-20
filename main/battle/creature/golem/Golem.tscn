@@ -10,16 +10,15 @@ position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 race = "Spirit"
 creature_name = "Golem"
-level = 6
+level = 5
 stre = 3
 magi = 2
-vita = 4
+vita = 3
 luck = 1
 agil = 1
 def_affinity = {
 "elec": "null",
-"fire": "weak",
-"phys": "resist"
+"fire": "weak"
 }
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

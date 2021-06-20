@@ -114,6 +114,7 @@ func battle(enemy_creatures: Array) -> void:
 		get_viewport().game.press_turn_container.set_turns(full, half)
 		
 		current_array = to_array(current, current_array)
+		opposite_array = to_array(opposite, [])
 		
 		if pointer >= len(current_array):
 			pointer = 0

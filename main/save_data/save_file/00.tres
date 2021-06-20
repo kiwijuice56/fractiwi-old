@@ -6,34 +6,128 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 0
+"time": 699
 },
 "Items": {
 "consumables": {
+"Fire Stone": 1,
+"Hp Pill": 5
 },
 "current_effect": "Normal",
 "effect_skills": {
 "Flower": {
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Heal" ]
 },
 "Normal": {
-"Skill Levels": [ 1 ],
+"Skill Levels": [  ],
 "Unlearned": [  ]
 }
 },
-"effects": [  ]
+"effects": [ "Normal" ]
 },
 "Party": {
 "active": {
+"00Yun": {
+"skills": {
+"Active": [ "Cry", "Lightning", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 3,
+"agil": 3,
+"expe": 114,
+"hp": 66,
+"level": 6,
+"luck": 3,
+"magi": 3,
+"mp": 33,
+"stre": 4,
+"vita": 5
+}
+},
+"01Eye Worm": {
+"skills": {
+"Active": [ "Cleave", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 3,
+"agil": 3,
+"expe": 124,
+"hp": 48,
+"level": 6,
+"luck": 1,
+"magi": 1,
+"mp": 27,
+"stre": 1,
+"vita": 2
+}
+},
+"02Looker": {
+"skills": {
+"Active": [ "Glare", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 2,
+"agil": 1,
+"expe": 11,
+"hp": 48,
+"level": 5,
+"luck": 1,
+"magi": 3,
+"mp": 29,
+"stre": 1,
+"vita": 3
+}
+},
+"03Golem": {
+"skills": {
+"Active": [ "Cleave", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 0,
+"agil": 1,
+"expe": 0,
+"hp": 48,
+"level": 5,
+"luck": 1,
+"magi": 2,
+"mp": 26,
+"stre": 3,
+"vita": 3
+}
+}
 },
 "inactive": {
 }
 },
 "World": {
-"location": "block",
+"location": "eye_hall",
 "memory": {
+"balcony_fake": {
+"PillBottle": true
 },
-"terminal": ""
+"eye_hall": {
+"PillBottle": true,
+"PillBottle2": true,
+"PillBottle3": true,
+"PillBottle5": true,
+"Stone": true
+},
+"origin_fake": {
+}
+},
+"terminal": "Terminal A"
 }
 }

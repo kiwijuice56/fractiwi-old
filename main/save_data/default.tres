@@ -32,14 +32,14 @@ data = {
 "Passive": [  ]
 },
 "stats": {
-"agil": 2,
-"hp": 42,
-"level": 5,
-"luck": 2,
-"magi": 2,
-"mp": 24,
-"stre": 2,
-"vita": 2
+"agil": 3,
+"hp": 36,
+"level": 3,
+"luck": 3,
+"magi": 3,
+"mp": 21,
+"stre": 3,
+"vita": 3
 }
 }
 },
@@ -47,7 +47,7 @@ data = {
 }
 },
 "World": {
-"location": "origin",
+"location": "origin_fake",
 "memory": {
 },
 "terminal": ""

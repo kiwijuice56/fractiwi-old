@@ -18,15 +18,15 @@ var max_hp: int = 10
 var mp: int = 20
 var max_mp: int
 var status := "ok"
+var is_tamed := false
 
 var attack: int = 0
 var defense: int = 0
 var hiteva: int = 0
 
 var expe := 0
-var expe_to_level := 45
+var expe_to_level := 0
 var age := 0
-export var expe_given := 10
 
 signal target_action_complete
 signal death
@@ -34,6 +34,11 @@ signal death
 # Set by skills targeted at this creature to use in appropriate time of animation
 var targeted_skill_data: Array
 var panel: ButtonPanel
+
+func _ready() -> void:
+	set_max_points()
+	set_expe_to_level()
+	check_hp()
 
 func get_def() -> Dictionary:
 	return def_affinity
@@ -75,8 +80,10 @@ func do_turn(same: Array, opposite: Array) -> int:
 			yield(get_viewport().game.label_container, "complete")
 			targets[0].get_parent().remove_child(targets[0])
 			get_viewport().party.get_node("Inactive").add_child(targets[0])
+			targets[0].is_tamed = true
 			targets[0].name = targets[0].creature_name
 			targets[0].get_node("AI").switch_script()
+			targets[0].heal_points()
 			return 0
 		else:
 			get_viewport().game.label_container.show_text("Recruit failure!")
@@ -85,6 +92,7 @@ func do_turn(same: Array, opposite: Array) -> int:
 	return 0
 
 func run_attempt() -> bool:
+	randomize()
 	return rand_range(0,1) < .35+ ((luck+agil)/120.0)
 
 func recruit_attempt(targets: Array) -> bool:
@@ -95,7 +103,8 @@ func recruit_attempt(targets: Array) -> bool:
 		names.append(child.creature_name)
 	if targets[0].creature_name in names:
 		return false
-	return rand_range(0,1) < .25+ ((luck)/60.0)
+	randomize()
+	return rand_range(0,1) < .30+ ((luck)/60.0)
 
 func target_action() -> void:
 	if not panel:
@@ -129,7 +138,7 @@ func check_hp() -> void:
 		yield(self, "death")
 
 func death() -> void:
-	get_parent().get_parent().expe += expe_given #battle queue
+	status = "dead"
 	if panel:
 		var viewport = get_viewport()
 		get_parent().remove_child(self)
@@ -138,11 +147,15 @@ func death() -> void:
 		panel.get_node("AnimationPlayer").current_animation = "death"
 		yield(panel.get_node("AnimationPlayer"), "animation_finished")
 		viewport.game.update_party()
-		status = "dead"
 		emit_signal("death")
 		if name == "Yun":
 			get_tree().quit()
-	else:
+	elif not is_tamed:
+		var queue = get_parent().get_parent()
+		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
+		var multipler = min(2, max(0.1, 1 - (level_dif/10.0)))
+		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.0) 
+		queue.expe += expe_given * multipler
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"
 		yield($AnimationPlayer, "animation_finished")
@@ -179,22 +192,23 @@ func set_stats(data: Dictionary) -> void:
 func set_level() -> Array:
 	var levels_changed := 0
 	var skills_learned := 0
-	while expe > expe_to_level:
+	while expe >= expe_to_level:
 		expe -= expe_to_level
 		levels_changed += 1
+		set_expe_to_level()
 	if levels_changed != 0:
 		level += levels_changed
+		age += 1
 		skills_learned = get_node("UnlearnedSkills").skills_to_learn(self)
 	set_max_points()
 	return [levels_changed, skills_learned]
 
 func set_expe_to_level() -> void:
-	expe_to_level = ((3*age) + (5*level))
+	expe_to_level = ((15*age) + (25*level))
 
 func set_max_points() -> void:
 	max_hp = (level + vita) * 6
-	max_mp = (level*4) + (magi*2)
-	
+	max_mp = (level*4) + (magi*3)
 
 func heal_points() -> void:
 	set_max_points()

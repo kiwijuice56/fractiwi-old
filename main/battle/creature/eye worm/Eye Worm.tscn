@@ -9,7 +9,7 @@
 texture = ExtResource( 3 )
 race = "Beast"
 creature_name = "Eye Worm"
-level = 4
+level = 3
 stre = 1
 magi = 1
 vita = 1
@@ -18,7 +18,6 @@ agil = 1
 def_affinity = {
 "elec": "weak"
 }
-expe_given = 25
 
 [node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
 critical = 4

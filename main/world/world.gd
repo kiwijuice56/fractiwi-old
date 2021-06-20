@@ -21,6 +21,7 @@ func battle_started(_creatures: Array) -> void:
 	backdrop.texture = $Room.backdrop
 
 func battle_ended(did_run: bool) -> void:
+	yield(get_viewport().transition, "in_finished")
 	player.can_move = true
 	backdrop.visible = false
 	if not did_run:

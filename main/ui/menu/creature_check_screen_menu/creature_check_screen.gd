@@ -46,7 +46,9 @@ func _input(event: InputEvent) -> void:
 	if disabled: return
 	if not move_enabled: return
 	if event.is_action_pressed("ui_cancel", false):
+		
 		._input(event)
+		main_viewport.menu_sound_player.play_sound("Back")
 		main_viewport.transition.transition_in()
 		disable(true)
 		yield(main_viewport.transition, "in_finished")
@@ -109,12 +111,15 @@ func return_panel(creature: Creature) -> void:
 	main_viewport.game.update_party()
 
 func stat_increase(stat: String) -> void:
+	main_viewport.menu_sound_player.play_sound("Next")
 	party[index].set(stat, party[index].get(stat)+1)
 	var stat_index = get_focus_owner().get_index()
 	return_panel(party[index])
 	show_creature(party[index])
 	stats[stat] += 1
 	levels_left -= 1
+	party[index].set_max_points()
+	party[index].panel.update_content()
 	stat_label.text = str(levels_left) + " stat points to distribute"
 	if levels_left == 0:
 		disable(true)
@@ -122,6 +127,7 @@ func stat_increase(stat: String) -> void:
 		stat_label.text = "Are you sure?"
 		var is_confirmed = yield(self, "confirm")
 		if not is_confirmed:
+			main_viewport.menu_sound_player.play_sound("Back")
 			var changes := 0
 			for stat in stats.keys():
 				party[index].set(stat, party[index].get(stat) - stats[stat])
@@ -130,6 +136,7 @@ func stat_increase(stat: String) -> void:
 			level_up(party[index], changes, skills_left)
 			return
 		if skills_left > 0:
+			main_viewport.menu_sound_player.play_sound("Next")
 			state = "skills"
 			learn_skill()
 			yield(self, "skills_learned")

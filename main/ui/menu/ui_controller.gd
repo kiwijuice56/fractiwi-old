@@ -12,6 +12,8 @@ export var next_sound := false
 export var back_sound := false
 export var select_sound := false
 export var override_next_sound := false
+export var override_back_sound := false
+export var override_select_sound := false
 
 # Initialized by InputContainers (name: String, reference: InputContainer)
 var input := {}
@@ -19,20 +21,19 @@ var state := "default"
 var back: UIController
 var disabled := false
 
-
 func _ready() -> void:
 	main_viewport = get_node(main_viewport)
 
 func _input(event: InputEvent) -> void:
 	if disabled or "open" in self and not get("open"): return
 	#print(name)
-	if select_sound:
+	if select_sound and not override_select_sound:
 		for key in ["left", "right", "up", "down"]:
 			if event.is_action_pressed("ui_"+key, false):
 				main_viewport.menu_sound_player.play_sound("Select")
 	if event.is_action_pressed("ui_accept", false) and next_sound and not override_next_sound:
 		main_viewport.menu_sound_player.play_sound("Next")
-	if event.is_action_pressed("ui_cancel", false) and back_sound:
+	if event.is_action_pressed("ui_cancel", false) and back_sound and not override_back_sound:
 		main_viewport.menu_sound_player.play_sound("Back")
 
 # Each input_container connects to this function

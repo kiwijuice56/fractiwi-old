@@ -231,6 +231,7 @@ func battle_ended(_did_run: bool) -> void:
 	disable(false)
 	close_menu()
 	enable(false)
+	visible = false
 
 func battle_input(current_creature: Creature):
 	creature = current_creature

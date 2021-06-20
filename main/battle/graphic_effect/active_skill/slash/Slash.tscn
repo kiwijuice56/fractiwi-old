@@ -46,12 +46,24 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Slash" instance=ExtResource( 2 )]
 offset = Vector2( 5, -10 )
 transform = Transform2D( 1, 0, 0, 1, 5, -10 )
 count = "multiple"
-delay = 0.4
+delay = 0.6
 anim_name = "slash"
 
 [node name="AnimationPlayer" parent="." index="0"]
@@ -62,7 +74,6 @@ anims/slash = SubResource( 1 )
 visible = true
 texture = ExtResource( 1 )
 hframes = 11
-frame = 10
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 3 )

@@ -45,21 +45,34 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Flame" instance=ExtResource( 1 )]
+count = "multiple"
+delay = 0.3
+anim_name = "flame"
 
 [node name="AnimationPlayer" parent="." index="0"]
 playback_speed = 1.3
 anims/flame = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
-visible = true
 position = Vector2( -8, 0 )
 texture = ExtResource( 3 )
 hframes = 12
-frame = 11
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 2 )
-volume_db = -20.0
+volume_db = -26.0
 pitch_scale = 4.0

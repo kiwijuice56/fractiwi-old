@@ -1,7 +1,7 @@
 [gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://main/world/room/origin/Room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/ui/theme/background.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/utility_classes/int_viewport_container/int_viewport_container.gd" type="Script" id=4]
 [ext_resource path="res://main/battle/party.gd" type="Script" id=5]
@@ -115,7 +115,7 @@ volume_db = -50.0
 autoplay = true
 mix_target = 1
 volume = -5
-transition_duration = 0.75
+transition_duration = 0.4
 
 [node name="World" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
@@ -245,7 +245,6 @@ file_saver = NodePath("../../../../FileSaver")
 [node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 20 )]
 visible = false
 main_viewport = NodePath("../..")
-back_sound = true
 select_sound = true
 
 [node name="MenuSoundPlayer" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI"]
