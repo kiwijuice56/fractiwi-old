@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/world/prop/interactable/door/Door.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/world/prop/interactable/door/neon_door/door.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.5, 15 )
+
+[node name="NeonDoor" instance=ExtResource( 1 )]
+state = "Enter Door"
+face_direction = "down"
+room_name = "neon"
+destination_name = "NeonDoor"
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 2, 2, 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="Spawn" parent="." index="2"]
+position = Vector2( 0, 24 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 1 )

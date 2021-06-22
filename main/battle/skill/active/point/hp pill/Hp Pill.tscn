@@ -8,5 +8,7 @@ affinity = "heal"
 effect_packed = ExtResource( 1 )
 side = "same"
 accuracy = 100
+can_miss = false
+can_crit = false
 power = 15
 stat = "luck"

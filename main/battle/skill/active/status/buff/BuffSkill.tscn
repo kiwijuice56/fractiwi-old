@@ -5,3 +5,4 @@
 
 [node name="BuffSkill" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+can_miss = false

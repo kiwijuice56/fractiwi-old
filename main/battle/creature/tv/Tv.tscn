@@ -22,6 +22,7 @@ def_affinity = {
 off_affinity = {
 "elec": 120
 }
+is_boss = true
 
 [node name="Lightning" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
 

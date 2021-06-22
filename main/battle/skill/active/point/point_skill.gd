@@ -1,6 +1,7 @@
 extends ActiveSkill
 class_name PointSkill
 
+export var can_crit := true
 export(int, 0, 100) var critical := 0
 export(int, -100, 100) var power := 0
 export(String, "stre", "magi", "luck", "vita") var stat := "stre"
@@ -74,12 +75,12 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 	return turns_used
 
 func is_crit(user: Node, target: Node) -> bool:
-	print("crit: ", (critical + (user.luck - target.luck/3.0) )/100.0)
+	if not can_crit: return false
 	return not rand_range(0,1) >= (critical + (user.luck - (target.luck/3.0)))/100.0
 
 func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: bool) -> int:
 	var neg = power < 0
-	var base = abs(power) + (user.level) + (5*user.get(stat)) - (target.level)
+	var base = abs(power) + (user.level) + (5*user.get(stat))
 	if def == "weak":
 		base *= 2
 	elif def == "resist":

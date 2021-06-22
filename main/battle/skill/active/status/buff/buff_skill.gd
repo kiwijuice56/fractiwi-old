@@ -10,6 +10,8 @@ func get_text() -> String:
 func use(user: Node, targets: Array, _anim: bool) -> void:
 	randomize()
 	user.set(cost_type, user.get(cost_type)-cost)
+	if user.panel:
+		user.panel.update_content()
 	var turns_used := 0
 	for i in range(len(targets)):
 		var current = targets[i].get(stat.replace("/",""))

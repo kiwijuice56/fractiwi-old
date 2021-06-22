@@ -8,4 +8,5 @@ affinity = "buff"
 effect_packed = ExtResource( 2 )
 cost = 12
 accuracy = 100
+can_miss = false
 stages = -1

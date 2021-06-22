@@ -89,7 +89,7 @@ count = 1
 [node name="Stone" parent="Props/Items" index="5" instance=ExtResource( 12 )]
 position = Vector2( 1872, 2544 )
 skill = "Fire Stone"
-count = 1
+count = 2
 
 [node name="FollowEye" parent="Props/Dynamic" index="0" instance=ExtResource( 10 )]
 position = Vector2( 1264, 1120 )
@@ -514,14 +514,14 @@ creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource
 
 [node name="Eye Worm2" parent="Enemies" index="7" instance=ExtResource( 5 )]
 position = Vector2( 1520, 2512 )
-creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 6 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 6 ) ]
 
 [node name="Spawn" parent="Enemies/Eye Worm2" index="3"]
 position = Vector2( 0, -48 )
 
 [node name="Eye Worm3" parent="Enemies" index="8" instance=ExtResource( 5 )]
 position = Vector2( 2384, 2208 )
-creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 6 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 14 ) ]
 
 [node name="Tv" parent="Enemies" index="9" instance=ExtResource( 15 )]
 position = Vector2( 2688, 2624 )

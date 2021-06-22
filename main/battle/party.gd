@@ -11,6 +11,7 @@ func instance_member(creature: String, data: Dictionary) -> Creature:
 	creature = creature.substr(2) # remove party order
 	var scene = load( creature_path + ("%s/%s.tscn" % [creature.to_lower(), creature])).instance()
 	scene.is_tamed = true
+	scene.is_boss = false
 	scene.set_stats(data["stats"])
 	scene.get_node("Skills").set_skills(data["skills"])
 	if not scene is PlayerCreature: #player is set by items.gd .. efffects hold their own skills

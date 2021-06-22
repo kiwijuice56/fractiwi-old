@@ -18,8 +18,8 @@ data = {
 "Unlearned": [ "Heal" ]
 },
 "Normal": {
-"Skill Levels": [ 1 ],
-"Unlearned": [ "Cry" ]
+"Skill Levels": [ 5 ],
+"Unlearned": [ "Cleave" ]
 }
 },
 "effects": [ "Normal" ]

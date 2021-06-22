@@ -19,6 +19,7 @@ var mp: int = 20
 var max_mp: int
 var status := "ok"
 var is_tamed := false
+export var is_boss := false
 
 var attack: int = 0
 var defense: int = 0
@@ -75,36 +76,53 @@ func do_turn(same: Array, opposite: Array) -> int:
 			yield(get_viewport().game.label_container, "complete")
 			return -2
 	if tag == "Recruit":
-		if recruit_attempt(targets):
-			get_viewport().game.label_container.show_text("Recruit success! " + targets[0].creature_name + " joined you")
-			yield(get_viewport().game.label_container, "complete")
-			targets[0].get_parent().remove_child(targets[0])
-			get_viewport().party.get_node("Inactive").add_child(targets[0])
-			targets[0].is_tamed = true
-			targets[0].name = targets[0].creature_name
-			targets[0].get_node("AI").switch_script()
-			targets[0].heal_points()
-			return 0
-		else:
-			get_viewport().game.label_container.show_text("Recruit failure!")
-			yield(get_viewport().game.label_container, "complete")
-			return -1
+		match recruit_attempt(targets):
+			"higher level":
+				get_viewport().game.label_container.show_text("Recruit fail .. Its level was too high!")
+				yield(get_viewport().game.label_container, "complete")
+				return -1
+			"in party":
+				get_viewport().game.label_container.show_text("Recruit fail .. Yun already has this creature!")
+				yield(get_viewport().game.label_container, "complete")
+				return -1
+			"fail":
+				get_viewport().game.label_container.show_text("Recruit fail .. It refused!")
+				yield(get_viewport().game.label_container, "complete")
+				return -1
+			"boss":
+				get_viewport().game.label_container.show_text("Recruit fail .. Its will to fight is too strong!")
+				yield(get_viewport().game.label_container, "complete")
+				return -1
+			"success":
+				get_viewport().game.label_container.show_text("Recruit success .. " + targets[0].creature_name + " joined you!")
+				yield(get_viewport().game.label_container, "complete")
+				targets[0].get_parent().remove_child(targets[0])
+				get_viewport().party.get_node("Inactive").add_child(targets[0])
+				targets[0].is_tamed = true
+				targets[0].name = targets[0].creature_name
+				targets[0].get_node("AI").switch_script()
+				targets[0].heal_points()
+				return 0
 	return 0
 
 func run_attempt() -> bool:
 	randomize()
 	return rand_range(0,1) < .35+ ((luck+agil)/120.0)
 
-func recruit_attempt(targets: Array) -> bool:
+func recruit_attempt(targets: Array) -> String:
+	if targets[0].is_boss:
+		return "boss"
 	if targets[0].level > level:
-		return false
+		return "higher level"
 	var names := []
 	for child in get_viewport().party.get_node("Active").get_children() + get_viewport().party.get_node("Inactive").get_children():
 		names.append(child.creature_name)
 	if targets[0].creature_name in names:
-		return false
+		return "in party"
 	randomize()
-	return rand_range(0,1) < .30+ ((luck)/60.0)
+	if rand_range(0,1) < .30+ ((luck)/60.0):
+		return "success"
+	return "fail"
 
 func target_action() -> void:
 	if not panel:
@@ -155,7 +173,8 @@ func death() -> void:
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
 		var multipler = min(2, max(0.1, 1 - (level_dif/10.0)))
 		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.0) 
-		queue.expe += expe_given * multipler
+		print(queue.get_node("PlayerParty").get_child(0).name, expe_given, multipler)
+		queue.expe += expe_given * multipler * (1.5 if is_boss else 1.0)
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"
 		yield($AnimationPlayer, "animation_finished")
@@ -195,16 +214,16 @@ func set_level() -> Array:
 	while expe >= expe_to_level:
 		expe -= expe_to_level
 		levels_changed += 1
+		age += 1
 		set_expe_to_level()
 	if levels_changed != 0:
 		level += levels_changed
-		age += 1
 		skills_learned = get_node("UnlearnedSkills").skills_to_learn(self)
 	set_max_points()
 	return [levels_changed, skills_learned]
 
 func set_expe_to_level() -> void:
-	expe_to_level = ((15*age) + (25*level))
+	expe_to_level = ((25*age) + (25*level))
 
 func set_max_points() -> void:
 	max_hp = (level + vita) * 6

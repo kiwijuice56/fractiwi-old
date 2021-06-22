@@ -7,12 +7,14 @@ export var cost := 0
 export(String, "all", "single", "random") var target_type := "single"
 export(String, "opposite", "same") var side := "opposite"
 export(int, 0, 100) var accuracy := 0
+export var can_miss := true
 signal use_complete
 
 func use(_user: Node, _targets: Array, _anim: bool) -> void:
 	emit_signal("use_complete")
 
 func is_miss(user: Node, target: Node) -> bool:
+	if not can_miss: return false
 	print( (accuracy + ((user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0)
 	return rand_range(0,1) >= (accuracy + ((user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0
 
