@@ -113,11 +113,14 @@ func battle(enemy_creatures: Array) -> void:
 		get_viewport().game.press_turn_container.set_side(current == $PlayerParty)
 		get_viewport().game.press_turn_container.set_turns(full, half)
 		
+		get_viewport().game.update_party()
+		
 		current_array = to_array(current, current_array)
 		opposite_array = to_array(opposite, [])
 		
 		if pointer >= len(current_array):
 			pointer = 0
+		
 		
 		# get turns used
 		var turns: Array = turn_logic(yield(current_array[pointer].do_turn(current_array, opposite_array), "completed"), full, half)

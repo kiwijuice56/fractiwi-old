@@ -12,7 +12,10 @@ func intialize_button(new_button, index: int) -> void:
 
 func add_items() -> void:
 	for child in get_children():
+		child.get_node("AnimationPlayer").stop()
+		#child.get_node("AnimationPlayer").emit_signal("animation_finished")
 		remove_child(child)
+		child.queue_free()
 	var active_creatures =  controller.party.get_node("Active").get_children()
 	var inactive_creatures = controller.party.get_node("Inactive").get_children() 
 	creatures = active_creatures+inactive_creatures if full_party else active_creatures

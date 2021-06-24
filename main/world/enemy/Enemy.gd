@@ -8,6 +8,9 @@ func _ready() -> void:
 	$AnimationPlayer.current_animation = anim_name
 	connect("body_entered", self, "body_entered")
 
+func restart() -> void:
+	pass
+
 func body_entered(player: KinematicBody2D) -> void:
 	player.can_move = false
 	get_viewport().game.can_open = false

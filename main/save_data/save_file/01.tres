@@ -30,7 +30,7 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Lightning", "Slash" ],
+"Active": [ "Cry", "Lightning", "Slash", "Neo Beam" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]

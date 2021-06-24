@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/teleport.WAV-f12e7b2f9e37f6243e3edfce0052fdb2.sample"
+
+[deps]
+
+source_file="res://main/battle/graphic_effect/active_skill/flash/teleport.WAV"
+dest_files=[ "res://.import/teleport.WAV-f12e7b2f9e37f6243e3edfce0052fdb2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

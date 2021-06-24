@@ -6,12 +6,12 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 699
+"time": 829
 },
 "Items": {
 "consumables": {
 "Fire Stone": 1,
-"Hp Pill": 5
+"Hp Pill": 3
 },
 "current_effect": "Normal",
 "effect_skills": {
@@ -30,7 +30,7 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Lightning", "Slash" ],
+"Active": [ "Cry", "Lightning", "Neo Beam", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]
@@ -38,7 +38,7 @@ data = {
 "stats": {
 "age": 3,
 "agil": 3,
-"expe": 114,
+"expe": 162,
 "hp": 66,
 "level": 6,
 "luck": 3,
@@ -48,7 +48,47 @@ data = {
 "vita": 5
 }
 },
-"01Eye Worm": {
+"01Looker": {
+"skills": {
+"Active": [ "Glare", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 2,
+"agil": 1,
+"expe": 59,
+"hp": 48,
+"level": 5,
+"luck": 1,
+"magi": 3,
+"mp": 29,
+"stre": 1,
+"vita": 3
+}
+},
+"02Golem": {
+"skills": {
+"Active": [ "Cleave", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 0,
+"agil": 1,
+"expe": 48,
+"hp": 48,
+"level": 5,
+"luck": 1,
+"magi": 2,
+"mp": 26,
+"stre": 3,
+"vita": 3
+}
+},
+"03Eye Worm": {
 "skills": {
 "Active": [ "Cleave", "Slash" ],
 "Passive": [  ],
@@ -67,54 +107,16 @@ data = {
 "stre": 1,
 "vita": 2
 }
-},
-"02Looker": {
-"skills": {
-"Active": [ "Glare", "Slash" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
-},
-"stats": {
-"age": 2,
-"agil": 1,
-"expe": 11,
-"hp": 48,
-"level": 5,
-"luck": 1,
-"magi": 3,
-"mp": 29,
-"stre": 1,
-"vita": 3
-}
-},
-"03Golem": {
-"skills": {
-"Active": [ "Cleave", "Slash" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
-},
-"stats": {
-"age": 0,
-"agil": 1,
-"expe": 0,
-"hp": 48,
-"level": 5,
-"luck": 1,
-"magi": 2,
-"mp": 26,
-"stre": 3,
-"vita": 3
-}
 }
 },
 "inactive": {
 }
 },
 "World": {
-"location": "eye_hall",
+"location": "origin",
 "memory": {
+"balcony": {
+},
 "balcony_fake": {
 "PillBottle": true
 },
@@ -125,9 +127,11 @@ data = {
 "PillBottle5": true,
 "Stone": true
 },
+"origin": {
+},
 "origin_fake": {
 }
 },
-"terminal": "Terminal A"
+"terminal": "Terminal"
 }
 }

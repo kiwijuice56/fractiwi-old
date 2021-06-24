@@ -18,6 +18,7 @@ luck = 4
 agil = 5
 def_affinity = {
 "fire": "null",
+"light": "null",
 "water": "weak"
 }
 off_affinity = {
@@ -27,4 +28,4 @@ off_affinity = {
 
 [node name="Flame Burst" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
 
-[node name="Cleave" parent="Skills/Active" index="1" instance=ExtResource( 4 )]
+[node name="Cleave" parent="Skills/Passive" index="0" instance=ExtResource( 4 )]

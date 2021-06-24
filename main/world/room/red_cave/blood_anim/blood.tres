@@ -1,4 +1,4 @@
-[gd_resource type="AnimatedTexture" load_steps=8 format=2]
+[gd_resource type="AnimatedTexture" load_steps=9 format=2]
 
 [ext_resource path="res://main/world/room/red_cave/blood_anim/blood4.png" type="Texture" id=1]
 [ext_resource path="res://main/world/room/red_cave/blood_anim/blood2.png" type="Texture" id=2]
@@ -7,9 +7,10 @@
 [ext_resource path="res://main/world/room/red_cave/blood_anim/blood3.png" type="Texture" id=5]
 [ext_resource path="res://main/world/room/red_cave/blood_anim/blood6.png" type="Texture" id=6]
 [ext_resource path="res://main/world/room/red_cave/blood_anim/blood7.png" type="Texture" id=7]
+[ext_resource path="res://main/world/room/red_cave/blood_anim/blood8.png" type="Texture" id=8]
 
 [resource]
-frames = 7
+frames = 8
 frame_0/texture = ExtResource( 4 )
 frame_1/texture = ExtResource( 2 )
 frame_1/delay_sec = 0.0
@@ -23,3 +24,5 @@ frame_5/texture = ExtResource( 6 )
 frame_5/delay_sec = 0.0
 frame_6/texture = ExtResource( 7 )
 frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 8 )
+frame_7/delay_sec = 0.0

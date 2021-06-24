@@ -127,11 +127,11 @@ func recruit_attempt(targets: Array) -> String:
 func target_action() -> void:
 	if not panel:
 		$AnimationPlayer.current_animation = "hurt_normal"
-		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3])
+		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4])
 		$PointLabel.get_node("AnimationPlayer").current_animation = "show"
 	else:
 		panel.get_node("AnimationPlayer").current_animation = "hurt_normal"
-		panel.get_node("PointLabel").set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3])
+		panel.get_node("PointLabel").set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4])
 		panel.get_node("PointLabel/AnimationPlayer").current_animation = "show"
 	targeted_skill_data = []
 	var function = check_hp()
@@ -164,7 +164,6 @@ func death() -> void:
 		panel.get_node("AnimationPlayer").stop()
 		panel.get_node("AnimationPlayer").current_animation = "death"
 		yield(panel.get_node("AnimationPlayer"), "animation_finished")
-		viewport.game.update_party()
 		emit_signal("death")
 		if name == "Yun":
 			get_tree().quit()
@@ -173,7 +172,6 @@ func death() -> void:
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
 		var multipler = min(2, max(0.1, 1 - (level_dif/10.0)))
 		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.0) 
-		print(queue.get_node("PlayerParty").get_child(0).name, expe_given, multipler)
 		queue.expe += expe_given * multipler * (1.5 if is_boss else 1.0)
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"

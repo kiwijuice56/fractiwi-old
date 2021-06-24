@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/PointBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/ui/theme/style_box/focus/Focus.tres" type="StyleBox" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/status_icons/dead.png" type="Texture" id=8]
 [ext_resource path="res://main/ui/theme/style_box/focus/disabled/FocusDisabled.tres" type="StyleBox" id=9]
 [ext_resource path="res://main/ui/theme/style_box/regular/disabled/RegularDisabled.tres" type="StyleBox" id=10]
+[ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/status_icons/sad.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -78,7 +79,8 @@ status_icon = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/StatusIcon"
 in_party_indicator = NodePath("MarginContainer2/InPartyIndicator")
 icons = {
 "dead": ExtResource( 8 ),
-"ok": ExtResource( 5 )
+"ok": ExtResource( 5 ),
+"sad": ExtResource( 11 )
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

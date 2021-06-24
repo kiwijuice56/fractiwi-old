@@ -19,6 +19,8 @@ func battle_started(_creatures: Array) -> void:
 	player.can_move = false
 	backdrop.visible = true
 	backdrop.texture = $Room.backdrop
+	for node in get_tree().get_nodes_in_group("Battle Pause"):
+		node.pause()
 
 func battle_ended(did_run: bool) -> void:
 	yield(get_viewport().transition, "in_finished")
@@ -28,8 +30,12 @@ func battle_ended(did_run: bool) -> void:
 		current_enemy.call_deferred("queue_free")
 	else:
 		player.global_position = current_enemy.get_node("Spawn").global_position
+		current_enemy.restart()
+	for node in get_tree().get_nodes_in_group("Battle Pause"):
+		node.unpause()
 
 func add_room(room_name: String, destination_type: String, destination_name: String) -> void:
+	randomize()
 	if has_node("Room"):
 		remove_child(get_node("Room"))
 	current_room = room_name

@@ -16,10 +16,10 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 	for i in range(len(targets)):
 		var current = targets[i].get(stat.replace("/",""))
 		if not ( current + stages > 4 or current + stages < -4):
-			targets[i].targeted_skill_data = [str(stages), false, false, stat.capitalize() + (" up" if stages > 0 else " down")]
+			targets[i].targeted_skill_data = [str(stages), false, false, stat.capitalize() + (" up" if stages > 0 else " down"), PointLabel.text_types.BUFF]
 			targets[i].set(stat.replace("/",""), targets[i].get(stat.replace("/","")) + stages)
 		else:
-			targets[i].targeted_skill_data = ["", false, false, "Buffs maximized!" if stages > 0 else "Debuffs maximized!"]
+			targets[i].targeted_skill_data = ["", false, false, "Buffs maximized!" if stages > 0 else "Debuffs maximized!", PointLabel.text_types.BUFF]
 		var new_turns_used = turn_logic("normal", false, false)
 		if new_turns_used < 0 or turns_used < 0:
 			# warning-ignore:narrowing_conversion

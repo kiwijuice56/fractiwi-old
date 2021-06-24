@@ -4,7 +4,7 @@
 [ext_resource path="res://main/world/room/eye_hall/eye_hall_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://main/world/prop/filter/shaders/image_scroll.shader" type="Shader" id=3]
 [ext_resource path="res://main/world/room/eye_hall/background.png" type="Texture" id=4]
-[ext_resource path="res://main/world/enemy/eye worm/Eye Worm.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/world/enemy/nonmoving_enemy/eye worm/Eye Worm.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/battle/creature/eye worm/Eye Worm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/world/room/eye_hall/pipes.ogg" type="AudioStream" id=7]
 [ext_resource path="res://main/world/prop/interactable/item/pill_bottle/PillBottle.tscn" type="PackedScene" id=8]
@@ -14,7 +14,7 @@
 [ext_resource path="res://main/world/prop/interactable/item/stone/Stone.tscn" type="PackedScene" id=12]
 [ext_resource path="res://main/world/prop/interactable/terminal/Terminal.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/battle/creature/golem/Golem.tscn" type="PackedScene" id=14]
-[ext_resource path="res://main/world/enemy/tv/Tv.tscn" type="PackedScene" id=15]
+[ext_resource path="res://main/world/enemy/nonmoving_enemy/tv/Tv.tscn" type="PackedScene" id=15]
 [ext_resource path="res://main/battle/creature/tv/Tv.tscn" type="PackedScene" id=16]
 [ext_resource path="res://main/world/prop/interactable/healing_plant/HealingPlant.tscn" type="PackedScene" id=17]
 

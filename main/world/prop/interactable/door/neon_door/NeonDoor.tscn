@@ -13,7 +13,6 @@ room_name = "neon"
 destination_name = "NeonDoor"
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 2, 2, 2, 1 )
 texture = ExtResource( 2 )
 
 [node name="Spawn" parent="." index="2"]

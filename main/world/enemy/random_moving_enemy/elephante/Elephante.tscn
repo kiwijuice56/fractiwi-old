@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/world/enemy/random_moving_enemy/elephante/elephante_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://main/world/enemy/random_moving_enemy/RandomMovingEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/world/prop/filter/shaders/neon.shader" type="Shader" id=3]
+[ext_resource path="res://main/battle/creature/elephante/Elephante.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/speed_div = 1.0
+
+[sub_resource type="Animation" id=2]
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 3, 2, 1, 0 ]
+}
+
+[node name="Elephante" instance=ExtResource( 2 )]
+creatures = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ]
+anim_name = "elephante"
+move_time = 0.45
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 1 )
+hframes = 5
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/elephante = SubResource( 2 )

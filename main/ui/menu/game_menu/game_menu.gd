@@ -79,18 +79,22 @@ func input_pressed(key_name: String) -> void:
 				"party":
 					hide_party()
 					input["MainButtonContainer"].enable_input()
+					disable_nonplayer_action()
 					input["MainButtonContainer"].grab_focus_at(0)
 				"items":
 					hide_items()
 					input["MainButtonContainer"].enable_input()
+					disable_nonplayer_action()
 					input["MainButtonContainer"].grab_focus_at(0)
 				"skills":
 					hide_skills()
 					input["MainButtonContainer"].enable_input()
+					disable_nonplayer_action()
 					input["MainButtonContainer"].grab_focus_at(0)
 				"effects":
 					hide_effects()
 					input["MainButtonContainer"].enable_input()
+					disable_nonplayer_action()
 					input["MainButtonContainer"].grab_focus_at(0)
 				"return_member":
 					show_party(false)
@@ -238,7 +242,11 @@ func battle_input(current_creature: Creature):
 	text_label.text = "What will %s do?" % creature.creature_name
 	input["MainButtonContainer"].enable_input()
 	input["MainButtonContainer"].grab_focus_at(0)
-	if creature.creature_name == "Yun":
+	disable_nonplayer_action()
+	open_menu(false)
+
+func disable_nonplayer_action() -> void:
+	if (not creature) or creature.name == "Yun":
 		for button in input["MainButtonContainer"].get_children():
 			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
 				button.disabled = false
@@ -246,7 +254,6 @@ func battle_input(current_creature: Creature):
 		for button in input["MainButtonContainer"].get_children():
 			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
 				button.disabled = true
-	open_menu(false)
 
 func battle_action_chosen(_ui_info: Array) -> void:
 	text_label.text = ""

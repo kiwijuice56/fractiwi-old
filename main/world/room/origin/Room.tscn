@@ -4,7 +4,7 @@
 [ext_resource path="res://main/world/prop/interactable/door/purple_door/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/world/room/origin/door3.png" type="Texture" id=3]
 [ext_resource path="res://main/world/prop/interactable/door/Door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main/world/enemy/eye worm/Eye Worm.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/world/enemy/nonmoving_enemy/eye worm/Eye Worm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/world/prop/interactable/bed/Bed.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/battle/creature/eye worm/Eye Worm.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/world/prop/interactable/terminal/Terminal.tscn" type="PackedScene" id=9]

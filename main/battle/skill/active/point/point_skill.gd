@@ -21,9 +21,9 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 		var is_miss = is_miss(user, target)
 		var is_crit = is_crit(user, target)
 		var def: String = get_def_affinity(target)
-		var off: int = get_off_affinity(target)
+		var off: int = get_off_affinity(user)
 		var point_change = calculate_points(user, target, def, off, is_crit)
-		target.targeted_skill_data = [point_change, is_miss, is_crit, def]
+		target.targeted_skill_data = [point_change, is_miss, is_crit, def, PointLabel.text_types.POINT]
 		var new_turns_used = turn_logic(def, is_miss, is_crit)
 		if new_turns_used < 0 or turns_used < 0:
 			# warning-ignore:narrowing_conversion
@@ -41,7 +41,7 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 			user.set(point_stat, max(user.get(point_stat), 0))
 			if not user in targets:
 				targets.append(user)
-				user.targeted_skill_data = [point_change, false, is_crit, def]
+				user.targeted_skill_data = [point_change, false, is_crit, def, PointLabel.text_types.POINT]
 			else:
 				user.targeted_skill_data[0] += point_change
 		else:
@@ -75,6 +75,7 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 	return turns_used
 
 func is_crit(user: Node, target: Node) -> bool:
+	if user.status == "sad": return false
 	if not can_crit: return false
 	return not rand_range(0,1) >= (critical + (user.luck - (target.luck/3.0)))/100.0
 
@@ -89,6 +90,8 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 		base *= -1
 	elif def == "null":
 		base *= 0
+	if user.status == "sad":
+		base *= 0.6
 	base *= (off/100.0)
 	base *= 2 if is_crit else 1
 	base *= -1 if neg else 1

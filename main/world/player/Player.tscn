@@ -9,7 +9,7 @@
 [ext_resource path="res://main/world/player/sounds/effect2.WAV" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 7 )
+extents = Vector2( 8, 7.5 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "set_effect"
@@ -292,10 +292,11 @@ effect_textures = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 6.5 )
+position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -6.5 )
 texture = ExtResource( 6 )
 hframes = 3
 vframes = 3
@@ -303,6 +304,7 @@ frame = 7
 
 [node name="EffectSprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -6.5 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 

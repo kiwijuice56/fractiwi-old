@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/skill/active/status/condition/ConditionSkill.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/flash/Flash.tscn" type="PackedScene" id=2]
+
+[node name="Neo Beam" instance=ExtResource( 1 )]
+affinity = "light"
+effect_packed = ExtResource( 2 )
+cost = 6
+accuracy = 65
+condition = "sad"
