@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
@@ -39,6 +39,8 @@
 [ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=37]
 [ext_resource path="res://main/battle/creature/skill_manager/unlearned_skill_manager/effect_manager/effect_manager.gd" type="Script" id=38]
 [ext_resource path="res://main/ui/menu/main_menu/start.wav" type="AudioStream" id=39]
+[ext_resource path="res://main/ui/menu/fusion_menu/FusionMenu.tscn" type="PackedScene" id=40]
+[ext_resource path="res://main/ui/menu/cathedral_menu/CathedralMenu.tscn" type="PackedScene" id=41]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -103,6 +105,8 @@ game = NodePath("UI/GameMenu")
 interact = NodePath("UI/InteractMenu")
 main = NodePath("UI/MainMenu")
 terminal = NodePath("UI/TerminalMenu")
+fusion = NodePath("UI/FusionMenu")
+cathedral = NodePath("UI/CathedralMenu")
 vision_effects = NodePath("UI/VisionEffects")
 world_node = NodePath("World")
 party = NodePath("Party")
@@ -246,6 +250,14 @@ file_saver = NodePath("../../../../FileSaver")
 visible = false
 main_viewport = NodePath("../..")
 select_sound = true
+
+[node name="CathedralMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 41 )]
+visible = false
+main_viewport = NodePath("../..")
+
+[node name="FusionMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 40 )]
+visible = false
+main_viewport = NodePath("../..")
 
 [node name="MenuSoundPlayer" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI"]
 volume_db = -10.0

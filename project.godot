@@ -69,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/utility_classes/button_panel/button_panel.gd"
 }, {
+"base": "Interactable",
+"class": "Cathedral",
+"language": "GDScript",
+"path": "res://main/world/prop/interactable/cathedral/cathedral.gd"
+}, {
+"base": "UIController",
+"class": "CathedralMenu",
+"language": "GDScript",
+"path": "res://main/ui/menu/cathedral_menu/cathedral_menu.gd"
+}, {
 "base": "StatusSkill",
 "class": "ConditionSkill",
 "language": "GDScript",
@@ -138,6 +148,11 @@ _global_script_classes=[ {
 "class": "FollowEye",
 "language": "GDScript",
 "path": "res://main/world/prop/dynamic_scenery/follow_eye/follow_eye.gd"
+}, {
+"base": "UIController",
+"class": "FusionMenu",
+"language": "GDScript",
+"path": "res://main/ui/menu/fusion_menu/fusion_menu.gd"
 }, {
 "base": "UIController",
 "class": "GameMenu",
@@ -417,6 +432,8 @@ _global_script_class_icons={
 "BuffSkill": "",
 "ButtonContainer": "",
 "ButtonPanel": "",
+"Cathedral": "",
+"CathedralMenu": "",
 "ConditionSkill": "",
 "Creature": "",
 "CreatureButtonPanel": "",
@@ -431,6 +448,7 @@ _global_script_class_icons={
 "FileSaver": "",
 "Filter": "",
 "FollowEye": "",
+"FusionMenu": "",
 "GameMenu": "",
 "HotKeyContainer": "",
 "InputContainer": "",

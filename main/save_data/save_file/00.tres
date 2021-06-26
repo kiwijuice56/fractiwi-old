@@ -6,12 +6,12 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 829
+"time": 1064
 },
 "Items": {
 "consumables": {
 "Fire Stone": 1,
-"Hp Pill": 3
+"Hp Pill": 1
 },
 "current_effect": "Normal",
 "effect_skills": {
@@ -36,39 +36,19 @@ data = {
 "Unlearned": [  ]
 },
 "stats": {
-"age": 3,
+"age": 4,
 "agil": 3,
-"expe": 162,
-"hp": 66,
-"level": 6,
-"luck": 3,
+"expe": 141,
+"hp": 72,
+"level": 7,
+"luck": 4,
 "magi": 3,
-"mp": 33,
+"mp": 37,
 "stre": 4,
 "vita": 5
 }
 },
-"01Looker": {
-"skills": {
-"Active": [ "Glare", "Slash" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
-},
-"stats": {
-"age": 2,
-"agil": 1,
-"expe": 59,
-"hp": 48,
-"level": 5,
-"luck": 1,
-"magi": 3,
-"mp": 29,
-"stre": 1,
-"vita": 3
-}
-},
-"02Golem": {
+"01Golem": {
 "skills": {
 "Active": [ "Cleave", "Slash" ],
 "Passive": [  ],
@@ -76,19 +56,19 @@ data = {
 "Unlearned": [  ]
 },
 "stats": {
-"age": 0,
+"age": 1,
 "agil": 1,
-"expe": 48,
-"hp": 48,
-"level": 5,
-"luck": 1,
+"expe": 82,
+"hp": 54,
+"level": 6,
+"luck": 2,
 "magi": 2,
-"mp": 26,
+"mp": 30,
 "stre": 3,
 "vita": 3
 }
 },
-"03Eye Worm": {
+"02Eye Worm": {
 "skills": {
 "Active": [ "Cleave", "Slash" ],
 "Passive": [  ],
@@ -98,7 +78,7 @@ data = {
 "stats": {
 "age": 3,
 "agil": 3,
-"expe": 124,
+"expe": 223,
 "hp": 48,
 "level": 6,
 "luck": 1,
@@ -107,9 +87,49 @@ data = {
 "stre": 1,
 "vita": 2
 }
+},
+"03Elephante": {
+"skills": {
+"Active": [ "Lightning", "Neo Beam" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 0,
+"agil": 3,
+"expe": 0,
+"hp": 60,
+"level": 7,
+"luck": 3,
+"magi": 4,
+"mp": 40,
+"stre": 1,
+"vita": 3
+}
 }
 },
 "inactive": {
+"00Looker": {
+"skills": {
+"Active": [ "Glare", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 3,
+"agil": 1,
+"expe": 43,
+"hp": 60,
+"level": 6,
+"luck": 1,
+"magi": 3,
+"mp": 33,
+"stre": 1,
+"vita": 4
+}
+}
 }
 },
 "World": {
@@ -126,6 +146,10 @@ data = {
 "PillBottle3": true,
 "PillBottle5": true,
 "Stone": true
+},
+"neon": {
+},
+"nexus": {
 },
 "origin": {
 },

@@ -1,0 +1,204 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
+[ext_resource path="res://main/ui/menu/fusion_menu/fusion_menu.gd" type="Script" id=2]
+[ext_resource path="res://main/ui/theme/style_box/regular/margin/MarginRegular.tres" type="StyleBox" id=3]
+[ext_resource path="res://main/ui/theme/style_box/thin/margin/MarginThin.tres" type="StyleBox" id=4]
+[ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=5]
+[ext_resource path="res://main/ui/utility_classes/input_container/button_container/button_container.gd" type="Script" id=6]
+[ext_resource path="res://main/ui/theme/background2.png" type="Texture" id=7]
+[ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_panel/FusionCreatureButtonPanel.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 2000, 1500 )
+
+[node name="FusionMenu" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_sound = true
+back_sound = true
+select_sound = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 490.0
+margin_bottom = 276.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 480.0
+margin_bottom = 266.0
+custom_styles/panel = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 465.0
+margin_bottom = 251.0
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_right = 75.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Yun - level 20"
+
+[node name="PromptLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 151.0
+margin_bottom = 32.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.52549, 0.486275, 0.886275, 1 )
+custom_colors/font_outline_modulate = Color( 0.309804, 0.341176, 0.776471, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Select a creature to fuse ..."
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+visible = false
+margin_top = 36.0
+margin_right = 460.0
+margin_bottom = 86.0
+custom_styles/panel = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 458.0
+margin_bottom = 48.0
+
+[node name="Titles" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+margin_right = 456.0
+margin_bottom = 14.0
+
+[node name="Ingredients" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Titles"]
+margin_right = 226.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Ingredients"
+
+[node name="Product" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Titles"]
+margin_left = 230.0
+margin_right = 456.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Product"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 456.0
+margin_bottom = 46.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="Ingredient1" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 226.0
+margin_bottom = 14.0
+text = "Horse Bicorn"
+
+[node name="Ingredient2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 14.0
+margin_right = 226.0
+margin_bottom = 28.0
+text = "Horse Unicorn"
+
+[node name="Product" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 230.0
+margin_top = 7.0
+margin_right = 456.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Plante Elephante"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 460.0
+margin_bottom = 246.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 210.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 222.0
+margin_bottom = 206.0
+
+[node name="IngredientsLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+margin_right = 218.0
+margin_bottom = 14.0
+text = "Ingredients"
+
+[node name="CreaturePanelContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 218.0
+margin_bottom = 202.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 6 )
+controller = NodePath("../../../../../../..")
+button_scene = ExtResource( 8 )
+neighbor_type = "vertical"
+
+[node name="ButtonPanel" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/CreaturePanelContainer" instance=ExtResource( 8 )]
+margin_right = 218.0
+margin_bottom = 14.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 234.0
+margin_right = 460.0
+margin_bottom = 210.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 222.0
+margin_bottom = 206.0
+
+[node name="ProductLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+margin_right = 218.0
+margin_bottom = 14.0
+text = "Product"
+
+[node name="CreaturePanelContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer"]
+margin_top = 18.0
+margin_right = 218.0
+margin_bottom = 202.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 6 )
+controller = NodePath("../../../../../../..")
+button_scene = ExtResource( 8 )
+neighbor_type = "vertical"
+
+[node name="ButtonPanel" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2/VBoxContainer/CreaturePanelContainer2" instance=ExtResource( 8 )]
+margin_right = 218.0
+margin_bottom = 14.0

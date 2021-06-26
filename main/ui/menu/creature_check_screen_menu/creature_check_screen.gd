@@ -35,7 +35,6 @@ func _ready() -> void:
 	stat_label = get_node(stat_label)
 	unlearned_container = get_node(unlearned_container)
 	main_viewport.connect("battle_end", self, "battle_ended")
-	disable(false)
 
 func _input(event: InputEvent) -> void:
 	if state == "confirm":

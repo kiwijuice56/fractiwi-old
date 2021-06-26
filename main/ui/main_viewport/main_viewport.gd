@@ -11,6 +11,8 @@ export (NodePath) var game
 export (NodePath) var interact
 export (NodePath) var main
 export (NodePath) var terminal
+export (NodePath) var fusion
+export (NodePath) var cathedral
 export (NodePath) var vision_effects
 export (NodePath) var world_node
 export (NodePath) var party
@@ -36,11 +38,16 @@ func _ready() -> void:
 	creature_check = get_node(creature_check)
 	menu_sound_player = get_node(menu_sound_player)
 	items = get_node(items)
+	fusion = get_node(fusion)
+	cathedral = get_node(cathedral)
 	yield(get_tree().root, "ready")
 	game.disable(false)
 	terminal.disable(false)
 	save_file.disable(false)
 	interact.disable(false)
+	fusion.disable(false)
+	cathedral.disable(false)
+	creature_check.disable(false)
 	music_player.play_audio(main.music)
 
 func battle_started(creatures: Array) -> void:

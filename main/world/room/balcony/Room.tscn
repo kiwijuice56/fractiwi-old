@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main/world/room/balcony/sky.png" type="Texture" id=1]
 [ext_resource path="res://main/world/prop/interactable/door/Door.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://main/world/room/balcony_fake/tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://main/world/prop/interactable/healing_plant/HealingPlant.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/world/room/balcony_fake/door2.png" type="Texture" id=6]
+[ext_resource path="res://main/world/prop/interactable/cathedral/Cathedral.tscn" type="PackedScene" id=7]
 
 [node name="Room" instance=ExtResource( 3 )]
 
@@ -38,6 +39,9 @@ position = Vector2( 0, 24 )
 
 [node name="HealingPlant" parent="Props/Interactable" index="2" instance=ExtResource( 5 )]
 position = Vector2( 120, 136 )
+
+[node name="Cathedral" parent="Props/Interactable" index="3" instance=ExtResource( 7 )]
+position = Vector2( 200, 136 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Props/Filters" index="0"]
 color = Color( 0.545098, 0.552941, 0.654902, 1 )

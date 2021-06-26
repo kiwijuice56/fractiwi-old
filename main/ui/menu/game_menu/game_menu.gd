@@ -50,10 +50,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_menu", false) and can_open and not in_battle:
 		if open:
 			close_menu()
+			main_viewport.world_node.unpause()
 			main_viewport.world_node.player.can_move = true
 			main_viewport.menu_sound_player.play_sound("Back")
 		else:
 			open_menu(true)
+			main_viewport.world_node.pause()
 			main_viewport.world_node.player.can_move = false
 			main_viewport.menu_sound_player.play_sound("Next")
 	if not open:
@@ -101,6 +103,7 @@ func input_pressed(key_name: String) -> void:
 				"default":
 					if in_battle: return
 					close_menu()
+					main_viewport.world_node.unpause()
 					main_viewport.world_node.player.can_move = true
 				"select_active_member":
 					emit_signal("selection_complete", [])
@@ -228,6 +231,7 @@ func battle_started(_creatures: Array) -> void:
 func battle_ended(_did_run: bool) -> void:
 	yield(main_viewport.transition, "in_finished")
 	in_battle = false
+	creature = null
 	input["PartySkillContainer"].tabs_visible = true
 	press_turn_container.visible = false
 	input["MainButtonContainer"].button_names = ["Effect", "Skill", "Item", "Party", "Setting"]

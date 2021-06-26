@@ -20,7 +20,6 @@ func object_exited(object: Node2D) -> void:
 		object.global_position.x -= extents.x*2
 	elif object.global_position.x < self.global_position.x - extents.x:
 		object.global_position.x += extents.x*2
-	print(object.global_position, global_position, extents)
 	if object.global_position.y > self.global_position.y + extents.y: #UNDER
 		object.global_position.y -= extents.y*2
 	elif object.global_position.y < self.global_position.y - extents.y: #ABOVE
