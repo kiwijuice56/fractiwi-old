@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/battle/creature/creature.gd" type="Script" id=1]
-[ext_resource path="res://main/battle/creature/skill_manager/skills_manager.gd" type="Script" id=2]
+[ext_resource path="res://main/battle/skill_manager/skills_manager.gd" type="Script" id=2]
 [ext_resource path="res://main/battle/ai/ai.gd" type="Script" id=3]
 [ext_resource path="res://main/ui/menu/game_menu/point_label/PointLabel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://main/battle/creature/skill_manager/unlearned_skill_manager/unlearned_skill_manager.gd" type="Script" id=5]
+[ext_resource path="res://main/battle/skill_manager/unlearned_skill_manager/unlearned_skill_manager.gd" type="Script" id=5]
 [ext_resource path="res://main/battle/ai/player/player_ai.gd" type="Script" id=6]
 [ext_resource path="res://main/battle/creature/next_in.wav" type="AudioStream" id=7]
 

@@ -258,7 +258,6 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 controller = NodePath("../../../../../../../..")
 hotkey_font = ExtResource( 9 )
-hotkey_color = Color( 1, 1, 1, 1 )
 hotkeys = {
 "Use": "ui_accept"
 }
@@ -647,10 +646,8 @@ custom_constants/separation = 2
 script = ExtResource( 3 )
 controller = NodePath("../../../../../..")
 hotkey_font = ExtResource( 9 )
-hotkey_color = Color( 1, 1, 1, 1 )
 hotkeys = {
 "Check": "ui_accept2",
-"Delete": "ui_accept3",
 "Summon": "ui_accept"
 }
 

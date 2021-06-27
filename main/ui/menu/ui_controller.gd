@@ -11,6 +11,8 @@ export(NodePath) var main_viewport
 export var next_sound := false
 export var back_sound := false
 export var select_sound := false
+export var horizontal_select := false
+export var vertical_select := false
 export var override_next_sound := false
 export var override_back_sound := false
 export var override_select_sound := false
@@ -28,9 +30,14 @@ func _input(event: InputEvent) -> void:
 	if disabled or "open" in self and not get("open"): return
 	#print(name)
 	if select_sound and not override_select_sound:
-		for key in ["left", "right", "up", "down"]:
-			if event.is_action_pressed("ui_"+key, false):
-				main_viewport.menu_sound_player.play_sound("Select")
+		if horizontal_select:
+			for key in ["left", "right"]:
+				if event.is_action_pressed("ui_"+key, false):
+					main_viewport.menu_sound_player.play_sound("Select")
+		if vertical_select:
+			for key in ["up", "down"]:
+				if event.is_action_pressed("ui_"+key, false):
+					main_viewport.menu_sound_player.play_sound("Select")
 	if event.is_action_pressed("ui_accept", false) and next_sound and not override_next_sound:
 		main_viewport.menu_sound_player.play_sound("Next")
 	if event.is_action_pressed("ui_cancel", false) and back_sound and not override_back_sound:

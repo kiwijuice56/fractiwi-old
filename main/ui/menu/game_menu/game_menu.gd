@@ -250,7 +250,7 @@ func battle_input(current_creature: Creature):
 	open_menu(false)
 
 func disable_nonplayer_action() -> void:
-	if (not creature) or creature.name == "Yun":
+	if (not in_battle) or creature.name == "Yun":
 		for button in input["MainButtonContainer"].get_children():
 			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
 				button.disabled = false

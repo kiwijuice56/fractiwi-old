@@ -12,6 +12,7 @@ func intialize_button(_new_button: Control, _index: int) -> void:
 func add_items() -> void:
 	for child in get_children():
 		remove_child(child)
+		child.queue_free()
 	for i in range(button_count):
 		var new_button = Button.new() if not button_scene else button_scene.instance()
 		add_child(new_button)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://main/ui/utility_classes/button_panel/button_panel.gd" type="Script" id=1]
+[ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_panel/fusion_creature_button_panel.gd" type="Script" id=1]
 [ext_resource path="res://main/ui/theme/style_box/selected/Selected.tres" type="StyleBox" id=2]
+[ext_resource path="res://main/ui/theme/style_box/selected/selected.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 content_margin_left = 4.0
@@ -9,9 +10,35 @@ content_margin_right = 4.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
 
+[sub_resource type="StyleBoxTexture" id=2]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+modulate_color = Color( 0.6, 0.6, 0.6, 1 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
 [node name="FusionCreatureButtonPanel" type="PanelContainer"]
 margin_right = 220.0
 margin_bottom = 18.0
+focus_mode = 2
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -20,7 +47,9 @@ __meta__ = {
 regular_style = SubResource( 1 )
 focused_style = ExtResource( 2 )
 disabled_style = SubResource( 1 )
-disbaled_focus_style = SubResource( 1 )
+disbaled_focus_style = SubResource( 2 )
+selected_style = SubResource( 3 )
+selected_focus_style = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 4.0
@@ -33,6 +62,7 @@ margin_top = 2.0
 margin_right = 60.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 60, 0 )
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
 text = "Horse"
 
 [node name="Name" type="Label" parent="HBoxContainer"]
@@ -48,4 +78,5 @@ margin_left = 196.0
 margin_top = 2.0
 margin_right = 212.0
 margin_bottom = 16.0
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
 text = "29"

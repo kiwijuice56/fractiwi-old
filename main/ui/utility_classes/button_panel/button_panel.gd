@@ -40,6 +40,10 @@ func release_focus() -> void:
 func set_disabled(value: bool) -> void:
 	disabled = value
 	if disabled:
+		if has_focus():
+			focus_entered()
 		set("custom_styles/panel", disabled_style)
 	else:
+		if has_focus():
+			focus_exited()
 		set("custom_styles/panel", regular_style)

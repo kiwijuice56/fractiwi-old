@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
@@ -37,10 +37,13 @@
 [ext_resource path="res://main/world/player/sprites/flower.png" type="Texture" id=35]
 [ext_resource path="res://main/battle/items/items.gd" type="Script" id=36]
 [ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=37]
-[ext_resource path="res://main/battle/creature/skill_manager/unlearned_skill_manager/effect_manager/effect_manager.gd" type="Script" id=38]
+[ext_resource path="res://main/battle/skill_manager/unlearned_skill_manager/effect_manager/effect_manager.gd" type="Script" id=38]
 [ext_resource path="res://main/ui/menu/main_menu/start.wav" type="AudioStream" id=39]
 [ext_resource path="res://main/ui/menu/fusion_menu/FusionMenu.tscn" type="PackedScene" id=40]
 [ext_resource path="res://main/ui/menu/cathedral_menu/CathedralMenu.tscn" type="PackedScene" id=41]
+[ext_resource path="res://main/battle/creature_fusion/fusion_catalogue/fusion_catalogue.gd" type="Script" id=42]
+[ext_resource path="res://main/battle/creature_fusion/creature_fusion.gd" type="Script" id=43]
+[ext_resource path="res://main/battle/creature_fusion/fusion_catalogue/fusion_cataloger.gd" type="Script" id=44]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -120,6 +123,16 @@ autoplay = true
 mix_target = 1
 volume = -5
 transition_duration = 0.4
+
+[node name="CreatureFusion" type="Node" parent="ViewportContainer/MainViewport"]
+script = ExtResource( 43 )
+
+[node name="FusionCatalogue" type="Node" parent="ViewportContainer/MainViewport/CreatureFusion"]
+script = ExtResource( 42 )
+creature_matrix = [ [  ], [  ], [  ], [  ], [  ], [  ], [  ] ]
+
+[node name="Node" type="Node" parent="ViewportContainer/MainViewport/CreatureFusion"]
+script = ExtResource( 44 )
 
 [node name="World" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
@@ -215,6 +228,7 @@ visible = false
 main_viewport = NodePath("../..")
 next_sound = true
 select_sound = true
+vertical_select = true
 override_next_sound = true
 music = ExtResource( 21 )
 
@@ -224,6 +238,8 @@ main_viewport = NodePath("../..")
 next_sound = true
 back_sound = true
 select_sound = true
+horizontal_select = true
+vertical_select = true
 override_next_sound = true
 party = NodePath("../../Party")
 enemy_party = NodePath("../../Battle/BattleQueue/EnemyParty")
@@ -235,6 +251,7 @@ margin_bottom = 276.0
 main_viewport = NodePath("../..")
 next_sound = true
 select_sound = true
+vertical_select = true
 music = ExtResource( 22 )
 
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 11 )]
@@ -243,6 +260,7 @@ main_viewport = NodePath("../..")
 next_sound = true
 back_sound = true
 select_sound = true
+vertical_select = true
 override_next_sound = true
 file_saver = NodePath("../../../../FileSaver")
 
@@ -250,14 +268,17 @@ file_saver = NodePath("../../../../FileSaver")
 visible = false
 main_viewport = NodePath("../..")
 select_sound = true
+horizontal_select = true
 
 [node name="CathedralMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 41 )]
 visible = false
 main_viewport = NodePath("../..")
+vertical_select = true
 
 [node name="FusionMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 40 )]
 visible = false
 main_viewport = NodePath("../..")
+vertical_select = true
 
 [node name="MenuSoundPlayer" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI"]
 volume_db = -10.0

@@ -10,12 +10,14 @@ func input_pressed(key_name: String) -> void:
 		"Fuse":
 			main_viewport.transition.transition_in()
 			yield(main_viewport.transition, "in_finished")
+			main_viewport.fusion.set_up("fuse")
 			main_viewport.fusion.enable(true)
 			main_viewport.fusion.back = self
 			main_viewport.transition.transition_out()
-		"Abandon Creature":
+		"Banish Creature":
 			main_viewport.transition.transition_in()
 			yield(main_viewport.transition, "in_finished")
+			main_viewport.fusion.set_up("banish")
 			main_viewport.fusion.enable(true)
 			#main_viewport.save_file.set_up("Load")
 			main_viewport.fusion.back = self
