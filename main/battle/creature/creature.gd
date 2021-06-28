@@ -171,8 +171,8 @@ func death() -> void:
 		var queue = get_parent().get_parent()
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
 		var multipler = min(2, max(0.1, 1 - (level_dif/10.0)))
-		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.0) 
-		queue.expe += expe_given * multipler * (1.5 if is_boss else 1.0)
+		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.0)
+		queue.expe += expe_given * multipler * (1.5 if is_boss else 10.0)
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"
 		yield($AnimationPlayer, "animation_finished")
@@ -210,6 +210,7 @@ func set_level() -> Array:
 	var levels_changed := 0
 	var skills_learned := 0
 	while expe >= expe_to_level:
+		print(expe)
 		expe -= expe_to_level
 		levels_changed += 1
 		age += 1

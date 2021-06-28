@@ -44,10 +44,10 @@ func set_up(event: String) -> void:
 	input["SaveFileContainer"].add_items()
 	if event == "Load":
 		desc_label.text = "Load which file?"
-		input["SaveFileHotkeyContainer"].hotkeys = {"Load":"ui_accept"}
+		input["SaveFileHotkeyContainer"].hotkeys = {"Load":"ui_accept", "Select File": "up_down"}
 	elif event == "Save":
 		desc_label.text = "Save over which file?"
-		input["SaveFileHotkeyContainer"].hotkeys = {"Save":"ui_accept"}
+		input["SaveFileHotkeyContainer"].hotkeys = {"Save":"ui_accept", "Select File": "up_down"}
 	input["SaveFileHotkeyContainer"].add_items()
 	input["SaveFileContainer"].grab_focus_at(0)
 	scroll_container.scroll_vertical = 0

@@ -64,12 +64,16 @@ func set_up(event: String) -> void:
 		"fuse":
 			input["IngredientPanelContainer"].grab_focus_at(0)
 			prompt_label.text = "Select the first ingredient .."
+			input["HotKeyContainer"].hotkeys = {"Confirm Ingredient": "ui_accept","Select Creature": "up_down"}
+			input["HotKeyContainer"].add_items()
 			ingredient1 = yield(select_creature(), "completed")
 			if ingredient1 == null:
 				return
 			update_results()
 			while not (ingredient2):
 				prompt_label.text = "Select the second ingredient .."
+				input["HotKeyContainer"].hotkeys = {"Confirm Ingredient": "ui_accept","Select Creature": "up_down", "Reset Ingredient": "ui_cancel"}
+				input["HotKeyContainer"].add_items()
 				ingredient2 = yield(select_creature(), "completed")
 				if ingredient2 == null:
 					return

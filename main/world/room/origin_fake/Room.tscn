@@ -120,7 +120,7 @@ anims/loop = SubResource( 1 )
 color = Color( 0.345098, 0.396078, 0.486275, 1 )
 
 [node name="DebugWorm" parent="Enemies" index="0" instance=ExtResource( 6 )]
-position = Vector2( 40, 312 )
+position = Vector2( 40, 104 )
 creatures = [ ExtResource( 8 ), ExtResource( 8 ) ]
 
 [editable path="Props/Interactable/Doors/BalconyDoor"]

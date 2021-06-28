@@ -82,17 +82,17 @@ func input_pressed(key_name: String) -> void:
 					hide_party()
 					input["MainButtonContainer"].enable_input()
 					disable_nonplayer_action()
-					input["MainButtonContainer"].grab_focus_at(0)
+					input["MainButtonContainer"].grab_focus_at(3)
 				"items":
 					hide_items()
 					input["MainButtonContainer"].enable_input()
 					disable_nonplayer_action()
-					input["MainButtonContainer"].grab_focus_at(0)
+					input["MainButtonContainer"].grab_focus_at(2)
 				"skills":
 					hide_skills()
 					input["MainButtonContainer"].enable_input()
 					disable_nonplayer_action()
-					input["MainButtonContainer"].grab_focus_at(0)
+					input["MainButtonContainer"].grab_focus_at(1)
 				"effects":
 					hide_effects()
 					input["MainButtonContainer"].enable_input()

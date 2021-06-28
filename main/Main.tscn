@@ -271,10 +271,12 @@ visible = false
 main_viewport = NodePath("../..")
 select_sound = true
 horizontal_select = true
+vertical_select = true
 
 [node name="CathedralMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 41 )]
 visible = false
 main_viewport = NodePath("../..")
+back_sound = false
 vertical_select = true
 
 [node name="FusionMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 40 )]

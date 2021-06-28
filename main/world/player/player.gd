@@ -12,7 +12,6 @@ var can_move: bool = false
 
 func _ready() -> void:
 	main_viewport = get_node(main_viewport)
-	disable_collision()
 
 func _physics_process(_delta) -> void:
 	if not can_move:

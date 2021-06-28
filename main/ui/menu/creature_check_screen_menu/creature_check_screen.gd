@@ -102,6 +102,8 @@ func show_creature(creature: Creature) -> void:
 	off_affinity.set_affinities("OFF", creature.get_off())
 	unlearned_container.initialize(creature)
 	skill_button_container.add_items()
+	input["HotKeyDescriptionContainer"].hotkeys = {"Check Skills": "ui_accept", "Select Creature": "left_right"}
+	input["HotKeyDescriptionContainer"].add_items()
 
 func return_panel(creature: Creature) -> void:
 	creature.panel.size_flags_vertical = Control.SIZE_SHRINK_END
@@ -124,6 +126,8 @@ func stat_increase(stat: String) -> void:
 		disable(true)
 		state = "confirm"
 		stat_label.text = "Are you sure?"
+		input["HotKeyDescriptionContainer"].hotkeys = {"Accept": "ui_accept", "Cancel": "ui_cancel"}
+		input["HotKeyDescriptionContainer"].add_items()
 		var is_confirmed = yield(self, "confirm")
 		if not is_confirmed:
 			main_viewport.menu_sound_player.play_sound("Back")
@@ -146,6 +150,8 @@ func stat_increase(stat: String) -> void:
 		emit_signal("ready_for_next")
 	else:
 		stat_bar_container.grab_focus_at(stat_index)
+		input["HotKeyDescriptionContainer"].hotkeys = {"Increase Stat": "ui_accept", "Select Stat": "up_down"}
+		input["HotKeyDescriptionContainer"].add_items()
 
 func level_up(creature: Creature, levels_changed: int, skills_learned: int) -> void:
 	levels_left = levels_changed
@@ -155,6 +161,8 @@ func level_up(creature: Creature, levels_changed: int, skills_learned: int) -> v
 	enable(true)
 	stats = {"stre": 0, "magi": 0, "agil": 0, "luck": 0, "vita": 0}
 	show_creature(creature)
+	input["HotKeyDescriptionContainer"].hotkeys = {"Increase Stat": "ui_accept", "Select Stat": "up_down"}
+	input["HotKeyDescriptionContainer"].add_items()
 	move_enabled = false
 	stat_bar_container.grab_focus_at(0)
 
@@ -168,8 +176,11 @@ func learn_skill() -> void:
 		unlearned_container.initialize(party[index])
 		skill_button_container.add_items()
 		stat_label.text = party[index].creature_name + " learned " + learned_skill_name + "!"
+		input["HotKeyDescriptionContainer"].hotkeys = {"Accept": "ui_accept"}
+		input["HotKeyDescriptionContainer"].add_items()
 		state = "confirm"
 		yield(self, "confirm")
+		main_viewport.menu_sound_player.play_sound("Next")
 	skills_left -= 1
 	if skills_left > 0:
 		learn_skill()
