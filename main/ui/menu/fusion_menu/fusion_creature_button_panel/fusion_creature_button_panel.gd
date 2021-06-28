@@ -32,6 +32,9 @@ func set_selected(val: bool) -> void:
 		set("custom_styles/panel", regular_style)
 
 func initialize(creature: Creature) -> void:
-	$HBoxContainer/Race.text = creature.race
-	$HBoxContainer/Name.text = creature.creature_name
-	$HBoxContainer/Level.text = "lvl " + str(creature.level)
+	if creature:
+		$HBoxContainer/Race.text = creature.race
+		$HBoxContainer/Name.text = creature.creature_name
+		$HBoxContainer/Level.text = "lvl " + str(creature.level)
+	else:
+		$HBoxContainer/Race.text = "Not possible"

@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_menu.gd" type="Script" id=2]
 [ext_resource path="res://main/ui/theme/style_box/regular/margin/MarginRegular.tres" type="StyleBox" id=3]
 [ext_resource path="res://main/ui/theme/style_box/thin/margin/MarginThin.tres" type="StyleBox" id=4]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=5]
-[ext_resource path="res://main/ui/utility_classes/input_container/button_container/button_container.gd" type="Script" id=6]
 [ext_resource path="res://main/ui/theme/background2.png" type="Texture" id=7]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_panel/FusionCreatureButtonPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_container.gd" type="Script" id=9]
@@ -210,7 +209,7 @@ margin_right = 218.0
 margin_bottom = 202.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 controller = NodePath("../../../../../../..")
 button_scene = ExtResource( 8 )
 neighbor_type = "vertical"
