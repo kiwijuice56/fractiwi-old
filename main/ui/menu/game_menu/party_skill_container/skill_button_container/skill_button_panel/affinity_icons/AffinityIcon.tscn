@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/heal.png" type="Texture" id=1]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/water.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/flesh.png" type="Texture" id=9]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/elec.png" type="Texture" id=10]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/buff.png" type="Texture" id=11]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/passive2.png" type="Texture" id=12]
 
 [node name="AffinityIcon" type="TextureRect"]
 margin_right = 14.0
@@ -28,6 +29,7 @@ icons = {
 "flesh": ExtResource( 9 ),
 "heal": ExtResource( 1 ),
 "light": ExtResource( 5 ),
+"passive": ExtResource( 12 ),
 "phys": ExtResource( 3 ),
 "water": ExtResource( 2 ),
 "wind": ExtResource( 7 )

@@ -24,16 +24,26 @@ func get_skill_names(type: String) -> Array:
 
 func delete_all_skills() -> void:
 	for child in $Passive.get_children() + $Active.get_children():
-		child.get_parent().remove_child(child)
-		child.queue_free()
+		remove_skill(child)
 
 func set_skills(data: Dictionary) -> void:
 	delete_all_skills()
-	for skill_name in data["Active"]:
-		$Active.add_child(get_skill(skill_name))
-	for skill_name in data["Passive"]:
-		$Passive.add_child(get_skill(skill_name))
+	for skill_name in data["Active"] + data["Passive"]:
+		add_skill(get_skill(skill_name))
 	sort_skills()
+
+func add_skill(skill: Skill) -> void:
+	if skill is ActiveSkill:
+		$Active.add_child(skill)
+	else:
+		$Passive.add_child(skill)
+		skill.modify_creature(get_parent())
+
+func remove_skill(skill: Skill) -> void:
+	if skill is PassiveSkill:
+		skill.unmodify(get_parent())
+	skill.get_parent().remove_child(skill)
+	skill.queue_free()
 
 static func get_skill(skill_name: String) -> Skill:
 	var skill_paths =  ["res://main/battle/skill/active/point/",

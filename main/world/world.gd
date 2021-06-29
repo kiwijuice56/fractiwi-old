@@ -25,6 +25,7 @@ func unpause() -> void:
 
 func battle_started(_creatures: Array) -> void:
 	player.can_move = false
+	player.disable_collision()
 	backdrop.visible = true
 	backdrop.texture = $Room.backdrop
 	pause()
@@ -32,6 +33,7 @@ func battle_started(_creatures: Array) -> void:
 func battle_ended(did_run: bool) -> void:
 	yield(get_viewport().transition, "in_finished")
 	player.can_move = true
+	player.enable_collision()
 	backdrop.visible = false
 	if not did_run:
 		current_enemy.call_deferred("queue_free")

@@ -6,10 +6,22 @@ var creature: Creature
 var active_len := 0
 var inactive_len := 0
 
+func disable_overworld() -> void:
+	for child in get_children():
+		if child.skill is ActiveSkill and child.skill.side == "opposite":
+			child.disabled = true
+	disable_battle()
+
+func disable_battle() -> void:
+	for child in get_children():
+		if child.skill is PassiveSkill:
+				child.disabled = true
+
 func intialize_button(new_button: Control, index: int) -> void:
 	if index >= active_len:
 		new_button.set_content(creature.get_node("Skills/Passive").get_child(active_len-index))
-	new_button.set_content(creature.get_node("Skills/Active").get_child(index))
+	else:
+		new_button.set_content(creature.get_node("Skills/Active").get_child(index))
 
 func add_items() -> void:
 	if not creature: return

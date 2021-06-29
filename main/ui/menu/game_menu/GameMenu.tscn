@@ -85,7 +85,7 @@ margin_top = -332.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-custom_constants/separation = 5
+custom_constants/separation = 3
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,12 +183,12 @@ hotkeys = {
 }
 
 [node name="ActionSelection" type="PanelContainer" parent="VBoxContainer/Control"]
-margin_left = 120.0
+margin_left = 82.0
 margin_top = 91.0
-margin_right = 370.0
+margin_right = 407.0
 margin_bottom = 150.0
 grow_vertical = 0
-rect_min_size = Vector2( 250, 0 )
+rect_min_size = Vector2( 325, 0 )
 mouse_filter = 2
 size_flags_horizontal = 6
 size_flags_vertical = 8
@@ -200,29 +200,29 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/ActionSelection"]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 247.0
+margin_right = 322.0
 margin_bottom = 55.0
 mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/separation = 2
 
 [node name="SelectionLabel" type="Label" parent="VBoxContainer/Control/ActionSelection/VBoxContainer"]
-margin_right = 244.0
+margin_right = 319.0
 margin_bottom = 14.0
 text = "Skills"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer"]
 margin_top = 16.0
-margin_right = 244.0
+margin_right = 319.0
 margin_bottom = 52.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 8
+custom_constants/separation = 2
 
 [node name="PartySkillContainer" type="TabContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer"]
-margin_right = 149.0
+margin_right = 230.0
 margin_bottom = 36.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -235,8 +235,8 @@ controller = NodePath("../../../../../..")
 skill_button_container = ExtResource( 14 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer"]
-margin_left = 157.0
-margin_right = 244.0
+margin_left = 232.0
+margin_right = 319.0
 margin_bottom = 36.0
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -281,11 +281,11 @@ rect_min_size = Vector2( 75, 0 )
 fit_content_height = true
 
 [node name="ItemSelection" type="PanelContainer" parent="VBoxContainer/Control"]
-margin_left = 125.0
+margin_left = 120.0
 margin_top = 25.0
-margin_right = 365.0
+margin_right = 370.0
 margin_bottom = 150.0
-rect_min_size = Vector2( 240, 0 )
+rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 10
 custom_styles/panel = ExtResource( 2 )
@@ -293,28 +293,28 @@ custom_styles/panel = ExtResource( 2 )
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/ItemSelection"]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 237.0
+margin_right = 247.0
 margin_bottom = 121.0
 
 [node name="Items" type="Label" parent="VBoxContainer/Control/ItemSelection/VBoxContainer"]
-margin_right = 234.0
+margin_right = 244.0
 margin_bottom = 14.0
 text = "Items"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer"]
 margin_top = 18.0
-margin_right = 234.0
+margin_right = 244.0
 margin_bottom = 18.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer"]
 margin_top = 22.0
-margin_right = 234.0
+margin_right = 244.0
 margin_bottom = 118.0
-custom_constants/separation = 8
+custom_constants/separation = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer"]
-margin_right = 138.0
+margin_right = 154.0
 margin_bottom = 96.0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -325,15 +325,15 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = 6.0
-margin_right = 132.0
+margin_right = 148.0
 margin_bottom = 90.0
 script = ExtResource( 27 )
 controller = NodePath("../../../../../../..")
 button_scene = ExtResource( 28 )
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer"]
-margin_left = 146.0
-margin_right = 234.0
+margin_left = 156.0
+margin_right = 244.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 88, 0 )
 size_flags_horizontal = 0
@@ -359,9 +359,9 @@ p_color = Color( 0.494118, 0.505882, 0.784314, 1 )
 e_color = Color( 0.670588, 0.423529, 0.588235, 1 )
 
 [node name="MainPanel" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 155.0
+margin_top = 153.0
 margin_right = 490.0
-margin_bottom = 199.0
+margin_bottom = 197.0
 mouse_filter = 2
 size_flags_vertical = 8
 custom_constants/margin_right = 4
@@ -442,9 +442,9 @@ margin_right = 470.0
 margin_bottom = 32.0
 
 [node name="ActivePartyContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 204.0
+margin_top = 200.0
 margin_right = 490.0
-margin_bottom = 269.0
+margin_bottom = 265.0
 rect_min_size = Vector2( 0, 65 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -498,9 +498,9 @@ icons = {
 }
 
 [node name="PopOutPartyContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 274.0
+margin_top = 268.0
 margin_right = 490.0
-margin_bottom = 395.0
+margin_bottom = 389.0
 rect_min_size = Vector2( 0, 121 )
 mouse_filter = 2
 size_flags_horizontal = 3

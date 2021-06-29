@@ -53,7 +53,7 @@ data = {
 "Active": [ "Glare", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [  ],
-"Unlearned": [  ]
+"Unlearned": [ "Neo Beam", "Cleave" ]
 },
 "stats": {
 "age": 2,

@@ -35,8 +35,8 @@ func turn_logic(def: String, is_miss: bool, is_crit: bool) -> int:
 	return 0
 
 func get_def_affinity(target: Node) -> String:
-	if affinity in target.get_def():
-		return target.def_affinity[affinity]
+	if affinity in target.get_def(true):
+		return target.get_def(true)[affinity]
 	return "normal"
 
 func get_off_affinity(user: Node) -> int:

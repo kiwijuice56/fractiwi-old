@@ -5,7 +5,6 @@ export(NodePath) var off_affinity
 export(NodePath) var def_affinity
 export(NodePath) var main_vbox
 export(NodePath) var stat_bar_container
-export(NodePath) var skill_button_container
 export(NodePath) var exp_info_container
 export(NodePath) var race_label
 export(NodePath) var stat_label
@@ -29,12 +28,16 @@ func _ready() -> void:
 	off_affinity = get_node(off_affinity)
 	main_vbox = get_node(main_vbox)
 	stat_bar_container = get_node(stat_bar_container)
-	skill_button_container = get_node(skill_button_container)
 	exp_info_container = get_node(exp_info_container)
 	race_label = get_node(race_label)
 	stat_label = get_node(stat_label)
 	unlearned_container = get_node(unlearned_container)
 	main_viewport.connect("battle_end", self, "battle_ended")
+
+func input_pressed(key: String) -> void:
+	if disabled: return
+	if state == "default" and key == "Check Skills":
+		check_skills()
 
 func _input(event: InputEvent) -> void:
 	if state == "confirm":
@@ -45,25 +48,18 @@ func _input(event: InputEvent) -> void:
 	if disabled: return
 	if not move_enabled: return
 	if event.is_action_pressed("ui_cancel", false):
-		
 		._input(event)
 		main_viewport.menu_sound_player.play_sound("Back")
-		main_viewport.transition.transition_in()
-		disable(true)
-		yield(main_viewport.transition, "in_finished")
-		disable(false)
-		return_panel(party[index])
-		back.enable(true)
-		back.state = "party"
-		back.input["FullPartyContainer"].grab_focus_at(index)
-		main_viewport.transition.transition_out()
-		return
+		if state == "check_skills":
+			close_check_skills()
+			return
+		close()
 	
 	var old_index = index
 	
-	if event.is_action_pressed("ui_left", false):
+	if event.is_action_pressed("ui_left", false) and state == "default":
 		index -= 1
-	if event.is_action_pressed("ui_right", false):
+	if event.is_action_pressed("ui_right", false) and state == "default":
 		index += 1
 	if index == old_index:
 		return
@@ -82,6 +78,40 @@ func battle_ended(_did_run: bool) -> void:
 	state = "default"
 	move_enabled = true
 
+func close_check_skills() -> void:
+	state = "default"
+	get_focus_owner().release_focus()
+	input["HotKeyDescriptionContainer"].enable_input()
+
+func check_skills() -> void:
+	if input["SkillButtonContainer"].get_child_count() == 0:
+		main_viewport.menu_sound_player.play_sound("Can't")
+		return
+	main_viewport.menu_sound_player.play_sound("Next")
+	input["SkillButtonContainer"].grab_focus_at(0)
+	input["HotKeyDescriptionContainer"].disable_input()
+	input["HotKeyDescriptionContainer"].hotkeys = {"Select Skill": "up_down"}
+	input["HotKeyDescriptionContainer"].add_items()
+	state = "check_skills"
+
+func open() -> void:
+	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right"}
+	input["HotKeyDescriptionContainer"].add_items()
+	input["HotKeyDescriptionContainer"].enable_input()
+
+func close() -> void:
+	main_viewport.transition.transition_in()
+	disable(true)
+	yield(main_viewport.transition, "in_finished")
+	disable(false)
+	input["HotKeyDescriptionContainer"].disable_input()
+	return_panel(party[index])
+	back.enable(true)
+	back.state = "party"
+	back.input["FullPartyContainer"].grab_focus_at(index)
+	main_viewport.transition.transition_out()
+	return
+
 func show_creature(creature: Creature) -> void:
 	parent = creature.panel.get_parent()
 	creature.panel.update_content()
@@ -96,14 +126,12 @@ func show_creature(creature: Creature) -> void:
 	exp_info_container.get_node("LevelLabel").text = "Level: " + str(creature.level)
 	exp_info_container.get_node("ExpBar").set_data("EXP", creature.expe, creature.expe_to_level)
 	exp_info_container.get_node("NextLabel").text = "Next: " + str(creature.expe_to_level-creature.expe)
-	skill_button_container.creature = creature
+	input["SkillButtonContainer"].creature = creature
 	race_label.text = "Race: " + creature.race
-	def_affinity.set_affinities("DEF", creature.get_def())
+	def_affinity.set_affinities("DEF", creature.get_def(false))
 	off_affinity.set_affinities("OFF", creature.get_off())
 	unlearned_container.initialize(creature)
-	skill_button_container.add_items()
-	input["HotKeyDescriptionContainer"].hotkeys = {"Check Skills": "ui_accept", "Select Creature": "left_right"}
-	input["HotKeyDescriptionContainer"].add_items()
+	input["SkillButtonContainer"].add_items()
 
 func return_panel(creature: Creature) -> void:
 	creature.panel.size_flags_vertical = Control.SIZE_SHRINK_END
@@ -174,7 +202,7 @@ func learn_skill() -> void:
 		var learned_skill_name = unlearned_container.get_child(0).get_child(1).name_label.text
 		party[index].learn_skill("")
 		unlearned_container.initialize(party[index])
-		skill_button_container.add_items()
+		input["SkillButtonContainer"].add_items()
 		stat_label.text = party[index].creature_name + " learned " + learned_skill_name + "!"
 		input["HotKeyDescriptionContainer"].hotkeys = {"Accept": "ui_accept"}
 		input["HotKeyDescriptionContainer"].add_items()

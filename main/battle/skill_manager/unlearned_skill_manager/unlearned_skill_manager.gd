@@ -24,8 +24,11 @@ func delete_all_skills() -> void:
 		child.get_parent().remove_child(child)
 		child.queue_free()
 
+func add_skill(skill: Skill) -> void:
+	add_child(skill)
+
 func set_skills(data: Dictionary) -> void:
 	skill_levels = data["Skill Levels"]
 	delete_all_skills()
 	for skill in data["Unlearned"]:
-		add_child(get_skill(skill))
+		add_skill(get_skill(skill))

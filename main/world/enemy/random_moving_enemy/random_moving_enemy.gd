@@ -34,6 +34,7 @@ func move() -> void:
 
 func pause() -> void:
 	$Timer.stop()
+	$Tween.stop_all()
 
 func unpause() -> void:
 	restart()

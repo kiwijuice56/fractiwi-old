@@ -10,6 +10,8 @@ export(Dictionary) var hotkeys
 
 func _input(event: InputEvent) -> void:
 	for key in hotkeys.keys():
+		if not key in hotkeys:
+			return
 		if hotkeys[key] == "up_down" or hotkeys[key] == "left_right":
 			continue
 		if event.is_action_pressed(hotkeys[key], false):

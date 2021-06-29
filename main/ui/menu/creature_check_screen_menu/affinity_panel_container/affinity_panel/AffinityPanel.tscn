@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/AffinityIcon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://main/ui/theme/style_box/thin/Thin.tres" type="StyleBox" id=2]
+[ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/passive2.png" type="Texture" id=2]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/water.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/phys.png" type="Texture" id=4]
 [ext_resource path="res://main/ui/menu/creature_check_screen_menu/affinity_panel_container/affinity_panel/affinity_panel.gd" type="Script" id=5]
@@ -14,26 +14,32 @@
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/buff.png" type="Texture" id=12]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/skill_button_panel/affinity_icons/elec.png" type="Texture" id=13]
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.176471 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="AffinityPanel" type="PanelContainer"]
+margin_top = -0.840897
 margin_right = 54.0
-margin_bottom = 92.0
+margin_bottom = 91.1591
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/panel = ExtResource( 2 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 52.0
-margin_bottom = 90.0
+margin_right = 54.0
+margin_bottom = 92.0
 dragger_visibility = 2
 
 [node name="AffinityIcon" parent="VSplitContainer" instance=ExtResource( 1 )]
-margin_right = 50.0
+margin_right = 54.0
 icons = {
 "buff": ExtResource( 12 ),
 "dark": ExtResource( 7 ),
@@ -42,15 +48,16 @@ icons = {
 "flesh": ExtResource( 8 ),
 "heal": ExtResource( 11 ),
 "light": ExtResource( 6 ),
+"passive": ExtResource( 2 ),
 "phys": ExtResource( 4 ),
 "water": ExtResource( 3 ),
 "wind": ExtResource( 9 )
 }
 
 [node name="Label" type="Label" parent="VSplitContainer"]
-margin_left = 18.0
-margin_top = 44.0
-margin_right = 31.0
-margin_bottom = 58.0
+margin_left = 20.0
+margin_top = 46.0
+margin_right = 33.0
+margin_bottom = 60.0
 size_flags_horizontal = 6
 text = "W"

@@ -12,6 +12,8 @@ export var luck: int
 export var agil: int
 export var def_affinity: Dictionary
 export var off_affinity: Dictionary
+var extend_def_affinity: Dictionary
+var extend_off_affinity: Dictionary
 
 var hp: int = 10
 var max_hp: int = 10
@@ -41,7 +43,14 @@ func _ready() -> void:
 	set_expe_to_level()
 	check_hp()
 
-func get_def() -> Dictionary:
+func get_def(get_extended: bool) -> Dictionary:
+	if get_extended:
+		var combined_affinity := {}
+		for key in def_affinity.keys():
+			combined_affinity[key] = def_affinity[key]
+		for key in extend_def_affinity.keys():
+			combined_affinity[key] = extend_def_affinity[key]
+		return combined_affinity
 	return def_affinity
 
 func get_off() -> Dictionary:
@@ -185,10 +194,7 @@ func learn_skill(to_replace: String) -> void:
 		pass
 	var skill = get_node("UnlearnedSkills").get_child(0)
 	get_node("UnlearnedSkills").remove_child(skill)
-	if skill is ActiveSkill:
-		get_node("Skills/Active").add_child(skill)
-	else:
-		get_node("Skills/Passive").add_child(skill)
+	get_node("Skills").add_skill(skill)
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),

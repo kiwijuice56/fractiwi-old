@@ -82,17 +82,26 @@ func input_pressed(key_name: String) -> void:
 					hide_party()
 					input["MainButtonContainer"].enable_input()
 					disable_nonplayer_action()
-					input["MainButtonContainer"].grab_focus_at(3)
+					if not in_battle:
+						input["MainButtonContainer"].grab_focus_at(3)
+					else:
+						input["MainButtonContainer"].grab_focus_at(2)
 				"items":
 					hide_items()
 					input["MainButtonContainer"].enable_input()
 					disable_nonplayer_action()
-					input["MainButtonContainer"].grab_focus_at(2)
+					if not in_battle:
+						input["MainButtonContainer"].grab_focus_at(2)
+					else:
+						input["MainButtonContainer"].grab_focus_at(1)
 				"skills":
 					hide_skills()
 					input["MainButtonContainer"].enable_input()
 					disable_nonplayer_action()
-					input["MainButtonContainer"].grab_focus_at(1)
+					if not in_battle:
+						input["MainButtonContainer"].grab_focus_at(1)
+					else:
+						input["MainButtonContainer"].grab_focus_at(0)
 				"effects":
 					hide_effects()
 					input["MainButtonContainer"].enable_input()
@@ -144,7 +153,7 @@ func input_pressed(key_name: String) -> void:
 			set_process_input(true)
 			if len(targets) == 0:
 				input["MainButtonContainer"].enable_input()
-				input["MainButtonContainer"].grab_focus_at(0)
+				input["MainButtonContainer"].grab_focus_at(5)
 				state = "default"
 				return
 			emit_signal("battle_action_chosen", ["Recruit", null, targets])
@@ -169,7 +178,7 @@ func input_pressed(key_name: String) -> void:
 					main_viewport.menu_sound_player.play_sound("Can't")
 					return
 				var skill: Skill = get_focus_owner().skill
-				if skill.side == "opposite" and not in_battle:
+				if (not "side" in skill) or skill.side == "opposite" and not in_battle:
 					return
 				if skill.cost_type == "mp":
 					if skill.cost > creature.get(skill.cost_type):
@@ -309,10 +318,12 @@ func show_skills() -> void:
 	input["PartySkillContainer"].enable_input()
 	if not in_battle:
 		input[input["PartySkillContainer"].get_child(0).name].enable_input()
+		input["PartySkillContainer"].setting_disable(input["PartySkillContainer"].get_child(0))
 		input[input["PartySkillContainer"].get_child(0).name].grab_focus_at(0)
 	else:
 		input["PartySkillContainer"].current_tab = creature.get_index()
 		input[creature.creature_name].enable_input()
+		input["PartySkillContainer"].setting_disable(input[creature.creature_name])
 		input[creature.creature_name].grab_focus_at(0)
 	effect_handler.fade(action_selection, "visible", effect_handler.default_fade_time)
 	state = "skills"
@@ -418,6 +429,7 @@ func show_check_screen() -> void:
 	yield(main_viewport.transition, "in_finished")
 	main_viewport.creature_check.enable(true)
 	main_viewport.creature_check.index = focus.get_index()
+	main_viewport.creature_check.open()
 	main_viewport.creature_check.show_creature(focus.creature)
 	main_viewport.creature_check.back = self
 	disable(false)

@@ -37,33 +37,33 @@ margin_bottom = 266.0
 custom_styles/panel = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 465.0
-margin_bottom = 251.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 467.0
+margin_bottom = 252.0
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
-margin_right = 460.0
+margin_right = 464.0
 margin_bottom = 14.0
 text = "Load which file?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 460.0
-margin_bottom = 242.0
+margin_right = 464.0
+margin_bottom = 245.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="UnclickableScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_right = 460.0
-margin_bottom = 224.0
+margin_right = 464.0
+margin_bottom = 227.0
 size_flags_horizontal = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 
 [node name="SaveFileContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer"]
-margin_right = 450.0
+margin_right = 454.0
 margin_bottom = 336.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -73,33 +73,33 @@ button_scene = ExtResource( 7 )
 neighbor_type = "vertical"
 
 [node name="SaveFile" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
-margin_right = 450.0
+margin_right = 454.0
 margin_bottom = 64.0
 
 [node name="SaveFile2" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_top = 68.0
-margin_right = 450.0
+margin_right = 454.0
 margin_bottom = 132.0
 
 [node name="SaveFile3" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_top = 136.0
-margin_right = 450.0
+margin_right = 454.0
 margin_bottom = 200.0
 
 [node name="SaveFile4" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_top = 204.0
-margin_right = 450.0
+margin_right = 454.0
 margin_bottom = 268.0
 
 [node name="SaveFile5" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/UnclickableScrollContainer/SaveFileContainer" instance=ExtResource( 7 )]
 margin_top = 272.0
-margin_right = 450.0
+margin_right = 454.0
 margin_bottom = 336.0
 
 [node name="SaveFileHotkeyContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
-margin_top = 246.0
-margin_right = 460.0
-margin_bottom = 246.0
+margin_top = 249.0
+margin_right = 464.0
+margin_bottom = 249.0
 custom_constants/separation = 10
 script = ExtResource( 4 )
 controller = NodePath("../../../..")

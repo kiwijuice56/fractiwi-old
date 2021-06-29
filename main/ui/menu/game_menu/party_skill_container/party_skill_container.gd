@@ -21,9 +21,16 @@ func _input(event: InputEvent) -> void:
 	controller.creature = controller.party.get_node("Active").get_node(get_child(tab).name)
 	get_child(get("current_tab")).disable_input()
 	get_child(tab).enable_input()
+	setting_disable(get_child(tab))
 	get_child(tab).grab_focus_at(0)
 	set("current_tab", tab)
 	
+
+func setting_disable(container: SkillButtonContainer) -> void:
+	if controller.in_battle:
+		container.disable_battle()
+	else:
+		container.disable_overworld()
 
 func add_items() -> void:
 	for container in get_children():
@@ -38,3 +45,5 @@ func add_items() -> void:
 		container.creature = creature
 		container.add_items()
 		container.disable_input()
+	for container in get_children():
+		setting_disable(container)
