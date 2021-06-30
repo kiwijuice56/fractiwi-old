@@ -6,12 +6,12 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 798
+"time": 1206
 },
 "Items": {
 "consumables": {
 "Fire Stone": 1,
-"Hp Pill": 3
+"Hp Pill": 1
 },
 "current_effect": "Normal",
 "effect_skills": {
@@ -30,84 +30,64 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Lightning", "Slash", "Neo Beam" ],
+"Active": [ "Cry", "Lightning", "Neo Beam", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]
 },
 "stats": {
-"age": 3,
+"age": 4,
 "agil": 3,
-"expe": 162,
-"hp": 36,
-"level": 6,
-"luck": 3,
+"expe": 141,
+"hp": 72,
+"level": 7,
+"luck": 4,
 "magi": 3,
-"mp": 33,
+"mp": 37,
 "stre": 4,
 "vita": 5
 }
 },
-"01Looker": {
+"01Gabriel": {
 "skills": {
-"Active": [ "Glare", "Slash" ],
-"Passive": [  ],
+"Active": [ "Flame Burst" ],
+"Passive": [ "Null Light" ],
 "Skill Levels": [  ],
-"Unlearned": [ "Neo Beam", "Cleave" ]
-},
-"stats": {
-"age": 2,
-"agil": 1,
-"expe": 59,
-"hp": 11,
-"level": 5,
-"luck": 1,
-"magi": 3,
-"mp": 5,
-"stre": 1,
-"vita": 3
-}
-},
-"02Golem": {
-"skills": {
-"Active": [ "Cleave", "Slash" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Unlearned": [ "Cleave" ]
 },
 "stats": {
 "age": 0,
-"agil": 1,
-"expe": 48,
-"hp": 16,
-"level": 5,
-"luck": 1,
-"magi": 2,
-"mp": 26,
+"agil": 5,
+"expe": 0,
+"hp": 132,
+"level": 15,
+"luck": 4,
+"magi": 9,
+"mp": 87,
 "stre": 3,
-"vita": 3
+"vita": 7
 }
 }
 },
 "inactive": {
-"00Eye Worm": {
+"00Looker": {
 "skills": {
-"Active": [ "Cleave", "Slash" ],
+"Active": [ "Glare", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]
 },
 "stats": {
 "age": 3,
-"agil": 3,
-"expe": 124,
-"hp": 0,
+"agil": 1,
+"expe": 43,
+"hp": 60,
 "level": 6,
 "luck": 1,
-"magi": 1,
-"mp": 27,
+"magi": 3,
+"mp": 33,
 "stre": 1,
-"vita": 2
+"vita": 4
 }
 }
 }
@@ -115,6 +95,8 @@ data = {
 "World": {
 "location": "origin",
 "memory": {
+"balcony": {
+},
 "balcony_fake": {
 "PillBottle": true
 },
@@ -124,6 +106,10 @@ data = {
 "PillBottle3": true,
 "PillBottle5": true,
 "Stone": true
+},
+"neon": {
+},
+"nexus": {
 },
 "origin": {
 },

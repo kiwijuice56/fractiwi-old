@@ -4,6 +4,7 @@ class_name FusionMenu
 export (NodePath) var level_label
 export (NodePath) var prompt_label
 export (NodePath) var creature_fusion
+export (NodePath) var scene_animation
 export var creature_button_panel: PackedScene
 
 var ingredient1: Creature
@@ -17,6 +18,7 @@ func _ready() -> void:
 	level_label = get_node(level_label)
 	prompt_label = get_node(prompt_label)
 	creature_fusion = get_node(creature_fusion)
+	scene_animation = get_node(scene_animation)
 
 func _input(event: InputEvent) -> void:
 	if disabled: return
@@ -100,11 +102,13 @@ func set_up(event: String) -> void:
 				disable(false)
 				main_viewport.creature_check.back = self
 				main_viewport.creature_check.enable(true)
+				main_viewport.creature_check.open_fusion()
 				main_viewport.creature_check.party = [result, ingredient1, ingredient2]
 				var panel = creature_button_panel.instance()
 				$CreatureButtonPanelContainer.add_child(panel)
+				$CreatureButtonPanelContainer.add_child(result)
 				panel.creature = result
-				result._ready()
+				main_viewport.party.initialize_member(result)
 				result.heal_points()
 				panel.update_content()
 				main_viewport.creature_check.index = 0
@@ -116,6 +120,36 @@ func set_up(event: String) -> void:
 					ingredient2 = null
 					input["IngredientPanelContainer"].get_child(saved_index2).selected = false
 					panel.queue_free()
+				else:
+					main_viewport.creature_check.disable(true)
+					disable(true)
+					main_viewport.transition.transition_in()
+					yield(main_viewport.transition, "in_finished")
+					main_viewport.creature_check.disable(false)
+					disable(false)
+					ingredient1.get_parent().remove_child(ingredient1)
+					ingredient2.get_parent().remove_child(ingredient2)
+					panel.queue_free()
+					$CreatureButtonPanelContainer.remove_child(result)
+					main_viewport.party.get_node("Inactive").add_child(result)
+					result.name = result.creature_name
+					scene_animation.visible = true
+					main_viewport.transition.transition_out()
+					yield(scene_animation.animate(ingredient1, ingredient2, result), "completed")
+					main_viewport.transition.transition_in()
+					yield(main_viewport.transition, "in_finished")
+					scene_animation.visible = false
+					ingredient1.queue_free()
+					ingredient2.queue_free()
+					ingredient1 = null
+					ingredient2 = null
+					update_ingredients()
+					saved_index1 = 0
+					saved_index2 = 0
+					main_viewport.game.update_party()
+					main_viewport.transition.transition_out()
+					enable(true)
+					continue
 		"banish":
 			prompt_label.text = "Select a creature to banish .."
 

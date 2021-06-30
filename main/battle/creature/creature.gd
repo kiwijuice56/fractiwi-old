@@ -42,6 +42,7 @@ func _ready() -> void:
 	set_max_points()
 	set_expe_to_level()
 	check_hp()
+	update_passive_skills()
 
 func get_def(get_extended: bool) -> Dictionary:
 	if get_extended:
@@ -189,12 +190,17 @@ func death() -> void:
 		emit_signal("death")
 		queue_free()
 
+func update_passive_skills() -> void:
+	for skill in get_node("Skills/Passive").get_children():
+		skill.modify_creature(self)
+
 func learn_skill(to_replace: String) -> void:
 	if to_replace:
 		pass
 	var skill = get_node("UnlearnedSkills").get_child(0)
 	get_node("UnlearnedSkills").remove_child(skill)
 	get_node("Skills").add_skill(skill)
+	update_passive_skills()
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),

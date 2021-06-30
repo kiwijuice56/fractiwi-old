@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_menu.gd" type="Script" id=2]
@@ -10,10 +10,168 @@
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_panel/FusionCreatureButtonPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_container.gd" type="Script" id=9]
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/CreatureButtonPanel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/ui/menu/fusion_menu/fusion_animation/platform.png" type="Texture" id=11]
+[ext_resource path="res://main/battle/creature/golem/golem.png" type="Texture" id=12]
+[ext_resource path="res://main/ui/menu/fusion_menu/fusion_animation/particle.png" type="Texture" id=13]
+[ext_resource path="res://main/ui/menu/fusion_menu/fusion_animation/scene_animationgd.gd" type="Script" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 2000, 1500 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.10911 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.00342466, 0.854369, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.940775, 0.940775, 0.940775, 0.373786, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "dissolve"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 6, 6, 6, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "dissolve"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 6, 6, 6, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "dissolve2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 6, 6, 6, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.609756, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.253425, 0.938356, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 0.940775, 0.940775, 0.940775, 0.373786, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "create"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7, 1.7, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 6, 6, 6, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "dissolve"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 6, 6, 6, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="FusionMenu" type="PanelContainer"]
 anchor_right = 1.0
@@ -31,6 +189,7 @@ back_sound = true
 select_sound = true
 level_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2/LevelLabel")
 prompt_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/PromptLabel")
+scene_animation = NodePath("CanvasLayer/SceneAnimation")
 creature_button_panel = ExtResource( 10 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -237,3 +396,115 @@ hotkeys = {
 visible = false
 margin_right = 490.0
 margin_bottom = 276.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="SceneAnimation" type="Node2D" parent="CanvasLayer"]
+visible = false
+script = ExtResource( 14 )
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/SceneAnimation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 490.0
+margin_bottom = 276.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Platform1" type="Sprite" parent="CanvasLayer/SceneAnimation"]
+position = Vector2( 104, 172 )
+texture = ExtResource( 11 )
+
+[node name="Platform2" type="Sprite" parent="CanvasLayer/SceneAnimation"]
+position = Vector2( 384, 172 )
+texture = ExtResource( 11 )
+
+[node name="Platform3" type="Sprite" parent="CanvasLayer/SceneAnimation"]
+position = Vector2( 240, 140 )
+texture = ExtResource( 11 )
+
+[node name="CreatureSprite1" type="Sprite" parent="CanvasLayer/SceneAnimation"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 104, 152 )
+texture = ExtResource( 12 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/SceneAnimation/CreatureSprite1"]
+emitting = false
+amount = 35
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.2
+texture = ExtResource( 13 )
+emission_shape = 1
+emission_sphere_radius = 15.0
+gravity = Vector2( 35, -98 )
+scale_amount = 0.5
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+hue_variation = -0.1
+hue_variation_random = 0.5
+anim_speed = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SceneAnimation/CreatureSprite1"]
+anims/dissolve = SubResource( 4 )
+
+[node name="CreatureSprite2" type="Sprite" parent="CanvasLayer/SceneAnimation"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 384, 152 )
+texture = ExtResource( 12 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/SceneAnimation/CreatureSprite2"]
+emitting = false
+amount = 35
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.2
+texture = ExtResource( 13 )
+emission_shape = 1
+emission_sphere_radius = 15.0
+gravity = Vector2( -35, -98 )
+scale_amount = 0.5
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+hue_variation = -0.1
+hue_variation_random = 0.5
+anim_speed = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SceneAnimation/CreatureSprite2"]
+anims/dissolve = SubResource( 6 )
+anims/dissolve2 = SubResource( 10 )
+
+[node name="CreatureSprite3" type="Sprite" parent="CanvasLayer/SceneAnimation"]
+position = Vector2( 240, 120 )
+texture = ExtResource( 12 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/SceneAnimation/CreatureSprite3"]
+position = Vector2( 0, -88 )
+emitting = false
+amount = 35
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.2
+texture = ExtResource( 13 )
+emission_shape = 1
+emission_sphere_radius = 10.0
+scale_amount = 0.5
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
+hue_variation = -0.1
+hue_variation_random = 0.5
+anim_speed = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SceneAnimation/CreatureSprite3"]
+anims/create = SubResource( 9 )
+anims/dissolve = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SceneAnimation"]
+wait_time = 1.5
+one_shot = true

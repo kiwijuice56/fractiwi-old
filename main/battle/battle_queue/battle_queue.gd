@@ -96,6 +96,7 @@ func turn_logic(turns_used: int, full: int, half: int) -> Array:
 
 
 func battle(enemy_creatures: Array) -> void:
+	yield(get_viewport().transition, "in_finished")
 	expe = 0
 	var player_creatures = player_party_node.get_node("Active").get_children()
 	var current = initialize_parties(enemy_creatures, player_creatures)

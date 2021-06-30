@@ -10,14 +10,17 @@ export var player_ai: Script
 func instance_member(creature: String, data: Dictionary) -> Creature:
 	creature = creature.substr(2) # remove party order
 	var scene = load( creature_path + ("%s/%s.tscn" % [creature.to_lower(), creature])).instance()
-	scene.is_tamed = true
-	scene.is_boss = false
 	scene.set_stats(data["stats"])
 	scene.get_node("Skills").set_skills(data["skills"])
 	if not scene is PlayerCreature: #player is set by items.gd .. efffects hold their own skills
 		scene.get_node("UnlearnedSkills").set_skills(data["skills"])
-	scene.get_node("AI").set_script(player_ai)
+	initialize_member(scene)
 	return scene
+
+func initialize_member(creature: Creature) -> void:
+	creature.is_tamed = true
+	creature.is_boss = false
+	creature.get_node("AI").set_script(player_ai)
 
 func add_member(creature: Creature) -> void:
 	if $Active.get_child_count() >= 4:

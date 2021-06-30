@@ -46,8 +46,13 @@ func _input(event: InputEvent) -> void:
 			emit_signal("confirm", true)
 		if event.is_action_pressed("ui_cancel", false):
 			emit_signal("confirm", false)
+		return
 	if disabled: return
 	if not move_enabled: return
+	if event.is_action_pressed("ui_accept", false):
+		close()
+		if back.state == "fusion_check_screen":
+			emit_signal("fusion_confirmed", true)
 	if event.is_action_pressed("ui_cancel", false):
 		._input(event)
 		main_viewport.menu_sound_player.play_sound("Back")
@@ -55,6 +60,10 @@ func _input(event: InputEvent) -> void:
 			close_check_skills()
 			return
 		close()
+		if back.state == "fusion_check_screen":
+			yield(main_viewport.transition, "in_finished")
+			emit_signal("fusion_confirmed", false)
+		
 		return
 	
 	var old_index = index
@@ -101,6 +110,11 @@ func open() -> void:
 	input["HotKeyDescriptionContainer"].add_items()
 	input["HotKeyDescriptionContainer"].enable_input()
 
+func open_fusion() -> void:
+	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right", "Fuse Creature": "ui_accept"}
+	input["HotKeyDescriptionContainer"].add_items()
+	input["HotKeyDescriptionContainer"].enable_input()
+
 func close() -> void:
 	main_viewport.transition.transition_in()
 	disable(true)
@@ -109,11 +123,10 @@ func close() -> void:
 	disable(false)
 	input["HotKeyDescriptionContainer"].disable_input()
 	back.enable(true)
+	print("!!!!")
 	if back.state == "check_screen":
 		back.state = "party"
 		back.input["FullPartyContainer"].grab_focus_at(index)
-	elif back.state == "fusion_check_screen":
-		emit_signal("fusion_confirmed", false)
 	main_viewport.transition.transition_out()
 
 func show_creature(creature: Creature) -> void:
@@ -140,7 +153,6 @@ func show_creature(creature: Creature) -> void:
 func return_panel(creature: Creature) -> void:
 	creature.panel.size_flags_vertical = Control.SIZE_SHRINK_END
 	main_vbox.remove_child(creature.panel)
-	print(creature.creature_name)
 	parent.add_child(creature.panel)
 	main_viewport.game.update_party()
 

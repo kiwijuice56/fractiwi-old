@@ -228,6 +228,7 @@ func input_pressed(key_name: String) -> void:
 				skill.queue_free()
 
 func battle_started(_creatures: Array) -> void:
+	yield(get_viewport().transition, "in_finished")
 	in_battle = true
 	input["PartySkillContainer"].tabs_visible = false
 	press_turn_container.visible = true

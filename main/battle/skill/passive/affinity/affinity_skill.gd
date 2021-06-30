@@ -5,6 +5,7 @@ export(String, "phys", "fire", "water", "elec", "wind", "light", "dark", "flesh"
 export (String, "null", "resist", "absorb", "repel") var new_affinity := "null"
 
 func modify_creature(creature) -> void:
+
 	creature.extend_def_affinity[type_affinity] = new_affinity
 
 func unmodify_creature(creature) -> void:

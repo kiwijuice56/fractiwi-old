@@ -24,10 +24,12 @@ func unpause() -> void:
 		node.unpause()
 
 func battle_started(_creatures: Array) -> void:
-	backdrop.visible = true
-	backdrop.texture = $Room.backdrop
 	player.can_move = false
 	pause()
+	yield(get_viewport().transition, "in_finished")
+	backdrop.visible = true
+	backdrop.texture = $Room.backdrop
+	
 
 func battle_ended(did_run: bool) -> void:
 	yield(get_viewport().transition, "in_finished")

@@ -52,8 +52,8 @@ func _ready() -> void:
 
 func battle_started(creatures: Array) -> void:
 	transition.transition_in()
-	yield(transition, "in_finished")
 	emit_signal("battle_start", creatures)
+	yield(transition, "in_finished")
 	transition.transition_out()
 
 func battle_ended(did_run) -> void:

@@ -37,11 +37,10 @@ func add_skill(skill: Skill) -> void:
 		$Active.add_child(skill)
 	else:
 		$Passive.add_child(skill)
-		skill.modify_creature(get_parent())
 
 func remove_skill(skill: Skill) -> void:
 	if skill is PassiveSkill:
-		skill.unmodify(get_parent())
+		skill.unmodify_creature(get_parent())
 	skill.get_parent().remove_child(skill)
 	skill.queue_free()
 
