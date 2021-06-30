@@ -20,9 +20,9 @@ func update_description() -> void:
 func set_disabled(val: bool) -> void:
 	.set_disabled(val)
 	if disabled:
-		modulate = disabled_modulate
+		$HBoxContainer.modulate = disabled_modulate
 	else:
-		modulate = Color(1,1,1)
+		$HBoxContainer.modulate = Color(1,1,1)
 
 func set_content(given_skill: Skill) -> void:
 	skill = given_skill

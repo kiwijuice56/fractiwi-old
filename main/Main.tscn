@@ -266,13 +266,6 @@ vertical_select = true
 override_next_sound = true
 file_saver = NodePath("../../../../FileSaver")
 
-[node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 20 )]
-visible = false
-main_viewport = NodePath("../..")
-select_sound = true
-horizontal_select = true
-vertical_select = true
-
 [node name="CathedralMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 41 )]
 visible = false
 main_viewport = NodePath("../..")
@@ -283,7 +276,15 @@ vertical_select = true
 visible = false
 main_viewport = NodePath("../..")
 vertical_select = true
+override_next_sound = true
 creature_fusion = NodePath("../../CreatureFusion")
+
+[node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 20 )]
+visible = false
+main_viewport = NodePath("../..")
+select_sound = true
+horizontal_select = true
+vertical_select = true
 
 [node name="MenuSoundPlayer" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI"]
 volume_db = -10.0

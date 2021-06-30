@@ -21,6 +21,7 @@ var stats: Dictionary
 signal ready_for_next
 signal level_finished
 signal confirm
+signal fusion_confirmed
 signal skills_learned
 
 func _ready() -> void:
@@ -54,6 +55,7 @@ func _input(event: InputEvent) -> void:
 			close_check_skills()
 			return
 		close()
+		return
 	
 	var old_index = index
 	
@@ -103,14 +105,16 @@ func close() -> void:
 	main_viewport.transition.transition_in()
 	disable(true)
 	yield(main_viewport.transition, "in_finished")
+	return_panel(party[index])
 	disable(false)
 	input["HotKeyDescriptionContainer"].disable_input()
-	return_panel(party[index])
 	back.enable(true)
-	back.state = "party"
-	back.input["FullPartyContainer"].grab_focus_at(index)
+	if back.state == "check_screen":
+		back.state = "party"
+		back.input["FullPartyContainer"].grab_focus_at(index)
+	elif back.state == "fusion_check_screen":
+		emit_signal("fusion_confirmed", false)
 	main_viewport.transition.transition_out()
-	return
 
 func show_creature(creature: Creature) -> void:
 	parent = creature.panel.get_parent()
@@ -136,6 +140,7 @@ func show_creature(creature: Creature) -> void:
 func return_panel(creature: Creature) -> void:
 	creature.panel.size_flags_vertical = Control.SIZE_SHRINK_END
 	main_vbox.remove_child(creature.panel)
+	print(creature.creature_name)
 	parent.add_child(creature.panel)
 	main_viewport.game.update_party()
 

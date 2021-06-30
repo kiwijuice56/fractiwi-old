@@ -24,22 +24,20 @@ func unpause() -> void:
 		node.unpause()
 
 func battle_started(_creatures: Array) -> void:
-	player.can_move = false
-	player.disable_collision()
 	backdrop.visible = true
 	backdrop.texture = $Room.backdrop
+	player.can_move = false
 	pause()
 
 func battle_ended(did_run: bool) -> void:
 	yield(get_viewport().transition, "in_finished")
-	player.can_move = true
-	player.enable_collision()
 	backdrop.visible = false
 	if not did_run:
 		current_enemy.call_deferred("queue_free")
 	else:
 		player.global_position = current_enemy.get_node("Spawn").global_position
-		current_enemy.restart()
+		current_enemy.can_collide = true
+	player.can_move = true
 	unpause()
 
 func add_room(room_name: String, destination_type: String, destination_name: String) -> void:

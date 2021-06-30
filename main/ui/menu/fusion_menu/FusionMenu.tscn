@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_menu.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/ui/theme/background2.png" type="Texture" id=7]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_panel/FusionCreatureButtonPanel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_creature_button_container.gd" type="Script" id=9]
+[ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/CreatureButtonPanel.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
@@ -30,6 +31,7 @@ back_sound = true
 select_sound = true
 level_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2/LevelLabel")
 prompt_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/PromptLabel")
+creature_button_panel = ExtResource( 10 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 490.0
@@ -86,60 +88,60 @@ text = "Select a creature to fuse ..."
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 visible = false
-margin_top = 36.0
-margin_right = 460.0
-margin_bottom = 86.0
+margin_top = 28.0
+margin_right = 464.0
+margin_bottom = 78.0
 custom_styles/panel = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 458.0
+margin_right = 462.0
 margin_bottom = 48.0
 
 [node name="Titles" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer"]
-margin_right = 456.0
+margin_right = 460.0
 margin_bottom = 14.0
 
 [node name="Ingredients" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Titles"]
-margin_right = 226.0
+margin_right = 228.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Ingredients"
 
 [node name="Product" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Titles"]
-margin_left = 230.0
-margin_right = 456.0
+margin_left = 232.0
+margin_right = 460.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Product"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 456.0
+margin_right = 460.0
 margin_bottom = 46.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_right = 226.0
+margin_right = 228.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
 [node name="Ingredient1" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 226.0
+margin_right = 228.0
 margin_bottom = 14.0
 text = "Horse Bicorn"
 
 [node name="Ingredient2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 14.0
-margin_right = 226.0
+margin_right = 228.0
 margin_bottom = 28.0
 text = "Horse Unicorn"
 
 [node name="Product" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 230.0
+margin_left = 232.0
 margin_top = 7.0
-margin_right = 456.0
+margin_right = 460.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -230,3 +232,8 @@ hotkeys = {
 "Confirm Ingredient": "ui_accept",
 "Select Creature": "up_down"
 }
+
+[node name="CreatureButtonPanelContainer" type="Control" parent="."]
+visible = false
+margin_right = 490.0
+margin_bottom = 276.0

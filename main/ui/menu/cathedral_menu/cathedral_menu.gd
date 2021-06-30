@@ -10,6 +10,11 @@ func input_pressed(key_name: String) -> void:
 		"Fuse":
 			main_viewport.transition.transition_in()
 			yield(main_viewport.transition, "in_finished")
+			main_viewport.fusion.ingredient1 = null
+			main_viewport.fusion.ingredient2 = null
+			main_viewport.fusion.update_ingredients()
+			main_viewport.fusion.update_results()
+			main_viewport.fusion.results = []
 			main_viewport.fusion.set_up("fuse")
 			main_viewport.fusion.enable(true)
 			main_viewport.fusion.back = self

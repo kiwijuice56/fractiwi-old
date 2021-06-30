@@ -38,7 +38,7 @@ func update_content() -> void:
 	hp_bar.set_data("HP", creature.hp, creature.max_hp)
 	mp_bar.set_data("MP", creature.mp, creature.max_mp)
 	set_status_icon(creature.status)
-	if (creature.get_parent().name == "Active" or creature.get_parent().name == "PlayerParty")and get_parent().name == "FullPartyContainer":
+	if creature.get_parent() and (creature.get_parent().name == "Active" or creature.get_parent().name == "PlayerParty") and get_parent().name == "FullPartyContainer":
 		in_party_indicator.visible = true
 	else:
 		in_party_indicator.visible = false

@@ -71,10 +71,10 @@ func tween_sprite(new_position: Vector2, duration: float) -> void:
 	yield($Tween, "tween_completed")
 
 func disable_collision() -> void:
-	set_collision_layer(0)
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func enable_collision() -> void:
-	set_collision_layer(1)
+	$CollisionShape2D.set_deferred("disabled", false)
 
 func face_direction(face_direction: String) -> void:
 	match face_direction:
