@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/world/room/clumsy_cities/background_squiggly_chaos.png" type="Texture" id=2]
+[ext_resource path="res://main/world/prop/filter/shaders/image_scroll.shader" type="Shader" id=3]
+[ext_resource path="res://main/world/room/clumsy_cities/clumsy_cities_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://main/world/prop/interactable/terminal/Terminal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/world/enemy/path_enemy/dancer/Dancer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/world/enemy/path_enemy/enemy_path_follower/EnemyPathFollower.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/battle/creature/eye worm/Eye Worm.tscn" type="PackedScene" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/dir = Vector2( 0.05, 0 )
+shader_param/image = ExtResource( 2 )
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 17.5702, -9.17286, -6.51695, -20.8122, 6.51695, 20.8122, 50.12, 17.023, 1.68179, -15.7668, -1.68179, 15.7668, 44.1354, 55.4506, 17.2384, -1.68179, -17.2384, 1.68179, -1.85174, 68.3648, -1.26134, 43.0959, 1.26134, -43.0959, -31.1449, 33.087, 0, 0, 0, 0, 17.677, -9.12037, 0, 0, 0, 0, 17.5702, -9.17286 )
+}
+
+[node name="Room" instance=ExtResource( 1 )]
+
+[node name="SquiglyFloor" type="TileMap" parent="." index="0"]
+material = SubResource( 1 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 458756, 3, 0, 458757, 3, 1, 458758, 3, 1, 458759, 3, 1, 458760, 3, 1, 458761, 3, 2, 524291, 3, 0, 524292, 3, 65537, 524293, 3, 65537, 524294, 3, 65537, 524295, 3, 65537, 524296, 3, 65537, 524297, 3, 65537, 524298, 3, 2, 589827, 3, 65536, 589828, 3, 65537, 589829, 3, 65537, 589830, 3, 65537, 589831, 3, 65537, 589832, 3, 65537, 589833, 3, 65537, 589834, 3, 65537, 589835, 3, 2, 655363, 3, 65536, 655364, 3, 65537, 655365, 3, 65537, 655366, 3, 65537, 655367, 3, 65537, 655368, 3, 65537, 655369, 3, 65537, 655370, 3, 131073, 655371, 3, 131074, 720899, 3, 131072, 720900, 3, 131073, 720901, 3, 65537, 720902, 3, 65537, 720903, 3, 65537, 720904, 3, 131073, 720905, 3, 131074, 786437, 3, 131072, 786438, 3, 131073, 786439, 3, 131074 )
+
+[node name="TileMap" parent="." index="1"]
+tile_set = ExtResource( 4 )
+tile_data = PoolIntArray( 131077, 2, 0, 131078, 2, 1, 131079, 2, 1, 131080, 2, 2, 196613, 2, 131072, 196614, 2, 131073, 196615, 2, 131073, 196616, 2, 131074, 262149, 1, 0, 262150, 1, 1, 262151, 1, 1, 262152, 1, 2, 327685, 1, 65536, 327686, 1, 65537, 327687, 1, 65537, 327688, 1, 65538, 393221, 1, 65536, 393222, 1, 65537, 393223, 1, 65537, 393224, 1, 65538, 458757, 1, 65536, 458758, 1, 65537, 458759, 1, 65537, 458760, 1, 65538, 524293, 1, 65536, 524294, 1, 65537, 524295, 1, 65537, 524296, 1, 65538, 589829, 1, 65536, 589830, 1, 65537, 589831, 1, 65537, 589832, 1, 65538, 655365, 1, 131072, 655366, 1, 131073, 655367, 1, 131073, 655368, 1, 131074 )
+
+[node name="Terminal" parent="Props/Interactable/Terminals" index="0" instance=ExtResource( 5 )]
+room = NodePath("../../../..")
+
+[node name="Path2D" type="Path2D" parent="Props/Static" index="0"]
+position = Vector2( -7.07921, 90.0644 )
+curve = SubResource( 2 )
+
+[node name="EnemyPathFollower" parent="Props/Static/Path2D" index="0" instance=ExtResource( 7 )]
+position = Vector2( 17.5702, -9.17286 )
+
+[node name="Dancer" parent="Props/Static/Path2D/EnemyPathFollower" index="0" instance=ExtResource( 6 )]
+
+[node name="EnemyPathFollower2" parent="Props/Static/Path2D" index="1" instance=ExtResource( 7 )]
+position = Vector2( 50.9071, 19.7299 )
+offset = 46.44
+
+[node name="Dancer" parent="Props/Static/Path2D/EnemyPathFollower2" index="0" instance=ExtResource( 6 )]
+creatures = [ ExtResource( 8 ) ]

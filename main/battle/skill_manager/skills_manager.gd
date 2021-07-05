@@ -59,4 +59,5 @@ static func get_skill(skill_name: String) -> Skill:
 			if file_name.capitalize() == skill_name:
 				return load(path+file_name+"/"+file_name.capitalize() + ".tscn").instance()
 			file_name = dir.get_next()
+	print("Couldn't load skill: " + skill_name)
 	return null

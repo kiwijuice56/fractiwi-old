@@ -45,11 +45,13 @@ func add_items() -> void:
 func disable_input() -> void:
 	.disable_input()
 	for button in get_children():
-		button.disabled = true
+		if "disabled" in button:
+			button.disabled = true
 func enable_input() -> void:
 	.enable_input()
 	for button in get_children():
-		button.disabled = false
+		if "disabled" in button:
+			button.disabled = false
 
 func grab_focus_at(index: int) -> void:
 	if index >= get_child_count():

@@ -120,9 +120,8 @@ menu_sound_player = NodePath("UI/MenuSoundPlayer")
 [node name="MusicPlayer" parent="ViewportContainer/MainViewport" instance=ExtResource( 18 )]
 volume_db = -50.0
 autoplay = true
-mix_target = 1
 volume = -5
-transition_duration = 0.4
+transition_duration = 0.2
 
 [node name="CreatureFusion" type="Node" parent="ViewportContainer/MainViewport"]
 script = ExtResource( 43 )

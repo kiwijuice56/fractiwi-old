@@ -1,15 +1,12 @@
 shader_type canvas_item;
 
 uniform sampler2D image;
-uniform float speed_div;
+uniform vec2 dir;
 
 void fragment() {
-	vec4 curr_color = texture(TEXTURE,UV); // Get current color of pixel
-	if (curr_color == vec4(1,1,1,1)){
-		vec2 uv = SCREEN_UV + TIME/speed_div;
-		uv =  uv - floor(uv);
-		COLOR = texture(image , uv);
-	}else{
-		COLOR = curr_color;
-	}
+	vec4 curr_color = texture(TEXTURE,UV);
+	vec2 new_uv = (SCREEN_UV + (TIME * dir));
+	new_uv -= floor(new_uv);
+	vec4 new_color = mix(texture(image, new_uv), curr_color, curr_color.a);
+	COLOR = new_color;
 }

@@ -23,7 +23,7 @@ func move() -> void:
 		$RayCast2D.cast_to = dir*distance_per_move
 		$RayCast2D.force_raycast_update()
 		if $RayCast2D.is_colliding():
-			possible_dirs.remove(dir)
+			possible_dirs.remove(possible_dirs.find(dir))
 	if len(possible_dirs) == 0:
 		return
 	var dir_idx := randi() % len(possible_dirs)

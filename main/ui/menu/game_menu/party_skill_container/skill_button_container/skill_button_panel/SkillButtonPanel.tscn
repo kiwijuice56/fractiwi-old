@@ -43,15 +43,21 @@ disabled_style = SubResource( 1 )
 disbaled_focus_style = ExtResource( 7 )
 icon = NodePath("HBoxContainer/AffinityIcon")
 name_label = NodePath("HBoxContainer/Name")
-cost_label = NodePath("HBoxContainer/Cost")
+cost_label1 = NodePath("HBoxContainer/Cost1")
+cost_label2 = NodePath("HBoxContainer/Cost2")
 disabled_modulate = Color( 0.6, 0.6, 0.6, 1 )
+mp_color1 = Color( 0.933333, 0.847059, 0.996078, 1 )
+mp_color2 = Color( 0.831373, 0.654902, 0.94902, 1 )
+hp_color1 = Color( 1, 0.913725, 0.803922, 1 )
+hp_color2 = Color( 1, 0.8, 0.588235, 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 4.0
-margin_right = 120.0
+margin_right = 115.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
+custom_constants/separation = 2
 
 [node name="AffinityIcon" parent="HBoxContainer" instance=ExtResource( 4 )]
 icons = {
@@ -69,17 +75,25 @@ icons = {
 }
 
 [node name="Name" type="Label" parent="HBoxContainer"]
-margin_left = 18.0
-margin_right = 73.0
+margin_left = 16.0
+margin_right = 71.0
 margin_bottom = 14.0
+size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "skill_name"
 align = 1
 valign = 1
 
-[node name="Cost" type="Label" parent="HBoxContainer"]
-margin_left = 77.0
-margin_right = 116.0
+[node name="Cost1" type="Label" parent="HBoxContainer"]
+margin_left = 74.0
+margin_right = 92.0
 margin_bottom = 14.0
 size_flags_horizontal = 10
-text = "999 mp"
+text = "999"
+
+[node name="Cost2" type="Label" parent="HBoxContainer"]
+margin_left = 94.0
+margin_right = 110.0
+margin_bottom = 14.0
+size_flags_horizontal = 8
+text = "mp"

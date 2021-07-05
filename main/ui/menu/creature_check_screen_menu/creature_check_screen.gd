@@ -50,6 +50,7 @@ func _input(event: InputEvent) -> void:
 	if disabled: return
 	if not move_enabled: return
 	if event.is_action_pressed("ui_accept", false):
+		if state == "default": return
 		close()
 		if back.state == "fusion_check_screen":
 			emit_signal("fusion_confirmed", true)
@@ -63,14 +64,13 @@ func _input(event: InputEvent) -> void:
 		if back.state == "fusion_check_screen":
 			yield(main_viewport.transition, "in_finished")
 			emit_signal("fusion_confirmed", false)
-		
 		return
 	
 	var old_index = index
 	
-	if event.is_action_pressed("ui_left", false) and state == "default":
+	if event.is_action_pressed("ui_left", false) and (state == "default" or state == "fusion"):
 		index -= 1
-	if event.is_action_pressed("ui_right", false) and state == "default":
+	if event.is_action_pressed("ui_right", false) and (state == "default" or state == "fusion"):
 		index += 1
 	if index == old_index:
 		return
@@ -109,11 +109,15 @@ func open() -> void:
 	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right"}
 	input["HotKeyDescriptionContainer"].add_items()
 	input["HotKeyDescriptionContainer"].enable_input()
+	state = "default"
+	move_enabled = true
 
 func open_fusion() -> void:
 	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right", "Fuse Creature": "ui_accept"}
 	input["HotKeyDescriptionContainer"].add_items()
 	input["HotKeyDescriptionContainer"].enable_input()
+	state = "fusion"
+	move_enabled = true
 
 func close() -> void:
 	main_viewport.transition.transition_in()
@@ -123,7 +127,6 @@ func close() -> void:
 	disable(false)
 	input["HotKeyDescriptionContainer"].disable_input()
 	back.enable(true)
-	print("!!!!")
 	if back.state == "check_screen":
 		back.state = "party"
 		back.input["FullPartyContainer"].grab_focus_at(index)

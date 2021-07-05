@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/untitled.wav-78dfaabb3b0d417cf1b2fd930c745b73.sample"
+
+[deps]
+
+source_file="res://main/world/room/nexus/untitled.wav"
+dest_files=[ "res://.import/untitled.wav-78dfaabb3b0d417cf1b2fd930c745b73.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

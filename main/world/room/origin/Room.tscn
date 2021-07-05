@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main/world/room/origin/background.png" type="Texture" id=1]
 [ext_resource path="res://main/world/prop/interactable/door/purple_door/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/world/room/origin/door3.png" type="Texture" id=3]
+[ext_resource path="res://main/world/room/origin/origin.ogg" type="AudioStream" id=4]
 [ext_resource path="res://main/world/prop/interactable/door/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/world/enemy/nonmoving_enemy/eye worm/Eye Worm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/world/prop/interactable/bed/Bed.tscn" type="PackedScene" id=7]
@@ -12,6 +13,7 @@
 [ext_resource path="res://main/world/room/origin_fake/origin_tiles.tres" type="TileSet" id=12]
 
 [node name="Room" instance=ExtResource( 10 )]
+music = ExtResource( 4 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
 position = Vector2( 16, 24 )

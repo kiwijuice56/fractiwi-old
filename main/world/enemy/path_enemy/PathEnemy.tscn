@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/world/enemy/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/world/enemy/path_enemy/path_enemy.gd" type="Script" id=2]
+
+[node name="PathEnemy" groups=[
+"Battle Pause",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="." index="4"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/gabriel/gabriel_sprite.png" type="Texture" id=2]
-[ext_resource path="res://main/battle/skill/active/point/flame burst/Flame Burst.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/point/hellfire/Hellfire.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/battle/skill/active/point/cleave/Cleave.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/battle/skill/passive/affinity/null light/Null Light.tscn" type="PackedScene" id=5]
 
@@ -27,7 +27,7 @@ off_affinity = {
 "water": -150
 }
 
-[node name="Flame Burst" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+[node name="Hellfire" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
 
 [node name="Null Light" parent="Skills/Passive" index="0" instance=ExtResource( 5 )]
 

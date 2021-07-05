@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/neon.wav-0e350d2179e39f9e1fe48b4c64960ab0.sample"
+
+[deps]
+
+source_file="res://main/world/room/neon/neon.wav"
+dest_files=[ "res://.import/neon.wav-0e350d2179e39f9e1fe48b4c64960ab0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
