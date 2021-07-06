@@ -17,6 +17,7 @@ func _physics_process(_delta) -> void:
 	if not can_move:
 		$AnimationPlayer.current_animation = "[stop]"
 		return
+	print(global_position)
 	input()
 	move_and_slide(direction*speed)
 
@@ -57,6 +58,7 @@ func set_effect(new_effect: String, anim: bool) -> void:
 		set_physics_process(true)
 		can_move = true
 		get_viewport().game.can_open = true
+		get_viewport().world_node.unpause() # game menu's close() doesn't unpause
 	else:
 		get_viewport().items.current_effect = effect
 		update_sprite()
@@ -90,3 +92,19 @@ func face_direction(face_direction: String) -> void:
 		"right":
 			scale.x = 1
 			$Sprite.frame = 1
+
+func teleport(destination: Node2D) -> void:
+	set_physics_process(false)
+	disable_collision()
+	$AnimationPlayer.current_animation = "teleport"
+	yield($AnimationPlayer, "animation_finished")
+	yield(tween_sprite(destination.global_position, 1.5), "completed")
+	global_position = destination.global_position
+	$Camera2D.position = Vector2()
+	$Sprite.position = Vector2(0, -6)
+	$AnimationPlayer.current_animation = "deteleport"
+	yield($AnimationPlayer, "animation_finished")
+	enable_collision()
+	set_physics_process(true)
+	get_viewport().game.can_open = true
+	can_move = true

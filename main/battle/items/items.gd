@@ -23,7 +23,8 @@ func get_effect_skill_names() -> Dictionary:
 
 func set_effect_skills(data: Dictionary) -> void:
 	for effect in $Effects.get_children():
-		effect.set_skills(data[effect.name])
+		if effect.name in data:
+			effect.set_skills(data[effect.name])
 
 func add_consumable(skill: String, count: int) -> void:
 	if skill in consumables:

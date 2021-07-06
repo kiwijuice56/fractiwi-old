@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "heal"
+length = 1.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
 tracks/0/interp = 1
@@ -67,9 +68,9 @@ playback_speed = 1.25
 anims/heal = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
+visible = true
 texture = ExtResource( 2 )
 hframes = 10
-frame = 9
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 3 )

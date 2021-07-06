@@ -25,6 +25,7 @@ anim_name = "dance"
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
+offset = Vector2( 0, 1 )
 hframes = 3
 frame = 1
 

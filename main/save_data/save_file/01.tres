@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 1206
+"time": 1227
 },
 "Items": {
 "consumables": {
@@ -30,7 +30,7 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Shock", "Neo Beam", "Slash" ],
+"Active": [ "Cry", "Neo Beam", "Shock", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]
@@ -59,18 +59,16 @@ data = {
 "age": 0,
 "agil": 5,
 "expe": 0,
-"hp": 132,
-"level": 15,
-"luck": 4,
-"magi": 9,
-"mp": 87,
+"hp": 72,
+"level": 7,
+"luck": 3,
+"magi": 5,
+"mp": 32,
 "stre": 3,
-"vita": 7
-}
+"vita": 5
 }
 },
-"inactive": {
-"00Looker": {
+"02Looker": {
 "skills": {
 "Active": [ "Glare", "Slash" ],
 "Passive": [  ],
@@ -90,6 +88,8 @@ data = {
 "vita": 4
 }
 }
+},
+"inactive": {
 }
 },
 "World": {
@@ -99,6 +99,8 @@ data = {
 },
 "balcony_fake": {
 "PillBottle": true
+},
+"clumsy_cities": {
 },
 "eye_hall": {
 "PillBottle": true,

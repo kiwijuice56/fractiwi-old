@@ -414,6 +414,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/skill/active/status/status_skill.gd"
 }, {
+"base": "UnlearnedSkillManager",
+"class": "SupportAI",
+"language": "GDScript",
+"path": "res://main/battle/ai/support/support_ai.gd"
+}, {
+"base": "Interactable",
+"class": "Teleporter",
+"language": "GDScript",
+"path": "res://main/world/prop/interactable/teleporter/teleporter.gd"
+}, {
 "base": "Interactable",
 "class": "Terminal",
 "language": "GDScript",
@@ -546,6 +556,8 @@ _global_script_class_icons={
 "StatBar": "",
 "StatBarContainer": "",
 "StatusSkill": "",
+"SupportAI": "",
+"Teleporter": "",
 "Terminal": "",
 "TerminalMenu": "",
 "TextButtonContainer": "",

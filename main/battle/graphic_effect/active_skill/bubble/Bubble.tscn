@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/battle/graphic_effect/active_skill/bubble/bubble.png" type="Texture" id=1]
 [ext_resource path="res://main/battle/graphic_effect/active_skill/ActiveSkillEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/bubble/bubble.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "startBubble"
-length = 1.3
+resource_name = "Bubble"
+length = 1.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -33,6 +34,66 @@ tracks/1/keys = {
 "method": "impact_point"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.9, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Sprite2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1.05, 1.15, 1.25, 1.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/Sprite2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.15, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.9, 1.25, 1.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -5.0, -5.0, -25.0 ]
+}
 
 [node name="Bubble" instance=ExtResource( 2 )]
 count = "multiple"
@@ -40,9 +101,21 @@ delay = 0.8
 anim_name = "Bubble"
 
 [node name="AnimationPlayer" parent="." index="0"]
-anims/startBubble = SubResource( 1 )
+anims/Bubble = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
 visible = true
 texture = ExtResource( 1 )
 hframes = 13
+frame = 12
+
+[node name="Sprite2" type="Sprite" parent="Sprite" index="0"]
+visible = false
+position = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+hframes = 13
+frame = 12
+
+[node name="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 3 )
+volume_db = -25.0

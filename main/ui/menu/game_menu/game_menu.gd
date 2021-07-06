@@ -169,8 +169,9 @@ func input_pressed(key_name: String) -> void:
 			if state == "select_active_member":
 				emit_signal("selection_complete", [get_focus_owner().creature])
 				for active in input["ActivePartyContainer"].get_children():
-					active.focus_style_lock = false
-					active.focus_exited()
+					if "focus_style" in active:
+						active.focus_style_lock = false
+						active.focus_exited()
 				input["PartySelectHotKeyContainer"].disable_input()
 				input["PartySelectHotKeyContainer"].visible = false
 		"Use":

@@ -29,4 +29,4 @@ collision_mask = 0
 shape = SubResource( 2 )
 
 [node name="Spawn" type="Position2D" parent="."]
-position = Vector2( 0.230721, 32.911 )
+position = Vector2( 0, 40 )

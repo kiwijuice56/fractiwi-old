@@ -44,7 +44,7 @@ func _ready() -> void:
 	game.disable(false)
 	terminal.disable(false)
 	save_file.disable(false)
-	interact.disable(false)
+	#interact.disable(false)
 	fusion.disable(false)
 	cathedral.disable(false)
 	creature_check.disable(false)

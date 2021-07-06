@@ -431,12 +431,12 @@ texture = ExtResource( 11 )
 
 [node name="Platform3" type="Sprite" parent="CanvasLayer/SceneAnimation"]
 modulate = Color( 0.870588, 0.737255, 1, 1 )
-position = Vector2( 240, 140 )
+position = Vector2( 240, 144 )
 texture = ExtResource( 11 )
 
 [node name="CreatureSprite1" type="Sprite" parent="CanvasLayer/SceneAnimation"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 104, 152 )
+position = Vector2( 104, 144 )
 texture = ExtResource( 12 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/SceneAnimation/CreatureSprite1"]
@@ -462,7 +462,7 @@ anims/dissolve = SubResource( 4 )
 
 [node name="CreatureSprite2" type="Sprite" parent="CanvasLayer/SceneAnimation"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 384, 152 )
+position = Vector2( 384, 144 )
 texture = ExtResource( 12 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/SceneAnimation/CreatureSprite2"]

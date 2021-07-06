@@ -92,7 +92,8 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 		base *= 0
 	if user.status == "sad":
 		base *= 0.6
-	base *= (off/100.0)
+	if off < 0:
+		base *= (off/100.0)
 	base *= 2 if is_crit else 1
 	base *= -1 if neg else 1
 	base *= rand_range(0.9,1.1)

@@ -39,6 +39,13 @@ position = Vector2( 312, 122 )
 position = Vector2( 312, 250 )
 room_name = "origin"
 
+[node name="CollisionShape2D" parent="Props/Interactable/Doors/Door" index="1"]
+position = Vector2( 0, -2 )
+
+[node name="ClumsyDoor" parent="Props/Interactable/Doors" index="3" instance=ExtResource( 3 )]
+position = Vector2( 312, 378 )
+room_name = "clumsy_cities"
+
 [node name="LoopArea" parent="Props/Static" index="0" instance=ExtResource( 7 )]
 visible = false
 position = Vector2( 312, 264 )
@@ -47,4 +54,5 @@ position = Vector2( 312, 264 )
 shape = SubResource( 2 )
 
 [editable path="Props/Interactable/Doors/Door"]
+[editable path="Props/Interactable/Doors/ClumsyDoor"]
 [editable path="Props/Static/LoopArea"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://main/world/player/player.gd" type="Script" id=1]
 [ext_resource path="res://main/world/player/sprites/effect.png" type="Texture" id=2]
@@ -7,12 +7,53 @@
 [ext_resource path="res://main/world/player/sprites/flower.png" type="Texture" id=5]
 [ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=6]
 [ext_resource path="res://main/world/player/sounds/effect2.WAV" type="AudioStream" id=7]
+[ext_resource path="res://main/world/player/sprites/duck.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 7.5 )
+extents = Vector2( 8, 8 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "set_effect"
+resource_name = "deteleport"
+length = 2.0
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.975 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 5, 5, 5, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.125, 0.3, 0.55, 0.825, 1.1, 1.4, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 4, 1, 4, 7, 4, 2, 4, 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.575, 0.825, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("EffectSprite:visible")
@@ -101,7 +142,48 @@ tracks/6/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
+resource_name = "teleport"
+length = 2.0
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 5, 5, 5, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.325, 0.65, 0.975, 1.325, 1.575, 1.75, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 4, 1, 4, 7, 4, 2, 4, 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.975, 1.35, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -146,7 +228,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -191,7 +273,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -236,7 +318,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -287,6 +369,7 @@ collision_mask = 2
 script = ExtResource( 1 )
 speed = 85
 effect_textures = {
+"Duck": ExtResource( 8 ),
 "Flower": ExtResource( 5 ),
 "Normal": ExtResource( 6 )
 }
@@ -296,7 +379,7 @@ position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -6.5 )
+position = Vector2( 0, -6 )
 texture = ExtResource( 6 )
 hframes = 3
 vframes = 3
@@ -310,11 +393,13 @@ texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 4.2
-anims/set_effect = SubResource( 2 )
-anims/walk_down = SubResource( 3 )
-anims/walk_left = SubResource( 4 )
-anims/walk_right = SubResource( 5 )
-anims/walk_up = SubResource( 6 )
+anims/deteleport = SubResource( 2 )
+anims/set_effect = SubResource( 3 )
+anims/teleport = SubResource( 4 )
+anims/walk_down = SubResource( 5 )
+anims/walk_left = SubResource( 6 )
+anims/walk_right = SubResource( 7 )
+anims/walk_up = SubResource( 8 )
 
 [node name="StepPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -333,5 +418,6 @@ pitch_scale = 1.05
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+editor_draw_limits = true
 
 [node name="Tween" type="Tween" parent="."]

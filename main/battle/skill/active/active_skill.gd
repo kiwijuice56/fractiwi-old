@@ -41,6 +41,6 @@ func get_def_affinity(target: Node) -> String:
 
 func get_off_affinity(user: Node) -> int:
 	if affinity in user.get_off():
-		return user.off_affinity[affinity]
+		return user.get_off()[affinity]
 	return 100
 

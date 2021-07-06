@@ -23,7 +23,7 @@ def_affinity = {
 "water": "weak"
 }
 off_affinity = {
-"fire": 130,
+"fire": 120,
 "water": -150
 }
 

@@ -6,15 +6,19 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 1064
+"time": 1303
 },
 "Items": {
 "consumables": {
 "Fire Stone": 1,
 "Hp Pill": 1
 },
-"current_effect": "Normal",
+"current_effect": "Duck",
 "effect_skills": {
+"Duck": {
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Bubble" ]
+},
 "Flower": {
 "Skill Levels": [ 1 ],
 "Unlearned": [ "Heal" ]
@@ -24,16 +28,16 @@ data = {
 "Unlearned": [  ]
 }
 },
-"effects": [ "Normal" ]
+"effects": [ "Normal", "Duck" ]
 },
 "Party": {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Lightning", "Neo Beam", "Slash" ],
+"Active": [ "Cry", "Neo Beam", "Shock", "Slash" ],
 "Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Bubble" ]
 },
 "stats": {
 "age": 4,
@@ -48,69 +52,27 @@ data = {
 "vita": 5
 }
 },
-"01Golem": {
+"01Gabriel": {
 "skills": {
-"Active": [ "Cleave", "Slash" ],
-"Passive": [  ],
+"Active": [ "Hellfire" ],
+"Passive": [ "Null Light" ],
 "Skill Levels": [  ],
-"Unlearned": [  ]
-},
-"stats": {
-"age": 1,
-"agil": 1,
-"expe": 82,
-"hp": 54,
-"level": 6,
-"luck": 2,
-"magi": 2,
-"mp": 30,
-"stre": 3,
-"vita": 3
-}
-},
-"02Eye Worm": {
-"skills": {
-"Active": [ "Cleave", "Slash" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
-},
-"stats": {
-"age": 3,
-"agil": 3,
-"expe": 223,
-"hp": 48,
-"level": 6,
-"luck": 1,
-"magi": 1,
-"mp": 27,
-"stre": 1,
-"vita": 2
-}
-},
-"03Elephante": {
-"skills": {
-"Active": [ "Lightning", "Neo Beam" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Unlearned": [ "Cleave" ]
 },
 "stats": {
 "age": 0,
-"agil": 3,
+"agil": 5,
 "expe": 0,
-"hp": 60,
+"hp": 72,
 "level": 7,
 "luck": 3,
-"magi": 4,
-"mp": 40,
-"stre": 1,
-"vita": 3
-}
+"magi": 5,
+"mp": 32,
+"stre": 3,
+"vita": 5
 }
 },
-"inactive": {
-"00Looker": {
+"02Looker": {
 "skills": {
 "Active": [ "Glare", "Slash" ],
 "Passive": [  ],
@@ -130,15 +92,20 @@ data = {
 "vita": 4
 }
 }
+},
+"inactive": {
 }
 },
 "World": {
-"location": "origin",
+"location": "clumsy_cities",
 "memory": {
 "balcony": {
 },
 "balcony_fake": {
 "PillBottle": true
+},
+"clumsy_cities": {
+"Duck": true
 },
 "eye_hall": {
 "PillBottle": true,

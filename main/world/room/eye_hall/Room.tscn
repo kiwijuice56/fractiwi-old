@@ -20,7 +20,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
-shader_param/speed_div = 25.0
+shader_param/dir = null
 shader_param/image = ExtResource( 4 )
 
 [node name="Room" instance=ExtResource( 1 )]
@@ -65,30 +65,32 @@ position = Vector2( 1784, 2544 )
 
 [node name="PillBottle" parent="Props/Items" index="0" instance=ExtResource( 8 )]
 position = Vector2( 224, 1304 )
+item = "Hp Pill"
 
 [node name="PillBottle5" parent="Props/Items" index="1" instance=ExtResource( 8 )]
 position = Vector2( 2048, 2016 )
+item = "Hp Pill"
 
 [node name="PillBottle4" parent="Props/Items" index="2" instance=ExtResource( 8 )]
 position = Vector2( -464, 1136 )
-skill = "Mp Pill"
+item = "Mp Pill"
 count = 2
 
 [node name="PillBottle2" parent="Props/Items" index="3" instance=ExtResource( 8 )]
 position = Vector2( 704, 688 )
 state = "Pick Up"
-skill = "Mp Pill"
+item = "Mp Pill"
 count = 1
 
 [node name="PillBottle3" parent="Props/Items" index="4" instance=ExtResource( 8 )]
 position = Vector2( 720, 1800 )
 state = "Pick Up"
-skill = "Mp Pill"
+item = "Mp Pill"
 count = 1
 
 [node name="Stone" parent="Props/Items" index="5" instance=ExtResource( 12 )]
 position = Vector2( 1872, 2544 )
-skill = "Fire Stone"
+item = "Fire Stone"
 count = 2
 
 [node name="FollowEye" parent="Props/Dynamic" index="0" instance=ExtResource( 10 )]
