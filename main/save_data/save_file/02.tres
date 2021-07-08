@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 1144
+"time": 1327
 },
 "Items": {
 "consumables": {
@@ -15,6 +15,10 @@ data = {
 },
 "current_effect": "Normal",
 "effect_skills": {
+"Duck": {
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Bubble" ]
+},
 "Flower": {
 "Skill Levels": [ 1 ],
 "Unlearned": [ "Heal" ]
@@ -30,87 +34,45 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Lightning", "Neo Beam", "Slash" ],
+"Active": [ "Cry", "Focus", "Neo Beam", "Shock", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]
 },
 "stats": {
-"age": 4,
+"age": 5,
 "agil": 3,
-"expe": 141,
-"hp": 72,
-"level": 7,
+"expe": 15,
+"hp": 84,
+"level": 8,
 "luck": 4,
 "magi": 3,
-"mp": 37,
+"mp": 41,
 "stre": 4,
-"vita": 5
+"vita": 6
 }
 },
-"01Golem": {
+"01Gabriel": {
 "skills": {
-"Active": [ "Cleave", "Slash" ],
-"Passive": [  ],
+"Active": [ "Focus", "Hellfire" ],
+"Passive": [ "Null Light" ],
 "Skill Levels": [  ],
-"Unlearned": [  ]
-},
-"stats": {
-"age": 1,
-"agil": 1,
-"expe": 82,
-"hp": 54,
-"level": 6,
-"luck": 2,
-"magi": 2,
-"mp": 30,
-"stre": 3,
-"vita": 3
-}
-},
-"02Eye Worm": {
-"skills": {
-"Active": [ "Cleave", "Slash" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
-},
-"stats": {
-"age": 3,
-"agil": 3,
-"expe": 223,
-"hp": 48,
-"level": 6,
-"luck": 1,
-"magi": 1,
-"mp": 27,
-"stre": 1,
-"vita": 2
-}
-},
-"03Elephante": {
-"skills": {
-"Active": [ "Lightning", "Neo Beam" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Unlearned": [ "Cleave" ]
 },
 "stats": {
 "age": 0,
-"agil": 3,
-"expe": 0,
-"hp": 60,
+"agil": 5,
+"expe": 84,
+"hp": 72,
 "level": 7,
 "luck": 3,
-"magi": 4,
-"mp": 40,
-"stre": 1,
-"vita": 3
-}
+"magi": 5,
+"mp": 43,
+"stre": 3,
+"vita": 5
 }
 },
-"inactive": {
-"00Looker": {
+"02Looker": {
 "skills": {
 "Active": [ "Glare", "Slash" ],
 "Passive": [  ],
@@ -120,7 +82,7 @@ data = {
 "stats": {
 "age": 3,
 "agil": 1,
-"expe": 43,
+"expe": 127,
 "hp": 60,
 "level": 6,
 "luck": 1,
@@ -129,16 +91,40 @@ data = {
 "stre": 1,
 "vita": 4
 }
+},
+"03Normalem": {
+"skills": {
+"Active": [ "Bubble", "Cleave" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 0,
+"agil": 5,
+"expe": 0,
+"hp": 66,
+"level": 7,
+"luck": 3,
+"magi": 4,
+"mp": 40,
+"stre": 3,
+"vita": 4
 }
 }
 },
+"inactive": {
+}
+},
 "World": {
-"location": "origin",
+"location": "clumsy_cities",
 "memory": {
 "balcony": {
 },
 "balcony_fake": {
 "PillBottle": true
+},
+"clumsy_cities": {
 },
 "eye_hall": {
 "PillBottle": true,

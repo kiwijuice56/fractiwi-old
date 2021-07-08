@@ -6,12 +6,11 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 1303
+"time": 1790
 },
 "Items": {
 "consumables": {
-"Fire Stone": 1,
-"Hp Pill": 1
+"Fire Stone": 1
 },
 "current_effect": "Duck",
 "effect_skills": {
@@ -34,45 +33,65 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Neo Beam", "Shock", "Slash" ],
+"Active": [ "Cry", "Focus", "Neo Beam", "Shock", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [ 1 ],
 "Unlearned": [ "Bubble" ]
 },
 "stats": {
-"age": 4,
+"age": 7,
 "agil": 3,
-"expe": 141,
-"hp": 72,
-"level": 7,
+"expe": 143,
+"hp": 96,
+"level": 10,
 "luck": 4,
-"magi": 3,
-"mp": 37,
+"magi": 5,
+"mp": 55,
 "stre": 4,
-"vita": 5
+"vita": 6
 }
 },
 "01Gabriel": {
 "skills": {
-"Active": [ "Hellfire" ],
+"Active": [ "Focus", "Hellfire" ],
 "Passive": [ "Null Light" ],
 "Skill Levels": [  ],
 "Unlearned": [ "Cleave" ]
 },
 "stats": {
-"age": 0,
+"age": 3,
 "agil": 5,
-"expe": 0,
-"hp": 72,
-"level": 7,
+"expe": 67,
+"hp": 90,
+"level": 10,
 "luck": 3,
-"magi": 5,
-"mp": 32,
+"magi": 8,
+"mp": 64,
 "stre": 3,
 "vita": 5
 }
 },
-"02Looker": {
+"02Normalem": {
+"skills": {
+"Active": [ "Bubble", "Cleave" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 2,
+"agil": 5,
+"expe": 233,
+"hp": 78,
+"level": 9,
+"luck": 3,
+"magi": 6,
+"mp": 54,
+"stre": 3,
+"vita": 4
+}
+},
+"03Looker": {
 "skills": {
 "Active": [ "Glare", "Slash" ],
 "Passive": [  ],
@@ -80,14 +99,14 @@ data = {
 "Unlearned": [  ]
 },
 "stats": {
-"age": 3,
-"agil": 1,
-"expe": 43,
-"hp": 60,
-"level": 6,
+"age": 5,
+"agil": 3,
+"expe": 260,
+"hp": 72,
+"level": 8,
 "luck": 1,
 "magi": 3,
-"mp": 33,
+"mp": 41,
 "stre": 1,
 "vita": 4
 }
@@ -97,7 +116,7 @@ data = {
 }
 },
 "World": {
-"location": "clumsy_cities",
+"location": "origin",
 "memory": {
 "balcony": {
 },

@@ -8,6 +8,8 @@ var inactive_len := 0
 
 func disable_overworld() -> void:
 	for child in get_children():
+		if child.skill.affinity != "heal":
+			child.disabled = true
 		if child.skill is ActiveSkill and child.skill.side == "opposite":
 			child.disabled = true
 	disable_battle()

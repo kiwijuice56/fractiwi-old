@@ -26,6 +26,7 @@ export var is_boss := false
 var attack: int = 0
 var defense: int = 0
 var hiteva: int = 0
+var focus := false
 
 var expe := 0
 var expe_to_level := 0
@@ -136,7 +137,10 @@ func recruit_attempt(targets: Array) -> String:
 
 func target_action() -> void:
 	if not panel:
-		$AnimationPlayer.current_animation = "hurt_normal"
+		if targeted_skill_data[1]:
+			$AnimationPlayer.current_animation = "miss"
+		else:
+			$AnimationPlayer.current_animation = "hurt_normal"
 		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4])
 		$PointLabel.get_node("AnimationPlayer").current_animation = "show"
 	else:
@@ -158,6 +162,7 @@ func reset_buffs() -> void:
 	attack = 0
 	defense = 0
 	hiteva = 0
+	focus = false
 
 func check_hp() -> void:
 	if hp <= 0:
@@ -181,8 +186,8 @@ func death() -> void:
 		var queue = get_parent().get_parent()
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
 		var multipler = min(2, max(0.1, 1 - (level_dif/10.0)))
-		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.0)
-		queue.expe += expe_given * multipler * (1.5 if is_boss else 1.0)
+		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/8.0)
+		queue.expe += expe_given * multipler * (2.0 if is_boss else 1.0)
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"
 		yield($AnimationPlayer, "animation_finished")

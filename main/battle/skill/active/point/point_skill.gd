@@ -93,10 +93,14 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 	if user.status == "sad":
 		base *= 0.6
 	if off < 0:
-		base *= (off/100.0)
+		base *= 2+(off/100.0)
+	else:
+		base *= off/100.0
 	base *= 2 if is_crit else 1
 	base *= -1 if neg else 1
-	base *= rand_range(0.9,1.1)
+	if user.focus and affinity == "phys":
+		user.focus = false
+		base *= 2.5
 	if stat == "magi" or stat == "stre":
 		var buff_stage = user.attack - target.defense
 		var modifier := 1.0
@@ -105,4 +109,5 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 		else:
 			modifier *= 1+abs(buff_stage*0.23)
 		base *= modifier
+	base *= rand_range(0.9,1.1)
 	return int(base)

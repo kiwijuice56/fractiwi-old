@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/impact.mp3-5944adda8d586e93706cb3ddccf77423.mp3str"
+
+[deps]
+
+source_file="res://main/battle/sounds/impact.mp3"
+dest_files=[ "res://.import/impact.mp3-5944adda8d586e93706cb3ddccf77423.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

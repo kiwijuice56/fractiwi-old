@@ -4,7 +4,7 @@
 [ext_resource path="res://main/world/room/red_cave/red_cave_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://main/world/prop/interactable/door/blood_door/BloodDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/world/prop/interactable/terminal/Terminal.tscn" type="PackedScene" id=4]
-[ext_resource path="res://main/world/enemy/nonmoving_enemy/angel arm/Angel Arm.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/world/enemy/nonmoving_enemy/angel_arm/AngelArm.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/battle/creature/gabriel/Gabriel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/world/room/red_cave/background.png" type="Texture" id=7]
 

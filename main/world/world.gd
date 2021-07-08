@@ -28,7 +28,7 @@ func battle_started(_creatures: Array) -> void:
 	pause()
 	yield(get_viewport().transition, "in_finished")
 	backdrop.visible = true
-	backdrop.texture = $Room.backdrop
+	backdrop.material.set_shader_param("image", $Room.backdrop)
 	
 
 func battle_ended(did_run: bool) -> void:

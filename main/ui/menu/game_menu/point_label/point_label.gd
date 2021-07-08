@@ -8,7 +8,7 @@ export var absorb: Color
 export var weak: Color
 export var crit: Color
 
-enum text_types { POINT, BUFF, STATUS }
+enum text_types { POINT, BUFF, STATUS, FOCUS }
 
 func set_point_text(points, is_miss: bool, is_crit: bool, def: String, type) -> void:
 	offset = get_parent().get_global_transform_with_canvas().get_origin()
@@ -55,4 +55,9 @@ func set_point_text(points, is_miss: bool, is_crit: bool, def: String, type) -> 
 				$Label.add_color_override("font_color", absorb)
 			else:
 				$Label.text = "Inflicted %s!" % points
+		text_types.FOCUS:
+			if points:
+				$Label.text = "Focused!"
+			else:
+				$Label.text = "Already focused.."
 	

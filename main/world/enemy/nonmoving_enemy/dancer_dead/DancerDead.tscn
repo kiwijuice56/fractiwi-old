@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/world/enemy/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/world/enemy/nonmoving_enemy/dancer_dead/dancer3.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dead"
+loop = true
+
+[node name="DancerDead" instance=ExtResource( 1 )]
+anim_name = "dead"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, -1 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/dead = SubResource( 1 )

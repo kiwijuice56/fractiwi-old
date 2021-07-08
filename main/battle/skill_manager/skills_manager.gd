@@ -48,6 +48,7 @@ static func get_skill(skill_name: String) -> Skill:
 	var skill_paths =  ["res://main/battle/skill/active/point/",
 						"res://main/battle/skill/active/status/buff/",
 						"res://main/battle/skill/active/status/condition/",
+						"res://main/battle/skill/active/status/other/",
 						"res://main/battle/skill/passive/affinity/",
 						"res://main/battle/skill/passive/stat/"]
 	var dir = Directory.new()

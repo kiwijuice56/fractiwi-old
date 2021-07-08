@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/next_in.wav-e13289fba2a9ec61e29ed648aedb8450.sample"
+path="res://.import/teleport.WAV-6e15c48f7541b63aa176961c730b5b18.sample"
 
 [deps]
 
-source_file="res://main/battle/creature/next_in.wav"
-dest_files=[ "res://.import/next_in.wav-e13289fba2a9ec61e29ed648aedb8450.sample" ]
+source_file="res://main/world/player/sounds/teleport.WAV"
+dest_files=[ "res://.import/teleport.WAV-6e15c48f7541b63aa176961c730b5b18.sample" ]
 
 [params]
 

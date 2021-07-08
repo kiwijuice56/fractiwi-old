@@ -30,7 +30,7 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Neo Beam", "Shock", "Slash" ],
+"Active": [ "Cry", "Neo Beam", "Shock", "Slash", "Focus" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]
@@ -50,7 +50,7 @@ data = {
 },
 "01Gabriel": {
 "skills": {
-"Active": [ "Hellfire" ],
+"Active": [ "Hellfire", "Focus" ],
 "Passive": [ "Null Light" ],
 "Skill Levels": [  ],
 "Unlearned": [ "Cleave" ]
@@ -93,7 +93,7 @@ data = {
 }
 },
 "World": {
-"location": "clumsy_cities",
+"location": "purgatory",
 "memory": {
 "balcony": {
 },

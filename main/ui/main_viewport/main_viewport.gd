@@ -51,6 +51,7 @@ func _ready() -> void:
 	music_player.play_audio(main.music)
 
 func battle_started(creatures: Array) -> void:
+	interact.disable(false)
 	transition.transition_in()
 	emit_signal("battle_start", creatures)
 	yield(transition, "in_finished")
@@ -61,4 +62,3 @@ func battle_ended(did_run) -> void:
 	emit_signal("battle_end", did_run)
 	yield(transition, "in_finished")
 	transition.transition_out()
-

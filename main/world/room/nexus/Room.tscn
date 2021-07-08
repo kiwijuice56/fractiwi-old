@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/nexus/nexus_tileset.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/world/prop/static_scenery/loop_area/LoopArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/world/room/nexus/background.png" type="Texture" id=8]
 [ext_resource path="res://main/world/prop/filter/shaders/image_scroll.shader" type="Shader" id=9]
+[ext_resource path="res://main/world/prop/interactable/door/clumsy_door/door.png" type="Texture" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
@@ -45,6 +46,9 @@ position = Vector2( 0, -2 )
 [node name="ClumsyDoor" parent="Props/Interactable/Doors" index="3" instance=ExtResource( 3 )]
 position = Vector2( 312, 378 )
 room_name = "clumsy_cities"
+
+[node name="Sprite" parent="Props/Interactable/Doors/ClumsyDoor" index="0"]
+texture = ExtResource( 10 )
 
 [node name="LoopArea" parent="Props/Static" index="0" instance=ExtResource( 7 )]
 visible = false

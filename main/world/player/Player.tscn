@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://main/world/player/player.gd" type="Script" id=1]
 [ext_resource path="res://main/world/player/sprites/effect.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=6]
 [ext_resource path="res://main/world/player/sounds/effect2.WAV" type="AudioStream" id=7]
 [ext_resource path="res://main/world/player/sprites/duck.png" type="Texture" id=8]
+[ext_resource path="res://main/world/player/sounds/teleport.WAV" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -51,6 +52,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera2D:zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -145,7 +158,7 @@ tracks/6/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "teleport"
 length = 2.0
-step = 0.025
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
@@ -181,6 +194,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera2D:zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Teleporter:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -415,6 +452,11 @@ pitch_scale = 1.4
 stream = ExtResource( 7 )
 volume_db = -15.0
 pitch_scale = 1.05
+
+[node name="Teleporter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+pitch_scale = 1.2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

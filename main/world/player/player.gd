@@ -12,12 +12,12 @@ var can_move: bool = false
 
 func _ready() -> void:
 	main_viewport = get_node(main_viewport)
+	disable_collision()
 
 func _physics_process(_delta) -> void:
 	if not can_move:
 		$AnimationPlayer.current_animation = "[stop]"
 		return
-	print(global_position)
 	input()
 	move_and_slide(direction*speed)
 
@@ -98,10 +98,7 @@ func teleport(destination: Node2D) -> void:
 	disable_collision()
 	$AnimationPlayer.current_animation = "teleport"
 	yield($AnimationPlayer, "animation_finished")
-	yield(tween_sprite(destination.global_position, 1.5), "completed")
 	global_position = destination.global_position
-	$Camera2D.position = Vector2()
-	$Sprite.position = Vector2(0, -6)
 	$AnimationPlayer.current_animation = "deteleport"
 	yield($AnimationPlayer, "animation_finished")
 	enable_collision()

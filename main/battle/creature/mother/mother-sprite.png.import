@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/angel arm.png-929818ffe6db0fd2af6cb8e941ea26b8.stex"
+path="res://.import/mother-sprite.png-ec99c82bfa1878aa77c4a30c0dbe2153.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/world/enemy/nonmoving_enemy/angel arm/angel arm.png"
-dest_files=[ "res://.import/angel arm.png-929818ffe6db0fd2af6cb8e941ea26b8.stex" ]
+source_file="res://main/battle/creature/mother/mother-sprite.png"
+dest_files=[ "res://.import/mother-sprite.png-ec99c82bfa1878aa77c4a30c0dbe2153.stex" ]
 
 [params]
 

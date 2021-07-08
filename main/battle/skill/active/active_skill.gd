@@ -4,7 +4,7 @@ class_name ActiveSkill
 export var effect_packed: PackedScene 
 export(String, "hp", "mp") var cost_type := "mp"
 export var cost := 0
-export(String, "all", "single", "random") var target_type := "single"
+export(String, "all", "single", "random", "self_only") var target_type := "single"
 export(String, "opposite", "same") var side := "opposite"
 export(int, 0, 100) var accuracy := 0
 export var can_miss := true

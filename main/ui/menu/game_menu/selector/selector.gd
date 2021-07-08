@@ -80,6 +80,10 @@ func select(target_type: String, side: String) -> Array:
 					if len(target) == 0:
 						return target
 					return controller.party.get_node("Active").get_children()
+				"self_only":
+					controller.select_self_only()
+					var target = yield(controller, "selection_complete")
+					return target
 	return []
 
 func select_enemy() -> void:

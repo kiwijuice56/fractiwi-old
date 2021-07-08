@@ -6,7 +6,8 @@
 [node name="Hellfire" instance=ExtResource( 1 )]
 affinity = "fire"
 effect_packed = ExtResource( 2 )
+cost = 12
 target_type = "all"
 accuracy = 95
-power = -6
+power = -5
 stat = "magi"

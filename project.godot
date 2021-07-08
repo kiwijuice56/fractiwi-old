@@ -159,6 +159,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/world/prop/filter/filter.gd"
 }, {
+"base": "StatusSkill",
+"class": "FocusSkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/active/status/other/focus/focus.gd"
+}, {
 "base": "DynamicScenery",
 "class": "FollowEye",
 "language": "GDScript",
@@ -264,6 +269,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/main_viewport/main_viewport.gd"
 }, {
+"base": "AI",
+"class": "MotherAI",
+"language": "GDScript",
+"path": "res://main/battle/ai/mother_ai.gd"
+}, {
 "base": "Node",
 "class": "Party",
 "language": "GDScript",
@@ -313,6 +323,11 @@ _global_script_classes=[ {
 "class": "PointSkill",
 "language": "GDScript",
 "path": "res://main/battle/skill/active/point/point_skill.gd"
+}, {
+"base": "Interactable",
+"class": "PopUp",
+"language": "GDScript",
+"path": "res://main/world/prop/interactable/pop_up/pop_up.gd"
 }, {
 "base": "TextureRect",
 "class": "PressTurn",
@@ -505,6 +520,7 @@ _global_script_class_icons={
 "EnemyPathFollower": "",
 "FileSaver": "",
 "Filter": "",
+"FocusSkill": "",
 "FollowEye": "",
 "FusionCataloger": "",
 "FusionCatalogue": "",
@@ -526,6 +542,7 @@ _global_script_class_icons={
 "Main": "",
 "MainMenu": "",
 "MainViewport": "",
+"MotherAI": "",
 "Party": "",
 "PartyButtonContainer": "",
 "PartySkillContainer": "",
@@ -536,6 +553,7 @@ _global_script_class_icons={
 "PointBar": "",
 "PointLabel": "",
 "PointSkill": "",
+"PopUp": "",
 "PressTurn": "",
 "PressTurnContainer": "",
 "Rain": "",

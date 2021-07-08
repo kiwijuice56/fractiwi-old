@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
@@ -24,7 +24,7 @@
 [ext_resource path="res://main/ui/menu/terminal_menu/terminal.ogg" type="AudioStream" id=22]
 [ext_resource path="res://main/ui/utility_classes/vision_effects/VisionEffects.tscn" type="PackedScene" id=23]
 [ext_resource path="res://main/battle/battle_queue/battle_queue.gd" type="Script" id=24]
-[ext_resource path="res://main/world/room/protist/background.png" type="Texture" id=25]
+[ext_resource path="res://main/world/prop/filter/shaders/image_scroll.shader" type="Shader" id=25]
 [ext_resource path="res://main/battle/party/active/active.gd" type="Script" id=26]
 [ext_resource path="res://main/world/shader/chromatic.shader" type="Shader" id=27]
 [ext_resource path="res://main/ui/utility_classes/sound_player/sound_player.gd" type="Script" id=28]
@@ -46,11 +46,16 @@
 [ext_resource path="res://main/battle/creature_fusion/fusion_catalogue/fusion_cataloger.gd" type="Script" id=44]
 [ext_resource path="res://main/world/player/sprites/duck.png" type="Texture" id=45]
 [ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=46]
+[ext_resource path="res://main/battle/background.png" type="Texture" id=47]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
 shader_param/apply = false
 shader_param/amount = 0.13
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 25 )
+shader_param/dir = Vector2( 0.1, 0.1 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 6 )
@@ -160,11 +165,12 @@ effect_textures = {
 
 [node name="Backdrop" type="TextureRect" parent="ViewportContainer/MainViewport/World/CanvasLayer"]
 visible = false
+material = SubResource( 2 )
 margin_right = 40.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 25 )
+texture = ExtResource( 47 )
 expand = true
 stretch_mode = 3
 
@@ -181,6 +187,7 @@ script = ExtResource( 26 )
 battle_party_node = NodePath("../../Battle/BattleQueue/PlayerParty")
 
 [node name="Yun" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 9 )]
+offset = Vector2( 0, 0 )
 
 [node name="Inactive" type="Node2D" parent="ViewportContainer/MainViewport/Party"]
 visible = false
@@ -335,3 +342,5 @@ volume_db = -10.0
 
 [node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
 layer = 2
+
+[node name="Tween" type="Tween" parent="ViewportContainer"]

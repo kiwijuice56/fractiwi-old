@@ -117,7 +117,17 @@ func input_pressed(key_name: String) -> void:
 				"select_active_member":
 					emit_signal("selection_complete", [])
 					for active in input["ActivePartyContainer"].get_children():
-						if "focus_style" in active:
+						if "focused_style" in active:
+							active.focus_style_lock = false
+							active.focus_exited()
+					input["PartySelectHotKeyContainer"].disable_input()
+					input["PartySelectHotKeyContainer"].visible = false
+				"select_self_only":
+					emit_signal("selection_complete", [])
+					for active in input["ActivePartyContainer"].get_children():
+						
+						if "focused_style" in active:
+							print("!")
 							active.focus_style_lock = false
 							active.focus_exited()
 					input["PartySelectHotKeyContainer"].disable_input()
@@ -174,13 +184,22 @@ func input_pressed(key_name: String) -> void:
 						active.focus_exited()
 				input["PartySelectHotKeyContainer"].disable_input()
 				input["PartySelectHotKeyContainer"].visible = false
+			elif state == "select_self_only":
+				emit_signal("selection_complete", [creature])
+				for active in input["ActivePartyContainer"].get_children():
+					if "focus_style" in active:
+						active.focus_style_lock = false
+						active.focus_exited()
+				input["PartySelectHotKeyContainer"].disable_input()
+				input["PartySelectHotKeyContainer"].visible = false
 		"Use":
 			if state == "skills":
 				if not get_focus_owner():
 					main_viewport.menu_sound_player.play_sound("Can't")
 					return
+					
 				var skill: Skill = get_focus_owner().skill
-				if (not "side" in skill) or skill.side == "opposite" and not in_battle:
+				if get_focus_owner().disabled:
 					return
 				if skill.cost_type == "mp":
 					if skill.cost > creature.get(skill.cost_type):
@@ -401,6 +420,15 @@ func select_active_member() -> void:
 	input["PartySelectHotKeyContainer"].enable_input()
 	input["PartySelectHotKeyContainer"].visible = true
 	state = "select_active_member"
+
+func select_self_only() -> void:
+	input["PartyHotKeyContainer"].disable_input()
+	input["PartyHotKeyContainer"].visible = false
+	get_focus_owner().release_focus()
+	input["ActivePartyContainer"].get_child(creature.get_index()).focus_entered()
+	input["PartySelectHotKeyContainer"].enable_input()
+	input["PartySelectHotKeyContainer"].visible = true
+	state = "select_self_only"
 
 func select_all_active() -> void:
 	select_active_member()
