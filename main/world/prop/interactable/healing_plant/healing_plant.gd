@@ -11,7 +11,6 @@ func interacted() -> void:
 		node.status = "ok"
 		node.panel.update_content()
 	for node in get_viewport().party.get_node("Inactive").get_children():
-		print(node.name)
 		node.status = "ok"
 		node.heal_points()
 		if node.panel:

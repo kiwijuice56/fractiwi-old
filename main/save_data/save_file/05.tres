@@ -1,0 +1,147 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://main/save_data/save_file.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+data = {
+"FileSaver": {
+"time": 1811
+},
+"Items": {
+"consumables": {
+"Fire Stone": 1
+},
+"current_effect": "Duck",
+"effect_skills": {
+"Duck": {
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Bubble" ]
+},
+"Flower": {
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Heal" ]
+},
+"Normal": {
+"Skill Levels": [  ],
+"Unlearned": [  ]
+}
+},
+"effects": [ "Normal", "Duck", "Flower" ]
+},
+"Party": {
+"active": {
+"00Yun": {
+"skills": {
+"Active": [ "Cry", "Focus", "Neo Beam", "Shock", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Bubble" ]
+},
+"stats": {
+"age": 7,
+"agil": 3,
+"expe": 143,
+"hp": 96,
+"level": 10,
+"luck": 4,
+"magi": 5,
+"mp": 55,
+"stre": 4,
+"vita": 6
+}
+},
+"01Gabriel": {
+"skills": {
+"Active": [ "Focus", "Hellfire" ],
+"Passive": [ "Null Light" ],
+"Skill Levels": [  ],
+"Unlearned": [ "Cleave" ]
+},
+"stats": {
+"age": 3,
+"agil": 5,
+"expe": 67,
+"hp": 90,
+"level": 10,
+"luck": 3,
+"magi": 8,
+"mp": 64,
+"stre": 3,
+"vita": 5
+}
+},
+"02Normalem": {
+"skills": {
+"Active": [ "Bubble", "Cleave" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 2,
+"agil": 5,
+"expe": 233,
+"hp": 78,
+"level": 9,
+"luck": 3,
+"magi": 6,
+"mp": 54,
+"stre": 3,
+"vita": 4
+}
+},
+"03Looker": {
+"skills": {
+"Active": [ "Glare", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 5,
+"agil": 3,
+"expe": 260,
+"hp": 72,
+"level": 8,
+"luck": 1,
+"magi": 3,
+"mp": 41,
+"stre": 1,
+"vita": 4
+}
+}
+},
+"inactive": {
+}
+},
+"World": {
+"location": "origin",
+"memory": {
+"balcony": {
+},
+"balcony_fake": {
+"PillBottle": true
+},
+"clumsy_cities": {
+"Duck": true
+},
+"eye_hall": {
+"PillBottle": true,
+"PillBottle2": true,
+"PillBottle3": true,
+"PillBottle5": true,
+"Stone": true
+},
+"neon": {
+},
+"nexus": {
+},
+"origin": {
+},
+"origin_fake": {
+}
+},
+"terminal": "Bed"
+}
+}

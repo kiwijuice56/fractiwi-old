@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main/world/prop/interactable/bed/bed.gd" type="Script" id=1]
 [ext_resource path="res://main/world/prop/interactable/bed/bed.png" type="Texture" id=2]
@@ -8,6 +8,9 @@ extents = Vector2( 20, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 19 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "bed_sequence"
 
 [node name="Bed" type="Area2D"]
 collision_layer = 8
@@ -28,3 +31,11 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bed_sequence = SubResource( 3 )
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( -24, 0 )

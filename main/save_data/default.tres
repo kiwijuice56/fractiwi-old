@@ -47,9 +47,9 @@ data = {
 }
 },
 "World": {
-"location": "origin",
+"location": "origin_fake",
 "memory": {
 },
-"terminal": "Terminal"
+"terminal": "Start"
 }
 }

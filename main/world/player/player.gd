@@ -67,10 +67,14 @@ func update_sprite() -> void:
 	$Sprite.texture = effect_textures[effect]
 
 func tween_sprite(new_position: Vector2, duration: float) -> void:
-	$Tween.interpolate_property($Sprite, "global_position", null, new_position, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.interpolate_property($Camera2D, "global_position", null, new_position, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.start()
-	yield($Tween, "tween_completed")
+	if duration > 0:
+		$Tween.interpolate_property($Sprite, "global_position", null, new_position, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.interpolate_property($Camera2D, "global_position", null, new_position, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.start()
+		yield($Tween, "tween_completed")
+	else:
+		$Sprite.global_position = new_position
+		$Camera2D.global_position = new_position
 
 func disable_collision() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)

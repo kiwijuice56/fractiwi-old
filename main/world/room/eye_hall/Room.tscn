@@ -20,7 +20,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
-shader_param/dir = null
+shader_param/dir = Vector2( 0.03, 0.03 )
 shader_param/image = ExtResource( 4 )
 
 [node name="Room" instance=ExtResource( 1 )]

@@ -27,7 +27,7 @@ data = {
 "Unlearned": [  ]
 }
 },
-"effects": [ "Normal", "Duck" ]
+"effects": [ "Normal", "Duck", "Flower" ]
 },
 "Party": {
 "active": {
