@@ -7,9 +7,6 @@ func _ready() -> void:
 	room = get_node(room)
 
 func interacted() -> void:
-	player.can_move = false
-	get_viewport().game.can_open = false
-	get_viewport().interact.disable(true)
 	yield(enter_bed(true), "completed")
 	heal_party()
 	enter_save_screen()
@@ -17,14 +14,28 @@ func interacted() -> void:
 func finish_interaction() -> void:
 	player.visible = true
 	$Sprite.frame = 1
-	state = "Enter bed"
+	if player.global_position.x > global_position.x:
+		player.face_direction("right")
+	else:
+		player.face_direction("left")
 	yield(player.tween_sprite(player.global_position, 0.3), "completed")
+	state = "Enter bed"
 	get_viewport().interact.disable(true)
 	player.can_move = true
+	player.set_physics_process(true)
 	body_entered(player)
 	get_viewport().game.can_open = true
 
 func enter_bed(anim: bool) -> void:
+	player.set_physics_process(false)
+	player.can_move = false
+	if player.global_position.x > global_position.x:
+		player.face_direction("left")
+	else:
+		player.face_direction("right")
+	state = "saving"
+	get_viewport().game.can_open = false
+	get_viewport().interact.disable(true)
 	if anim:
 		yield(player.tween_sprite(global_position, 0.3), "completed")
 	else:
@@ -57,3 +68,11 @@ func heal_party() -> void:
 		node.heal_points()
 		if node.panel:
 			node.panel.update_content()
+
+func body_entered(given_player: KinematicBody2D) -> void:
+	if state != "Enter bed":
+		return
+	player = given_player
+	player.main_viewport.interact.current_interactable = self
+	player.main_viewport.interact.state = state
+	player.main_viewport.interact.enable(true)

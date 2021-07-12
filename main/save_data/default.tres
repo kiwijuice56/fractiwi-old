@@ -50,6 +50,6 @@ data = {
 "location": "origin_fake",
 "memory": {
 },
-"terminal": "Start"
+"terminal": "Bed"
 }
 }

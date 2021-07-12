@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 export var speed: int = 3
 
@@ -85,17 +86,17 @@ func enable_collision() -> void:
 func face_direction(face_direction: String) -> void:
 	match face_direction:
 		"up":
-			scale.x = 1
-			$Sprite.frame = 4
+			$Sprite.scale.x = 1
+			$Sprite.frame = 1
 		"down":
-			scale.x = 1
+			$Sprite.scale.x = 1
 			$Sprite.frame = 7
 		"left":
-			scale.x = -1
-			$Sprite.frame = 1
+			$Sprite.scale.x = -1
+			$Sprite.frame = 4
 		"right":
-			scale.x = 1
-			$Sprite.frame = 1
+			$Sprite.scale.x = 1
+			$Sprite.frame = 4
 
 func teleport(destination: Node2D) -> void:
 	set_physics_process(false)

@@ -57,7 +57,6 @@ func add_room(room_name: String, destination_type: String, destination_name: Str
 		memory[current_room] = {}
 	match destination_type:
 		"terminal":
-			get_viewport().interact.disable(false)
 			var terminal = $Room.terminals.get_node(destination_name)
 			$Player.global_position = terminal.get_node("Spawn").global_position
 			terminal.player = $Player

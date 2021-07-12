@@ -3,6 +3,7 @@ class_name PartySkillContainer
 # Contains tabs with ButtonContainers that show skills for each creature
 
 export var skill_button_container: PackedScene
+var mem_tab := 0
 
 func _input(event: InputEvent) -> void:
 	if not get("tabs_visible"):
@@ -24,7 +25,6 @@ func _input(event: InputEvent) -> void:
 	setting_disable(get_child(tab))
 	get_child(tab).grab_focus_at(0)
 	set("current_tab", tab)
-	
 
 func setting_disable(container: SkillButtonContainer) -> void:
 	if controller.in_battle:
@@ -33,6 +33,7 @@ func setting_disable(container: SkillButtonContainer) -> void:
 		container.disable_overworld()
 
 func add_items() -> void:
+	mem_tab = get("current_tab")
 	for container in get_children():
 		controller.input.erase(container.name)
 		remove_child(container)
@@ -47,3 +48,6 @@ func add_items() -> void:
 		container.disable_input()
 	for container in get_children():
 		setting_disable(container)
+	if not get_child_count() <= mem_tab:
+		set("current_tab", mem_tab)
+

@@ -10,7 +10,8 @@ data = {
 },
 "Items": {
 "consumables": {
-"Fire Stone": 1
+"Fire Stone": 3,
+"Hp Pill": 45
 },
 "current_effect": "Duck",
 "effect_skills": {
@@ -93,7 +94,7 @@ data = {
 },
 "03Looker": {
 "skills": {
-"Active": [ "Glare", "Slash" ],
+"Active": [ "Glare", "Slash", "Heal" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]

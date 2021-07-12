@@ -45,10 +45,11 @@ __meta__ = {
 regular_style = SubResource( 2 )
 focused_style = ExtResource( 7 )
 disabled_style = SubResource( 2 )
-disbaled_focus_style = SubResource( 2 )
+disbaled_focus_style = ExtResource( 7 )
 icon = NodePath("HBoxContainer/AffinityIcon")
 name_label = NodePath("HBoxContainer/Name")
 count_label = NodePath("HBoxContainer/Count")
+disabled_modulate = Color( 0.6, 0.6, 0.6, 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 4.0

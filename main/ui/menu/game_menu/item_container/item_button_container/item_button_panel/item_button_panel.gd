@@ -4,6 +4,7 @@ class_name ItemButtonPanel
 export(NodePath) var icon
 export(NodePath) var name_label
 export(NodePath) var count_label
+export var disabled_modulate: Color
 
 var skill
 
@@ -15,6 +16,13 @@ func _ready() -> void:
 
 func update_description() -> void:
 	get_viewport().game.item_description_label.text = skill.get_text()
+
+func set_disabled(val: bool) -> void:
+	.set_disabled(val)
+	if disabled:
+		$HBoxContainer.modulate = disabled_modulate
+	else:
+		$HBoxContainer.modulate = Color(1,1,1)
 
 func set_content(given_skill: Skill, count: int) -> void:
 	skill = given_skill

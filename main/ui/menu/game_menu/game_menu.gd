@@ -197,7 +197,6 @@ func input_pressed(key_name: String) -> void:
 				if not get_focus_owner():
 					main_viewport.menu_sound_player.play_sound("Can't")
 					return
-					
 				var skill: Skill = get_focus_owner().skill
 				if get_focus_owner().disabled:
 					return
@@ -219,12 +218,18 @@ func input_pressed(key_name: String) -> void:
 					show_skills()
 					return
 				emit_signal("battle_action_chosen", ["Skill", skill, targets])
+				if not in_battle:
+					skill.use(creature, targets, true)
+				yield(skill, "use_complete")
+				if not in_battle:
+					enable(true)
+					show_skills()
 			if state == "items":
 				if not get_focus_owner():
 					main_viewport.menu_sound_player.play_sound("Can't")
 					return
 				var skill: Skill = get_focus_owner().skill
-				if skill.side == "opposite" and not in_battle:
+				if get_focus_owner().disabled:
 					return
 				add_child(skill)
 				main_viewport.menu_sound_player.play_sound("Next")
@@ -319,6 +324,8 @@ func show_items() -> void:
 	input["ActionHotkeyContainer"].enable_input()
 	input["ItemContainer"].add_items()
 	input["ItemContainer"].enable_input()
+	if not in_battle:
+		input["ItemContainer"].disable_overworld()
 	if len(main_viewport.items.consumables):
 		input["ItemContainer"].grab_focus_at(0)
 	else:
@@ -339,9 +346,9 @@ func show_skills() -> void:
 	input["PartySkillContainer"].add_items()
 	input["PartySkillContainer"].enable_input()
 	if not in_battle:
-		input[input["PartySkillContainer"].get_child(0).name].enable_input()
-		input["PartySkillContainer"].setting_disable(input["PartySkillContainer"].get_child(0))
-		input[input["PartySkillContainer"].get_child(0).name].grab_focus_at(0)
+		input[creature.creature_name].enable_input()
+		input["PartySkillContainer"].setting_disable(input["PartySkillContainer"].get_node(creature.creature_name))
+		input[creature.creature_name].grab_focus_at(0)
 	else:
 		input["PartySkillContainer"].current_tab = creature.get_index()
 		input[creature.creature_name].enable_input()
