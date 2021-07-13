@@ -28,4 +28,3 @@ is_boss = true
 
 [node name="AI" parent="." index="2"]
 script = ExtResource( 3 )
-player_ai = null

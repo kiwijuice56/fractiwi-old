@@ -1,0 +1,128 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://main/save_data/save_file.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+data = {
+"FileSaver": {
+"time": 1908
+},
+"Items": {
+"consumables": {
+"Fire Stone": 3,
+"Hp Pill": 45
+},
+"current_effect": "Duck",
+"effect_skills": {
+"Duck": {
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Bubble" ]
+},
+"Flower": {
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Heal" ]
+},
+"Normal": {
+"Skill Levels": [  ],
+"Unlearned": [  ]
+}
+},
+"effects": [ "Normal", "Duck", "Flower" ]
+},
+"Party": {
+"active": {
+"00Yun": {
+"skills": {
+"Active": [ "Cry", "Focus", "Neo Beam", "Shock", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [ 1 ],
+"Unlearned": [ "Bubble" ]
+},
+"stats": {
+"age": 7,
+"agil": 3,
+"expe": 143,
+"hp": 96,
+"level": 10,
+"luck": 4,
+"magi": 5,
+"mp": 55,
+"stre": 4,
+"vita": 6
+}
+},
+"01Looker": {
+"skills": {
+"Active": [ "Glare", "Heal", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 5,
+"agil": 3,
+"expe": 260,
+"hp": 72,
+"level": 8,
+"luck": 1,
+"magi": 3,
+"mp": 41,
+"stre": 1,
+"vita": 4
+}
+}
+},
+"inactive": {
+"00Tv": {
+"skills": {
+"Active": [ "Bubble", "Cleave", "Focus", "Hellfire", "Mjolnir" ],
+"Passive": [ "Null Light" ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 0,
+"agil": 4,
+"expe": 0,
+"hp": 162,
+"level": 12,
+"luck": 2,
+"magi": 4,
+"mp": 60,
+"stre": 2,
+"vita": 15
+}
+}
+}
+},
+"World": {
+"location": "origin",
+"memory": {
+"balcony": {
+},
+"balcony_fake": {
+"PillBottle": true
+},
+"clumsy_cities": {
+"Duck": true
+},
+"eye_hall": {
+"PillBottle": true,
+"PillBottle2": true,
+"PillBottle3": true,
+"PillBottle5": true,
+"Stone": true
+},
+"neon": {
+},
+"nexus": {
+},
+"origin": {
+},
+"origin_fake": {
+}
+},
+"terminal": "Bed"
+}
+}

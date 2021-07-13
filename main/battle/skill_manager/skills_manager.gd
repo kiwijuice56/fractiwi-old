@@ -18,8 +18,14 @@ func sort_skills() -> void:
 
 func get_skill_names(type: String) -> Array:
 	var names := []
-	for skill in get_node(type).get_children():
-		names.append(skill.name)
+	if type == "All":
+		for skill in get_node("Active").get_children():
+			names.append(skill.name)
+		for skill in get_node("Passive").get_children():
+			names.append(skill.name)
+	else:
+		for skill in get_node(type).get_children():
+			names.append(skill.name)
 	return names
 
 func delete_all_skills() -> void:

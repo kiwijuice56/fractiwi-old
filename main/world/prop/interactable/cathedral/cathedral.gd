@@ -2,6 +2,7 @@ extends Interactable
 class_name Cathedral
 
 func interacted() -> void:
+	.interacted()
 	get_viewport().transition.transition_in_heavy()
 	get_viewport().game.disable(false)
 	get_viewport().world_node.player.can_move = false
@@ -14,4 +15,4 @@ func interacted() -> void:
 func finish_interaction() -> void:
 	get_viewport().world_node.unpause()
 	get_viewport().world_node.player.can_move = true
-
+	get_viewport().world_node.player.set_physics_process(true)

@@ -11,7 +11,7 @@ func input_pressed(key_name: String) -> void:
 func finish_interaction() -> void:
 	visible = false
 	if current_interactable:
-		yield(main_viewport.transition, "out_finished")
+		print(current_interactable.name)
 		current_interactable.finish_interaction()
 
 func enable(show: bool) -> void:

@@ -11,6 +11,11 @@ export var mp_color2: Color
 export var hp_color1: Color
 export var hp_color2: Color
 
+export var selected_style: StyleBox
+export var selected_focus_style: StyleBox
+
+var selected := false setget set_selected
+
 var skill
 
 func _ready() -> void:
@@ -23,6 +28,16 @@ func _ready() -> void:
 func update_description() -> void:
 	get_viewport().game.skill_description_label.text = skill.get_text()
 
+func focus_entered() -> void:
+	.focus_entered()
+	if selected:
+		set("custom_styles/panel", selected_focus_style)
+
+func focus_exited() -> void:
+	.focus_exited()
+	if selected:
+		set("custom_styles/panel", selected_style)
+
 func set_disabled(val: bool) -> void:
 	.set_disabled(val)
 	if disabled:
@@ -30,7 +45,15 @@ func set_disabled(val: bool) -> void:
 	else:
 		$HBoxContainer.modulate = Color(1,1,1)
 
+func set_selected(val: bool) -> void:
+	selected = val
+	if selected:
+		set("custom_styles/panel", selected_style)
+	else:
+		set("custom_styles/panel", regular_style)
+
 func set_content(given_skill: Skill) -> void:
+	name = given_skill.name
 	skill = given_skill
 	name_label.text = skill.name
 	if "cost_type" in skill:

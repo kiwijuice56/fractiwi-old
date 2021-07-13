@@ -40,6 +40,7 @@ var targeted_skill_data: Array
 var panel: ButtonPanel
 
 func _ready() -> void:
+	offset = Vector2()
 	set_max_points()
 	set_expe_to_level()
 	check_hp()

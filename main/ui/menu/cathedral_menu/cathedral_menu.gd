@@ -19,22 +19,24 @@ func input_pressed(key_name: String) -> void:
 			main_viewport.fusion.enable(true)
 			main_viewport.fusion.back = self
 			main_viewport.transition.transition_out()
+			disable(false)
 		"Banish Creature":
 			main_viewport.transition.transition_in()
 			yield(main_viewport.transition, "in_finished")
 			main_viewport.fusion.set_up("banish")
 			main_viewport.fusion.enable(true)
-			#main_viewport.save_file.set_up("Load")
 			main_viewport.fusion.back = self
 			main_viewport.transition.transition_out()
+			disable(false)
 		"Leave":
 			main_viewport.transition.transition_in_heavy()
 			yield(main_viewport.transition, "in_finished")
-			main_viewport.interact.finish_interaction()
-			main_viewport.game.enable(true)
 			main_viewport.world_node.play_room_music()
 			main_viewport.transition.transition_out_heavy()
-	disable(false)
+			disable(false)
+			yield(main_viewport.transition, "out_finished")
+			main_viewport.game.enable(true)
+			main_viewport.interact.finish_interaction()
 
 func enable(show: bool) -> void:
 	.enable(show)

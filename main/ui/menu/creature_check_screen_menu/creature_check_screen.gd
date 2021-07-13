@@ -35,11 +35,6 @@ func _ready() -> void:
 	unlearned_container = get_node(unlearned_container)
 	main_viewport.connect("battle_end", self, "battle_ended")
 
-func input_pressed(key: String) -> void:
-	if disabled: return
-	if state == "default" and key == "Check Skills":
-		check_skills()
-
 func _input(event: InputEvent) -> void:
 	if state == "confirm":
 		if event.is_action_pressed("ui_accept", false):
@@ -65,9 +60,7 @@ func _input(event: InputEvent) -> void:
 			yield(main_viewport.transition, "in_finished")
 			emit_signal("fusion_confirmed", false)
 		return
-	
 	var old_index = index
-	
 	if event.is_action_pressed("ui_left", false) and (state == "default" or state == "fusion"):
 		index -= 1
 	if event.is_action_pressed("ui_right", false) and (state == "default" or state == "fusion"):
@@ -82,6 +75,14 @@ func _input(event: InputEvent) -> void:
 	return_panel(party[old_index])
 	show_creature(party[index])
 
+func input_pressed(key: String) -> void:
+	if disabled: return
+	if state == "fusion" and key == "Change Skills":
+		state = "choose_skills"
+		set_process_input(false)
+		yield(change_skills(), "completed")
+		set_process_input(true)
+
 func battle_ended(_did_run: bool) -> void:
 	yield(main_viewport.transition, "in_finished")
 	disable(false)
@@ -89,21 +90,61 @@ func battle_ended(_did_run: bool) -> void:
 	state = "default"
 	move_enabled = true
 
+func change_skills() -> void:
+	input["HotKeyDescriptionContainer"].hotkeys = {"Select Skill": "up_down", "Add Skill": "ui_accept", "Remove Skill": "ui_cancel", "Finish Change": "ui_accept2"}
+	input["HotKeyDescriptionContainer"].add_items()
+	input["SkillButtonContainer"].visible = false
+	input["FullSkillButtonContainer"].visible = true
+	input["FullSkillButtonContainer"].creatures = party
+	input["FullSkillButtonContainer"].grab_focus_at(0)
+	input["FullSkillButtonContainer"].get_parent().scroll_vertical = 0
+	var skill_count = 0
+	for creature in party:
+		skill_count = min(6, skill_count + len(creature.get_node("Skills").get_skill_names("All")))
+	var skill_stack = []
+	var success := true
+	while len(skill_stack) < skill_count:
+		var focus_idx = 0 if not get_focus_owner() else get_focus_owner().get_index()
+		var focus_scroll = input["FullSkillButtonContainer"].get_parent().scroll_vertical
+		input["FullSkillButtonContainer"].add_items()
+		input["FullSkillButtonContainer"].set_selected(skill_stack)
+		input["FullSkillButtonContainer"].grab_focus_at(focus_idx)
+		input["FullSkillButtonContainer"].get_parent().scroll_vertical = focus_scroll
+		var new_skill = yield(input["FullSkillButtonContainer"].choose_skill(), "completed")
+		if typeof(new_skill) == TYPE_STRING and new_skill == "Done":
+			break
+		elif typeof(new_skill) == TYPE_STRING and new_skill == "Cancel":
+			if len(skill_stack):
+				skill_stack.pop_back()
+			else:
+				success = false
+				break
+		else:
+			skill_stack.append(new_skill)
+	if success:
+		var skill_dict := {"Active": [], "Passive": []}
+		for skill in skill_stack:
+			if skill is ActiveSkill:
+				skill_dict["Active"].append(skill.name)
+			else:
+				skill_dict["Passive"].append(skill.name)
+			party[0].get_node("Skills").set_skills(skill_dict)
+	if get_focus_owner():
+		get_focus_owner().release_focus()
+	input["FullSkillButtonContainer"].creatures = []
+	input["FullSkillButtonContainer"].add_items()
+	state = "fusion"
+	input["SkillButtonContainer"].visible = true
+	input["FullSkillButtonContainer"].visible = false
+	return_panel(party[index])
+	show_creature(party[index])
+	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right", "Fuse Creature": "ui_accept", "Change Skills": "ui_accept2"}
+	input["HotKeyDescriptionContainer"].add_items()
+
 func close_check_skills() -> void:
 	state = "default"
 	get_focus_owner().release_focus()
 	input["HotKeyDescriptionContainer"].enable_input()
-
-func check_skills() -> void:
-	if input["SkillButtonContainer"].get_child_count() == 0:
-		main_viewport.menu_sound_player.play_sound("Can't")
-		return
-	main_viewport.menu_sound_player.play_sound("Next")
-	input["SkillButtonContainer"].grab_focus_at(0)
-	input["HotKeyDescriptionContainer"].disable_input()
-	input["HotKeyDescriptionContainer"].hotkeys = {"Select Skill": "up_down"}
-	input["HotKeyDescriptionContainer"].add_items()
-	state = "check_skills"
 
 func open() -> void:
 	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right"}
@@ -113,7 +154,7 @@ func open() -> void:
 	move_enabled = true
 
 func open_fusion() -> void:
-	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right", "Fuse Creature": "ui_accept"}
+	input["HotKeyDescriptionContainer"].hotkeys = {"Select Creature": "left_right", "Fuse Creature": "ui_accept", "Change Skills": "ui_accept2"}
 	input["HotKeyDescriptionContainer"].add_items()
 	input["HotKeyDescriptionContainer"].enable_input()
 	state = "fusion"

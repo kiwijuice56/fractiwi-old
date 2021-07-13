@@ -169,6 +169,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/world/prop/dynamic_scenery/follow_eye/follow_eye.gd"
 }, {
+"base": "ButtonContainer",
+"class": "FullSkillButtonContainer",
+"language": "GDScript",
+"path": "res://main/ui/menu/creature_check_screen_menu/full_skill_button_container/full_skill_button_container.gd"
+}, {
 "base": "Node",
 "class": "FusionCataloger",
 "language": "GDScript",
@@ -527,6 +532,7 @@ _global_script_class_icons={
 "Filter": "",
 "FocusSkill": "",
 "FollowEye": "",
+"FullSkillButtonContainer": "",
 "FusionCataloger": "",
 "FusionCatalogue": "",
 "FusionCreatureButtonContainer": "",

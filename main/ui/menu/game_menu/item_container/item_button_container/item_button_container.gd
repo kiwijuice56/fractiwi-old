@@ -15,3 +15,4 @@ func add_items() -> void:
 	items = get_viewport().items.consumables.keys()
 	button_count = len(items)
 	.add_items()
+	print(get_children())

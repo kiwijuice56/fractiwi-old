@@ -2,7 +2,7 @@ extends Node
 class_name AI
 # Controls logic for combat action by creatures
 
-export var player_ai: Script
+export var player_ai: Script = load("res://main/battle/ai/player/player_ai.gd")
 var yielded := false
 
 func switch_script() -> void:
