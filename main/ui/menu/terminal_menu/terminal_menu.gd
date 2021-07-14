@@ -24,10 +24,11 @@ func input_pressed(key_name: String) -> void:
 		"Leave":
 			main_viewport.transition.transition_in_heavy()
 			yield(main_viewport.transition, "in_finished")
-			main_viewport.interact.finish_interaction()
-			main_viewport.game.enable(true)
 			main_viewport.world_node.play_room_music()
 			main_viewport.transition.transition_out_heavy()
+			disable(false)
+			yield(main_viewport.transition, "out_finished")
+			main_viewport.interact.finish_interaction()
 	disable(false)
 
 func enable(show: bool) -> void:

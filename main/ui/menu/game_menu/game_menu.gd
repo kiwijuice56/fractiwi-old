@@ -62,6 +62,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
+		
 
 func input_pressed(key_name: String) -> void:
 	if disabled or not open: return
@@ -480,9 +481,9 @@ func update_party() -> void:
 
 func enable(show: bool) -> void:
 	.enable(show)
-	can_open = true
+	self.can_open = true
 
 func disable(show: bool) -> void:
 	.disable(show)
 	input["MainButtonContainer"].disable_input()
-	can_open = false
+	self.can_open = false

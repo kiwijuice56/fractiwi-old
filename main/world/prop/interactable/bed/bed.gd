@@ -21,10 +21,12 @@ func finish_interaction() -> void:
 	yield(player.tween_sprite(player.global_position, 0.3), "completed")
 	state = "Enter bed"
 	get_viewport().interact.disable(true)
+	get_viewport().game.enable(false)
+	get_viewport().game.can_open = true
 	player.can_move = true
 	player.set_physics_process(true)
+	player.enable_collision()
 	body_entered(player)
-	get_viewport().game.can_open = true
 
 func enter_bed(anim: bool) -> void:
 	player.set_physics_process(false)
@@ -34,12 +36,12 @@ func enter_bed(anim: bool) -> void:
 	else:
 		player.face_direction("right")
 	state = "saving"
-	get_viewport().game.can_open = false
-	get_viewport().interact.disable(true)
 	if anim:
 		yield(player.tween_sprite(global_position, 0.3), "completed")
 	else:
 		player.tween_sprite(global_position, 0)
+	get_viewport().interact.disable(true)
+	get_viewport().game.disable(false)
 	$Sprite.frame = 0
 	player.visible = false
 	if anim:

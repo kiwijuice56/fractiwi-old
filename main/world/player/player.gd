@@ -84,6 +84,7 @@ func enable_collision() -> void:
 	$CollisionShape2D.set_deferred("disabled", false)
 
 func face_direction(face_direction: String) -> void:
+	$AnimationPlayer.current_animation = "[stop]"
 	match face_direction:
 		"up":
 			$Sprite.scale.x = 1

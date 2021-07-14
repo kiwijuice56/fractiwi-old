@@ -20,9 +20,14 @@ func input_pressed(key_name: String) -> void:
 			main_viewport.fusion.back = self
 			main_viewport.transition.transition_out()
 			disable(false)
-		"Banish Creature":
+		"Abandon":
 			main_viewport.transition.transition_in()
 			yield(main_viewport.transition, "in_finished")
+			main_viewport.fusion.ingredient1 = null
+			main_viewport.fusion.ingredient2 = null
+			main_viewport.fusion.update_ingredients()
+			main_viewport.fusion.update_results()
+			main_viewport.fusion.results = []
 			main_viewport.fusion.set_up("banish")
 			main_viewport.fusion.enable(true)
 			main_viewport.fusion.back = self

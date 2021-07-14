@@ -13,6 +13,7 @@ var party: Array
 var results: Array
 
 signal creature_chosen(creature)
+signal banish_confirm(confirm)
 
 func _ready() -> void:
 	level_label = get_node(level_label)
@@ -23,27 +24,39 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if disabled: return
 	if event.is_action_pressed("ui_cancel", false):
-		if ingredient1:
-			ingredient1 = null
+		if state == "banish_confirm":
+			emit_signal("banish_confirm", false)
+			main_viewport.menu_sound_player.play_sound("Back")
+		else:
+			if ingredient1:
+				ingredient1 = null
+				emit_signal("creature_chosen", null)
+				return
 			emit_signal("creature_chosen", null)
-			return
-		emit_signal("creature_chosen", null)
-		main_viewport.transition.transition_in()
-		._input(event)
-		disable(true)
-		yield(main_viewport.transition, "in_finished")
-		disable(false)
-		back.enable(true)
-		main_viewport.transition.transition_out()
-	if event.is_action_pressed("ui_accept", false) and state == "selecting":
-		var suspected_ingredient = input["IngredientPanelContainer"].creatures[get_focus_owner().get_index()]
-		if ingredient1 == suspected_ingredient or ((ingredient1 and suspected_ingredient) and not results[get_focus_owner().get_index()]):
-			main_viewport.menu_sound_player.play_sound("Can't")
-			return
-		get_focus_owner().selected = true
-		get_focus_owner().focus_entered()
-		main_viewport.menu_sound_player.play_sound("Next")
-		emit_signal("creature_chosen", suspected_ingredient)
+			main_viewport.transition.transition_in()
+			._input(event)
+			disable(true)
+			yield(main_viewport.transition, "in_finished")
+			disable(false)
+			back.enable(true)
+			main_viewport.transition.transition_out()
+	if event.is_action_pressed("ui_accept", false):
+		if state == "selecting":
+			var suspected_ingredient = input["IngredientPanelContainer"].creatures[get_focus_owner().get_index()]
+			if ingredient1 == suspected_ingredient or ((ingredient1 and suspected_ingredient) and not results[get_focus_owner().get_index()]):
+				main_viewport.menu_sound_player.play_sound("Can't")
+				return
+			if ingredient1 and results[get_focus_owner().get_index()].level > main_viewport.party.get_node("Active/Yun").level:
+				ingredient2 = null
+				main_viewport.menu_sound_player.play_sound("Can't")
+				return
+			get_focus_owner().selected = true
+			get_focus_owner().focus_entered()
+			main_viewport.menu_sound_player.play_sound("Next")
+			emit_signal("creature_chosen", suspected_ingredient)
+		elif state == "banish_confirm":
+			emit_signal("banish_confirm", true)
+			main_viewport.menu_sound_player.play_sound("Next")
 
 func update_ingredients() -> void:
 	party = main_viewport.party.get_node("Active").get_children() + main_viewport.party.get_node("Inactive").get_children()
@@ -63,7 +76,7 @@ func update_results() -> void:
 		input["ResultPanelContainer"].add_items()
 
 func set_up(event: String) -> void:
-	level_label.text = "lvl " + str(main_viewport.party.get_node("Active/Yun").level)
+	level_label.text = "max lvl : " + str(main_viewport.party.get_node("Active/Yun").level)
 	match event:
 		"fuse":
 			var saved_index1 := 0
@@ -151,7 +164,19 @@ func set_up(event: String) -> void:
 					enable(true)
 					continue
 		"banish":
-			prompt_label.text = "Select a creature to banish .."
+			while true:
+				update_ingredients()
+				input["IngredientPanelContainer"].grab_focus_at(0)
+				prompt_label.text = "Select a creature to banish .."
+				var banished = yield(select_creature(), "completed")
+				if not banished: return
+				state = "banish_confirm"
+				prompt_label.text = "Are you sure you want to banish %s?" % banished.creature_name
+				get_focus_owner().release_focus()
+				if yield(self, "banish_confirm"):
+					banished.get_parent().remove_child(banished)
+					banished.queue_free()
+					main_viewport.game.update_party()
 
 func select_creature() -> Creature:
 	set_process_input(true)

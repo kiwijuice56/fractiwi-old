@@ -24,6 +24,3 @@ func start() -> void:
 	main_viewport.game.update_party()
 	main_viewport.transition.transition_out_very_heavy()
 	yield(main_viewport.transition, "out_finished")
-	world.player.enable_collision()
-	world.player.can_move = true
-	main_viewport.game.enable(true)
