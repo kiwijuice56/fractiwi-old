@@ -243,7 +243,7 @@ func set_expe_to_level() -> void:
 	expe_to_level = ((25*age) + (25*level))
 
 func set_max_points() -> void:
-	max_hp = (level + vita) * 6
+	max_hp = (level + vita) * 7
 	max_mp = (level*4) + (magi*3)
 
 func heal_points() -> void:

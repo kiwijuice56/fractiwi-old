@@ -83,7 +83,7 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 	var neg = power < 0
 	var base = abs(power) + (user.level) + (5*user.get(stat))
 	if def == "weak":
-		base *= 2
+		base *= 1.75
 	elif def == "resist":
 		base *= 0.5
 	elif def == "absorb":
@@ -96,11 +96,11 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 		base *= 2+(off/100.0)
 	else:
 		base *= off/100.0
-	base *= 2 if is_crit else 1
+	base *= 1.75 if is_crit else 1.0
 	base *= -1 if neg else 1
 	if user.focus and affinity == "phys":
 		user.focus = false
-		base *= 2.5
+		base *= 2.35
 	if stat == "magi" or stat == "stre":
 		var buff_stage = user.attack - target.defense
 		var modifier := 1.0
@@ -109,5 +109,5 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 		else:
 			modifier *= 1+abs(buff_stage*0.23)
 		base *= modifier
-	base *= rand_range(0.9,1.1)
+	base *= rand_range(0.8,1.1)
 	return int(base)

@@ -7,7 +7,7 @@
 
 [node name="Elephante" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
-race = "Plant"
+race = "Beast"
 creature_name = "Elephante"
 level = 7
 stre = 1

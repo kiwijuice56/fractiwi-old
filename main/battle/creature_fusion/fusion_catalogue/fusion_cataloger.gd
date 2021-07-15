@@ -6,17 +6,21 @@ class_name FusionCataloger
 export var creature_path: String = "res://main/battle/creature/"
 var races := ["Human", "Object", "Beast", "Spirit", "Demon", "Angel", "Plant", "Element"]
 
-var max_level := 255
+var max_level := 45
 var creature_matrix: Array
 var race_matrix: Array
 
 func _ready() -> void:
 	pass
 	# WARNING - uncommenting this will overwrite fusion tables permenantly
-#	update_creature_matrix()
+	update_creature_matrix()
 #	update_race_matrix()
-#	get_node("../FusionCatalogue").creature_matrix = creature_matrix
+	get_node("../FusionCatalogue").creature_matrix = creature_matrix
+	print(creature_matrix)
 #	get_node("../FusionCatalogue").race_matrix = race_matrix
+
+func level_sort(a, b) -> bool:
+	return b.level > a.level
 
 func update_creature_matrix() -> void:
 	creature_matrix = []
@@ -26,10 +30,12 @@ func update_creature_matrix() -> void:
 			empty_array.append("")
 		creature_matrix.append(empty_array)
 	var creatures := get_all_creatures()
+	creatures.sort_custom(self, "level_sort")
 	for creature in creatures:
+		print(creature.name)
 		var race_index = races.find(creature.race)
 		for i in range(0, creature.level):
-			if not creature_matrix[race_index][i]:
+			if creature_matrix[race_index][i] == "":
 				creature_matrix[race_index][i] = creature.creature_name
 
 func update_race_matrix() -> void:
@@ -58,6 +64,7 @@ func get_all_creatures() -> Array:
 		var creature_scene_path = creature_path + file_name + ("/%s.tscn" % file_name.capitalize()) 
 		if dir.file_exists(creature_scene_path):
 			var creature = load(creature_scene_path).instance()
-			creatures.append(creature)
+			if not creature.is_boss:
+				creatures.append(creature)
 		file_name = dir.get_next()
 	return creatures

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/skill/active/point/PointSkill.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/wind_blast/WindBlast.tscn" type="PackedScene" id=2]
+
+[node name="Gust" instance=ExtResource( 1 )]
+affinity = "wind"
+effect_packed = ExtResource( 2 )
+cost = 4
+accuracy = 95
+critical = 3
+power = -7
+stat = "magi"

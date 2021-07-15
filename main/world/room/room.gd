@@ -5,6 +5,7 @@ export (NodePath) var terminals
 export (NodePath) var doors
 export var music: Resource
 export var backdrop: Resource
+export var backdrop_dir := Vector2(.1, .1)
 
 var current_terminal: String # set by terminals on entrance
 

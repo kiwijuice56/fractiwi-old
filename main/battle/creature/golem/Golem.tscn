@@ -6,7 +6,6 @@
 [ext_resource path="res://main/battle/skill/active/point/cleave/Cleave.tscn" type="PackedScene" id=4]
 
 [node name="Golem" instance=ExtResource( 1 )]
-position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 race = "Spirit"
 creature_name = "Golem"

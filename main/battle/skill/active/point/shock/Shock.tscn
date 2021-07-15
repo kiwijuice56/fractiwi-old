@@ -8,5 +8,6 @@ affinity = "elec"
 effect_packed = ExtResource( 2 )
 cost = 4
 accuracy = 95
+critical = 3
 power = -7
 stat = "magi"

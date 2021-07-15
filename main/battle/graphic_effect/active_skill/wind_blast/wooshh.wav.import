@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wooshh.wav-3475bb71486e4fdfd85442e5fb25630c.sample"
+
+[deps]
+
+source_file="res://main/battle/graphic_effect/active_skill/wind_blast/wooshh.wav"
+dest_files=[ "res://.import/wooshh.wav-3475bb71486e4fdfd85442e5fb25630c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

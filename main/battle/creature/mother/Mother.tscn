@@ -1,30 +1,39 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/ai/mother_ai.gd" type="Script" id=1]
 [ext_resource path="res://main/battle/skill/active/point/cleave/Cleave.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/battle/ai/mother_ai.gd" type="Script" id=3]
-[ext_resource path="res://main/battle/creature/mother/mother-sprite.png" type="Texture" id=4]
-[ext_resource path="res://main/battle/skill/active/status/other/focus/Focus.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/status/other/focus/Focus.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/creature/motherb/mother-sprite.png" type="Texture" id=5]
+[ext_resource path="res://main/battle/skill/active/point/multislash/Multislash.tscn" type="PackedScene" id=6]
 
-[node name="Mother" instance=ExtResource( 1 )]
-texture = ExtResource( 4 )
+[node name="Mother" instance=ExtResource( 3 )]
+texture = ExtResource( 5 )
 offset = Vector2( 8, 0 )
 creature_name = "Mother"
-level = 25
+level = 15
 stre = 12
 magi = 5
-vita = 45
+vita = 10
 luck = 5
 agil = 5
 def_affinity = {
 "phys": "resist",
-"water": "weak"
+"wind": "weak"
 }
-is_boss = true
+off_affinity = {
+"phys": 130,
+"wind": -130
+}
 
 [node name="Cleave" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
 
-[node name="Focus" parent="Skills/Active" index="1" instance=ExtResource( 5 )]
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 16, 18 ]
+
+[node name="Focus" parent="UnlearnedSkills" index="0" instance=ExtResource( 4 )]
+
+[node name="Multislash" parent="UnlearnedSkills" index="1" instance=ExtResource( 6 )]
 
 [node name="AI" parent="." index="2"]
-script = ExtResource( 3 )
+script = ExtResource( 1 )

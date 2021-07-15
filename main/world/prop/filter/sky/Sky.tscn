@@ -24,11 +24,12 @@ tracks/0/keys = {
 layer = -1
 
 [node name="TextureRect" parent="." index="0"]
-margin_left = -6.85777
-margin_right = 1463.14
+margin_left = -323.025
+margin_right = 1146.98
 margin_bottom = 552.0
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Sky"
 playback_speed = 0.15
 anims/Sky = SubResource( 1 )

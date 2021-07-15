@@ -20,6 +20,8 @@ export (NodePath) var items
 export (NodePath) var creature_check
 export (NodePath) var menu_sound_player
 
+var in_battle := false
+
 signal battle_start
 signal battle_end(did_run)
 
@@ -51,6 +53,8 @@ func _ready() -> void:
 	music_player.play_audio(main.music)
 
 func battle_started(creatures: Array) -> void:
+	if in_battle: return
+	in_battle = true
 	interact.disable(false)
 	transition.transition_in()
 	emit_signal("battle_start", creatures)
@@ -58,6 +62,7 @@ func battle_started(creatures: Array) -> void:
 	transition.transition_out()
 
 func battle_ended(did_run) -> void:
+	in_battle = false
 	transition.transition_in()
 	emit_signal("battle_end", did_run)
 	yield(transition, "in_finished")

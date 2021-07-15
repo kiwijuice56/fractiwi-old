@@ -3,6 +3,7 @@
 [ext_resource path="res://main/world/prop/static_scenery/loop_area/loop_area.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1000, 500 )
 
 [node name="LoopArea" type="Area2D"]
 collision_layer = 0

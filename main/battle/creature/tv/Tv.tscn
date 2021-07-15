@@ -1,29 +1,33 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
-[ext_resource path="res://main/battle/skill/active/point/mjolnir/Mjolnir.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/battle/creature/tv/tv.png" type="Texture" id=5]
+[ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/skill/active/point/mjolnir/Mjolnir.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/creature/Tvb/tv.png" type="Texture" id=4]
 
 [node name="Tv" instance=ExtResource( 1 )]
 position = Vector2( 0, -8 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 race = "Object"
 creature_name = "Tv"
-level = 12
-stre = 2
+level = 10
+stre = 3
 magi = 4
-vita = 15
-luck = 2
+vita = 8
+luck = 3
 agil = 4
 def_affinity = {
-"elec": "resist"
+"elec": "resist",
+"flesh": "weak"
 }
 off_affinity = {
-"elec": 120
+"elec": 120,
+"flesh": -120
 }
-is_boss = true
 
-[node name="Shock" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+[node name="Shock" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
 
-[node name="Mjolnir" parent="Skills/Active" index="1" instance=ExtResource( 2 )]
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 12 ]
+
+[node name="Mjolnir" parent="UnlearnedSkills" index="0" instance=ExtResource( 3 )]

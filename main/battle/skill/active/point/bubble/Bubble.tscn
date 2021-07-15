@@ -7,6 +7,7 @@
 affinity = "water"
 effect_packed = ExtResource( 2 )
 cost = 4
-accuracy = 90
-power = -4
+accuracy = 95
+critical = 3
+power = -7
 stat = "magi"

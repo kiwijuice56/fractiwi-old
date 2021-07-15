@@ -206,7 +206,8 @@ off_affinities = {
 }
 def_affinities = {
 "fire": "weak",
-"light": "null"
+"light": "resist",
+"wind": "resist"
 }
 
 [node name="Normal" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]

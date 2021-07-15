@@ -4,7 +4,7 @@
 [ext_resource path="res://main/world/prop/static_scenery/blocky/above.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.2658, 9.78605 )
+extents = Vector2( 16, 11 )
 
 [node name="Blocky" type="Node2D"]
 

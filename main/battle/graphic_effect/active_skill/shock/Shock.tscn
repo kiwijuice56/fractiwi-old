@@ -70,8 +70,8 @@ anims/lightning = SubResource( 1 )
 [node name="Sprite" parent="." index="1"]
 visible = true
 texture = ExtResource( 3 )
-offset = Vector2( 0, -15 )
 hframes = 10
+frame = 2
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 2 )
