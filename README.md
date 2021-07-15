@@ -67,3 +67,7 @@ func do_turn(same: Array, opposite: Array, controller: Creature) -> Array:
 	return ["Skill",  controller.get_node("Skills/Active/Cleave"), [opposite[0]]
 ```
 3. Attach this script to any creature's ```AI``` node
+
+# License
+
+Distributed under the GNU General Public License v2.0. See LICENSE.md for more information.
