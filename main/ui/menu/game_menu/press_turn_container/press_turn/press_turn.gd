@@ -19,3 +19,4 @@ func set_half(is_half: bool) -> void:
 	elif not is_half:
 		$HalfPlayer.current_animation = ""
 		$HalfTurn.modulate = Color(0,0,0,0)
+		$HalfTurn.rect_scale = Vector2(1,0)

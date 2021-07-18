@@ -15,7 +15,7 @@
 [ext_resource path="res://main/world/prop/interactable/bed/Bed.tscn" type="PackedScene" id=13]
 [ext_resource path="res://main/battle/creature/golem/Golem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/world/enemy/nonmoving_enemy/tv/Tv.tscn" type="PackedScene" id=15]
-[ext_resource path="res://main/battle/creature/Tvb/Tvb.tscn" type="PackedScene" id=16]
+[ext_resource path="res://main/battle/creature/tvb/Tvb.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )

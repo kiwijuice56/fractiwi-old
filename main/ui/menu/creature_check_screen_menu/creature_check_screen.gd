@@ -22,6 +22,7 @@ signal ready_for_next
 signal level_finished
 signal confirm
 signal fusion_confirmed
+signal skill_selected(skill)
 signal skills_learned
 
 func _ready() -> void:
@@ -42,7 +43,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("ui_cancel", false):
 			emit_signal("confirm", false)
 		return
-	if disabled: return
+	if disabled or state == "replace_skill": return
 	if not move_enabled: return
 	if event.is_action_pressed("ui_accept", false):
 		if state == "default": return
@@ -82,6 +83,12 @@ func input_pressed(key: String) -> void:
 		set_process_input(false)
 		yield(change_skills(), "completed")
 		set_process_input(true)
+	if state == "replace_skill" and key == "Forget Selected":
+		print("!!!")
+		emit_signal("skill_selected", get_focus_owner().skill)
+	if state == "replace_skill" and key == "Don't Learn":
+		print("!!!")
+		emit_signal("skill_selected", null)
 
 func battle_ended(_did_run: bool) -> void:
 	yield(main_viewport.transition, "in_finished")
@@ -256,20 +263,60 @@ func level_up(creature: Creature, levels_changed: int, skills_learned: int) -> v
 	stat_bar_container.grab_focus_at(0)
 
 func learn_skill() -> void:
-	if input["SkillButtonContainer"].get_child_count() > 6:
-		stat_label.text = party[index].creature_name + " is trying to learn a skill .. Select one to forget"
+	var learned_skill_name = unlearned_container.get_child(0).get_child(1).name_label.text
+	var will_confirm := false
+	var skill: Skill = null # skill to replace, if necessary
+	var learned_skill: Skill = party[index].get_node("UnlearnedSkills").get_child(0)
+	set_process_input(false)
+	if party[index].get_node("Skills/Active").has_node(learned_skill.name) or party[index].get_node("Skills/Passive").has_node(learned_skill.name):
+		party[index].forget_skill()
+		stat_label.text = party[index].creature_name + " learned " + learned_skill_name + ", but it already knew this skill .."
+		input["HotKeyDescriptionContainer"].hotkeys = {"Accept": "ui_accept"}
+	elif input["SkillButtonContainer"].get_child_count() >= 6:
+		will_confirm = true
+		state = "replace_skill"
+		stat_label.text = party[index].creature_name + " is learning a skill, but its slots are full .. Forget one"
 		input["SkillButtonContainer"].grab_focus_at(0)
+		input["HotKeyDescriptionContainer"].hotkeys = {"Forget Selected": "ui_accept", "Don't Learn": "ui_accept2"}
+		input["HotKeyDescriptionContainer"].add_items()
+		input["HotKeyDescriptionContainer"].enable_input()
+		enable(true)
+		skill = yield(self, "skill_selected")
+		main_viewport.menu_sound_player.play_sound("Next")
+		input["HotKeyDescriptionContainer"].disable_input()
+		disable(true)
+		if skill:
+			party[index].learn_skill(skill)
+			stat_label.text = party[index].creature_name + " will forget " + skill.name + " for " + learned_skill_name + ", are you sure?"
+		else:
+			party[index].forget_skill()
+			stat_label.text = party[index].creature_name + " won't learn " + learned_skill_name + ", are you sure?"
+		input["HotKeyDescriptionContainer"].hotkeys = {"Accept": "ui_accept", "Cancel": "ui_cancel"}
 	else:
-		var learned_skill_name = unlearned_container.get_child(0).get_child(1).name_label.text
-		party[index].learn_skill("")
-		unlearned_container.initialize(party[index])
-		input["SkillButtonContainer"].add_items()
+		party[index].learn_skill(null)
 		stat_label.text = party[index].creature_name + " learned " + learned_skill_name + "!"
 		input["HotKeyDescriptionContainer"].hotkeys = {"Accept": "ui_accept"}
-		input["HotKeyDescriptionContainer"].add_items()
-		state = "confirm"
-		yield(self, "confirm")
-		main_viewport.menu_sound_player.play_sound("Next")
+	party[index].get_node("Skills").sort_skills()
+	unlearned_container.initialize(party[index])
+	input["SkillButtonContainer"].add_items()
+	input["HotKeyDescriptionContainer"].add_items()
+	state = "confirm"
+	set_process_input(true)
+	var confirmed = yield(self, "confirm")
+	if will_confirm and not confirmed:
+		if learned_skill.get_parent():
+			learned_skill.get_parent().remove_child(learned_skill)
+		if skill:
+			party[index].get_node("Skills").add_skill(skill)
+		party[index].add_unlearned_skill(learned_skill)
+		unlearned_container.initialize(party[index])
+		party[index].get_node("Skills").sort_skills()
+		input["SkillButtonContainer"].add_items()
+		learn_skill()
+		main_viewport.menu_sound_player.play_sound("Back")
+		return
+	if skill: skill.queue_free()
+	main_viewport.menu_sound_player.play_sound("Next")
 	skills_left -= 1
 	if skills_left > 0:
 		learn_skill()

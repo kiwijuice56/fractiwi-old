@@ -7,12 +7,14 @@ export var e_color: Color
 
 func set_side(is_player: bool) -> void:
 	if is_player:
-		$HBoxContainer.modulate = p_color
+		$Label.text = "Player Turn"
+		$PanelContainer/HBoxContainer.modulate = p_color
 	else:
-		$HBoxContainer.modulate = e_color
+		$Label.text = "Enemy Turn"
+		$PanelContainer/HBoxContainer.modulate = e_color
 
 func set_turns(full: int, half: int) -> void:
-	for child in $HBoxContainer.get_children():
+	for child in $PanelContainer/HBoxContainer.get_children():
 		var i: int = child.get_index()
 		if i == 8:
 			return

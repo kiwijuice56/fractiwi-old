@@ -258,7 +258,7 @@ func battle_started(_creatures: Array) -> void:
 	yield(get_viewport().transition, "in_finished")
 	in_battle = true
 	input["PartySkillContainer"].tabs_visible = false
-	press_turn_container.visible = true
+	press_turn_container.modulate = Color(1,1,1,1)
 	input["MainButtonContainer"].button_names = ["Skill", "Item", "Party", "Pass", "Run", "Recruit"]
 	input["MainButtonContainer"].add_items()
 	disable(true)
@@ -270,7 +270,7 @@ func battle_ended(_did_run: bool) -> void:
 	in_battle = false
 	creature = null
 	input["PartySkillContainer"].tabs_visible = true
-	press_turn_container.visible = false
+	press_turn_container.modulate = Color(1,1,1,0)
 	input["MainButtonContainer"].button_names = ["Effect", "Skill", "Item", "Party", "Setting"]
 	input["MainButtonContainer"].add_items()
 	disable(false)
@@ -287,14 +287,20 @@ func battle_input(current_creature: Creature):
 	open_menu(false)
 
 func disable_nonplayer_action() -> void:
-	if (not in_battle) or creature.name == "Yun":
-		for button in input["MainButtonContainer"].get_children():
-			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
-				button.disabled = false
-	else:
-		for button in input["MainButtonContainer"].get_children():
-			if button.text == "Party" or button.text == "Recruit" or button.text == "Item":
-				button.disabled = true
+	for button in input["MainButtonContainer"].get_children():
+		# always enabled
+		if button.text == "Skill" or button.text == "Pass" or button.text == "Run":
+			button.disabled = false
+			continue
+		# player has all actions
+		elif (not in_battle) or creature.name == "Yun":
+			button.disabled = false
+			continue
+		#item know-how
+		if button.text == "Item" and creature.item_use:
+			button.disabled = false
+			continue
+		button.disabled = true
 
 func battle_action_chosen(_ui_info: Array) -> void:
 	text_label.text = ""

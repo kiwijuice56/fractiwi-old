@@ -4,7 +4,7 @@
 [ext_resource path="res://main/ui/menu/game_menu/press_turn_container/press_turn/press_turn.png" type="Texture" id=2]
 [ext_resource path="res://main/ui/menu/game_menu/press_turn_container/press_turn/half_turn.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "hide"
 length = 0.5
 tracks/0/type = "value"
@@ -14,10 +14,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:modulate")
@@ -31,8 +31,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "show"
 length = 0.5
 tracks/0/type = "value"
@@ -59,9 +71,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=1]
-resource_name = "become_half"
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("HalfTurn:modulate")
@@ -87,9 +110,32 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -25.0, 9.0, -4.0, 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HalfTurn:rect_min_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HalfTurn:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=3]
-resource_name = "half"
+[sub_resource type="Animation" id=4]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -118,7 +164,7 @@ tracks/1/keys = {
 }
 
 [node name="PressTurn" type="TextureRect"]
-modulate = Color( 1, 1, 1, 0 )
+visible = false
 margin_right = 28.0
 margin_bottom = 28.0
 rect_pivot_offset = Vector2( 16, 16 )
@@ -131,17 +177,17 @@ __meta__ = {
 
 [node name="VisibilityPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/hide = SubResource( 4 )
-anims/show = SubResource( 5 )
+anims/hide = SubResource( 1 )
+anims/show = SubResource( 2 )
 
 [node name="HalfPlayer" type="AnimationPlayer" parent="."]
-anims/become_half = SubResource( 1 )
-anims/half = SubResource( 3 )
+anims/become_half = SubResource( 3 )
+anims/half = SubResource( 4 )
 
 [node name="HalfTurn" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 21.0
+margin_bottom = 21.0
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

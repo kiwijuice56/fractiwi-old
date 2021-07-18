@@ -1,64 +1,100 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/press_turn_container/press_turn/PressTurn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/ui/menu/game_menu/press_turn_container/press_turn_container.gd" type="Script" id=2]
+[ext_resource path="res://main/ui/menu/game_menu/press_turn_container/background.png" type="Texture" id=3]
+[ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=4]
 
-[node name="PressTurnContainer" type="HBoxContainer"]
-margin_right = 560.0
-margin_bottom = 330.0
-size_flags_horizontal = 3
+[sub_resource type="StyleBoxEmpty" id=1]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 1.0
+content_margin_bottom = 0.0
+
+[node name="PressTurnContainer" type="PanelContainer"]
+margin_right = 190.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 0, 37 )
+size_flags_horizontal = 4
 size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
-p_color = Color( 0.643137, 0.6, 0.780392, 1 )
-e_color = Color( 0.682353, 0.509804, 0.623529, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+p_color = Color( 0.541176, 0.654902, 0.898039, 1 )
+e_color = Color( 0.796078, 0.490196, 0.631373, 1 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 252.0
-margin_bottom = 330.0
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 190.0
+margin_bottom = 37.0
+size_flags_horizontal = 4
+texture = ExtResource( 3 )
 
-[node name="PressTurn1" parent="HBoxContainer" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 1 )
-margin_top = 302.0
-margin_bottom = 330.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 84.0
+margin_right = 105.0
+margin_bottom = 22.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
 
-[node name="PressTurn2" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 32.0
-margin_top = 302.0
-margin_right = 60.0
-margin_bottom = 330.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_top = 1.0
+margin_right = 21.0
+margin_bottom = 22.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+custom_constants/separation = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="PressTurn3" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 64.0
-margin_top = 302.0
-margin_right = 92.0
-margin_bottom = 330.0
+[node name="PressTurn1" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+visible = true
+margin_right = 21.0
+margin_bottom = 21.0
 
-[node name="PressTurn4" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 96.0
-margin_top = 302.0
-margin_right = 124.0
-margin_bottom = 330.0
+[node name="PressTurn2" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 21.0
+margin_bottom = 21.0
 
-[node name="PressTurn5" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 128.0
-margin_top = 302.0
-margin_right = 156.0
-margin_bottom = 330.0
+[node name="PressTurn3" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 21.0
+margin_bottom = 21.0
 
-[node name="PressTurn6" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 160.0
-margin_top = 302.0
-margin_right = 188.0
-margin_bottom = 330.0
+[node name="PressTurn4" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 21.0
+margin_bottom = 21.0
 
-[node name="PressTurn7" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 192.0
-margin_top = 302.0
-margin_right = 220.0
-margin_bottom = 330.0
+[node name="PressTurn5" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 21.0
+margin_bottom = 21.0
 
-[node name="PressTurn8" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 224.0
-margin_top = 302.0
-margin_right = 252.0
-margin_bottom = 330.0
+[node name="PressTurn6" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 21.0
+margin_bottom = 21.0
+
+[node name="PressTurn7" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 21.0
+margin_bottom = 21.0
+
+[node name="PressTurn8" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_right = 21.0
+margin_bottom = 21.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 62.0
+margin_top = 23.0
+margin_right = 127.0
+margin_bottom = 37.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource( 4 )
+text = "Player Turn"

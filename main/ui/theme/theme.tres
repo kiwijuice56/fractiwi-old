@@ -23,6 +23,10 @@ corner_radius_bottom_left = 4
 anti_aliasing = false
 
 [sub_resource type="StyleBoxTexture" id=3]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 8, 8 )
 margin_left = 1.0

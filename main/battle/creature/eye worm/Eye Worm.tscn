@@ -22,7 +22,7 @@ def_affinity = {
 critical = 4
 
 [node name="UnlearnedSkills" parent="." index="1"]
-skill_levels = [ 6 ]
+skill_levels = [ 6, 7 ]
 
 [node name="Heal" parent="UnlearnedSkills" index="0" instance=ExtResource( 5 )]
 

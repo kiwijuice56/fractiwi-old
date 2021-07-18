@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/skill/active/point/PointSkill.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/dim_ray/DimRay.tscn" type="PackedScene" id=2]
+
+[node name="Dim Ray" instance=ExtResource( 1 )]
+affinity = "dark"
+effect_packed = ExtResource( 2 )
+cost = 7
+accuracy = 90
+critical = 12
+power = -10
+stat = "magi"

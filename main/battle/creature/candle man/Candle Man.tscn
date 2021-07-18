@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/creature/candle man/candle_man.png" type="Texture" id=2]
+[ext_resource path="res://main/battle/skill/active/point/dim ray/Dim Ray.tscn" type="PackedScene" id=3]
+
+[node name="Candle Man" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+creature_name = "Candle Man"
+level = 20
+stre = 6
+magi = 11
+vita = 9
+luck = 7
+agil = 6
+def_affinity = {
+"dark": "null",
+"fire": "weak"
+}
+off_affinity = {
+"dark": 120,
+"heal": -130,
+"phys": -120
+}
+
+[node name="Dim Ray" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

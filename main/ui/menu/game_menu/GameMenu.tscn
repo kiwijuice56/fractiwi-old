@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=2]
@@ -29,6 +29,9 @@
 [ext_resource path="res://main/ui/menu/game_menu/item_container/item_button_container/item_button_container.gd" type="Script" id=27]
 [ext_resource path="res://main/ui/menu/game_menu/item_container/item_button_container/item_button_panel/ItemButtonPanel.tscn" type="PackedScene" id=28]
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/duck.png" type="Texture" id=29]
+[ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/knife.png" type="Texture" id=30]
+[ext_resource path="res://main/ui/theme/style_box/thin/margin/MarginThin.tres" type="StyleBox" id=31]
+[ext_resource path="res://main/ui/utility_classes/input_container/hotkey_container/up_down_arrows.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -77,7 +80,7 @@ pop_out_party = NodePath("VBoxContainer/PopOutPartyContainer")
 effect_handler = NodePath("EffectHandler")
 action_selection = NodePath("VBoxContainer/Control/ActionSelection")
 effect_selection = NodePath("VBoxContainer/Control/EffectSelection")
-press_turn_container = NodePath("VBoxContainer/PressTurnContainer")
+press_turn_container = NodePath("Node/PressTurnContainer")
 selector = NodePath("Selector")
 label_container = NodePath("LabelLayer/LabelContainer")
 text_label = NodePath("VBoxContainer/MainPanel/PanelContainer/VBoxContainer/Text")
@@ -85,11 +88,22 @@ skill_description_label = NodePath("VBoxContainer/Control/ActionSelection/VBoxCo
 item_selection = NodePath("VBoxContainer/Control/ItemSelection")
 item_description_label = NodePath("VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/PanelContainer/ItemDescriptionLabel")
 
+[node name="Node" type="Node" parent="."]
+
+[node name="PressTurnContainer" parent="Node" instance=ExtResource( 12 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -95.0
+margin_right = 95.0
+margin_bottom = 37.0
+size_flags_vertical = 0
+p_color = Color( 0.494118, 0.505882, 0.784314, 1 )
+e_color = Color( 0.670588, 0.423529, 0.588235, 1 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -332.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -101,15 +115,15 @@ __meta__ = {
 
 [node name="Control" type="PanelContainer" parent="VBoxContainer"]
 margin_right = 490.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 250, 150 )
+margin_bottom = 130.0
+rect_min_size = Vector2( 250, 130 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="EffectSelection" type="PanelContainer" parent="VBoxContainer/Control"]
 margin_left = 120.0
-margin_top = 12.0
+margin_top = 2.0
 margin_right = 370.0
-margin_bottom = 137.0
+margin_bottom = 127.0
 rect_min_size = Vector2( 250, 125 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -141,9 +155,8 @@ scroll_vertical_enabled = false
 script = ExtResource( 5 )
 
 [node name="EffectButtonContainer" type="HBoxContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer"]
-margin_left = 22.0
-margin_right = 222.0
-margin_bottom = 100.0
+margin_right = 270.0
+margin_bottom = 90.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 custom_constants/separation = 10
@@ -152,11 +165,12 @@ controller = NodePath("../../../../../..")
 button_scene = ExtResource( 21 )
 
 [node name="Normal" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
-margin_top = 20.0
-margin_bottom = 80.0
+margin_top = 15.0
+margin_bottom = 75.0
 icons = {
 "Duck": ExtResource( 29 ),
 "Flower": ExtResource( 26 ),
+"Knife": ExtResource( 30 ),
 "Normal": ExtResource( 25 )
 }
 
@@ -168,9 +182,9 @@ text = "Normal"
 
 [node name="Flower" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
 margin_left = 70.0
-margin_top = 20.0
+margin_top = 15.0
 margin_right = 130.0
-margin_bottom = 80.0
+margin_bottom = 75.0
 size_flags_horizontal = 4
 custom_styles/panel = SubResource( 2 )
 regular_style = SubResource( 2 )
@@ -178,14 +192,15 @@ focused_style = SubResource( 3 )
 icons = {
 "Duck": ExtResource( 29 ),
 "Flower": ExtResource( 26 ),
+"Knife": ExtResource( 30 ),
 "Normal": ExtResource( 25 )
 }
 
 [node name="Duck" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
 margin_left = 140.0
-margin_top = 20.0
+margin_top = 15.0
 margin_right = 200.0
-margin_bottom = 80.0
+margin_bottom = 75.0
 size_flags_horizontal = 4
 custom_styles/panel = SubResource( 2 )
 regular_style = SubResource( 2 )
@@ -193,8 +208,28 @@ focused_style = SubResource( 3 )
 icons = {
 "Duck": ExtResource( 29 ),
 "Flower": ExtResource( 26 ),
+"Knife": ExtResource( 30 ),
 "Normal": ExtResource( 25 )
 }
+
+[node name="Knife" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
+margin_left = 210.0
+margin_top = 15.0
+margin_right = 270.0
+margin_bottom = 75.0
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 2 )
+regular_style = SubResource( 2 )
+focused_style = SubResource( 3 )
+icons = {
+"Duck": ExtResource( 29 ),
+"Flower": ExtResource( 26 ),
+"Knife": ExtResource( 30 ),
+"Normal": ExtResource( 25 )
+}
+
+[node name="TextureRect" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Knife" index="0"]
+texture = ExtResource( 30 )
 
 [node name="EffectHotkeyContainer" type="VBoxContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer"]
 visible = false
@@ -209,11 +244,11 @@ hotkeys = {
 
 [node name="ActionSelection" type="PanelContainer" parent="VBoxContainer/Control"]
 margin_left = 82.0
-margin_top = 91.0
+margin_top = 5.0
 margin_right = 407.0
-margin_bottom = 150.0
+margin_bottom = 130.0
 grow_vertical = 0
-rect_min_size = Vector2( 325, 0 )
+rect_min_size = Vector2( 325, 125 )
 mouse_filter = 2
 size_flags_horizontal = 6
 size_flags_vertical = 8
@@ -226,7 +261,7 @@ __meta__ = {
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 322.0
-margin_bottom = 55.0
+margin_bottom = 121.0
 mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/separation = 2
@@ -240,7 +275,7 @@ align = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer"]
 margin_top = 16.0
 margin_right = 319.0
-margin_bottom = 52.0
+margin_bottom = 118.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -248,7 +283,7 @@ custom_constants/separation = 2
 
 [node name="PartySkillContainer" type="TabContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer"]
 margin_right = 230.0
-margin_bottom = 36.0
+margin_bottom = 102.0
 mouse_filter = 2
 size_flags_horizontal = 3
 custom_styles/panel = ExtResource( 16 )
@@ -262,7 +297,7 @@ skill_button_container = ExtResource( 14 )
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer"]
 margin_left = 232.0
 margin_right = 319.0
-margin_bottom = 36.0
+margin_bottom = 102.0
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
@@ -292,7 +327,7 @@ mouse_filter = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 87.0
-margin_bottom = 36.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = ExtResource( 16 )
@@ -301,16 +336,16 @@ custom_styles/panel = ExtResource( 16 )
 margin_left = 6.0
 margin_top = 6.0
 margin_right = 81.0
-margin_bottom = 30.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 75, 0 )
 fit_content_height = true
 
 [node name="ItemSelection" type="PanelContainer" parent="VBoxContainer/Control"]
 margin_left = 120.0
-margin_top = 25.0
+margin_top = 10.0
 margin_right = 370.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 250, 0 )
+margin_bottom = 130.0
+rect_min_size = Vector2( 250, 120 )
 size_flags_horizontal = 6
 size_flags_vertical = 10
 custom_styles/panel = ExtResource( 2 )
@@ -319,7 +354,7 @@ custom_styles/panel = ExtResource( 2 )
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 247.0
-margin_bottom = 121.0
+margin_bottom = 116.0
 
 [node name="Items" type="Label" parent="VBoxContainer/Control/ItemSelection/VBoxContainer"]
 margin_right = 244.0
@@ -327,39 +362,70 @@ margin_bottom = 14.0
 text = "Items"
 align = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer"]
 margin_top = 18.0
 margin_right = 244.0
-margin_bottom = 18.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer"]
-margin_top = 22.0
-margin_right = 244.0
-margin_bottom = 118.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer"]
 margin_right = 154.0
-margin_bottom = 96.0
+margin_bottom = 95.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 154.0
+margin_bottom = 64.0
 mouse_filter = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/panel = ExtResource( 16 )
 
-[node name="ItemContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/PanelContainer2" instance=ExtResource( 14 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="UnclickableScrollContainer" type="ScrollContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2"]
 margin_left = 6.0
 margin_top = 6.0
 margin_right = 148.0
-margin_bottom = 90.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+script = ExtResource( 5 )
+
+[node name="ItemContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/UnclickableScrollContainer" instance=ExtResource( 14 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 142.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 0 )
+size_flags_vertical = 11
 script = ExtResource( 27 )
-controller = NodePath("../../../../../../..")
+controller = NodePath("../../../../../../../../..")
 button_scene = ExtResource( 28 )
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 154.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 0, 29 )
+custom_styles/panel = ExtResource( 31 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 21.0
+text = "$ 000"
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer"]
 margin_left = 156.0
 margin_right = 244.0
-margin_bottom = 96.0
+margin_bottom = 95.0
 rect_min_size = Vector2( 88, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 3
@@ -369,24 +435,14 @@ custom_styles/panel = ExtResource( 16 )
 margin_left = 6.0
 margin_top = 6.0
 margin_right = 82.0
-margin_bottom = 90.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 75, 0 )
 fit_content_height = true
 
-[node name="PressTurnContainer" parent="VBoxContainer" instance=ExtResource( 12 )]
-visible = false
-margin_top = 63.0
-margin_right = 252.0
-margin_bottom = 91.0
-size_flags_horizontal = 2
-size_flags_vertical = 10
-p_color = Color( 0.494118, 0.505882, 0.784314, 1 )
-e_color = Color( 0.670588, 0.423529, 0.588235, 1 )
-
 [node name="MainPanel" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 153.0
+margin_top = 133.0
 margin_right = 490.0
-margin_bottom = 197.0
+margin_bottom = 177.0
 mouse_filter = 2
 size_flags_vertical = 8
 custom_constants/margin_right = 3
@@ -467,9 +523,9 @@ margin_right = 472.0
 margin_bottom = 32.0
 
 [node name="ActivePartyContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 200.0
+margin_top = 180.0
 margin_right = 490.0
-margin_bottom = 259.0
+margin_bottom = 239.0
 rect_min_size = Vector2( 0, 59 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -517,10 +573,10 @@ icons = {
 [node name="EmptyButtonPanel" parent="VBoxContainer/ActivePartyContainer" instance=ExtResource( 18 )]
 
 [node name="PopOutPartyContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 262.0
+margin_top = 242.0
 margin_right = 490.0
-margin_bottom = 383.0
-rect_min_size = Vector2( 0, 121 )
+margin_bottom = 357.0
+rect_min_size = Vector2( 0, 115 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -534,6 +590,7 @@ margin_bottom = 102.0
 rect_min_size = Vector2( 0, 99 )
 mouse_filter = 2
 size_flags_vertical = 0
+custom_constants/separation = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer"]
 margin_right = 484.0
@@ -542,9 +599,9 @@ text = "Party"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer"]
-margin_top = 18.0
+margin_top = 16.0
 margin_right = 484.0
-margin_bottom = 90.0
+margin_bottom = 88.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -624,7 +681,7 @@ icons = {
 }
 
 [node name="Control" type="Control" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer"]
-margin_top = 94.0
+margin_top = 90.0
 margin_right = 484.0
 margin_bottom = 99.0
 size_flags_horizontal = 3
@@ -669,6 +726,21 @@ hotkeys = {
 "Summon": "ui_accept"
 }
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/Control/PartyHotKeyContainer"]
+margin_right = 71.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/Control/PartyHotKeyContainer/HBoxContainer"]
+margin_right = 51.0
+margin_bottom = 14.0
+text = "asdasdasd"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/Control/PartyHotKeyContainer/HBoxContainer"]
+margin_left = 55.0
+margin_right = 71.0
+margin_bottom = 14.0
+texture = ExtResource( 32 )
+
 [node name="EffectHandler" parent="." instance=ExtResource( 10 )]
 default_fade_time = 0.1
 
@@ -712,3 +784,4 @@ valign = 1
 [node name="Timer" type="Timer" parent="LabelLayer/LabelContainer"]
 
 [editable path="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Normal"]
+[editable path="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Knife"]

@@ -45,7 +45,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-length = 0.55
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_rotation")
 tracks/0/interp = 1

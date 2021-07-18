@@ -28,7 +28,7 @@ data = {
 "Unlearned": [  ]
 }
 },
-"effects": [ "Normal", "Duck", "Flower" ]
+"effects": [ "Normal", "Duck", "Flower", "Knife" ]
 },
 "Party": {
 "active": {
@@ -44,7 +44,7 @@ data = {
 "agil": 3,
 "expe": 32,
 "hp": 119,
-"level": 11,
+"level": 99,
 "luck": 5,
 "magi": 5,
 "mp": 59,
@@ -54,19 +54,19 @@ data = {
 },
 "01Gabriel": {
 "skills": {
-"Active": [ "Focus", "Hellfire" ],
+"Active": [ "Focus", "Hellfire", "Shock", "Bubble", "Dim Ray" ],
 "Passive": [ "Null Light" ],
-"Skill Levels": [  ],
+"Skill Levels": [ 1 ],
 "Unlearned": [ "Cleave" ]
 },
 "stats": {
 "age": 3,
-"agil": 5,
+"agil": 999,
 "expe": 256,
 "hp": 105,
 "level": 10,
-"luck": 3,
-"magi": 8,
+"luck": 999,
+"magi": 999,
 "mp": 64,
 "stre": 3,
 "vita": 5
@@ -74,10 +74,10 @@ data = {
 },
 "02Normalem": {
 "skills": {
-"Active": [ "Bubble", "Cleave" ],
-"Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Active": [ "Bubble", "Cleave", "Slash", "Multislash" ],
+"Passive": [ "Item Use", "Null Light" ],
+"Skill Levels": [ 1, 2 ],
+"Unlearned": [ "Cleave", "Bubble" ]
 },
 "stats": {
 "age": 3,
@@ -96,7 +96,7 @@ data = {
 "skills": {
 "Active": [ "Slash" ],
 "Passive": [  ],
-"Skill Levels": [ 6 ],
+"Skill Levels": [ 1, 2 ],
 "Unlearned": [ "Heal", "Cleave" ]
 },
 "stats": {

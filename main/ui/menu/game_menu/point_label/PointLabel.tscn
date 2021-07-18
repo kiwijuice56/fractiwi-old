@@ -4,6 +4,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "show"
+length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:modulate")
@@ -12,7 +13,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.65, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.45, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
@@ -25,7 +26,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.494288, 0, -18, -0.358477, 5, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
+"times": PoolRealArray( 0, 0.7 )
 }
 
 [sub_resource type="DynamicFontData" id=2]
@@ -40,8 +41,8 @@ font_data = SubResource( 2 )
 layer = 2
 script = ExtResource( 2 )
 miss = Color( 1, 0.584314, 0.584314, 1 )
-repel = Color( 0.976471, 0.270588, 0.270588, 1 )
-nullc = Color( 0.976471, 0.270588, 0.270588, 1 )
+repel = Color( 0.933333, 0.0117647, 0.0117647, 1 )
+nullc = Color( 0.94902, 0.160784, 0.160784, 1 )
 absorb = Color( 0.384314, 0.937255, 0.741176, 1 )
 weak = Color( 0.996078, 0.964706, 0.192157, 1 )
 crit = Color( 0.996078, 0.964706, 0.192157, 1 )
@@ -51,9 +52,11 @@ anims/show = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = -18.0
-margin_right = 40.0
-margin_bottom = -3.0
+anchor_left = -0.00128563
+anchor_right = -0.00128563
+margin_left = 0.629959
+margin_right = 40.63
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "-120"

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/creature/lully/lully_sprite.png" type="Texture" id=2]
+[ext_resource path="res://main/battle/skill/active/point/luck cut/Luck Cut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/status/condition/neo beam/Neo Beam.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/passive/affinity/null phys/Null Phys.tscn" type="PackedScene" id=5]
+
+[node name="Lully" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+race = "Spirit"
+creature_name = "Lully"
+level = 19
+stre = 3
+magi = 7
+vita = 7
+luck = 14
+agil = 6
+def_affinity = {
+"light": "resist",
+"phys": "resist",
+"water": "weak",
+"wind": "weak"
+}
+off_affinity = {
+"light": 120,
+"phys": 110
+}
+
+[node name="Luck Cut" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+
+[node name="Neo Beam" parent="Skills/Active" index="1" instance=ExtResource( 4 )]
+
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 22 ]
+
+[node name="Null Phys" parent="UnlearnedSkills" index="0" instance=ExtResource( 5 )]

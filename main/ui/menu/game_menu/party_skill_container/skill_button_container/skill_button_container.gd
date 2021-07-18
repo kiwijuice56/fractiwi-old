@@ -21,7 +21,10 @@ func disable_battle() -> void:
 
 func intialize_button(new_button: Control, index: int) -> void:
 	if index >= active_len:
-		new_button.set_content(creature.get_node("Skills/Passive").get_child(active_len-index))
+		print(index, active_len)
+		for s in creature.get_node("Skills/Passive").get_children():
+			print(s.name)
+		new_button.set_content(creature.get_node("Skills/Passive").get_child(index-active_len))
 	else:
 		new_button.set_content(creature.get_node("Skills/Active").get_child(index))
 

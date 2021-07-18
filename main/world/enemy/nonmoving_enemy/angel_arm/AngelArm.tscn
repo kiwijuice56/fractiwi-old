@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/world/enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/enemy/nonmoving_enemy/angel_arm/angel arm.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "angel arm"
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 15 )
+
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -28,5 +30,8 @@ texture = ExtResource( 2 )
 hframes = 3
 frame = 2
 
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
 [node name="AnimationPlayer" parent="." index="2"]
-"anims/angel arm" = SubResource( 1 )
+"anims/angel arm" = SubResource( 2 )

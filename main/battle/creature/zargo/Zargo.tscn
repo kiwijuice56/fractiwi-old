@@ -33,3 +33,6 @@ off_affinity = {
 skill_levels = [ 17 ]
 
 [node name="Cry" parent="UnlearnedSkills" index="0" instance=ExtResource( 4 )]
+
+[node name="CPUParticles2D" parent="." index="7"]
+lifetime = 0.6

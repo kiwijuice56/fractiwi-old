@@ -28,6 +28,7 @@ var defense: int = 0
 var hiteva: int = 0
 var focus := false
 
+var item_use := false
 var expe := 0
 var expe_to_level := 0
 var age := 0
@@ -141,7 +142,12 @@ func target_action() -> void:
 		if targeted_skill_data[1]:
 			$AnimationPlayer.current_animation = "miss"
 		else:
-			$AnimationPlayer.current_animation = "hurt_normal"
+			if targeted_skill_data[3] == "weak":
+				$AnimationPlayer.current_animation = "hurt_weak"
+			elif targeted_skill_data[3] == "resist":
+				$AnimationPlayer.current_animation = "hurt_resist"
+			else:
+				$AnimationPlayer.current_animation = "hurt_normal"
 		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4])
 		$PointLabel.get_node("AnimationPlayer").current_animation = "show"
 	else:
@@ -186,7 +192,7 @@ func death() -> void:
 	elif not is_tamed:
 		var queue = get_parent().get_parent()
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
-		var multipler = min(2, max(0.1, 1 - (level_dif/10.0)))
+		var multipler = min(2, max(0.1, 1 - (level_dif/.1)))
 		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/8.0)
 		queue.expe += expe_given * multipler * (2.0 if is_boss else 1.0)
 		$AnimationPlayer.stop()
@@ -200,13 +206,21 @@ func update_passive_skills() -> void:
 	for skill in get_node("Skills/Passive").get_children():
 		skill.modify_creature(self)
 
-func learn_skill(to_replace: String) -> void:
+func learn_skill(to_replace: Skill) -> void:
 	if to_replace:
-		pass
+		to_replace.get_parent().remove_child(to_replace)
 	var skill = get_node("UnlearnedSkills").get_child(0)
 	get_node("UnlearnedSkills").remove_child(skill)
 	get_node("Skills").add_skill(skill)
 	update_passive_skills()
+
+func forget_skill() -> void:
+	var skill = get_node("UnlearnedSkills").get_child(0)
+	get_node("UnlearnedSkills").remove_child(skill)
+
+func add_unlearned_skill(skill: Skill) -> void:
+	get_node("UnlearnedSkills").add_child(skill)
+	get_node("UnlearnedSkills").move_child(skill, 0)
 
 func to_dict() -> Dictionary:
 	var skills = {"Passive": $Skills.get_skill_names("Passive"),

@@ -349,6 +349,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/ui/menu/game_menu/press_turn_container/press_turn_container.gd"
 }, {
+"base": "PassiveSkill",
+"class": "PropertySkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/passive/property/property_skill.gd"
+}, {
 "base": "Filter",
 "class": "Rain",
 "language": "GDScript",
@@ -568,6 +573,7 @@ _global_script_class_icons={
 "PopUp": "",
 "PressTurn": "",
 "PressTurnContainer": "",
+"PropertySkill": "",
 "Rain": "",
 "RainDrop": "",
 "RandomMovingEnemy": "",

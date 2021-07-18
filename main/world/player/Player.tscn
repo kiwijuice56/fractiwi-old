@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://main/world/player/player.gd" type="Script" id=1]
 [ext_resource path="res://main/world/player/sprites/effect.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://main/world/player/sounds/effect2.WAV" type="AudioStream" id=7]
 [ext_resource path="res://main/world/player/sprites/duck.png" type="Texture" id=8]
 [ext_resource path="res://main/world/player/sounds/teleport.WAV" type="AudioStream" id=9]
+[ext_resource path="res://main/world/player/sprites/knife.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -408,6 +409,7 @@ speed = 85
 effect_textures = {
 "Duck": ExtResource( 8 ),
 "Flower": ExtResource( 5 ),
+"Knife": ExtResource( 10 ),
 "Normal": ExtResource( 6 )
 }
 

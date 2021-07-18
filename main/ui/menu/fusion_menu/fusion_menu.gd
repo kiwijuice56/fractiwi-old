@@ -50,6 +50,14 @@ func _input(event: InputEvent) -> void:
 				ingredient2 = null
 				main_viewport.menu_sound_player.play_sound("Can't")
 				return
+			if ingredient1:
+				var names := []
+				for child in main_viewport.party.get_node("Active").get_children() + main_viewport.party.get_node("Inactive").get_children():
+					names.append(child.creature_name)
+				if results[get_focus_owner().get_index()].creature_name in names:
+					ingredient2 = null
+					main_viewport.menu_sound_player.play_sound("Can't")
+					return
 			get_focus_owner().selected = true
 			get_focus_owner().focus_entered()
 			main_viewport.menu_sound_player.play_sound("Next")

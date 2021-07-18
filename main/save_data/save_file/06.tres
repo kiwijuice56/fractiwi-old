@@ -43,13 +43,13 @@ data = {
 "age": 7,
 "agil": 3,
 "expe": 143,
-"hp": 96,
-"level": 10,
-"luck": 4,
+"hp": 999,
+"level": 99,
+"luck": 99,
 "magi": 5,
 "mp": 55,
-"stre": 4,
-"vita": 6
+"stre": 99,
+"vita": 99
 }
 },
 "01Looker": {

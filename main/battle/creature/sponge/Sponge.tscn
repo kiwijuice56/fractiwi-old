@@ -1,20 +1,35 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main/battle/creature/sponge/Sponge.png" type="Texture" id=1]
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/active/point/dim ray/Dim Ray.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=5]
 
 [node name="Sponge" instance=ExtResource( 2 )]
 texture = ExtResource( 1 )
 race = "Demon"
-level = 4
-stre = 2
-magi = 5
-vita = 2
-luck = 2
-agil = 4
+creature_name = "Sponge"
+level = 15
+stre = 3
+magi = 10
+vita = 3
+luck = 6
+agil = 7
+def_affinity = {
+"light": "weak",
+"water": "repel"
+}
+off_affinity = {
+"dark": 120,
+"elec": 120,
+"heal": -130,
+"phys": -150,
+"water": 120
+}
 
 [node name="Bubble" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
 
-[node name="Slash" parent="UnlearnedSkills" index="0" instance=ExtResource( 4 )]
+[node name="Shock" parent="Skills/Active" index="1" instance=ExtResource( 5 )]
+
+[node name="Dim Ray" parent="Skills/Active" index="2" instance=ExtResource( 4 )]

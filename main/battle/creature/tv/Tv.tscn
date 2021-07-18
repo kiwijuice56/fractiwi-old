@@ -3,7 +3,7 @@
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/battle/skill/active/point/mjolnir/Mjolnir.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/battle/creature/Tvb/tv.png" type="Texture" id=4]
+[ext_resource path="res://main/battle/creature/tvb/tv.png" type="Texture" id=4]
 
 [node name="Tv" instance=ExtResource( 1 )]
 position = Vector2( 0, -8 )

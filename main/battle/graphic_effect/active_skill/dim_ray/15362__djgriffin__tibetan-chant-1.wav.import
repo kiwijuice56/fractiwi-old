@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/15362__djgriffin__tibetan-chant-1.wav-c63124b77257bd58073842ed8c456955.sample"
+
+[deps]
+
+source_file="res://main/battle/graphic_effect/active_skill/dim_ray/15362__djgriffin__tibetan-chant-1.wav"
+dest_files=[ "res://.import/15362__djgriffin__tibetan-chant-1.wav-c63124b77257bd58073842ed8c456955.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

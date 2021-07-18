@@ -39,7 +39,16 @@ func set_point_text(points, is_miss: bool, is_crit: bool, def: String, type) -> 
 					$Label.text += " weak!"
 					$Label.add_color_override("font_color", weak)
 		text_types.BUFF:
-			$Label.text = def + " " + points
+			var text_stat := ""
+			match def:
+				"Defense":
+					text_stat = "DEF"
+				"Attack":
+					text_stat = "ATK"
+				"Hit/eva":
+					text_stat = "HIT"
+			print(def)
+			$Label.text = text_stat + " " + points
 		text_types.STATUS:
 			if is_miss:
 				$Label.text = "Miss"
