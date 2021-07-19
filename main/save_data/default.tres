@@ -36,7 +36,7 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [  ],
+"Active": [ "Shock", "Slash" ],
 "Passive": [  ],
 "Skill Levels": [ 4, 10, 17 ],
 "Unlearned": [ "Cleave", "Mjolnir", "Null Elec" ]

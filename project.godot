@@ -109,6 +109,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://main/battle/creature_fusion/creature_fusion.gd"
 }, {
+"base": "ColorRect",
+"class": "DeathCutscene",
+"language": "GDScript",
+"path": "res://main/ui/main_viewport/death_cutscene/death_cutscene.gd"
+}, {
 "base": "Interactable",
 "class": "Door",
 "language": "GDScript",
@@ -525,6 +530,7 @@ _global_script_class_icons={
 "CreatureButtonPanel": "",
 "CreatureCheckScreen": "",
 "CreatureFusion": "",
+"DeathCutscene": "",
 "Door": "",
 "DynamicScenery": "",
 "EffectButtonContainer": "",

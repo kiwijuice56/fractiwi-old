@@ -67,3 +67,13 @@ func battle_ended(did_run) -> void:
 	emit_signal("battle_end", did_run)
 	yield(transition, "in_finished")
 	transition.transition_out()
+
+func death() -> void:
+	get_tree().paused = true
+	transition.transition_in_heavy()
+	yield(transition, "in_finished")
+	transition.transition_out_heavy()
+	$Death/DeathCutscene.visible = true
+	yield(transition, "out_finished")
+	$Death/DeathCutscene.play()
+

@@ -188,7 +188,7 @@ func death() -> void:
 		yield(panel.get_node("AnimationPlayer"), "animation_finished")
 		emit_signal("death")
 		if name == "Yun":
-			get_tree().quit()
+			get_viewport().death()
 	elif not is_tamed:
 		var queue = get_parent().get_parent()
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level

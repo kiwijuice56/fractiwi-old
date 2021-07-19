@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://main/world/world.gd" type="Script" id=19]
 [ext_resource path="res://main/ui/menu/creature_check_screen_menu/CreatureCheckScreen.tscn" type="PackedScene" id=20]
 [ext_resource path="res://main/ui/menu/main_menu/title_music.wav" type="AudioStream" id=21]
-[ext_resource path="res://main/ui/menu/terminal_menu/terminal.ogg" type="AudioStream" id=22]
+[ext_resource path="res://main/ui/menu/terminal_menu/Drone 1.wav" type="AudioStream" id=22]
 [ext_resource path="res://main/ui/utility_classes/vision_effects/VisionEffects.tscn" type="PackedScene" id=23]
 [ext_resource path="res://main/battle/battle_queue/battle_queue.gd" type="Script" id=24]
 [ext_resource path="res://main/world/prop/filter/shaders/image_scroll.shader" type="Shader" id=25]
@@ -61,6 +61,7 @@
 [ext_resource path="res://main/battle/skill/active/status/buff/shriek/Shriek.tscn" type="PackedScene" id=59]
 [ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=60]
 [ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=61]
+[ext_resource path="res://main/ui/main_viewport/death_cutscene/DeathCutscene.tscn" type="PackedScene" id=62]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -73,6 +74,7 @@ shader_param/dir = Vector2( 0.1, 0.1 )
 shader_param/image = ExtResource( 49 )
 
 [node name="Main" type="Node"]
+pause_mode = 1
 script = ExtResource( 6 )
 party = NodePath("ViewportContainer/MainViewport/Party")
 main_viewport = NodePath("ViewportContainer/MainViewport")
@@ -81,16 +83,20 @@ world = NodePath("ViewportContainer/MainViewport/World")
 [node name="FileSaver" type="Node" parent="." groups=[
 "Save",
 ]]
+pause_mode = 1
 script = ExtResource( 7 )
 path = "res://main/save_data/save_file/"
 default_path = "res://main/save_data/default.tres"
 
 [node name="GameTime" type="Node" parent="FileSaver"]
+pause_mode = 1
 script = ExtResource( 15 )
 
 [node name="Timer" type="Timer" parent="FileSaver/GameTime"]
+pause_mode = 1
 
 [node name="Background" type="TextureRect" parent="."]
+pause_mode = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
@@ -100,6 +106,7 @@ __meta__ = {
 }
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
+pause_mode = 1
 material = SubResource( 1 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -118,6 +125,7 @@ __meta__ = {
 }
 
 [node name="MainViewport" type="Viewport" parent="ViewportContainer"]
+pause_mode = 2
 size = Vector2( 490, 276 )
 handle_input_locally = false
 render_target_update_mode = 3
@@ -140,12 +148,14 @@ creature_check = NodePath("UI/CreatureCheckScreen")
 menu_sound_player = NodePath("UI/MenuSoundPlayer")
 
 [node name="MusicPlayer" parent="ViewportContainer/MainViewport" instance=ExtResource( 18 )]
+pause_mode = 1
 volume_db = -50.0
 autoplay = true
 volume = -5
 transition_duration = 0.2
 
 [node name="CreatureFusion" type="Node" parent="ViewportContainer/MainViewport"]
+pause_mode = 1
 script = ExtResource( 43 )
 creature_path = "res://main/battle/creature/"
 
@@ -160,6 +170,7 @@ script = ExtResource( 44 )
 [node name="World" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
 ]]
+pause_mode = 1
 script = ExtResource( 19 )
 player = NodePath("Player")
 backdrop = NodePath("CanvasLayer/Backdrop")
@@ -193,6 +204,7 @@ stretch_mode = 3
 [node name="Party" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
 ]]
+pause_mode = 1
 script = ExtResource( 5 )
 creature_path = "res://main/battle/creature/"
 player_ai = ExtResource( 34 )
@@ -221,6 +233,7 @@ visible = false
 [node name="Items" type="Node" parent="ViewportContainer/MainViewport" groups=[
 "Save",
 ]]
+pause_mode = 1
 script = ExtResource( 36 )
 
 [node name="Effects" type="Node" parent="ViewportContainer/MainViewport/Items"]
@@ -299,29 +312,37 @@ def_affinities = {
 [node name="Shriek" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 59 )]
 
 [node name="Battle" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
+pause_mode = 1
 
 [node name="BattleQueue" type="Node" parent="ViewportContainer/MainViewport/Battle"]
+pause_mode = 1
 script = ExtResource( 24 )
 player_party_node = NodePath("../../Party")
 
 [node name="PlayerParty" type="Node2D" parent="ViewportContainer/MainViewport/Battle/BattleQueue"]
+pause_mode = 1
 visible = false
 
 [node name="EnemyParty" type="Node2D" parent="ViewportContainer/MainViewport/Battle/BattleQueue"]
+pause_mode = 1
 position = Vector2( 245, 100 )
 
 [node name="UI" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
+pause_mode = 1
 
 [node name="VisionEffects" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 23 )]
+pause_mode = 1
 visible = false
 
 [node name="InteractMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 17 )]
+pause_mode = 1
 visible = false
 margin_top = -36.0
 margin_bottom = -13.0
 main_viewport = NodePath("../..")
 
 [node name="MainMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 8 )]
+pause_mode = 1
 visible = false
 main_viewport = NodePath("../..")
 next_sound = true
@@ -331,6 +352,7 @@ override_next_sound = true
 music = ExtResource( 21 )
 
 [node name="GameMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 1 )]
+pause_mode = 1
 visible = false
 main_viewport = NodePath("../..")
 next_sound = true
@@ -343,6 +365,7 @@ party = NodePath("../../Party")
 enemy_party = NodePath("../../Battle/BattleQueue/EnemyParty")
 
 [node name="TerminalMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 13 )]
+pause_mode = 1
 visible = false
 margin_right = 490.0
 margin_bottom = 276.0
@@ -353,6 +376,7 @@ vertical_select = true
 music = ExtResource( 22 )
 
 [node name="SaveFileMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 11 )]
+pause_mode = 1
 visible = false
 main_viewport = NodePath("../..")
 next_sound = true
@@ -363,12 +387,14 @@ override_next_sound = true
 file_saver = NodePath("../../../../FileSaver")
 
 [node name="CathedralMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 41 )]
+pause_mode = 1
 visible = false
 main_viewport = NodePath("../..")
 back_sound = false
 vertical_select = true
 
 [node name="FusionMenu" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 40 )]
+pause_mode = 1
 visible = false
 main_viewport = NodePath("../..")
 vertical_select = true
@@ -376,6 +402,7 @@ override_next_sound = true
 creature_fusion = NodePath("../../CreatureFusion")
 
 [node name="CreatureCheckScreen" parent="ViewportContainer/MainViewport/UI" instance=ExtResource( 20 )]
+pause_mode = 1
 visible = false
 main_viewport = NodePath("../..")
 select_sound = true
@@ -383,36 +410,52 @@ horizontal_select = true
 vertical_select = true
 
 [node name="MenuSoundPlayer" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI"]
+pause_mode = 1
 volume_db = -10.0
 script = ExtResource( 28 )
 
 [node name="Select" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+pause_mode = 1
 stream = ExtResource( 31 )
 volume_db = -20.0
 
 [node name="Next" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+pause_mode = 1
 stream = ExtResource( 30 )
 volume_db = -20.0
 
 [node name="Back" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+pause_mode = 1
 stream = ExtResource( 29 )
 volume_db = -20.0
 
 [node name="Summon" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+pause_mode = 1
 stream = ExtResource( 32 )
 volume_db = -20.0
 
 [node name="Can\'t" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+pause_mode = 1
 stream = ExtResource( 33 )
 volume_db = -20.0
 
 [node name="Start" type="AudioStreamPlayer" parent="ViewportContainer/MainViewport/UI/MenuSoundPlayer"]
+pause_mode = 1
 stream = ExtResource( 39 )
 volume_db = -10.0
 
+[node name="Death" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
+layer = 2
+
+[node name="DeathCutscene" parent="ViewportContainer/MainViewport/Death" instance=ExtResource( 62 )]
+pause_mode = 2
+visible = false
+
 [node name="Transition" parent="ViewportContainer/MainViewport" instance=ExtResource( 10 )]
+pause_mode = 2
 layer = 2
 
 [node name="Tween" type="Tween" parent="ViewportContainer"]
+pause_mode = 1
 
 [editable path="ViewportContainer/MainViewport/Party/Active/Yun"]
