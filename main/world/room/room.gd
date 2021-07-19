@@ -7,7 +7,7 @@ export var music: Resource
 export var backdrop: Resource
 export var backdrop_dir := Vector2(.1, .1)
 
-var current_terminal: String # set by terminals on entrance
+var current_terminal: String = "Bed" # set by terminals on entrance
 
 func _ready() -> void:
 	terminals = get_node(terminals)

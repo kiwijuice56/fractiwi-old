@@ -15,9 +15,9 @@ export var off_affinity: Dictionary
 var extend_def_affinity: Dictionary
 var extend_off_affinity: Dictionary
 
-var hp: int = 10
+var hp: int = 56
 var max_hp: int = 10
-var mp: int = 20
+var mp: int = 29
 var max_mp: int
 var status := "ok"
 var is_tamed := false

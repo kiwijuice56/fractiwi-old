@@ -4,7 +4,7 @@ extends Node
 export (NodePath) var player
 export (NodePath) var backdrop
 export var room_path: String
-var current_room: String = "block"
+var current_room: String = "origin_fake"
 var memory: Dictionary
 var current_terminal: String # set by terminal on menu_open
 var current_enemy: Enemy

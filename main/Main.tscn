@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
@@ -49,6 +49,18 @@
 [ext_resource path="res://main/battle/background.png" type="Texture" id=47]
 [ext_resource path="res://main/world/player/sprites/knife.png" type="Texture" id=48]
 [ext_resource path="res://main/world/room/sky_temple/backdrop.png" type="Texture" id=49]
+[ext_resource path="res://main/battle/skill/active/point/cleave/Cleave.tscn" type="PackedScene" id=50]
+[ext_resource path="res://main/battle/skill/active/point/heal/Heal.tscn" type="PackedScene" id=51]
+[ext_resource path="res://main/battle/skill/active/point/mjolnir/Mjolnir.tscn" type="PackedScene" id=52]
+[ext_resource path="res://main/battle/skill/active/point/gust/Gust.tscn" type="PackedScene" id=53]
+[ext_resource path="res://main/battle/skill/active/point/luck cut/Luck Cut.tscn" type="PackedScene" id=54]
+[ext_resource path="res://main/battle/skill/active/point/multislash/Multislash.tscn" type="PackedScene" id=55]
+[ext_resource path="res://main/battle/skill/active/point/hurricane/Hurricane.tscn" type="PackedScene" id=56]
+[ext_resource path="res://main/battle/skill/passive/affinity/null elec/Null Elec.tscn" type="PackedScene" id=57]
+[ext_resource path="res://main/battle/skill/active/status/buff/cheer/Cheer.tscn" type="PackedScene" id=58]
+[ext_resource path="res://main/battle/skill/active/status/buff/shriek/Shriek.tscn" type="PackedScene" id=59]
+[ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=60]
+[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=61]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -192,6 +204,16 @@ battle_party_node = NodePath("../../Battle/BattleQueue/PlayerParty")
 
 [node name="Yun" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 9 )]
 offset = Vector2( 0, 0 )
+level = 5
+stre = 3
+magi = 3
+vita = 3
+luck = 3
+agil = 3
+
+[node name="Slash" parent="ViewportContainer/MainViewport/Party/Active/Yun/Skills/Active" index="0" instance=ExtResource( 61 )]
+
+[node name="Shock" parent="ViewportContainer/MainViewport/Party/Active/Yun/Skills/Active" index="1" instance=ExtResource( 60 )]
 
 [node name="Inactive" type="Node2D" parent="ViewportContainer/MainViewport/Party"]
 visible = false
@@ -205,22 +227,43 @@ script = ExtResource( 36 )
 
 [node name="Flower" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
 script = ExtResource( 38 )
+skill_levels = [ 7, 8, 12 ]
 off_affinities = {
-"heal": 120
+"heal": 120,
+"phys": -110,
+"wind": 110
 }
 def_affinities = {
 "fire": "weak",
-"light": "resist",
-"wind": "resist"
+"water": "resist",
+"wind": "null"
 }
+
+[node name="Heal" parent="ViewportContainer/MainViewport/Items/Effects/Flower" instance=ExtResource( 51 )]
+
+[node name="Gust" parent="ViewportContainer/MainViewport/Items/Effects/Flower" instance=ExtResource( 53 )]
+
+[node name="Hurricane" parent="ViewportContainer/MainViewport/Items/Effects/Flower" instance=ExtResource( 56 )]
 
 [node name="Normal" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
 script = ExtResource( 38 )
-skill_levels = [ 1 ]
+skill_levels = [ 4, 10, 17 ]
+off_affinities = {
+"elec": 110
+}
+def_affinities = {
+"light": "null"
+}
+
+[node name="Cleave" parent="ViewportContainer/MainViewport/Items/Effects/Normal" instance=ExtResource( 50 )]
+
+[node name="Mjolnir" parent="ViewportContainer/MainViewport/Items/Effects/Normal" instance=ExtResource( 52 )]
+
+[node name="Null Elec" parent="ViewportContainer/MainViewport/Items/Effects/Normal" instance=ExtResource( 57 )]
 
 [node name="Duck" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
 script = ExtResource( 38 )
-skill_levels = [ 1 ]
+skill_levels = [ 7, 8 ]
 off_affinities = {
 "phys": -110,
 "water": 120
@@ -233,15 +276,27 @@ def_affinities = {
 
 [node name="Bubble" parent="ViewportContainer/MainViewport/Items/Effects/Duck" instance=ExtResource( 46 )]
 
+[node name="Cheer" parent="ViewportContainer/MainViewport/Items/Effects/Duck" instance=ExtResource( 58 )]
+
 [node name="Knife" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
 script = ExtResource( 38 )
+skill_levels = [ 14, 17, 19 ]
 off_affinities = {
-"phys": 140
+"phys": 140,
+"water": -110,
+"wind": -110
 }
 def_affinities = {
+"dark": "null",
 "phys": "resist",
 "water": "weak"
 }
+
+[node name="Luck Cut" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 54 )]
+
+[node name="Multislash" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 55 )]
+
+[node name="Shriek" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 59 )]
 
 [node name="Battle" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 
@@ -359,3 +414,5 @@ volume_db = -10.0
 layer = 2
 
 [node name="Tween" type="Tween" parent="ViewportContainer"]
+
+[editable path="ViewportContainer/MainViewport/Party/Active/Yun"]

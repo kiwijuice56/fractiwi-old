@@ -39,7 +39,20 @@ func initialize_parties(enemy_party: Array, player_party: Array) -> Node:
 		$PlayerParty.add_child(creature)
 		creature.reset_buffs()
 	player_party_node.get_node("Active").displaced = true
-	return $PlayerParty
+	
+	# Get average agility
+	var enemy_ag := 0.0
+	var player_ag := 0.0
+	for creature in enemy_party:
+		enemy_ag += creature.agil
+	for creature in player_party:
+		player_ag += creature.agil
+	player_ag /= $PlayerParty.get_child_count()
+	enemy_ag /= $EnemyParty.get_child_count()
+	if enemy_ag > player_ag:
+		return $EnemyParty
+	else:
+		return $PlayerParty
 
 func return_player_party(player_party: Array) -> void:
 	player_party_node.get_node("Active").displaced = false

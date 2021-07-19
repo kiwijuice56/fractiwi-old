@@ -10,7 +10,7 @@
 [ext_resource path="res://main/battle/creature/eye worm/eyeworm.png" type="Texture" id=8]
 [ext_resource path="res://main/battle/sounds/scream.WAV" type="AudioStream" id=9]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 resource_name = "death"
 length = 0.8
 step = 0.05
@@ -63,7 +63,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -247,8 +247,8 @@ script = ExtResource( 3 )
 player_ai = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 10 )
-anims/deselected = SubResource( 11 )
+anims/death = SubResource( 1 )
+anims/deselected = SubResource( 2 )
 anims/hurt_normal = SubResource( 3 )
 anims/hurt_resist = SubResource( 4 )
 anims/hurt_weak = SubResource( 5 )

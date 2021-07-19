@@ -105,9 +105,9 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 		var buff_stage = user.attack - target.defense
 		var modifier := 1.0
 		if buff_stage < 0:
-			modifier /= 1+abs(buff_stage*0.23)
+			modifier /= 1+abs(buff_stage*0.26)
 		else:
-			modifier *= 1+abs(buff_stage*0.23)
+			modifier *= 1+abs(buff_stage*0.26)
 		base *= modifier
 	base *= rand_range(0.8,1.1)
 	return int(base)

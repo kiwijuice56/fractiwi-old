@@ -258,7 +258,7 @@ func battle_started(_creatures: Array) -> void:
 	yield(get_viewport().transition, "in_finished")
 	in_battle = true
 	input["PartySkillContainer"].tabs_visible = false
-	press_turn_container.modulate = Color(1,1,1,1)
+	press_turn_container.visible = true
 	input["MainButtonContainer"].button_names = ["Skill", "Item", "Party", "Pass", "Run", "Recruit"]
 	input["MainButtonContainer"].add_items()
 	disable(true)
@@ -270,8 +270,8 @@ func battle_ended(_did_run: bool) -> void:
 	in_battle = false
 	creature = null
 	input["PartySkillContainer"].tabs_visible = true
-	press_turn_container.modulate = Color(1,1,1,0)
-	input["MainButtonContainer"].button_names = ["Effect", "Skill", "Item", "Party", "Setting"]
+	press_turn_container.visible = false
+	input["MainButtonContainer"].button_names = ["Effect", "Skill", "Item", "Party"]
 	input["MainButtonContainer"].add_items()
 	disable(false)
 	close_menu()

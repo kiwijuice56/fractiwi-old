@@ -276,7 +276,7 @@ anims/pop_up = SubResource( 3 )
 position = Vector2( 0, 0 )
 
 [node name="PillBottle" parent="Props/Items" index="0" instance=ExtResource( 15 )]
-position = Vector2( 464, 648 )
+position = Vector2( 680, 576 )
 item = "Hp Pill"
 
 [node name="Stone2" parent="Props/Items" index="1" instance=ExtResource( 18 )]

@@ -12,6 +12,7 @@ func _ready() -> void:
 	main_viewport = get_node(main_viewport)
 	world = get_node(world)
 	yield(get_tree().root, "ready")
+	$FileSaver.save_file(-1)
 	main_viewport.main.enable(true)
 
 func start() -> void:
