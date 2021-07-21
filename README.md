@@ -1,7 +1,8 @@
 # About
 Fractiwi is an open-source exploration game with turn-based combat. Inspired by the Shin Megami Tensei franchise and Yume Nikki fangames.
 
-
+# How to Play
+The ```HOWTOPLAY.md``` file contains a brief summary of the gameplay as well as more detailed information about game mechanics.
 
 # Created With
 - [Godot Game Engine](https://godotengine.org/), using gdscript
