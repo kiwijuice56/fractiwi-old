@@ -15,10 +15,10 @@ func _ready() -> void:
 	# WARNING - uncommenting this will overwrite fusion tables permenantly
 	update_creature_matrix()
 	#update_race_matrix()
-	#get_node("../FusionCatalogue").creature_matrix = creature_matrix
-	#print(creature_matrix)
+	get_node("../FusionCatalogue").creature_matrix = creature_matrix
+	print(creature_matrix)
 	#get_node("../FusionCatalogue").race_matrix = race_matrix
-	print(get_node("../FusionCatalogue").race_matrix)
+	#print(get_node("../FusionCatalogue").race_matrix)
 	
 
 func level_sort(a, b) -> bool:
@@ -34,7 +34,7 @@ func update_creature_matrix() -> void:
 	var creatures := get_all_creatures()
 	creatures.sort_custom(self, "level_sort")
 	for creature in creatures:
-		print(creature.name)
+		print(creature.race + " " + creature.name + " " + str(creature.level))
 		var race_index = races.find(creature.race)
 		for i in range(0, creature.level):
 			if creature_matrix[race_index][i] == "":

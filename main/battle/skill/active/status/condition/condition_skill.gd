@@ -18,7 +18,7 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 		if target.status == condition:
 			is_miss = true
 		var def: String = get_def_affinity(target)
-		target.targeted_skill_data = [condition, is_miss, false, def, PointLabel.text_types.STATUS]
+		target.targeted_skill_data = [condition, is_miss, false, def, "", PointLabel.text_types.STATUS]
 		var new_turns_used = turn_logic(def, is_miss, false)
 		if new_turns_used < 0 or turns_used < 0:
 			# warning-ignore:narrowing_conversion
@@ -33,7 +33,7 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 			user.set("status", condition)
 			if not user in targets:
 				targets.append(user)
-				user.targeted_skill_data = [condition, false, false, def, PointLabel.text_types.STATUS]
+				user.targeted_skill_data = [condition, false, false, def, "", PointLabel.text_types.STATUS]
 		else:
 			target.set("status", condition)
 	var effect: ActiveSkillEffect = effect_packed.instance()

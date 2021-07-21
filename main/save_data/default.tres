@@ -30,7 +30,8 @@ data = {
 "Unlearned": [ "Cleave", "Mjolnir", "Null Elec" ]
 }
 },
-"effects": [  ]
+"effects": [ "Normal" ],
+"money": 0
 },
 "Party": {
 "active": {

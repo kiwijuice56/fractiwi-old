@@ -146,7 +146,7 @@ func battle(enemy_creatures: Array) -> void:
 			did_run = true
 			break
 		
-		if full + half <= 0:
+		if full + half <= 0 and $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
 			#swap parties
 			var temp = current
 			current = opposite

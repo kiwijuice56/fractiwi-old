@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://main/ui/theme/font/HelvetiPixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://main/ui/menu/game_menu/point_label/point_label.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "show"
-length = 0.7
+length = 0.9
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:modulate")
@@ -13,10 +14,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.45, 0.7 ),
+"times": PoolRealArray( 0, 0.1, 0.65, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.47451 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Label:rect_position:y")
@@ -26,7 +27,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.494288, 0, -18, -0.358477, 5, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.7 )
+"times": PoolRealArray( 0, 0.9 )
 }
 
 [sub_resource type="DynamicFontData" id=2]
@@ -37,13 +38,18 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
 [node name="PointLabel" type="CanvasLayer"]
 layer = 2
 script = ExtResource( 2 )
 miss = Color( 1, 0.584314, 0.584314, 1 )
 repel = Color( 0.933333, 0.0117647, 0.0117647, 1 )
 nullc = Color( 0.94902, 0.160784, 0.160784, 1 )
-absorb = Color( 0.384314, 0.937255, 0.741176, 1 )
+absorb = Color( 0.458824, 0.988235, 0.901961, 1 )
 weak = Color( 0.996078, 0.964706, 0.192157, 1 )
 crit = Color( 0.996078, 0.964706, 0.192157, 1 )
 
@@ -55,11 +61,25 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_left = -0.00128563
 anchor_right = -0.00128563
 margin_left = 0.629959
+margin_top = -18.0
 margin_right = 40.63
-margin_bottom = 15.0
+margin_bottom = -3.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "-120"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Label"]
+show_behind_parent = true
+margin_top = 8.0
+margin_right = 42.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 4 )
+text = "absorb"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

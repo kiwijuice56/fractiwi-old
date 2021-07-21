@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/creature/mia/mia.png" type="Texture" id=2]
+[ext_resource path="res://main/battle/skill/active/point/ember/Ember.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/point/mp drain/Mp Drain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=5]
+
+[node name="Mia" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+offset = Vector2( 0, 0 )
+race = "Object"
+creature_name = "Mia"
+level = 7
+stre = 2
+magi = 4
+vita = 3
+luck = 2
+agil = 5
+def_affinity = {
+"fire": "resist",
+"light": "weak"
+}
+off_affinity = {
+"fire": 120,
+"heal": -130
+}
+
+[node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 5 )]
+
+[node name="Ember" parent="Skills/Active" index="1" instance=ExtResource( 3 )]
+
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 7 ]
+
+[node name="Mp Drain" parent="UnlearnedSkills" index="0" instance=ExtResource( 4 )]

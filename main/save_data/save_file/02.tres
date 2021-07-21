@@ -6,90 +6,94 @@
 script = ExtResource( 1 )
 data = {
 "FileSaver": {
-"time": 1327
+"time": 1494
 },
 "Items": {
 "consumables": {
-"Fire Stone": 1,
-"Hp Pill": 1
+"Mp Pill": 1
 },
 "current_effect": "Normal",
 "effect_skills": {
 "Duck": {
-"Skill Levels": [ 1 ],
-"Unlearned": [ "Bubble" ]
+"Skill Levels": [ 7, 8 ],
+"Unlearned": [ "Bubble", "Cheer" ]
 },
 "Flower": {
-"Skill Levels": [ 1 ],
-"Unlearned": [ "Heal" ]
+"Skill Levels": [ 7, 8, 12 ],
+"Unlearned": [ "Heal", "Gust", "Hurricane" ]
+},
+"Knife": {
+"Skill Levels": [ 14, 17, 19 ],
+"Unlearned": [ "Luck Cut", "Multislash", "Shriek" ]
 },
 "Normal": {
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Skill Levels": [ 10, 17 ],
+"Unlearned": [ "Mjolnir", "Null Elec" ]
 }
 },
-"effects": [ "Normal" ]
+"effects": [ "Normal" ],
+"money": 488
 },
 "Party": {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Cry", "Focus", "Neo Beam", "Shock", "Slash" ],
+"Active": [ "Cleave", "Shock", "Slash", "Mp Drain" ],
 "Passive": [  ],
-"Skill Levels": [  ],
-"Unlearned": [  ]
+"Skill Levels": [ 10, 17 ],
+"Unlearned": [ "Mjolnir", "Null Elec" ]
 },
 "stats": {
-"age": 5,
+"age": 3,
 "agil": 3,
-"expe": 15,
-"hp": 84,
+"expe": 189,
+"hp": 91,
 "level": 8,
-"luck": 4,
-"magi": 3,
-"mp": 41,
-"stre": 4,
-"vita": 6
-}
-},
-"01Gabriel": {
-"skills": {
-"Active": [ "Focus", "Hellfire" ],
-"Passive": [ "Null Light" ],
-"Skill Levels": [  ],
-"Unlearned": [ "Cleave" ]
-},
-"stats": {
-"age": 0,
-"agil": 5,
-"expe": 84,
-"hp": 72,
-"level": 7,
 "luck": 3,
-"magi": 5,
-"mp": 43,
+"magi": 4,
+"mp": 44,
 "stre": 3,
 "vita": 5
 }
 },
-"02Looker": {
+"01Elephante": {
 "skills": {
-"Active": [ "Glare", "Slash" ],
+"Active": [ "Neo Beam", "Shock" ],
 "Passive": [  ],
 "Skill Levels": [  ],
 "Unlearned": [  ]
 },
 "stats": {
-"age": 3,
-"agil": 1,
-"expe": 127,
-"hp": 60,
-"level": 6,
-"luck": 1,
-"magi": 3,
-"mp": 33,
+"age": 0,
+"agil": 3,
+"expe": 78,
+"hp": 70,
+"level": 7,
+"luck": 3,
+"magi": 4,
+"mp": 40,
 "stre": 1,
-"vita": 4
+"vita": 3
+}
+},
+"02Elle": {
+"skills": {
+"Active": [ "Gust" ],
+"Passive": [  ],
+"Skill Levels": [ 13 ],
+"Unlearned": [ "Heal" ]
+},
+"stats": {
+"age": 0,
+"agil": 2,
+"expe": 39,
+"hp": 119,
+"level": 8,
+"luck": 3,
+"magi": 5,
+"mp": 47,
+"stre": 4,
+"vita": 9
 }
 },
 "03Normalem": {
@@ -101,23 +105,83 @@ data = {
 },
 "stats": {
 "age": 0,
-"agil": 5,
+"agil": 4,
 "expe": 0,
-"hp": 66,
-"level": 7,
+"hp": 70,
+"level": 6,
 "luck": 3,
-"magi": 4,
-"mp": 40,
-"stre": 3,
+"magi": 3,
+"mp": 33,
+"stre": 2,
 "vita": 4
 }
 }
 },
 "inactive": {
+"00Eye Worm": {
+"skills": {
+"Active": [ "Heal", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [ 7 ],
+"Unlearned": [ "Cleave" ]
+},
+"stats": {
+"age": 3,
+"agil": 2,
+"expe": 77,
+"hp": 56,
+"level": 6,
+"luck": 1,
+"magi": 2,
+"mp": 30,
+"stre": 2,
+"vita": 2
+}
+},
+"01Looker": {
+"skills": {
+"Active": [ "Glare", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 4,
+"agil": 1,
+"expe": 69,
+"hp": 77,
+"level": 7,
+"luck": 1,
+"magi": 3,
+"mp": 37,
+"stre": 2,
+"vita": 4
+}
+},
+"02Golem": {
+"skills": {
+"Active": [ "Cleave", "Slash" ],
+"Passive": [  ],
+"Skill Levels": [  ],
+"Unlearned": [  ]
+},
+"stats": {
+"age": 3,
+"agil": 1,
+"expe": 10,
+"hp": 70,
+"level": 7,
+"luck": 1,
+"magi": 2,
+"mp": 34,
+"stre": 4,
+"vita": 3
+}
+}
 }
 },
 "World": {
-"location": "clumsy_cities",
+"location": "origin",
 "memory": {
 "balcony": {
 },
@@ -125,13 +189,12 @@ data = {
 "PillBottle": true
 },
 "clumsy_cities": {
+"PillBottle": true
 },
 "eye_hall": {
 "PillBottle": true,
 "PillBottle2": true,
-"PillBottle3": true,
-"PillBottle5": true,
-"Stone": true
+"PillBottle3": true
 },
 "neon": {
 },
@@ -140,8 +203,12 @@ data = {
 "origin": {
 },
 "origin_fake": {
+},
+"origin_ocean": {
+},
+"sky_temple": {
 }
 },
-"terminal": "Terminal"
+"terminal": "Bed"
 }
 }

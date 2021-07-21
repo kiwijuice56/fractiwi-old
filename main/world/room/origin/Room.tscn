@@ -51,6 +51,11 @@ position = Vector2( -0.948921, 25.3802 )
 [node name="CollisionShape2D" parent="Props/Interactable/Doors/Door/StaticBody2D" index="0"]
 disabled = true
 
+[node name="Start" type="Position2D" parent="Props/Interactable/Doors" index="2"]
+position = Vector2( 8, 72 )
+
+[node name="Spawn" type="Position2D" parent="Props/Interactable/Doors/Start" index="0"]
+
 [node name="Static" parent="Props" index="3"]
 position = Vector2( 0, 0.176777 )
 

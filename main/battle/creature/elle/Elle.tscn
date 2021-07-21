@@ -10,15 +10,16 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, 0 )
 race = "Plant"
 creature_name = "Elle"
-level = 11
+level = 6
 stre = 4
-magi = 6
-vita = 9
+magi = 5
+vita = 7
 luck = 3
-agil = 3
+agil = 2
 def_affinity = {
 "phys": "resist",
-"water": "weak"
+"water": "weak",
+"wind": "null"
 }
 
 [node name="Gust" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

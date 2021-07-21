@@ -13,10 +13,10 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 	for i in range(len(targets)):
 		var target = targets[i]
 		if not target.focus:
-			target.targeted_skill_data = [true, false, false, "", PointLabel.text_types.FOCUS]
+			target.targeted_skill_data = [true, false, false, "", "", PointLabel.text_types.FOCUS]
 			target.focus = true
 		else:
-			target.targeted_skill_data = [false, false, false, "", PointLabel.text_types.FOCUS]
+			target.targeted_skill_data = [false, false, false, "", "", PointLabel.text_types.FOCUS]
 		var new_turns_used = turn_logic("regular", false, false)
 		if new_turns_used < 0 or turns_used < 0:
 			# warning-ignore:narrowing_conversion

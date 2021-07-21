@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/progress.png-4476899a3ee88d2b029ae496eadbb0c5.stex"
+path="res://.import/under.png-c8c5df30f46f4686d2382a485891758d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/ui/menu/creature_check_screen_menu/unlearned_skill_container/progress.png"
-dest_files=[ "res://.import/progress.png-4476899a3ee88d2b029ae496eadbb0c5.stex" ]
+source_file="res://main/ui/menu/game_menu/effect_progress_indicator/under.png"
+dest_files=[ "res://.import/under.png-c8c5df30f46f4686d2382a485891758d.stex" ]
 
 [params]
 

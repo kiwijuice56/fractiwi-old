@@ -8,12 +8,12 @@
 [node name="Normalem" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
 creature_name = "Normalem"
-level = 7
-stre = 3
-magi = 4
+level = 6
+stre = 2
+magi = 3
 vita = 4
 luck = 3
-agil = 5
+agil = 4
 def_affinity = {
 "water": "resist",
 "wind": "weak"

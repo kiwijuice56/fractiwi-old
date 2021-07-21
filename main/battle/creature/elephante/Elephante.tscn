@@ -9,12 +9,12 @@
 texture = ExtResource( 2 )
 race = "Beast"
 creature_name = "Elephante"
-level = 7
+level = 6
 stre = 1
 magi = 4
 vita = 3
 luck = 3
-agil = 3
+agil = 1
 def_affinity = {
 "elec": "resist"
 }

@@ -10,11 +10,11 @@ texture = ExtResource( 3 )
 race = "Plant"
 creature_name = "Violetb"
 level = 25
-stre = 8
-magi = 8
-vita = 45
+stre = 6
+magi = 7
+vita = 40
 luck = 7
-agil = 7
+agil = 3
 def_affinity = {
 "flesh": "resist",
 "water": "weak",

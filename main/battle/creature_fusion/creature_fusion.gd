@@ -13,8 +13,9 @@ func fuse(ingredient1: Creature, ingredient2: Creature) -> Creature:
 	else:
 		new_race_index = $FusionCatalogue.races.find(new_race)
 	# warning-ignore:integer_division
-	var avg_level = (ingredient1.level + ingredient2.level)/2
-	var creature_name: String = $FusionCatalogue.creature_matrix[new_race_index][avg_level]
+	var avg_level = (ingredient1.base_level + ingredient2.base_level)/2
+	print(ingredient1.name, " ", ingredient2.name, " ", avg_level)
+	var creature_name: String = $FusionCatalogue.creature_matrix[new_race_index][avg_level-1]
 	if creature_name:
 		var creature = load(creature_path + ("%s/%s.tscn" % [creature_name.to_lower(), creature_name])).instance()
 		return creature

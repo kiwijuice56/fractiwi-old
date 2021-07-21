@@ -282,6 +282,7 @@ item = "Hp Pill"
 [node name="Stone2" parent="Props/Items" index="1" instance=ExtResource( 18 )]
 position = Vector2( -1488, 2912 )
 item = "Fire Stone"
+count = 1
 
 [node name="Duck" parent="Props/Items" index="2" instance=ExtResource( 17 )]
 position = Vector2( -2336, 1416 )

@@ -10,6 +10,8 @@ func get_files() -> Array:
 	for _i in range(99):
 		files.append(null)
 	var dir = Directory.new()
+	dir.open("user://")
+	dir.make_dir("save_files")
 	dir.open(path)
 	dir.list_dir_begin()
 	while true:
@@ -26,7 +28,7 @@ func save_file(index: int) -> void:
 	for node in get_tree().get_nodes_in_group("Save"):
 		file.data[node.name] = node.save_data()
 	var dir = Directory.new()
-	if index == -1:
+	if index == -1: # editor purposes
 		ResourceSaver.save("res://main/save_data/default.tres", file)
 	else:
 		dir.remove(path + "%02d.tres" % index)

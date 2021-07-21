@@ -15,6 +15,9 @@ export(NodePath) var text_label
 export(NodePath) var skill_description_label
 export(NodePath) var item_selection
 export(NodePath) var item_description_label
+export(NodePath) var cash_label
+export(NodePath) var effect_progress
+export(NodePath) var stock_label
 
 var open := false
 var can_open := false
@@ -39,6 +42,9 @@ func _ready():
 	skill_description_label = get_node(skill_description_label)
 	item_selection = get_node(item_selection)
 	item_description_label = get_node(item_description_label)
+	cash_label = get_node(cash_label)
+	effect_progress = get_node(effect_progress)
+	stock_label = get_node(stock_label)
 	main_viewport.connect("battle_start", self, "battle_started")
 	main_viewport.connect("battle_end", self, "battle_ended")
 	connect("battle_action_chosen", self, "battle_action_chosen")
@@ -331,6 +337,7 @@ func show_items() -> void:
 	input["ActionHotkeyContainer"].enable_input()
 	input["ItemContainer"].add_items()
 	input["ItemContainer"].enable_input()
+	cash_label.text = "$" + str(get_viewport().items.money)
 	if not in_battle:
 		input["ItemContainer"].disable_overworld()
 	if len(main_viewport.items.consumables):
@@ -377,6 +384,8 @@ func show_effects() -> void:
 	input["EffectButtonContainer"].enable_input()
 	input["EffectButtonContainer"].add_items()
 	input["EffectButtonContainer"].grab_focus_at(0)
+	effect_progress.max_value = main_viewport.items.get_node("Effects").get_child_count()
+	effect_progress.value = len(main_viewport.items.effects)
 	effect_handler.fade(effect_selection, "visible", effect_handler.default_fade_time)
 	state = "effects"
 
@@ -460,6 +469,7 @@ func show_party(anim: bool) -> void:
 	input["PartySelectHotKeyContainer"].disable_input()
 	input["PartySelectHotKeyContainer"].visible = false
 	input["FullPartyContainer"].grab_focus_at(0)
+	stock_label.text = str(main_viewport.party.get_node("Active").get_child_count() + main_viewport.party.get_node("Inactive").get_child_count()) + "/12"
 	state = "party"
 
 func hide_party() -> void:

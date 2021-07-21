@@ -5,6 +5,7 @@ class_name Creature
 export(String, "Human", "Object", "Beast", "Spirit", "Demon", "Angel", "Plant") var race: String = "Human"
 export var creature_name: String
 export var level: int
+var base_level: int
 export var stre: int
 export var magi: int
 export var vita: int
@@ -106,6 +107,10 @@ func do_turn(same: Array, opposite: Array) -> int:
 				get_viewport().game.label_container.show_text("Recruit fail .. Its will to fight is too strong!")
 				yield(get_viewport().game.label_container, "complete")
 				return -1
+			"stock":
+				get_viewport().game.label_container.show_text("Recruit fail .. You have no space for more creatures!")
+				yield(get_viewport().game.label_container, "complete")
+				return -1
 			"success":
 				get_viewport().game.label_container.show_text("Recruit success .. " + targets[0].creature_name + " joined you!")
 				yield(get_viewport().game.label_container, "complete")
@@ -132,6 +137,8 @@ func recruit_attempt(targets: Array) -> String:
 		names.append(child.creature_name)
 	if targets[0].creature_name in names:
 		return "in party"
+	if get_viewport().party.get_node("Active").get_child_count() + get_viewport().party.get_node("Inactive").get_child_count() >= 12:
+		return "stock"
 	randomize()
 	if rand_range(0,1) < .30+ ((luck)/60.0):
 		return "success"
@@ -148,11 +155,11 @@ func target_action() -> void:
 				$AnimationPlayer.current_animation = "hurt_resist"
 			else:
 				$AnimationPlayer.current_animation = "hurt_normal"
-		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4])
+		$PointLabel.set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4], targeted_skill_data[5])
 		$PointLabel.get_node("AnimationPlayer").current_animation = "show"
 	else:
 		panel.get_node("AnimationPlayer").current_animation = "hurt_normal"
-		panel.get_node("PointLabel").set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4])
+		panel.get_node("PointLabel").set_point_text(targeted_skill_data[0], targeted_skill_data[1], targeted_skill_data[2], targeted_skill_data[3], targeted_skill_data[4], targeted_skill_data[5])
 		panel.get_node("PointLabel/AnimationPlayer").current_animation = "show"
 	targeted_skill_data = []
 	var function = check_hp()
@@ -192,9 +199,12 @@ func death() -> void:
 	elif not is_tamed:
 		var queue = get_parent().get_parent()
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
-		var multipler = min(2, max(0.1, 1 - (level_dif/.1)))
-		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/8.0)
-		queue.expe += expe_given * multipler * (2.0 if is_boss else 1.0)
+		var multiplier = min(2, max(0.1, 1 - (1/max(level_dif, 1))))
+		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.5)
+		var money_given = rand_range(15,20)
+		print(multiplier, " ",expe_given)
+		queue.expe += int(expe_given * multiplier * (2.0 if is_boss else 1.0))
+		get_viewport().items.money += int(money_given * multiplier * (4.0 if is_boss else 1.0))
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"
 		yield($AnimationPlayer, "animation_finished")
@@ -233,6 +243,7 @@ func to_dict() -> Dictionary:
 	return {"skills": skills, "stats": stats}
 
 func set_stats(data: Dictionary) -> void:
+	base_level = level
 	for stat in data.keys():
 		set(stat, data[stat])
 	set_max_points()
@@ -242,7 +253,6 @@ func set_level() -> Array:
 	var levels_changed := 0
 	var skills_learned := 0
 	while expe >= expe_to_level:
-		print(expe)
 		expe -= expe_to_level
 		levels_changed += 1
 		age += 1

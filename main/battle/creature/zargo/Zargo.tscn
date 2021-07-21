@@ -8,9 +8,10 @@
 
 [node name="Zargo" instance=ExtResource( 2 )]
 texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
 race = "Demon"
 creature_name = "Zargo"
-level = 13
+level = 11
 stre = 9
 magi = 5
 vita = 9

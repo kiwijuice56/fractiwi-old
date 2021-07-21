@@ -14,7 +14,7 @@ level = 25
 stre = 12
 magi = 5
 vita = 45
-luck = 5
+luck = 6
 agil = 5
 def_affinity = {
 "phys": "resist",

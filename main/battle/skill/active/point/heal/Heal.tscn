@@ -11,5 +11,5 @@ side = "same"
 accuracy = 100
 can_miss = false
 can_crit = false
-power = 5
+power = 8
 stat = "magi"

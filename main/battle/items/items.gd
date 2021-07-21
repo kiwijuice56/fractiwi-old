@@ -2,8 +2,9 @@ extends Node
 class_name Items
 
 var current_effect := "Normal"
-var effects: Array
+var effects: Array = ["Normal"]
 var consumables: Dictionary
+var money := 0
 
 func get_off() -> Dictionary:
 	return get_node("Effects").get_node(current_effect).off_affinities
@@ -40,10 +41,11 @@ func remove_consumable(skill: String) -> void:
 
 func save_data() -> Dictionary:
 	return {"effects": effects, "effect_skills": get_effect_skill_names(), "current_effect": current_effect,
-			"consumables": consumables}
+			"consumables": consumables, "money": money}
 
 func load_data(data: Dictionary) -> void:
 	effects = data["effects"]
 	consumables = data["consumables"]
+	money = data["money"]
 	set_effect_skills(data["effect_skills"])
 	get_viewport().world_node.player.set_effect(data["current_effect"], false)

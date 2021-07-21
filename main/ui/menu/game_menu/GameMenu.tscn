@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=2]
@@ -32,6 +32,8 @@
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/knife.png" type="Texture" id=30]
 [ext_resource path="res://main/ui/theme/style_box/thin/margin/MarginThin.tres" type="StyleBox" id=31]
 [ext_resource path="res://main/ui/utility_classes/input_container/hotkey_container/up_down_arrows.png" type="Texture" id=32]
+[ext_resource path="res://main/ui/menu/game_menu/effect_progress_indicator/under.png" type="Texture" id=33]
+[ext_resource path="res://main/ui/menu/game_menu/effect_progress_indicator/progress.png" type="Texture" id=34]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -87,6 +89,9 @@ text_label = NodePath("VBoxContainer/MainPanel/PanelContainer/VBoxContainer/Text
 skill_description_label = NodePath("VBoxContainer/Control/ActionSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/DescriptionLabel")
 item_selection = NodePath("VBoxContainer/Control/ItemSelection")
 item_description_label = NodePath("VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/PanelContainer/ItemDescriptionLabel")
+cash_label = NodePath("VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/CashLabel")
+effect_progress = NodePath("VBoxContainer/Control/EffectSelection/VBoxContainer/EffectProgress")
+stock_label = NodePath("VBoxContainer/PopOutPartyContainer/VBoxContainer/Control/StockLabel")
 
 [node name="Node" type="Node" parent="."]
 
@@ -144,8 +149,20 @@ margin_bottom = 14.0
 text = "Effects"
 align = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer"]
+[node name="EffectProgress" type="TextureProgress" parent="VBoxContainer/Control/EffectSelection/VBoxContainer"]
+margin_left = 106.0
 margin_top = 18.0
+margin_right = 138.0
+margin_bottom = 26.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+max_value = 4.0
+value = 1.0
+texture_under = ExtResource( 33 )
+texture_progress = ExtResource( 34 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer"]
+margin_top = 30.0
 margin_right = 244.0
 margin_bottom = 118.0
 rect_min_size = Vector2( 0, 60 )
@@ -156,7 +173,7 @@ script = ExtResource( 5 )
 
 [node name="EffectButtonContainer" type="HBoxContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer"]
 margin_right = 270.0
-margin_bottom = 90.0
+margin_bottom = 78.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 custom_constants/separation = 10
@@ -165,8 +182,8 @@ controller = NodePath("../../../../../..")
 button_scene = ExtResource( 21 )
 
 [node name="Normal" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
-margin_top = 15.0
-margin_bottom = 75.0
+margin_top = 9.0
+margin_bottom = 69.0
 icons = {
 "Duck": ExtResource( 29 ),
 "Flower": ExtResource( 26 ),
@@ -182,9 +199,9 @@ text = "Normal"
 
 [node name="Flower" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
 margin_left = 70.0
-margin_top = 15.0
+margin_top = 9.0
 margin_right = 130.0
-margin_bottom = 75.0
+margin_bottom = 69.0
 size_flags_horizontal = 4
 custom_styles/panel = SubResource( 2 )
 regular_style = SubResource( 2 )
@@ -198,9 +215,9 @@ icons = {
 
 [node name="Duck" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
 margin_left = 140.0
-margin_top = 15.0
+margin_top = 9.0
 margin_right = 200.0
-margin_bottom = 75.0
+margin_bottom = 69.0
 size_flags_horizontal = 4
 custom_styles/panel = SubResource( 2 )
 regular_style = SubResource( 2 )
@@ -214,9 +231,9 @@ icons = {
 
 [node name="Knife" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
 margin_left = 210.0
-margin_top = 15.0
+margin_top = 9.0
 margin_right = 270.0
-margin_bottom = 75.0
+margin_bottom = 69.0
 size_flags_horizontal = 4
 custom_styles/panel = SubResource( 2 )
 regular_style = SubResource( 2 )
@@ -415,7 +432,7 @@ margin_bottom = 95.0
 rect_min_size = Vector2( 0, 29 )
 custom_styles/panel = ExtResource( 31 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+[node name="CashLabel" type="Label" parent="VBoxContainer/Control/ItemSelection/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
 margin_left = 5.0
 margin_top = 7.0
 margin_right = 149.0
@@ -740,6 +757,18 @@ margin_left = 55.0
 margin_right = 71.0
 margin_bottom = 14.0
 texture = ExtResource( 32 )
+
+[node name="StockLabel" type="Label" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -21.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "5/12"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EffectHandler" parent="." instance=ExtResource( 10 )]
 default_fade_time = 0.1

@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/battle/graphic_effect/active_skill/dim_ray/15362__djgriffin__tibetan-chant-1.wav" type="AudioStream" id=1]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/ActiveSkillEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/dim_ray/dim_ray.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dim_ray"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -8.0, -8.0, -40.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "impact_point"
+} ]
+}
+
+[node name="Drain" instance=ExtResource( 2 )]
+count = "multiple"
+delay = 1.5
+anim_name = "dim_ray"
+
+[node name="AnimationPlayer" parent="." index="0"]
+anims/dim_ray = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+visible = true
+modulate = Color( 0.0470588, 0.196078, 1, 1 )
+texture = ExtResource( 3 )
+hframes = 12
+frame = 6
+
+[node name="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 1 )
+volume_db = -8.0

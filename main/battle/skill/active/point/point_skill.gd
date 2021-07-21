@@ -6,6 +6,7 @@ export(int, 0, 100) var critical := 0
 export(int, -100, 100) var power := 0
 export(String, "stre", "magi", "luck", "vita") var stat := "stre"
 export(String, "hp", "mp") var point_stat := "hp"
+export var drains := false
 
 func get_text() -> String:
 	return ("Pow: %d\nHit: %d\nTarget: %s\n" % [power, accuracy, target_type]) + description
@@ -23,7 +24,7 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 		var def: String = get_def_affinity(target)
 		var off: int = get_off_affinity(user)
 		var point_change = calculate_points(user, target, def, off, is_crit)
-		target.targeted_skill_data = [point_change, is_miss, is_crit, def, PointLabel.text_types.POINT]
+		target.targeted_skill_data = [point_change, is_miss, is_crit, def, point_stat, PointLabel.text_types.POINT]
 		var new_turns_used = turn_logic(def, is_miss, is_crit)
 		if new_turns_used < 0 or turns_used < 0:
 			# warning-ignore:narrowing_conversion
@@ -41,13 +42,20 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 			user.set(point_stat, max(user.get(point_stat), 0))
 			if not user in targets:
 				targets.append(user)
-				user.targeted_skill_data = [point_change, false, is_crit, def, PointLabel.text_types.POINT]
+				user.targeted_skill_data = [point_change, false, is_crit, def, point_stat, PointLabel.text_types.POINT]
 			else:
 				user.targeted_skill_data[0] += point_change
 		else:
 			target.set(point_stat, target.get(point_stat) + point_change)
 			target.set(point_stat, min(target.get(point_stat), target.get("max_"+point_stat)))
 			target.set(point_stat, max(target.get(point_stat), 0))
+			if drains:
+				var drain_point_change = int(abs(point_change)/2)
+				user.set(point_stat, user.get(point_stat) + drain_point_change)
+				user.set(point_stat, min(user.get(point_stat), user.get("max_"+point_stat)))
+				user.set(point_stat, max(user.get(point_stat), 0))
+				targets.append(user)
+				user.targeted_skill_data = [drain_point_change, false, is_crit, def, point_stat, PointLabel.text_types.POINT]
 	var effect: ActiveSkillEffect = effect_packed.instance()
 	var place_timer = Timer.new()
 	add_child(place_timer)

@@ -13,7 +13,7 @@ stre = 1
 magi = 1
 vita = 1
 luck = 1
-agil = 1
+agil = 2
 def_affinity = {
 "elec": "weak"
 }
