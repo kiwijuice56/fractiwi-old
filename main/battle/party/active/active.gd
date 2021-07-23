@@ -15,6 +15,11 @@ func get_children():
 		return battle_party_node.get_children()
 	return .get_children()
 
+func get_child_count():
+	if displaced:
+		return battle_party_node.get_child_count()
+	return .get_child_count()
+
 func add_child(node: Node, legible: bool = false):
 	if displaced:
 		battle_party_node.add_child(node, legible)

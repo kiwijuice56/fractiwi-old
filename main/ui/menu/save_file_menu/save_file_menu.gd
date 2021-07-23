@@ -29,8 +29,8 @@ func input_pressed(key_name: String) -> void:
 			main_viewport.menu_sound_player.play_sound("Next")
 			file_saver.save_file(index)
 		"Load":
-			main_viewport.menu_sound_player.play_sound("Start")
 			if input["SaveFileContainer"].files[index]:
+				main_viewport.menu_sound_player.play_sound("Start")
 				disable(true)
 				file_saver.load_file(index)
 				main_viewport.root.start()

@@ -28,6 +28,7 @@ var attack: int = 0
 var defense: int = 0
 var hiteva: int = 0
 var focus := false
+var concentrate := false
 
 var item_use := false
 var expe := 0
@@ -177,6 +178,7 @@ func reset_buffs() -> void:
 	defense = 0
 	hiteva = 0
 	focus = false
+	concentrate = false
 
 func check_hp() -> void:
 	if hp <= 0:

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/creature/eye hydra/eye hydra.png" type="Texture" id=2]
+[ext_resource path="res://main/battle/skill/active/point/heart worm/Heart Worm.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/status/other/concentrate/Concentrate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/active/point/mp drain/Mp Drain.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/battle/skill/active/point/blood steal/Blood Steal.tscn" type="PackedScene" id=6]
+
+[node name="Eye Hydra" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+race = "Plant"
+creature_name = "Eye Hydra"
+level = 25
+stre = 6
+magi = 12
+vita = 8
+luck = 6
+agil = 6
+def_affinity = {
+"fire": "null",
+"flesh": "absorb",
+"light": "weak",
+"water": "resist"
+}
+off_affinity = {
+"flesh": 130,
+"light": -120,
+"wind": -120
+}
+
+[node name="Heart Worm" parent="Skills/Active" index="0" instance=ExtResource( 3 )]
+
+[node name="Mp Drain" parent="Skills/Active" index="1" instance=ExtResource( 5 )]
+
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 27, 29 ]
+
+[node name="Blood Steal" parent="UnlearnedSkills" index="0" instance=ExtResource( 6 )]
+
+[node name="Concentrate" parent="UnlearnedSkills" index="1" instance=ExtResource( 4 )]

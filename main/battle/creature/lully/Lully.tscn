@@ -19,7 +19,7 @@ agil = 6
 def_affinity = {
 "light": "resist",
 "phys": "resist",
-"water": "weak",
+"water": "absorb",
 "wind": "weak"
 }
 off_affinity = {

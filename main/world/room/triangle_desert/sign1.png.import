@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/orange.png-0fec318bfcc8f28368a69a8765bb5dae.stex"
+path="res://.import/sign1.png-f7d7849eba6e1e593f035d4989fa4936.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/battle/creature/orange/orange.png"
-dest_files=[ "res://.import/orange.png-0fec318bfcc8f28368a69a8765bb5dae.stex" ]
+source_file="res://main/world/room/triangle_desert/sign1.png"
+dest_files=[ "res://.import/sign1.png-f7d7849eba6e1e593f035d4989fa4936.stex" ]
 
 [params]
 

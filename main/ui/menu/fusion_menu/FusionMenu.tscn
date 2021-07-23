@@ -13,7 +13,7 @@
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_animation/platform.png" type="Texture" id=11]
 [ext_resource path="res://main/battle/creature/golem/golem.png" type="Texture" id=12]
 [ext_resource path="res://main/ui/menu/fusion_menu/fusion_animation/particle.png" type="Texture" id=13]
-[ext_resource path="res://main/ui/menu/fusion_menu/fusion_animation/scene_animationgd.gd" type="Script" id=14]
+[ext_resource path="res://main/ui/menu/fusion_menu/fusion_animation/scene_animation.gd" type="Script" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )

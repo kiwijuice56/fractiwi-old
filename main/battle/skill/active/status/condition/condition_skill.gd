@@ -30,7 +30,8 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 			continue
 		if def == "repel":
 			def = get_def_affinity(user)
-			user.set("status", condition)
+			if def != "repel" and def != "absorb" and def != "null":
+				user.set("status", condition)
 			if not user in targets:
 				targets.append(user)
 				user.targeted_skill_data = [condition, false, false, def, "", PointLabel.text_types.STATUS]

@@ -168,7 +168,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 21.0
 margin_bottom = 21.0
-rect_scale = Vector2( 1e-05, 1 )
+rect_rotation = -4.0
 rect_pivot_offset = Vector2( 11, 11 )
 size_flags_horizontal = 4
 size_flags_vertical = 10
@@ -179,7 +179,7 @@ __meta__ = {
 }
 
 [node name="VisibilityPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 2.0
+playback_speed = 2.5
 anims/hide = SubResource( 1 )
 anims/show = SubResource( 2 )
 
@@ -188,7 +188,7 @@ anims/become_half = SubResource( 3 )
 anims/half = SubResource( 4 )
 
 [node name="HalfTurn" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.6 )
 margin_right = 21.0
 margin_bottom = 21.0
 texture = ExtResource( 3 )

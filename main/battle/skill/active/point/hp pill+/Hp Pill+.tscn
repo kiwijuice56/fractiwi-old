@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/graphic_effect/active_skill/pill/Pill.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/skill/active/point/PointSkill.tscn" type="PackedScene" id=2]
+
+[node name="Hp Pill+" instance=ExtResource( 2 )]
+affinity = "heal"
+effect_packed = ExtResource( 1 )
+target_type = "all"
+side = "same"
+accuracy = 100
+can_miss = false
+can_crit = false
+power = 15
+stat = "luck"

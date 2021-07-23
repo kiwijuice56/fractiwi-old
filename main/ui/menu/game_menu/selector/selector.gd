@@ -77,6 +77,10 @@ func select(target_type: String, side: String) -> Array:
 				"all":
 					controller.select_all_active()
 					var target = yield(controller, "selection_complete")
+					for active in get_viewport().game.input["ActivePartyContainer"].get_children():
+						if "focused_style" in active:
+							active.focus_style_lock = false
+							active.focus_exited()
 					if len(target) == 0:
 						return target
 					return controller.party.get_node("Active").get_children()

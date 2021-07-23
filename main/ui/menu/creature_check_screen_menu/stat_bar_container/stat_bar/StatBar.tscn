@@ -11,7 +11,7 @@ content_margin_right = 4.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 content_margin_left = 4.0
 content_margin_right = 4.0
 texture = ExtResource( 4 )
@@ -21,7 +21,7 @@ margin_right = 3.0
 margin_top = 3.0
 margin_bottom = 3.0
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=3]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 2.0
@@ -34,7 +34,7 @@ rect_min_size = Vector2( 250, 17 )
 size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 3 )
+custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -47,7 +47,7 @@ stat_name = NodePath("PanelContainer/HBoxContainer/StatName")
 margin_right = 14.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 250, 0 )
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -55,7 +55,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 margin_left = 4.0
 margin_top = 2.0
-margin_right = 246.0
+margin_right = 274.0
 margin_bottom = 16.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -69,11 +69,11 @@ text = "stre: 40"
 
 [node name="TextureProgress" type="TextureProgress" parent="PanelContainer/HBoxContainer"]
 margin_left = 59.0
-margin_right = 242.0
+margin_right = 270.0
 margin_bottom = 13.0
 size_flags_horizontal = 11
 size_flags_vertical = 4
-max_value = 30.0
+max_value = 35.0
 value = 4.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 1 )

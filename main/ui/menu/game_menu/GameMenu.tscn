@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://main/ui/utility_classes/input_container/hotkey_container/up_down_arrows.png" type="Texture" id=32]
 [ext_resource path="res://main/ui/menu/game_menu/effect_progress_indicator/under.png" type="Texture" id=33]
 [ext_resource path="res://main/ui/menu/game_menu/effect_progress_indicator/progress.png" type="Texture" id=34]
+[ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/eye.png" type="Texture" id=35]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -172,7 +173,7 @@ scroll_vertical_enabled = false
 script = ExtResource( 5 )
 
 [node name="EffectButtonContainer" type="HBoxContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer"]
-margin_right = 270.0
+margin_right = 340.0
 margin_bottom = 78.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -186,6 +187,7 @@ margin_top = 9.0
 margin_bottom = 69.0
 icons = {
 "Duck": ExtResource( 29 ),
+"Eye": ExtResource( 35 ),
 "Flower": ExtResource( 26 ),
 "Knife": ExtResource( 30 ),
 "Normal": ExtResource( 25 )
@@ -208,6 +210,7 @@ regular_style = SubResource( 2 )
 focused_style = SubResource( 3 )
 icons = {
 "Duck": ExtResource( 29 ),
+"Eye": ExtResource( 35 ),
 "Flower": ExtResource( 26 ),
 "Knife": ExtResource( 30 ),
 "Normal": ExtResource( 25 )
@@ -224,6 +227,7 @@ regular_style = SubResource( 2 )
 focused_style = SubResource( 3 )
 icons = {
 "Duck": ExtResource( 29 ),
+"Eye": ExtResource( 35 ),
 "Flower": ExtResource( 26 ),
 "Knife": ExtResource( 30 ),
 "Normal": ExtResource( 25 )
@@ -240,6 +244,7 @@ regular_style = SubResource( 2 )
 focused_style = SubResource( 3 )
 icons = {
 "Duck": ExtResource( 29 ),
+"Eye": ExtResource( 35 ),
 "Flower": ExtResource( 26 ),
 "Knife": ExtResource( 30 ),
 "Normal": ExtResource( 25 )
@@ -247,6 +252,29 @@ icons = {
 
 [node name="TextureRect" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Knife" index="0"]
 texture = ExtResource( 30 )
+
+[node name="Eye" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer" instance=ExtResource( 21 )]
+margin_left = 280.0
+margin_top = 9.0
+margin_right = 340.0
+margin_bottom = 69.0
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 2 )
+regular_style = SubResource( 2 )
+focused_style = SubResource( 3 )
+icons = {
+"Duck": ExtResource( 29 ),
+"Eye": ExtResource( 35 ),
+"Flower": ExtResource( 26 ),
+"Knife": ExtResource( 30 ),
+"Normal": ExtResource( 25 )
+}
+
+[node name="TextureRect" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Eye" index="0"]
+texture = ExtResource( 30 )
+
+[node name="Label" parent="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Eye" index="1"]
+text = "Eye"
 
 [node name="EffectHotkeyContainer" type="VBoxContainer" parent="VBoxContainer/Control/EffectSelection/VBoxContainer"]
 visible = false
@@ -559,7 +587,6 @@ margin_left = 3.0
 margin_top = 1.0
 margin_right = 118.0
 margin_bottom = 59.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -570,7 +597,6 @@ margin_left = 126.0
 margin_top = 1.0
 margin_right = 241.0
 margin_bottom = 59.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -581,7 +607,6 @@ margin_left = 248.0
 margin_top = 1.0
 margin_right = 363.0
 margin_bottom = 59.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -651,7 +676,6 @@ full_party = true
 [node name="CreatureButtonPanel" parent="VBoxContainer/PopOutPartyContainer/VBoxContainer/HBoxContainer/ScrollContainer/FullPartyContainer" instance=ExtResource( 13 )]
 margin_right = 115.0
 margin_bottom = 58.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -661,7 +685,6 @@ icons = {
 margin_left = 119.0
 margin_right = 234.0
 margin_bottom = 58.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -671,7 +694,6 @@ icons = {
 margin_left = 238.0
 margin_right = 353.0
 margin_bottom = 58.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -681,7 +703,6 @@ icons = {
 margin_left = 357.0
 margin_right = 472.0
 margin_bottom = 58.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -691,7 +712,6 @@ icons = {
 margin_left = 476.0
 margin_right = 591.0
 margin_bottom = 58.0
-rect_rotation = 0.0
 icons = {
 "dead": ExtResource( 19 ),
 "ok": ExtResource( 20 )
@@ -814,3 +834,4 @@ valign = 1
 
 [editable path="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Normal"]
 [editable path="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Knife"]
+[editable path="VBoxContainer/Control/EffectSelection/VBoxContainer/ScrollContainer/EffectButtonContainer/Eye"]

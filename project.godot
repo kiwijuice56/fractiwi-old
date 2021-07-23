@@ -85,6 +85,11 @@ _global_script_classes=[ {
 "path": "res://main/ui/menu/cathedral_menu/cathedral_menu.gd"
 }, {
 "base": "StatusSkill",
+"class": "ConcentrateSkill",
+"language": "GDScript",
+"path": "res://main/battle/skill/active/status/other/concentrate/concentrate.gd"
+}, {
+"base": "StatusSkill",
 "class": "ConditionSkill",
 "language": "GDScript",
 "path": "res://main/battle/skill/active/status/condition/condition_skill.gd"
@@ -402,7 +407,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "SceneAnimation",
 "language": "GDScript",
-"path": "res://main/ui/menu/fusion_menu/fusion_animation/scene_animationgd.gd"
+"path": "res://main/ui/menu/fusion_menu/fusion_animation/scene_animation.gd"
 }, {
 "base": "Node",
 "class": "Selector",
@@ -525,6 +530,7 @@ _global_script_class_icons={
 "ButtonPanel": "",
 "Cathedral": "",
 "CathedralMenu": "",
+"ConcentrateSkill": "",
 "ConditionSkill": "",
 "Creature": "",
 "CreatureButtonPanel": "",

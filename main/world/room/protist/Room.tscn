@@ -1,9 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://main/world/enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/world/prop/interactable/terminal/Terminal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/battle/creature/orange/Orange.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/world/room/protist/protist_tiles.png" type="Texture" id=5]
 [ext_resource path="res://main/world/room/protist/background.png" type="Texture" id=6]
 [ext_resource path="res://main/world/room/origin_fake/fd-abyss.wav" type="AudioStream" id=7]
@@ -189,25 +186,5 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="Props" parent="." index="1"]
 position = Vector2( 0, 69.3818 )
 
-[node name="Terminal" parent="Props/Terminals" index="0" instance=ExtResource( 3 )]
-position = Vector2( 368, 202.618 )
-room = NodePath("../../..")
-
-[node name="TerminalB" parent="Props/Terminals" index="1" instance=ExtResource( 3 )]
-position = Vector2( 816, 170.618 )
-room = NodePath("../../..")
-
 [node name="Enemies" parent="." index="2"]
 position = Vector2( 0, 69.3818 )
-
-[node name="Enemy" parent="Enemies" index="0" instance=ExtResource( 1 )]
-position = Vector2( 464, 202.618 )
-creatures = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ]
-
-[node name="Enemy2" parent="Enemies" index="1" instance=ExtResource( 1 )]
-position = Vector2( 528, 170.618 )
-creatures = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ]
-
-[node name="Enemy3" parent="Enemies" index="2" instance=ExtResource( 1 )]
-position = Vector2( 592, 202.618 )
-creatures = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ]

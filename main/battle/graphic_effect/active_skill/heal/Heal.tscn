@@ -60,7 +60,7 @@ tracks/3/keys = {
 
 [node name="Heal" instance=ExtResource( 1 )]
 count = "multiple"
-delay = 0.3
+delay = 0.6
 anim_name = "heal"
 
 [node name="AnimationPlayer" parent="." index="0"]

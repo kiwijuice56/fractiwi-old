@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/effect_button_panel.gd" type="Script" id=1]
 [ext_resource path="res://main/ui/theme/style_box/regular/margin/MarginRegular.tres" type="StyleBox" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/normal.png" type="Texture" id=6]
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/duck.png" type="Texture" id=7]
 [ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/knife.png" type="Texture" id=8]
+[ext_resource path="res://main/ui/menu/game_menu/effect_button_container/effect_button_panel/icons/eye.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 content_margin_left = 4.0
@@ -39,6 +40,7 @@ disabled_style = ExtResource( 2 )
 disbaled_focus_style = ExtResource( 2 )
 icons = {
 "Duck": ExtResource( 7 ),
+"Eye": ExtResource( 9 ),
 "Flower": ExtResource( 4 ),
 "Knife": ExtResource( 8 ),
 "Normal": ExtResource( 6 )

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/skill/active/point/PointSkill.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/flesh_sever/FleshSever.tscn" type="PackedScene" id=2]
+
+[node name="Blood Steal" instance=ExtResource( 1 )]
+affinity = "flesh"
+description = "Drains hp"
+effect_packed = ExtResource( 2 )
+cost = 22
+target_type = "all"
+accuracy = 93
+critical = 5
+power = -7
+stat = "magi"
+drains = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_ocean/origin_ocean_tiles.tres" type="TileSet" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://main/world/room/origin_ocean/head3.png" type="Texture" id=12]
 [ext_resource path="res://main/world/room/origin_ocean/head1.png" type="Texture" id=13]
 [ext_resource path="res://main/world/room/origin_ocean/head2.png" type="Texture" id=14]
+[ext_resource path="res://main/world/room/origin_ocean/head5.png" type="Texture" id=15]
+[ext_resource path="res://main/world/room/origin_ocean/head4.png" type="Texture" id=16]
+[ext_resource path="res://main/world/prop/interactable/bed/Bed.tscn" type="PackedScene" id=17]
+[ext_resource path="res://main/world/prop/interactable/item/pill_bottle/PillBottle.tscn" type="PackedScene" id=18]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -51,6 +55,40 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Sponge"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Sponge"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
 [node name="Room" instance=ExtResource( 1 )]
 music = ExtResource( 4 )
 backdrop = ExtResource( 9 )
@@ -66,6 +104,10 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 4194356, 13, 0, 4194357, 13, 2, 4259892, 13, 65536, 4259893, 13, 65538, 4325428, 13, 65536, 4325429, 13, 65538, 4390964, 13, 65536, 4390965, 13, 65538, 4456485, 13, 0, 4456486, 13, 1, 4456487, 13, 1, 4456488, 13, 1, 4456489, 13, 1, 4456490, 13, 1, 4456491, 13, 1, 4456492, 13, 1, 4456493, 13, 1, 4456494, 13, 1, 4456495, 13, 1, 4456496, 13, 1, 4456497, 13, 1, 4456498, 13, 1, 4456499, 13, 1, 4456500, 13, 65537, 4456501, 13, 65537, 4456502, 13, 1, 4456503, 13, 1, 4456504, 13, 1, 4456505, 13, 1, 4456506, 13, 1, 4456507, 13, 1, 4456508, 13, 1, 4456509, 13, 1, 4456510, 13, 1, 4456511, 13, 2, 4522021, 13, 131072, 4522022, 13, 131073, 4522023, 13, 131073, 4522024, 13, 131073, 4522025, 13, 131073, 4522026, 13, 131073, 4522027, 13, 131073, 4522028, 13, 131073, 4522029, 13, 131073, 4522030, 13, 131073, 4522031, 13, 131073, 4522032, 13, 131073, 4522033, 13, 131073, 4522034, 13, 131073, 4522035, 13, 131073, 4522036, 13, 131073, 4522037, 13, 131073, 4522038, 13, 131073, 4522039, 13, 131073, 4522040, 13, 131073, 4522041, 13, 131073, 4522042, 13, 131073, 4522043, 13, 131073, 4522044, 13, 131073, 4522045, 13, 131073, 4522046, 13, 131073, 4522047, 13, 131074 )
 
+[node name="Bed" parent="Props/Interactable/Terminals" index="0" instance=ExtResource( 17 )]
+position = Vector2( 40, 840 )
+room = NodePath("../../../..")
+
 [node name="PuddleDoor" parent="Props/Interactable/Doors" index="0" instance=ExtResource( 3 )]
 position = Vector2( 8, 920 )
 state = "Interact"
@@ -78,6 +120,11 @@ texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" parent="Props/Interactable/Doors/PuddleDoor" index="1"]
 shape = SubResource( 1 )
+
+[node name="PillBottle" parent="Props/Items" index="0" instance=ExtResource( 18 )]
+position = Vector2( 1208, 2216 )
+item = "Hp Pill+"
+count = 2
 
 [node name="FollowEye" parent="Props/Dynamic" index="0" instance=ExtResource( 7 )]
 position = Vector2( -56, 920 )
@@ -166,16 +213,56 @@ texture = ExtResource( 14 )
 position = Vector2( 1455, 511 )
 texture = ExtResource( 12 )
 
+[node name="Sprite14" type="Sprite" parent="Props/Static" index="12"]
+position = Vector2( 1976, 1480 )
+texture = ExtResource( 12 )
+
+[node name="Sprite15" type="Sprite" parent="Props/Static" index="13"]
+position = Vector2( 2088, 1400 )
+texture = ExtResource( 12 )
+
+[node name="Sprite17" type="Sprite" parent="Props/Static" index="14"]
+position = Vector2( 1496, 2120 )
+texture = ExtResource( 16 )
+
+[node name="Sprite18" type="Sprite" parent="Props/Static" index="15"]
+position = Vector2( 1256, 2120 )
+texture = ExtResource( 14 )
+
+[node name="Sprite20" type="Sprite" parent="Props/Static" index="16"]
+position = Vector2( 1320, 2328 )
+texture = ExtResource( 13 )
+
+[node name="Sprite21" type="Sprite" parent="Props/Static" index="17"]
+position = Vector2( 1672, 2328 )
+texture = ExtResource( 16 )
+
+[node name="Sprite22" type="Sprite" parent="Props/Static" index="18"]
+position = Vector2( 1112, 2200 )
+texture = ExtResource( 15 )
+
+[node name="Sprite23" type="Sprite" parent="Props/Static" index="19"]
+position = Vector2( 2104, 2200 )
+texture = ExtResource( 15 )
+
+[node name="Sprite24" type="Sprite" parent="Props/Static" index="20"]
+position = Vector2( 1992, 2120 )
+texture = ExtResource( 14 )
+
+[node name="Sprite13" type="Sprite" parent="Props/Static" index="21"]
+position = Vector2( 1848, 1560 )
+texture = ExtResource( 12 )
+
 [node name="Sponge2" parent="Enemies" index="0" instance=ExtResource( 5 )]
-position = Vector2( 488, 664 )
-creatures = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 8 ) ]
+position = Vector2( 472, 664 )
+creatures = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 8 ) ]
 
 [node name="Spawn" parent="Enemies/Sponge2" index="3"]
 position = Vector2( -48, 0 )
 
 [node name="Sponge3" parent="Enemies" index="1" instance=ExtResource( 5 )]
-position = Vector2( 504, 680 )
-creatures = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 8 ) ]
+position = Vector2( 504, 696 )
+creatures = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 8 ) ]
 
 [node name="Spawn" parent="Enemies/Sponge3" index="3"]
 position = Vector2( -48, 32 )
@@ -200,6 +287,26 @@ anims/Sponge = SubResource( 3 )
 [node name="Spawn" parent="Enemies/Sponge5" index="3"]
 position = Vector2( -48, 32 )
 
+[node name="Sponge6" parent="Enemies" index="4" instance=ExtResource( 5 )]
+position = Vector2( 1688, 2040 )
+creatures = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 8 ) ]
+
+[node name="AnimationPlayer" parent="Enemies/Sponge6" index="2"]
+anims/Sponge = SubResource( 4 )
+
+[node name="Spawn" parent="Enemies/Sponge6" index="3"]
+position = Vector2( -16, -32 )
+
+[node name="Sponge7" parent="Enemies" index="5" instance=ExtResource( 5 )]
+position = Vector2( 1704, 2088 )
+creatures = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 8 ) ]
+
+[node name="AnimationPlayer" parent="Enemies/Sponge7" index="2"]
+anims/Sponge = SubResource( 5 )
+
+[node name="Spawn" parent="Enemies/Sponge7" index="3"]
+position = Vector2( 0, -80 )
+
 [node name="Rain" parent="." index="4" instance=ExtResource( 6 )]
 
 [editable path="Props/Interactable/Doors/PuddleDoor"]
@@ -207,3 +314,5 @@ position = Vector2( -48, 32 )
 [editable path="Enemies/Sponge3"]
 [editable path="Enemies/Sponge4"]
 [editable path="Enemies/Sponge5"]
+[editable path="Enemies/Sponge6"]
+[editable path="Enemies/Sponge7"]

@@ -8,7 +8,7 @@ export var absorb: Color
 export var weak: Color
 export var crit: Color
 
-enum text_types { POINT, BUFF, STATUS, FOCUS }
+enum text_types { POINT, BUFF, STATUS, FOCUS, CONCENTRATE }
 
 func set_point_text(points, is_miss: bool, is_crit: bool, def: String, extra: String, type) -> void:
 	offset = get_parent().get_global_transform_with_canvas().get_origin()
@@ -85,3 +85,9 @@ func set_point_text(points, is_miss: bool, is_crit: bool, def: String, extra: St
 				$Label.text = "Focused!"
 			else:
 				$Label.text = "Already focused.."
+		text_types.CONCENTRATE:
+			$Label/Label2.text = ""
+			if points:
+				$Label.text = "Concentrated!"
+			else:
+				$Label.text = "Already concentrated.."

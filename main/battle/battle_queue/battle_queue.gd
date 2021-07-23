@@ -119,6 +119,9 @@ func battle(enemy_creatures: Array) -> void:
 	var opposite_array = to_array(opposite, [])
 	
 	var full: int = current.get_child_count()
+	for child in current.get_children():
+		if child.is_boss:
+			full += 1
 	var half: int = 0
 	var did_run := false
 	pointer = 0
@@ -158,9 +161,13 @@ func battle(enemy_creatures: Array) -> void:
 			
 			# initialize values
 			full = current.get_child_count()
+			for child in current.get_children():
+				if child.is_boss:
+					full += 1
 			half = 0
 			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "hide", 0.25)
 			yield(get_viewport().game.effect_handler, "complete")
+			get_viewport().game.press_turn_container.set_turns(0, 0)
 			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "show", 0.25)
 		else:
 			pointer += 1

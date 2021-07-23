@@ -456,8 +456,9 @@ func select_self_only() -> void:
 func select_all_active() -> void:
 	select_active_member()
 	for active in input["ActivePartyContainer"].get_children():
-		active.focus_entered()
-		active.focus_style_lock = true
+		if "focused_style" in active:
+			active.focus_entered()
+			active.focus_style_lock = true
 
 func show_party(anim: bool) -> void:
 	if anim:

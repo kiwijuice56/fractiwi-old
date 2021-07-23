@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/creature/eye hydra/eye hydra.png" type="Texture" id=2]
+[ext_resource path="res://main/battle/skill/active/point/mp funnel/Mp Funnel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/status/other/concentrate/Concentrate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/active/point/blood steal/Blood Steal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/battle/skill/active/point/multislash/Multislash.tscn" type="PackedScene" id=7]
+
+[node name="Eye Hydrab" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+race = "Plant"
+creature_name = "Eye Hydrab"
+level = 30
+stre = 6
+magi = 10
+vita = 135
+luck = 6
+agil = 6
+def_affinity = {
+"fire": "null",
+"flesh": "resist",
+"light": "weak",
+"water": "resist"
+}
+off_affinity = {
+"flesh": 130,
+"light": -120,
+"wind": -120
+}
+is_boss = true
+
+[node name="Multislash" parent="Skills/Active" index="0" instance=ExtResource( 7 )]
+
+[node name="Mp Funnel" parent="Skills/Active" index="1" instance=ExtResource( 3 )]
+
+[node name="Blood Steal" parent="Skills/Active" index="2" instance=ExtResource( 6 )]
+
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 27, 29 ]
+
+[node name="Concentrate" parent="UnlearnedSkills" index="0" instance=ExtResource( 4 )]

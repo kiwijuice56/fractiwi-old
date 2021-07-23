@@ -37,6 +37,7 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 		if def == "repel":
 			def = get_def_affinity(user)
 			point_change = calculate_points(user, user, def, off, is_crit)
+			if def == "repel": point_change = 0
 			user.set(point_stat, user.get(point_stat) + point_change)
 			user.set(point_stat, min(user.get(point_stat), user.get("max_"+point_stat)))
 			user.set(point_stat, max(user.get(point_stat), 0))
@@ -50,12 +51,17 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 			target.set(point_stat, min(target.get(point_stat), target.get("max_"+point_stat)))
 			target.set(point_stat, max(target.get(point_stat), 0))
 			if drains:
-				var drain_point_change = int(abs(point_change)/2)
+				var drain_point_change = int(abs(point_change)/1.5)
+				if def == "absorb": drain_point_change = 0
 				user.set(point_stat, user.get(point_stat) + drain_point_change)
 				user.set(point_stat, min(user.get(point_stat), user.get("max_"+point_stat)))
 				user.set(point_stat, max(user.get(point_stat), 0))
-				targets.append(user)
-				user.targeted_skill_data = [drain_point_change, false, is_crit, def, point_stat, PointLabel.text_types.POINT]
+				if not user in targets:
+					targets.append(user)
+					user.targeted_skill_data = [drain_point_change, false, is_crit, def, point_stat, PointLabel.text_types.POINT]
+				else:
+					user.targeted_skill_data[0] += drain_point_change
+					user.targeted_skill_data[2] = user.targeted_skill_data[2] or is_crit
 	var effect: ActiveSkillEffect = effect_packed.instance()
 	var place_timer = Timer.new()
 	add_child(place_timer)
@@ -89,7 +95,7 @@ func is_crit(user: Node, target: Node) -> bool:
 
 func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: bool) -> int:
 	var neg = power < 0
-	var base = abs(power) + (user.level) + (5*user.get(stat))
+	var base = (2.5*abs(power)) + (user.level) + (3.5*user.get(stat))
 	if def == "weak":
 		base *= 1.75
 	elif def == "resist":
@@ -108,7 +114,10 @@ func calculate_points(user: Node, target: Node, def: String, off: int, is_crit: 
 	base *= -1 if neg else 1
 	if user.focus and affinity == "phys":
 		user.focus = false
-		base *= 2.35
+		base *= 2.5
+	if user.concentrate and affinity != "phys":
+		user.concentrate = false
+		base *= 2.5
 	if stat == "magi" or stat == "stre":
 		var buff_stage = user.attack - target.defense
 		var modifier := 1.0

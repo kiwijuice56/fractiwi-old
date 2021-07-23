@@ -6,6 +6,7 @@
 [node name="Multislash" instance=ExtResource( 1 )]
 effect_packed = ExtResource( 2 )
 cost_type = "hp"
+cost = 19
 target_type = "all"
 accuracy = 95
 critical = 7

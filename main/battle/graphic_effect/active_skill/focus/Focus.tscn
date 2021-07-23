@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/battle/graphic_effect/active_skill/ActiveSkillEffect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/graphic_effect/active_skill/focus/focus.png" type="Texture" id=2]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/focus/roar.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "focus"
@@ -32,6 +33,18 @@ tracks/1/keys = {
 "method": "impact_point"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Focus" instance=ExtResource( 1 )]
 count = "multiple"
@@ -46,3 +59,8 @@ visible = true
 texture = ExtResource( 2 )
 hframes = 12
 frame = 11
+
+[node name="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 3 )
+volume_db = -9.0
+pitch_scale = 1.2

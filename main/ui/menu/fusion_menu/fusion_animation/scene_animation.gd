@@ -22,4 +22,3 @@ func animate(creature1: Creature, creature2: Creature, creature3: Creature) -> v
 	yield($CreatureSprite3/AnimationPlayer, "animation_finished")
 	$Timer.start()
 	yield($Timer, "timeout")
-	print("!")

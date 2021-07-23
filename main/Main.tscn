@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
@@ -62,6 +62,14 @@
 [ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=60]
 [ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=61]
 [ext_resource path="res://main/ui/main_viewport/death_cutscene/DeathCutscene.tscn" type="PackedScene" id=62]
+[ext_resource path="res://main/battle/skill/active/status/other/focus/Focus.tscn" type="PackedScene" id=63]
+[ext_resource path="res://main/world/player/sprites/eye.png" type="Texture" id=64]
+[ext_resource path="res://main/battle/skill/active/status/other/concentrate/Concentrate.tscn" type="PackedScene" id=65]
+[ext_resource path="res://main/battle/skill/active/status/condition/neo blasts/Neo Blasts.tscn" type="PackedScene" id=66]
+[ext_resource path="res://main/battle/skill/active/point/light canon/Light Canon.tscn" type="PackedScene" id=67]
+[ext_resource path="res://main/battle/skill/active/point/soul split/Soul Split.tscn" type="PackedScene" id=68]
+[ext_resource path="res://main/battle/skill/active/point/prayer/Prayer.tscn" type="PackedScene" id=70]
+[ext_resource path="res://main/battle/skill/active/point/heart worm/Heart Worm.tscn" type="PackedScene" id=71]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 27 )
@@ -161,7 +169,7 @@ creature_path = "res://main/battle/creature/"
 
 [node name="FusionCatalogue" type="Node" parent="ViewportContainer/MainViewport/CreatureFusion"]
 script = ExtResource( 42 )
-creature_matrix = [ [ "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Mother", "Mother", "Mother", "Mother", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Tv", "Tv", "Tv", "Tv", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Eye Worm", "Eye Worm", "Eye Worm", "Elephante", "Elephante", "Elephante", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Golem", "Golem", "Golem", "Golem", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Sponge", "Sponge", "Sponge", "Sponge", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Looker", "Looker", "Looker", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Elle", "Elle", "Elle", "Elle", "Elle", "Elle", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Orange", "Orange", "Orange", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ] ]
+creature_matrix = [ [ "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Mother", "Mother", "Mother", "Mother", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Tv", "Tv", "Tv", "Tv", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Eye Worm", "Eye Worm", "Eye Worm", "Elephante", "Elephante", "Elephante", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Golem", "Golem", "Golem", "Golem", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Sponge", "Sponge", "Sponge", "Sponge", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Looker", "Looker", "Looker", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Elle", "Elle", "Elle", "Elle", "Elle", "Elle", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ] ]
 race_matrix = [ [ "Element", "Demon", "Angel", "Angel", "Object", "Object", "Angel", "Special" ], [ "Demon", "Element", "Spirit", "Angel", "Spirit", "Demon", "Angel", "Special" ], [ "Angel", "Spirit", "Element", "Demon", "Plant", "Element", "Object", "Special" ], [ "Angel", "Angel", "Demon", "Element", "Beast", "Plant", "Human", "Special" ], [ "Object", "Spirit", "Plant", "Beast", "Element", "Object", "Beast", "Special" ], [ "Object", "Demon", "Element", "Plant", "Object", "Element", "Element", "Special" ], [ "Angel", "Angel", "Object", "Human", "Beast", "Element", "Element", "Special" ], [ "Special", "Special", "Special", "Special", "Special", "Special", "Special", "Special" ] ]
 
 [node name="FusionCataloger" type="Node" parent="ViewportContainer/MainViewport/CreatureFusion"]
@@ -183,6 +191,7 @@ position = Vector2( 200, 200 )
 main_viewport = NodePath("../..")
 effect_textures = {
 "Duck": ExtResource( 45 ),
+"Eye": ExtResource( 64 ),
 "Flower": ExtResource( 35 ),
 "Knife": ExtResource( 48 ),
 "Normal": ExtResource( 37 )
@@ -258,6 +267,8 @@ def_affinities = {
 
 [node name="Hurricane" parent="ViewportContainer/MainViewport/Items/Effects/Flower" instance=ExtResource( 56 )]
 
+[node name="Prayer" parent="ViewportContainer/MainViewport/Items/Effects/Flower" instance=ExtResource( 70 )]
+
 [node name="Normal" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
 script = ExtResource( 38 )
 skill_levels = [ 4, 10, 17 ]
@@ -291,9 +302,11 @@ def_affinities = {
 
 [node name="Cheer" parent="ViewportContainer/MainViewport/Items/Effects/Duck" instance=ExtResource( 58 )]
 
+[node name="Shriek" parent="ViewportContainer/MainViewport/Items/Effects/Duck" instance=ExtResource( 59 )]
+
 [node name="Knife" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
 script = ExtResource( 38 )
-skill_levels = [ 14, 17, 19 ]
+skill_levels = [ 14, 17, 19, 22 ]
 off_affinities = {
 "phys": 140,
 "water": -110,
@@ -307,9 +320,33 @@ def_affinities = {
 
 [node name="Luck Cut" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 54 )]
 
+[node name="Focus" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 63 )]
+
 [node name="Multislash" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 55 )]
 
-[node name="Shriek" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 59 )]
+[node name="Soul Split" parent="ViewportContainer/MainViewport/Items/Effects/Knife" instance=ExtResource( 68 )]
+
+[node name="Eye" type="Node" parent="ViewportContainer/MainViewport/Items/Effects"]
+script = ExtResource( 38 )
+skill_levels = [ 14, 16, 17, 19, 21 ]
+off_affinities = {
+"flesh": 130,
+"light": 140,
+"phys": -120
+}
+def_affinities = {
+"dark": "weak",
+"flesh": "null",
+"light": "repel"
+}
+
+[node name="Heart Worm" parent="ViewportContainer/MainViewport/Items/Effects/Eye" instance=ExtResource( 71 )]
+
+[node name="Concentrate" parent="ViewportContainer/MainViewport/Items/Effects/Eye" instance=ExtResource( 65 )]
+
+[node name="Light Canon" parent="ViewportContainer/MainViewport/Items/Effects/Eye" instance=ExtResource( 67 )]
+
+[node name="Neo Blasts" parent="ViewportContainer/MainViewport/Items/Effects/Eye" instance=ExtResource( 66 )]
 
 [node name="Battle" type="CanvasLayer" parent="ViewportContainer/MainViewport"]
 pause_mode = 1

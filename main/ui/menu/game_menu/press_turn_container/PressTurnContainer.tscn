@@ -58,36 +58,21 @@ __meta__ = {
 
 [node name="PressTurn1" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
 visible = true
-margin_right = 21.0
-margin_bottom = 21.0
+rect_rotation = 0.0
 
 [node name="PressTurn2" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 21.0
-margin_bottom = 21.0
 
 [node name="PressTurn3" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 21.0
-margin_bottom = 21.0
 
 [node name="PressTurn4" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 21.0
-margin_bottom = 21.0
 
 [node name="PressTurn5" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 21.0
-margin_bottom = 21.0
 
 [node name="PressTurn6" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 21.0
-margin_bottom = 21.0
 
 [node name="PressTurn7" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 21.0
-margin_bottom = 21.0
 
 [node name="PressTurn8" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_right = 21.0
-margin_bottom = 21.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 62.0
