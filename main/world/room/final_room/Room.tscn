@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/world/player/sprites/yun.png" type="Texture" id=2]
+[ext_resource path="res://main/world/enemy/nonmoving_enemy/candle/Candle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/creature/yunb/Yunb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/creature/saleth/Saleth.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/battle/creature/violet/Violet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/battle/creature/eye hydra/Eye Hydra.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/world/room/final_room/bgm52.wav" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 15 )
+
+[node name="Room" instance=ExtResource( 1 )]
+music = ExtResource( 8 )
+db = -8
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+layer = -5
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Position2D" parent="Props/Interactable/Doors" index="0"]
+
+[node name="Spawn" type="Position2D" parent="Props/Interactable/Doors/Start" index="0"]
+
+[node name="Yun" parent="Enemies" index="0" instance=ExtResource( 3 )]
+position = Vector2( 240.365, 58.9793 )
+creatures = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ) ]
+
+[node name="Sprite" parent="Enemies/Yun" index="0"]
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="CollisionShape2D" parent="Enemies/Yun" index="1"]
+shape = SubResource( 1 )
+
+[editable path="Enemies/Yun"]

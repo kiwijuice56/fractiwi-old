@@ -128,7 +128,7 @@ func battle(enemy_creatures: Array) -> void:
 	yield(get_viewport().game, "battle_ready") # becaused called from battle_start signal, game may start before menu is initialized
 	while $PlayerParty.get_child_count() > 0 and $EnemyParty.get_child_count() > 0:
 		get_viewport().game.press_turn_container.set_side(current == $PlayerParty)
-		get_viewport().game.press_turn_container.set_turns(full, half)
+		get_viewport().game.press_turn_container.set_turns(full, half, true)
 		
 		get_viewport().game.update_party()
 		
@@ -167,7 +167,7 @@ func battle(enemy_creatures: Array) -> void:
 			half = 0
 			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "hide", 0.25)
 			yield(get_viewport().game.effect_handler, "complete")
-			get_viewport().game.press_turn_container.set_turns(0, 0)
+			get_viewport().game.press_turn_container.set_turns(0, 0, false)
 			get_viewport().game.effect_handler.fade(get_viewport().game.press_turn_container, "show", 0.25)
 		else:
 			pointer += 1

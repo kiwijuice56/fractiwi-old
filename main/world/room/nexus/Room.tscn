@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/nexus/nexus_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://main/world/prop/interactable/door/purple_door/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/world/prop/interactable/door/sand_door/Door2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/world/prop/interactable/door/neon_door/NeonDoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main/world/room/nexus/untitled.wav" type="AudioStream" id=6]
+[ext_resource path="res://main/world/room/nexus/bgm8.mp3" type="AudioStream" id=6]
 [ext_resource path="res://main/world/prop/static_scenery/loop_area/LoopArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://main/world/room/nexus/background.png" type="Texture" id=8]
 [ext_resource path="res://main/world/prop/filter/shaders/image_scroll.shader" type="Shader" id=9]
 [ext_resource path="res://main/world/prop/interactable/door/clumsy_door/door.png" type="Texture" id=10]
+[ext_resource path="res://main/world/prop/interactable/door/purple_door/final_door.gd" type="Script" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
@@ -21,6 +22,7 @@ extents = Vector2( 496, 496 )
 
 [node name="Room" instance=ExtResource( 1 )]
 music = ExtResource( 6 )
+db = -15
 
 [node name="TileMap" parent="." index="0"]
 material = SubResource( 1 )
@@ -43,7 +45,18 @@ room_name = "origin"
 [node name="CollisionShape2D" parent="Props/Interactable/Doors/Door" index="1"]
 position = Vector2( 0, -2 )
 
-[node name="ClumsyDoor" parent="Props/Interactable/Doors" index="3" instance=ExtResource( 3 )]
+[node name="Door3" parent="Props/Interactable/Doors" index="3" instance=ExtResource( 3 )]
+position = Vector2( 184, 250 )
+script = ExtResource( 11 )
+state = "Enter Door"
+face_direction = "up"
+room_name = "final_room"
+destination_name = "Start"
+
+[node name="CollisionShape2D" parent="Props/Interactable/Doors/Door3" index="1"]
+position = Vector2( 0, -2 )
+
+[node name="ClumsyDoor" parent="Props/Interactable/Doors" index="4" instance=ExtResource( 3 )]
 position = Vector2( 312, 378 )
 room_name = "clumsy_cities"
 
@@ -58,5 +71,6 @@ position = Vector2( 312, 264 )
 shape = SubResource( 2 )
 
 [editable path="Props/Interactable/Doors/Door"]
+[editable path="Props/Interactable/Doors/Door3"]
 [editable path="Props/Interactable/Doors/ClumsyDoor"]
 [editable path="Props/Static/LoopArea"]

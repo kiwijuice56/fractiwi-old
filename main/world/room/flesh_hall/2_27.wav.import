@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/2_27.wav-6ee1134b36e88f0ed9fb4b271ea52f56.sample"
+
+[deps]
+
+source_file="res://main/world/room/flesh_hall/2_27.wav"
+dest_files=[ "res://.import/2_27.wav-6ee1134b36e88f0ed9fb4b271ea52f56.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/0000050.WAV-a0efef8231a5144d8eb0dc5bfcf25ebc.sample"
+
+[deps]
+
+source_file="res://main/world/room/purgatory_cave/0000050.WAV"
+dest_files=[ "res://.import/0000050.WAV-a0efef8231a5144d8eb0dc5bfcf25ebc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

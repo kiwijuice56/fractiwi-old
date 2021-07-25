@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/skill/active/point/bubble canon/Bubble Canon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/creature/frost/frost.png" type="Texture" id=3]
+[ext_resource path="res://main/battle/skill/active/status/buff/shell wall/Shell Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/active/point/mjolnir/Mjolnir.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/battle/skill/active/point/hellfire/Hellfire.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main/battle/skill/active/point/dim ray/Dim Ray.tscn" type="PackedScene" id=7]
+
+[node name="Frost" instance=ExtResource( 1 )]
+texture = ExtResource( 3 )
+race = "Demon"
+creature_name = "Frost"
+level = 20
+stre = 3
+magi = 8
+vita = 4
+luck = 6
+agil = 10
+def_affinity = {
+"elec": "null",
+"fire": "null",
+"flesh": "null",
+"light": "null",
+"phys": "weak",
+"wind": "null"
+}
+off_affinity = {
+"water": 140
+}
+
+[node name="Bubble Canon" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
+
+[node name="Mjolnir" parent="Skills/Active" index="1" instance=ExtResource( 5 )]
+
+[node name="Shell Wall" parent="Skills/Active" index="2" instance=ExtResource( 4 )]
+
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 21, 23 ]
+
+[node name="Dim Ray" parent="UnlearnedSkills" index="0" instance=ExtResource( 7 )]
+
+[node name="Hellfire" parent="UnlearnedSkills" index="1" instance=ExtResource( 6 )]

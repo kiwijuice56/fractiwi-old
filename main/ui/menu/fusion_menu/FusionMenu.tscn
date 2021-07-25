@@ -48,10 +48,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -435,7 +435,6 @@ position = Vector2( 240, 144 )
 texture = ExtResource( 11 )
 
 [node name="CreatureSprite1" type="Sprite" parent="CanvasLayer/SceneAnimation"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 104, 144 )
 texture = ExtResource( 12 )
 
@@ -461,7 +460,6 @@ anim_speed = 5.0
 anims/dissolve = SubResource( 4 )
 
 [node name="CreatureSprite2" type="Sprite" parent="CanvasLayer/SceneAnimation"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 384, 144 )
 texture = ExtResource( 12 )
 
@@ -488,6 +486,7 @@ anims/dissolve = SubResource( 5 )
 anims/dissolve2 = SubResource( 6 )
 
 [node name="CreatureSprite3" type="Sprite" parent="CanvasLayer/SceneAnimation"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 240, 120 )
 texture = ExtResource( 12 )
 

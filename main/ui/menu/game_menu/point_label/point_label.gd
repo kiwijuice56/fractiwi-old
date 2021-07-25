@@ -55,6 +55,10 @@ func set_point_text(points, is_miss: bool, is_crit: bool, def: String, extra: St
 					text_stat = "ATK"
 				"Hit/eva":
 					text_stat = "HIT"
+				"Buffs maximized!":
+					text_stat = "Buffs maximized!"
+				"Debuffs maximized!":
+					text_stat = "Debuffs maximized!"
 			$Label/Label2.text = text_stat
 			$Label.text = ("+" if int(points) > 0 else "") + points
 		text_types.STATUS:

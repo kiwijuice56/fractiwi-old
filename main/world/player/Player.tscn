@@ -447,7 +447,7 @@ player = NodePath("..")
 
 [node name="Normal" type="AudioStreamPlayer" parent="StepPlayer"]
 stream = ExtResource( 3 )
-volume_db = -20.0
+volume_db = -24.0
 pitch_scale = 1.4
 
 [node name="EffectTransformPlayer" type="AudioStreamPlayer" parent="."]
@@ -457,7 +457,7 @@ pitch_scale = 1.05
 
 [node name="Teleporter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -10.0
+volume_db = -12.0
 pitch_scale = 1.2
 
 [node name="Camera2D" type="Camera2D" parent="."]

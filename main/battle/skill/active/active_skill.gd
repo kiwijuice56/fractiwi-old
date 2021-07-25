@@ -16,8 +16,8 @@ func use(_user: Node, _targets: Array, _anim: bool) -> void:
 func is_miss(user: Node, target: Node) -> bool:
 	if not can_miss: return false
 	var buff_stage = user.hiteva - target.hiteva
-	print( (((accuracy + (user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0) + (buff_stage*.14) )
-	return rand_range(0,1) >= (((accuracy + (user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0) + (buff_stage*.14)
+	print((((accuracy + (user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0) + (buff_stage*.08))
+	return rand_range(0,1) >= (((accuracy + (user.agil - target.agil)/2.0) + ((user.luck-target.luck)/2.0)) / 100.0) + (buff_stage*.08)
 
 func turn_logic(def: String, is_miss: bool, is_crit: bool) -> int:
 	if is_miss:

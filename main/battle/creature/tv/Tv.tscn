@@ -6,7 +6,6 @@
 [ext_resource path="res://main/battle/creature/tvb/tv.png" type="Texture" id=4]
 
 [node name="Tv" instance=ExtResource( 1 )]
-position = Vector2( 0, -8 )
 texture = ExtResource( 4 )
 race = "Object"
 creature_name = "Tv"

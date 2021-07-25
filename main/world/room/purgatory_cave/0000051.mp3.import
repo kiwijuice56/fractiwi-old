@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/0000051.mp3-48d7309e92ee8dda12d5e83d185b113d.mp3str"
+
+[deps]
+
+source_file="res://main/world/room/purgatory_cave/0000051.mp3"
+dest_files=[ "res://.import/0000051.mp3-48d7309e92ee8dda12d5e83d185b113d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -6,16 +6,15 @@
 [ext_resource path="res://main/battle/creature/tvb/tv.png" type="Texture" id=4]
 
 [node name="Tvb" instance=ExtResource( 1 )]
-position = Vector2( 0, -8 )
 texture = ExtResource( 4 )
 race = "Object"
 creature_name = "Tvb"
 level = 11
 stre = 2
-magi = 3
+magi = 2
 vita = 15
 luck = 2
-agil = 4
+agil = 2
 def_affinity = {
 "elec": "resist"
 }

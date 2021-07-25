@@ -84,10 +84,8 @@ func input_pressed(key: String) -> void:
 		yield(change_skills(), "completed")
 		set_process_input(true)
 	if state == "replace_skill" and key == "Forget Selected":
-		print("!!!")
 		emit_signal("skill_selected", get_focus_owner().skill)
 	if state == "replace_skill" and key == "Don't Learn":
-		print("!!!")
 		emit_signal("skill_selected", null)
 
 func battle_ended(_did_run: bool) -> void:

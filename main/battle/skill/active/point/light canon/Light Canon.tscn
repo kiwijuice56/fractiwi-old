@@ -9,5 +9,5 @@ effect_packed = ExtResource( 2 )
 cost = 12
 accuracy = 92
 critical = 6
-power = -16
+power = -18
 stat = "magi"

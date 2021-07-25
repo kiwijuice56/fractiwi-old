@@ -10,6 +10,7 @@
 
 [node name="Room" instance=ExtResource( 3 )]
 music = ExtResource( 8 )
+db = -8
 
 [node name="TileMap" parent="." index="0"]
 tile_set = ExtResource( 4 )

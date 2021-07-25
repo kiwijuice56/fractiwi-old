@@ -14,12 +14,12 @@ creature_name = "Eye Hydrab"
 level = 30
 stre = 6
 magi = 10
-vita = 135
+vita = 190
 luck = 6
 agil = 6
 def_affinity = {
 "fire": "null",
-"flesh": "resist",
+"flesh": "absorb",
 "light": "weak",
 "water": "resist"
 }

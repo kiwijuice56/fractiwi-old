@@ -18,7 +18,7 @@ data = {
 "Unlearned": [ "Bubble", "Cheer", "Shriek" ]
 },
 "Eye": {
-"Skill Levels": [ 14, 16, 17, 19, 21 ],
+"Skill Levels": [ 14, 16, 17, 19 ],
 "Unlearned": [ "Heart Worm", "Concentrate", "Light Canon", "Neo Blasts" ]
 },
 "Flower": {

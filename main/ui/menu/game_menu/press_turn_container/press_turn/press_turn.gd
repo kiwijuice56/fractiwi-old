@@ -3,12 +3,17 @@ class_name PressTurn
 
 var seen := false
 
-func set_visible(is_visible: bool) -> void:
+func set_is_visible(is_visible: bool, anim: bool) -> void:
 	if is_visible and not seen:
 		$VisibilityPlayer.current_animation = "show"
 		seen = true
 	if not is_visible and seen:
-		$VisibilityPlayer.current_animation = "hide"
+		if anim:
+			$VisibilityPlayer.current_animation = "hide"
+		else:
+			visible = false
+			rect_scale.x = 0
+			modulate = Color(1,1,1,0)
 		seen = false
 
 func set_half(is_half: bool) -> void:

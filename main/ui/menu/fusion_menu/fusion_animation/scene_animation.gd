@@ -1,10 +1,5 @@
 extends Node2D
 class_name SceneAnimation
-#tool
-#
-#func _ready():
-#	yield(animate(null, null, null), "completed")
-#	_ready()
 
 func animate(creature1: Creature, creature2: Creature, creature3: Creature) -> void:
 	if creature1: $CreatureSprite1.texture = creature1.texture

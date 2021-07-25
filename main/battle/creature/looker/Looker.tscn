@@ -12,8 +12,8 @@ creature_name = "Looker"
 level = 3
 stre = 1
 magi = 3
-vita = 1
-luck = 1
+vita = 2
+luck = 2
 agil = 1
 
 [node name="Glare" parent="Skills/Active" index="0" instance=ExtResource( 3 )]

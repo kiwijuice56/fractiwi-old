@@ -66,6 +66,7 @@ func add_room(room_name: String, destination_type: String, destination_name: Str
 			terminal.finish_interaction()
 		"door":
 			$Player.global_position = $Room.doors.get_node(destination_name+"/Spawn").global_position
+			get_viewport().interact.disable(false)
 			get_viewport().transition.transition_out()
 			yield(get_viewport().transition, "out_finished")
 			player.can_move = true
@@ -73,6 +74,7 @@ func add_room(room_name: String, destination_type: String, destination_name: Str
 			play_room_music()
 
 func play_room_music() -> void:
+	get_viewport().music_player.volume = $Room.db
 	get_viewport().music_player.play_audio($Room.music)
 
 func save_data() -> Dictionary:

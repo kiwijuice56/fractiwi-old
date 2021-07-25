@@ -13,7 +13,7 @@ level = 4
 stre = 2
 magi = 2
 vita = 2
-luck = 1
+luck = 2
 agil = 1
 def_affinity = {
 "elec": "null",

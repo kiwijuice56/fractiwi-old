@@ -151,9 +151,9 @@ text = "Effects"
 align = 1
 
 [node name="EffectProgress" type="TextureProgress" parent="VBoxContainer/Control/EffectSelection/VBoxContainer"]
-margin_left = 106.0
+margin_left = 102.0
 margin_top = 18.0
-margin_right = 138.0
+margin_right = 142.0
 margin_bottom = 26.0
 size_flags_horizontal = 4
 size_flags_vertical = 0

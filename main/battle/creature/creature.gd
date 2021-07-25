@@ -201,11 +201,15 @@ func death() -> void:
 	elif not is_tamed:
 		var queue = get_parent().get_parent()
 		var level_dif = queue.get_node("PlayerParty").get_child(0).level - level
-		var multiplier = min(2, max(0.1, 1 - (1/max(level_dif, 1))))
-		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6.5)
-		var money_given = rand_range(15,20)
+		var multiplier = 1
+		if level_dif > 0:
+			multiplier = 1 / max(1, abs(level_dif/3.0))
+		else:
+			multiplier = 1 * max(1, abs(level_dif/3.0))
+		var expe_given = (queue.get_node("PlayerParty").get_child(0).expe_to_level/6)
 		print(multiplier, " ",expe_given)
-		queue.expe += int(expe_given * multiplier * (2.0 if is_boss else 1.0))
+		var money_given = rand_range(15,20)
+		queue.expe += int(expe_given * multiplier * (4.0 if is_boss else 1.0))
 		get_viewport().items.money += int(money_given * multiplier * (4.0 if is_boss else 1.0))
 		$AnimationPlayer.stop()
 		$AnimationPlayer.current_animation = "death"

@@ -134,7 +134,6 @@ func input_pressed(key_name: String) -> void:
 					for active in input["ActivePartyContainer"].get_children():
 						
 						if "focused_style" in active:
-							print("!")
 							active.focus_style_lock = false
 							active.focus_exited()
 					input["PartySelectHotKeyContainer"].disable_input()

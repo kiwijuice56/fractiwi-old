@@ -4,6 +4,7 @@ class_name Room
 export (NodePath) var terminals
 export (NodePath) var doors
 export var music: Resource
+export var db := -5
 export var backdrop: Resource
 export var backdrop_dir := Vector2(.1, .1)
 

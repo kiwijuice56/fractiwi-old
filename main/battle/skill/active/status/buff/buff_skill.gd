@@ -2,7 +2,7 @@ extends StatusSkill
 class_name BuffSkill
 
 export(String, "defense", "attack", "hit/eva") var stat := "defense"
-export(int, -4, 4) var stages := 0
+export(int, -4, 4) var stages :int = 0
 
 func get_text() -> String:
 	return (("Buff\n" if stages > 0 else "Debuff\n") + stat + "\n%d stages" % abs(stages) ) + description
@@ -19,6 +19,7 @@ func use(user: Node, targets: Array, _anim: bool) -> void:
 			targets[i].targeted_skill_data = [str(stages), false, false, stat.capitalize(), "", PointLabel.text_types.BUFF]
 			targets[i].set(stat.replace("/",""), targets[i].get(stat.replace("/","")) + stages)
 		else:
+			targets[i].set(stat.replace("/",""), 4 * (1 if stages > 0 else -1))
 			targets[i].targeted_skill_data = ["", false, false, "Buffs maximized!" if stages > 0 else "Debuffs maximized!", "", PointLabel.text_types.BUFF]
 		var new_turns_used = turn_logic("normal", false, false)
 		if new_turns_used < 0 or turns_used < 0:

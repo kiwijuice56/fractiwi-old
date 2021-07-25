@@ -12,11 +12,11 @@ offset = Vector2( 0, 0 )
 race = "Demon"
 creature_name = "Zargo"
 level = 11
-stre = 9
+stre = 8
 magi = 5
 vita = 9
 luck = 5
-agil = 9
+agil = 8
 def_affinity = {
 "elec": "resist",
 "flesh": "absorb",

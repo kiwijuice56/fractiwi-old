@@ -12,9 +12,9 @@ creature_name = "Ordolem"
 level = 11
 stre = 2
 magi = 4
-vita = 7
+vita = 6
 luck = 4
-agil = 6
+agil = 4
 def_affinity = {
 "water": "weak",
 "wind": "resist"

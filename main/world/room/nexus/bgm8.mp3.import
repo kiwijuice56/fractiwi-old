@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bgm8.mp3-84014e84b436e327d439317db29384ff.mp3str"
+
+[deps]
+
+source_file="res://main/world/room/nexus/bgm8.mp3"
+dest_files=[ "res://.import/bgm8.mp3-84014e84b436e327d439317db29384ff.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

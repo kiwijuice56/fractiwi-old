@@ -3,7 +3,7 @@
 [ext_resource path="res://main/world/prop/interactable/door/door.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 20.0
+radius = 19.0
 
 [node name="Door" type="Area2D"]
 collision_layer = 0

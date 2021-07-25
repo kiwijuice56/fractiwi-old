@@ -2,7 +2,7 @@
 
 [ext_resource path="res://main/battle/creature/sponge/Sponge.png" type="Texture" id=1]
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/point/bubble canon/Bubble Canon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/battle/skill/active/point/dim ray/Dim Ray.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=5]
 

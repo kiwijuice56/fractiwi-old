@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-export var volume := -23
+export var volume: int = -5
 export var transition_duration := 2.00
 
 func play_audio(audio: AudioStream) -> void:
