@@ -1,5 +1,5 @@
 extends Node2D
-class_name Room
+class_name MapRoom
 
 export (NodePath) var terminals
 export (NodePath) var doors
