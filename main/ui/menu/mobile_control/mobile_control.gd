@@ -1,12 +1,11 @@
 extends CanvasLayer
 
-var os_names = ["Android", "iOS"]
-
 func _ready():
-	if not OS.get_name() in os_names:
+	if not OS.has_touchscreen_ui_hint():
 		$Control.visible = false
+		$Control2.visible = false
 		return
-	for button in $Control.get_children():
+	for button in $Control.get_children() + $Control2.get_children():
 		button.connect("pressed", self, "pressed", [button.name])
 		button.connect("released", self, "released", [button.name])
 
