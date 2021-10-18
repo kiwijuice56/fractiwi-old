@@ -24,13 +24,13 @@ func _physics_process(_delta) -> void:
 
 func input():
 	direction = Vector2()
-	if Input.is_action_pressed("move_forward"):
+	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
-	if Input.is_action_pressed("move_backward"):
+	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("ui_right"):
 		direction.x = 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("ui_left"):
 		direction.x -= 1
 	direction = direction.normalized()
 	$AnimationPlayer.current_animation = animation()
