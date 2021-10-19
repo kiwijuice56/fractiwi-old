@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://main/ui/theme/theme.tres" type="Theme" id=1]
 [ext_resource path="res://main/ui/menu/game_menu/creature_button_panel/point_bar/PointBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/ui/menu/game_menu/party_skill_container/skill_button_container/SkillButtonContainer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/ui/menu/creature_check_screen_menu/stat_bar_container/stat_bar/StatBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/ui/theme/style_box/metallic_border/metallic_border.tres" type="StyleBox" id=5]
 [ext_resource path="res://main/ui/theme/style_box/Clear.tres" type="StyleBox" id=6]
 [ext_resource path="res://main/ui/menu/creature_check_screen_menu/creature_check_screen.gd" type="Script" id=7]
 [ext_resource path="res://main/ui/theme/style_box/Misty.tres" type="StyleBox" id=8]
@@ -232,9 +233,34 @@ margin_right = 474.0
 margin_bottom = 244.0
 size_flags_horizontal = 3
 
-[node name="Sprite" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 185.0
 margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/panel = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Control/PanelContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 62.0
+margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch_mode = 4

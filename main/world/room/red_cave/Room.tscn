@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/red_cave/red_cave_tileset.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://main/world/room/red_cave/bgm41.wav" type="AudioStream" id=9]
 [ext_resource path="res://main/world/prop/interactable/pop_up/crystal/Crystal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/world/room/red_cave/image.png" type="Texture" id=11]
+[ext_resource path="res://main/battle/creature/witch/Witch.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "normal"
@@ -107,15 +108,15 @@ creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ]
 
 [node name="Angel Arm9" parent="Enemies" index="6" instance=ExtResource( 5 )]
 position = Vector2( 1256, 1360 )
-creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ]
+creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 4 ) ]
 
 [node name="Angel Arm10" parent="Enemies" index="7" instance=ExtResource( 5 )]
 position = Vector2( 1288, 1408 )
-creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ]
+creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 4 ) ]
 
 [node name="Angel Arm11" parent="Enemies" index="8" instance=ExtResource( 5 )]
 position = Vector2( 1328, 1440 )
-creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ]
+creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 4 ) ]
 
 [node name="Angel Arm12" parent="Enemies" index="9" instance=ExtResource( 5 )]
 position = Vector2( 1296, 2232 )
@@ -131,10 +132,10 @@ creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ]
 
 [node name="Angel Arm7" parent="Enemies" index="12" instance=ExtResource( 5 )]
 position = Vector2( 712, 2144 )
-creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ]
+creatures = [ ExtResource( 4 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 4 ) ]
 
 [node name="Angel Arm8" parent="Enemies" index="13" instance=ExtResource( 5 )]
 position = Vector2( 680, 2184 )
-creatures = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ]
+creatures = [ ExtResource( 4 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 4 ) ]
 
 [editable path="Props/Interactable/Crystal"]

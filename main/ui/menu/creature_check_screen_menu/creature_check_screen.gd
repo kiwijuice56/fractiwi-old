@@ -188,7 +188,7 @@ func show_creature(creature: Creature) -> void:
 	parent.remove_child(creature.panel)
 	main_vbox.add_child(creature.panel)
 	main_vbox.move_child(creature.panel, 1)
-	main_vbox.get_child(0).texture = creature.texture
+	main_vbox.get_child(0).get_child(0).get_child(0).texture = creature.texture
 	exp_info_container.get_node("LevelLabel").text = "Level: " + str(creature.level)
 	exp_info_container.get_node("ExpBar").set_data("EXP", creature.expe, creature.expe_to_level)
 	exp_info_container.get_node("NextLabel").text = "Next: " + str(creature.expe_to_level-creature.expe)

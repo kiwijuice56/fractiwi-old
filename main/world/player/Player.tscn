@@ -447,7 +447,7 @@ player = NodePath("..")
 
 [node name="Normal" type="AudioStreamPlayer" parent="StepPlayer"]
 stream = ExtResource( 3 )
-volume_db = -24.0
+volume_db = -28.0
 pitch_scale = 1.4
 
 [node name="EffectTransformPlayer" type="AudioStreamPlayer" parent="."]

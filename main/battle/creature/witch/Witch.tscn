@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main/battle/creature/witch/witch.png" type="Texture" id=1]
+[ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main/battle/skill/active/status/buff/shriek/Shriek.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/battle/skill/active/point/dim ray/Dim Ray.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/battle/skill/active/point/blood steal/Blood Steal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/battle/skill/active/point/heart worm/Heart Worm.tscn" type="PackedScene" id=6]
+
+[node name="Witch" instance=ExtResource( 2 )]
+texture = ExtResource( 1 )
+race = "Spirit"
+creature_name = "Witch"
+level = 26
+stre = 6
+magi = 13
+vita = 14
+luck = 4
+agil = 10
+def_affinity = {
+"dark": "null",
+"elec": "resist",
+"flesh": "null",
+"water": "weak"
+}
+off_affinity = {
+"dark": 120,
+"flesh": 160,
+"heal": -150,
+"light": -180,
+"water": -150
+}
+
+[node name="Heart Worm" parent="Skills/Active" index="0" instance=ExtResource( 6 )]
+
+[node name="Dim Ray" parent="Skills/Active" index="1" instance=ExtResource( 4 )]
+
+[node name="Shriek" parent="Skills/Active" index="2" instance=ExtResource( 3 )]
+
+[node name="UnlearnedSkills" parent="." index="1"]
+skill_levels = [ 27 ]
+
+[node name="Blood Steal" parent="UnlearnedSkills" index="0" instance=ExtResource( 5 )]
