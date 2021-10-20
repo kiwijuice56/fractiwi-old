@@ -2,7 +2,7 @@
 
 [ext_resource path="res://main/ui/menu/mobile_control/accept2.png" type="Texture" id=1]
 [ext_resource path="res://main/ui/menu/mobile_control/mobile_control.gd" type="Script" id=2]
-[ext_resource path="res://main/ui/menu/mobile_control/joystick.png" type="Texture" id=3]
+[ext_resource path="res://main/ui/menu/mobile_control/up.png" type="Texture" id=5]
 [ext_resource path="res://main/ui/menu/mobile_control/accept1.png" type="Texture" id=7]
 [ext_resource path="res://main/ui/menu/mobile_control/cancel.png" type="Texture" id=8]
 [ext_resource path="res://main/ui/menu/mobile_control/menu.png" type="Texture" id=9]
@@ -20,10 +20,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="joystick" type="TouchScreenButton" parent="Control"]
+[node name="ui_right" type="TouchScreenButton" parent="Control"]
 modulate = Color( 1, 1, 1, 0.470588 )
-position = Vector2( 24, 176 )
-normal = ExtResource( 3 )
+position = Vector2( 176, 216 )
+rotation = 1.5708
+normal = ExtResource( 5 )
+passby_press = true
+visibility_mode = 1
+
+[node name="ui_left" type="TouchScreenButton" parent="Control"]
+modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 16, 264 )
+rotation = -1.5708
+normal = ExtResource( 5 )
+passby_press = true
+visibility_mode = 1
+
+[node name="ui_up" type="TouchScreenButton" parent="Control"]
+modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 72, 160 )
+normal = ExtResource( 5 )
+passby_press = true
+visibility_mode = 1
+
+[node name="ui_down" type="TouchScreenButton" parent="Control"]
+modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 120, 264 )
+rotation = 3.14159
+normal = ExtResource( 5 )
 passby_press = true
 visibility_mode = 1
 
