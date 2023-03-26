@@ -1,8 +1,7 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://main/ui/menu/game_menu/GameMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/origin_fake/Room.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/ui/theme/background.png" type="Texture" id=3]
 [ext_resource path="res://main/ui/utility_classes/int_viewport_container/int_viewport_container.gd" type="Script" id=4]
 [ext_resource path="res://main/battle/party.gd" type="Script" id=5]
 [ext_resource path="res://main/main.gd" type="Script" id=6]
@@ -68,7 +67,6 @@
 [ext_resource path="res://main/battle/skill/active/status/condition/neo blasts/Neo Blasts.tscn" type="PackedScene" id=66]
 [ext_resource path="res://main/battle/skill/active/point/light canon/Light Canon.tscn" type="PackedScene" id=67]
 [ext_resource path="res://main/battle/skill/active/point/soul split/Soul Split.tscn" type="PackedScene" id=68]
-[ext_resource path="res://main/ui/menu/mobile_control/MobileControl.tscn" type="PackedScene" id=69]
 [ext_resource path="res://main/battle/skill/active/point/prayer/Prayer.tscn" type="PackedScene" id=70]
 [ext_resource path="res://main/battle/skill/active/point/heart worm/Heart Worm.tscn" type="PackedScene" id=71]
 
@@ -104,27 +102,11 @@ script = ExtResource( 15 )
 [node name="Timer" type="Timer" parent="FileSaver/GameTime"]
 pause_mode = 1
 
-[node name="Background" type="TextureRect" parent="."]
-pause_mode = 1
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 3 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 pause_mode = 1
 material = SubResource( 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -245.0
-margin_top = -138.0
-margin_right = 245.0
-margin_bottom = 138.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 16 )
 stretch = true
@@ -135,7 +117,7 @@ __meta__ = {
 
 [node name="MainViewport" type="Viewport" parent="ViewportContainer"]
 pause_mode = 2
-size = Vector2( 490, 276 )
+size = Vector2( 980, 552 )
 handle_input_locally = false
 render_target_update_mode = 3
 script = ExtResource( 12 )
@@ -494,7 +476,5 @@ layer = 2
 
 [node name="Tween" type="Tween" parent="ViewportContainer"]
 pause_mode = 1
-
-[node name="MobileControl" parent="." instance=ExtResource( 69 )]
 
 [editable path="ViewportContainer/MainViewport/Party/Active/Yun"]
