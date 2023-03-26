@@ -4,6 +4,7 @@ class_name PartySkillContainer
 
 export var skill_button_container: PackedScene
 var mem_tab := 0
+signal update_tab_names
 
 func _input(event: InputEvent) -> void:
 	if not get("tabs_visible"):
@@ -50,4 +51,5 @@ func add_items() -> void:
 		setting_disable(container)
 	if not get_child_count() <= mem_tab:
 		set("current_tab", mem_tab)
+	emit_signal("update_tab_names")
 

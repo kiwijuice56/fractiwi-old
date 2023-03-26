@@ -78,7 +78,7 @@ disbaled_focus_style = ExtResource( 9 )
 name_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameLabel")
 hp_bar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HP")
 mp_bar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MP")
-status_icon = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/StatusIcon")
+status_icon = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/StatusIcon")
 in_party_indicator = NodePath("MarginContainer2/InPartyIndicator")
 icons = {
 "dead": ExtResource( 8 ),
@@ -89,8 +89,8 @@ icons = {
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 113.0
-margin_bottom = 56.0
+margin_right = 92.0
+margin_bottom = 57.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -105,20 +105,20 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 106.0
-margin_bottom = 49.0
+margin_right = 85.0
+margin_bottom = 50.0
 mouse_filter = 2
 custom_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 86.0
-margin_bottom = 44.0
+margin_right = 80.0
+margin_bottom = 45.0
 mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 86.0
-margin_bottom = 14.0
+margin_right = 80.0
+margin_bottom = 15.0
 mouse_filter = 2
 
 [node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
@@ -128,17 +128,29 @@ text = "Creature"
 
 [node name="ActiveLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 visible = false
-margin_left = 100.0
-margin_right = 115.0
+margin_left = 70.0
+margin_right = 80.0
 margin_bottom = 14.0
 size_flags_horizontal = 10
 text = "IN"
 align = 1
 
+[node name="StatusIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 65.0
+margin_right = 80.0
+margin_bottom = 15.0
+mouse_filter = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HP" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 15.0
-margin_right = 86.0
-margin_bottom = 29.0
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 30.0
 
 [node name="NameLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HP" index="0"]
 custom_colors/font_color = Color( 1, 0.8, 0.588235, 1 )
@@ -149,14 +161,14 @@ custom_colors/font_color = Color( 1, 0.913725, 0.803922, 1 )
 
 [node name="TextureProgress" parent="MarginContainer/HBoxContainer/VBoxContainer/HP" index="2"]
 margin_left = 47.0
-margin_right = 86.0
+margin_right = 80.0
 texture_under = ExtResource( 13 )
 texture_progress = ExtResource( 15 )
 
 [node name="MP" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 30.0
-margin_right = 86.0
-margin_bottom = 44.0
+margin_top = 31.0
+margin_right = 80.0
+margin_bottom = 45.0
 
 [node name="NameLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MP" index="0"]
 custom_colors/font_color = Color( 0.831373, 0.654902, 0.94902, 1 )
@@ -167,26 +179,15 @@ custom_colors/font_color = Color( 0.933333, 0.847059, 0.996078, 1 )
 
 [node name="TextureProgress" parent="MarginContainer/HBoxContainer/VBoxContainer/MP" index="2"]
 margin_left = 47.0
-margin_right = 86.0
+margin_right = 80.0
 texture_under = ExtResource( 12 )
 texture_progress = ExtResource( 14 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 86.0
-margin_right = 101.0
-margin_bottom = 15.0
+margin_left = 80.0
+margin_right = 80.0
 mouse_filter = 2
 size_flags_vertical = 0
-
-[node name="StatusIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 15.0
-margin_bottom = 15.0
-mouse_filter = 2
-size_flags_vertical = 0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BuffIndicator" type="Control" parent="."]
 visible = false

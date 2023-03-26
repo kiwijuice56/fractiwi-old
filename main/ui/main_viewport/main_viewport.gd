@@ -26,6 +26,7 @@ signal battle_start
 signal battle_end(did_run)
 
 func _ready() -> void:
+	set("rendering/2d/snapping/use_gpu_pixel_snap", true)
 	root = get_node(root)
 	transition = get_node(transition)
 	music_player = get_node(music_player)

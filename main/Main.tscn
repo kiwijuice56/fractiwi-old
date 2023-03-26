@@ -87,9 +87,7 @@ party = NodePath("ViewportContainer/MainViewport/Party")
 main_viewport = NodePath("ViewportContainer/MainViewport")
 world = NodePath("ViewportContainer/MainViewport/World")
 
-[node name="FileSaver" type="Node" parent="." groups=[
-"Save",
-]]
+[node name="FileSaver" type="Node" parent="." groups=["Save"]]
 pause_mode = 1
 script = ExtResource( 7 )
 path = "user://save_files/"
@@ -117,7 +115,7 @@ __meta__ = {
 
 [node name="MainViewport" type="Viewport" parent="ViewportContainer"]
 pause_mode = 2
-size = Vector2( 980, 552 )
+size = Vector2( 920, 530 )
 handle_input_locally = false
 render_target_update_mode = 3
 script = ExtResource( 12 )
@@ -158,9 +156,7 @@ race_matrix = [ [ "Element", "Demon", "Angel", "Angel", "Object", "Object", "Ang
 [node name="FusionCataloger" type="Node" parent="ViewportContainer/MainViewport/CreatureFusion"]
 script = ExtResource( 44 )
 
-[node name="World" type="Node" parent="ViewportContainer/MainViewport" groups=[
-"Save",
-]]
+[node name="World" type="Node" parent="ViewportContainer/MainViewport" groups=["Save"]]
 pause_mode = 1
 script = ExtResource( 19 )
 player = NodePath("Player")
@@ -171,6 +167,7 @@ room_path = "res://main/world/room/"
 
 [node name="Player" parent="ViewportContainer/MainViewport/World" instance=ExtResource( 14 )]
 position = Vector2( 200, 200 )
+speed = 85
 main_viewport = NodePath("../..")
 effect_textures = {
 "Duck": ExtResource( 45 ),
@@ -193,9 +190,7 @@ texture = ExtResource( 47 )
 expand = true
 stretch_mode = 3
 
-[node name="Party" type="Node" parent="ViewportContainer/MainViewport" groups=[
-"Save",
-]]
+[node name="Party" type="Node" parent="ViewportContainer/MainViewport" groups=["Save"]]
 pause_mode = 1
 script = ExtResource( 5 )
 creature_path = "res://main/battle/creature/"
@@ -222,9 +217,7 @@ agil = 3
 [node name="Inactive" type="Node2D" parent="ViewportContainer/MainViewport/Party"]
 visible = false
 
-[node name="Items" type="Node" parent="ViewportContainer/MainViewport" groups=[
-"Save",
-]]
+[node name="Items" type="Node" parent="ViewportContainer/MainViewport" groups=["Save"]]
 pause_mode = 1
 script = ExtResource( 36 )
 
@@ -381,6 +374,7 @@ select_sound = true
 horizontal_select = true
 vertical_select = true
 override_next_sound = true
+override_back_sound = true
 party = NodePath("../../Party")
 enemy_party = NodePath("../../Battle/BattleQueue/EnemyParty")
 

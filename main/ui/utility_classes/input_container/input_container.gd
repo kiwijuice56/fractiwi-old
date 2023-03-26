@@ -18,7 +18,9 @@ func add_items() -> void:
 
 func disable_input() -> void:
 	set_process_input(false)
+
 func enable_input() -> void:
 	set_process_input(true)
+
 func grab_focus_at(index: int) -> void:
 	get_child(index).grab_focus()

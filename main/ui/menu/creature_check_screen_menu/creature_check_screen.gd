@@ -91,7 +91,7 @@ func input_pressed(key: String) -> void:
 func battle_ended(_did_run: bool) -> void:
 	yield(main_viewport.transition, "in_finished")
 	disable(false)
-	stat_label.text = "---"
+	stat_label.text = ""
 	state = "default"
 	move_enabled = true
 

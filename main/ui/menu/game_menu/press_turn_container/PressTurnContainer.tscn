@@ -75,6 +75,7 @@ rect_rotation = 0.0
 [node name="PressTurn8" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 62.0
 margin_top = 23.0
 margin_right = 127.0

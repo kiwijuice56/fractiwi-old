@@ -20,7 +20,7 @@ func initialize(file: SaveFile, index: int) -> void:
 		$MarginContainer/EmptyLabel.visible = true
 	else:
 		num_label.text = str_index
-		location_label.text = file.data["World"]["location"] + " - " + file.data["World"]["terminal"].to_lower()
+		location_label.text = file.data["World"]["location"] 
 		set_time(file.data["FileSaver"]["time"])
 		$MarginContainer/VBoxContainer.visible = true
 		$MarginContainer/EmptyLabel.visible = false

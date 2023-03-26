@@ -19,6 +19,7 @@ __meta__ = {
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 18, 0 )
+custom_colors/font_color = Color( 0.85098, 0.85098, 0.85098, 1 )
 text = "HP"
 
 [node name="PointLabel" type="Label" parent="."]
@@ -26,6 +27,7 @@ margin_left = 22.0
 margin_right = 46.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 21, 0 )
+custom_colors/font_color = Color( 0.85098, 0.85098, 0.85098, 1 )
 text = "999"
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
