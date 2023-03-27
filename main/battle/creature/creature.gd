@@ -150,6 +150,7 @@ func target_action() -> void:
 		if targeted_skill_data[1]:
 			$AnimationPlayer.current_animation = "miss"
 		else:
+			print(targeted_skill_data[3])
 			if targeted_skill_data[3] == "weak":
 				$AnimationPlayer.current_animation = "hurt_weak"
 			elif targeted_skill_data[3] == "resist":

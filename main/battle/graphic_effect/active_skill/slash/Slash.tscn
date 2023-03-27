@@ -27,7 +27,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.65 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -67,7 +67,7 @@ delay = 0.6
 anim_name = "slash"
 
 [node name="AnimationPlayer" parent="." index="0"]
-playback_speed = 1.2
+playback_speed = 1.4
 anims/slash = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]

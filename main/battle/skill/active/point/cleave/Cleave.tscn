@@ -6,7 +6,7 @@
 [node name="Cleave" instance=ExtResource( 2 )]
 effect_packed = ExtResource( 1 )
 cost_type = "hp"
-cost = 8
-accuracy = 84
-critical = 12
-power = -13
+cost = 12
+accuracy = 80
+critical = 15
+power = -10
