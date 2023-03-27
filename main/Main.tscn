@@ -59,7 +59,7 @@
 [ext_resource path="res://main/battle/skill/active/status/buff/cheer/Cheer.tscn" type="PackedScene" id=58]
 [ext_resource path="res://main/battle/skill/active/status/buff/shriek/Shriek.tscn" type="PackedScene" id=59]
 [ext_resource path="res://main/battle/skill/active/point/shock/Shock.tscn" type="PackedScene" id=60]
-[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=61]
+[ext_resource path="res://main/battle/skill/active/point/strike/Strike.tscn" type="PackedScene" id=61]
 [ext_resource path="res://main/ui/main_viewport/death_cutscene/DeathCutscene.tscn" type="PackedScene" id=62]
 [ext_resource path="res://main/battle/skill/active/status/other/focus/Focus.tscn" type="PackedScene" id=63]
 [ext_resource path="res://main/world/player/sprites/eye.png" type="Texture" id=64]
@@ -115,7 +115,7 @@ __meta__ = {
 
 [node name="MainViewport" type="Viewport" parent="ViewportContainer"]
 pause_mode = 2
-size = Vector2( 920, 530 )
+size = Vector2( 860, 530 )
 handle_input_locally = false
 render_target_update_mode = 3
 script = ExtResource( 12 )
@@ -204,13 +204,13 @@ battle_party_node = NodePath("../../Battle/BattleQueue/PlayerParty")
 [node name="Yun" parent="ViewportContainer/MainViewport/Party/Active" instance=ExtResource( 9 )]
 offset = Vector2( 0, 0 )
 level = 5
-stre = 3
-magi = 3
-vita = 3
-luck = 3
-agil = 3
+stre = 4
+magi = 4
+vita = 5
+luck = 4
+agil = 4
 
-[node name="Slash" parent="ViewportContainer/MainViewport/Party/Active/Yun/Skills/Active" index="0" instance=ExtResource( 61 )]
+[node name="Strike" parent="ViewportContainer/MainViewport/Party/Active/Yun/Skills/Active" index="0" instance=ExtResource( 61 )]
 
 [node name="Shock" parent="ViewportContainer/MainViewport/Party/Active/Yun/Skills/Active" index="1" instance=ExtResource( 60 )]
 

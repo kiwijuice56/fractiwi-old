@@ -14,7 +14,7 @@ func position_enemies() -> void:
 	for i in range($EnemyParty.get_child_count()):
 		$EnemyParty.get_child(i).position.x += i*64
 # warning-ignore:integer_division
-	$EnemyParty.position.x = 230 - ((($EnemyParty.get_child_count()-1)*64)/2)
+	$EnemyParty.position.x = 215 - ((($EnemyParty.get_child_count()-1)*64)/2)
 
 func agility_sort(a: Creature, b: Creature) -> bool:
 	return a.agil > b.agil

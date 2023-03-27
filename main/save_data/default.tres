@@ -41,22 +41,22 @@ data = {
 "active": {
 "00Yun": {
 "skills": {
-"Active": [ "Shock", "Slash" ],
+"Active": [ "Shock", "Strike" ],
 "Passive": [  ],
 "Skill Levels": [ 4, 10, 17 ],
 "Unlearned": [ "Cleave", "Mjolnir", "Null Elec" ]
 },
 "stats": {
 "age": 0,
-"agil": 3,
+"agil": 4,
 "expe": 0,
-"hp": 56,
+"hp": 70,
 "level": 5,
-"luck": 3,
-"magi": 3,
-"mp": 29,
-"stre": 3,
-"vita": 3
+"luck": 4,
+"magi": 4,
+"mp": 31,
+"stre": 4,
+"vita": 5
 }
 }
 },

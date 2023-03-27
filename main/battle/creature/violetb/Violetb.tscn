@@ -4,8 +4,9 @@
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/battle/creature/violetb/violet.png" type="Texture" id=3]
 [ext_resource path="res://main/battle/skill/active/point/multislash/Multislash.tscn" type="PackedScene" id=4]
-[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/battle/skill/active/point/strike/Strike.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/battle/skill/active/point/gust/Gust.tscn" type="PackedScene" id=6]
+
 
 [node name="Violetb" instance=ExtResource( 2 )]
 texture = ExtResource( 3 )

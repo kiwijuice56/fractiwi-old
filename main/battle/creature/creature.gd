@@ -16,9 +16,9 @@ export var off_affinity: Dictionary
 var extend_def_affinity: Dictionary
 var extend_off_affinity: Dictionary
 
-var hp: int = 56
+var hp: int = 70
 var max_hp: int = 10
-var mp: int = 29
+var mp: int = 31
 var max_mp: int
 var status := "ok"
 var is_tamed := false
@@ -93,27 +93,27 @@ func do_turn(same: Array, opposite: Array) -> int:
 	if tag == "Recruit":
 		match recruit_attempt(targets):
 			"higher level":
-				get_viewport().game.label_container.show_text("Recruit fail .. Its level was too high!")
+				get_viewport().game.label_container.show_text("Fail .. It was too strong")
 				yield(get_viewport().game.label_container, "complete")
 				return -1
 			"in party":
-				get_viewport().game.label_container.show_text("Recruit fail .. Yun already has this creature!")
+				get_viewport().game.label_container.show_text("Fail .. You have this creature")
 				yield(get_viewport().game.label_container, "complete")
 				return -1
 			"fail":
-				get_viewport().game.label_container.show_text("Recruit fail .. It refused!")
+				get_viewport().game.label_container.show_text("Fail .. It attacked!")
 				yield(get_viewport().game.label_container, "complete")
 				return -1
 			"boss":
-				get_viewport().game.label_container.show_text("Recruit fail .. Its will to fight is too strong!")
+				get_viewport().game.label_container.show_text("Fail .. Its cannot join you ")
 				yield(get_viewport().game.label_container, "complete")
 				return -1
 			"stock":
-				get_viewport().game.label_container.show_text("Recruit fail .. You have no space for more creatures!")
+				get_viewport().game.label_container.show_text("Fail .. You have no space for creatures")
 				yield(get_viewport().game.label_container, "complete")
 				return -1
 			"success":
-				get_viewport().game.label_container.show_text("Recruit success .. " + targets[0].creature_name + " joined you!")
+				get_viewport().game.label_container.show_text("Success " + targets[0].creature_name + " joined you!")
 				yield(get_viewport().game.label_container, "complete")
 				targets[0].get_parent().remove_child(targets[0])
 				get_viewport().party.get_node("Inactive").add_child(targets[0])
@@ -274,7 +274,7 @@ func set_expe_to_level() -> void:
 
 func set_max_points() -> void:
 	max_hp = (level + vita) * 7
-	max_mp = (level*4) + (magi*3)
+	max_mp = (level * 4) + (magi * 3)
 
 func heal_points() -> void:
 	set_max_points()

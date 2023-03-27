@@ -4,7 +4,8 @@
 [ext_resource path="res://main/battle/creature/mia/mia.png" type="Texture" id=2]
 [ext_resource path="res://main/battle/skill/active/point/ember/Ember.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/battle/skill/active/point/mp drain/Mp Drain.tscn" type="PackedScene" id=4]
-[ext_resource path="res://main/battle/skill/active/point/slash/Slash.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main/battle/skill/active/point/strike/Strike.tscn" type="PackedScene" id=5]
+
 
 [node name="Mia" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
