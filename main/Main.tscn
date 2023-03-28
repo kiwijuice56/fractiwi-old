@@ -23,7 +23,6 @@
 [ext_resource path="res://main/ui/menu/terminal_menu/Drone 1.wav" type="AudioStream" id=22]
 [ext_resource path="res://main/ui/utility_classes/vision_effects/VisionEffects.tscn" type="PackedScene" id=23]
 [ext_resource path="res://main/battle/battle_queue/battle_queue.gd" type="Script" id=24]
-[ext_resource path="res://main/world/prop/filter/shaders/image_scroll.shader" type="Shader" id=25]
 [ext_resource path="res://main/battle/party/active/active.gd" type="Script" id=26]
 [ext_resource path="res://main/world/shader/chromatic.shader" type="Shader" id=27]
 [ext_resource path="res://main/ui/utility_classes/sound_player/sound_player.gd" type="Script" id=28]
@@ -75,9 +74,28 @@ shader = ExtResource( 27 )
 shader_param/apply = false
 shader_param/amount = 0.13
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D image;
+uniform vec2 dir;
+uniform float hurt;
+
+void fragment() {
+	vec4 curr_color = texture(TEXTURE, UV);
+	vec2 new_uv = (SCREEN_UV * vec2(1.0, -1.0) + (TIME * dir));
+	new_uv.x += 0.5 - sin(TIME + new_uv.y) / (hurt * 16.0 + 3.0);
+	new_uv -= floor(new_uv);
+	vec4 new_color = mix(texture(image, new_uv), curr_color, curr_color.a);
+	new_color *= sqrt(hurt);
+	new_color.a = 1.0;
+	COLOR = new_color;
+}"
+
 [sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 25 )
+shader = SubResource( 3 )
 shader_param/dir = Vector2( 0.1, 0.1 )
+shader_param/hurt = 1.0
 shader_param/image = ExtResource( 49 )
 
 [node name="Main" type="Node"]
@@ -150,7 +168,7 @@ creature_path = "res://main/battle/creature/"
 
 [node name="FusionCatalogue" type="Node" parent="ViewportContainer/MainViewport/CreatureFusion"]
 script = ExtResource( 42 )
-creature_matrix = [ [ "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Mother", "Mother", "Mother", "Mother", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Tv", "Tv", "Tv", "Tv", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Watcher", "Watcher", "Watcher", "Elephante", "Elephante", "Elephante", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Golem", "Golem", "Golem", "Golem", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Witch", "Witch", "Witch", "Witch", "Witch", "Witch", "Witch", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Sponge", "Sponge", "Sponge", "Sponge", "Frost", "Frost", "Frost", "Frost", "Frost", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Looker", "Looker", "Looker", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Elle", "Elle", "Elle", "Elle", "Elle", "Elle", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ] ]
+creature_matrix = [ [ "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Normalem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Ordolem", "Mother", "Mother", "Mother", "Mother", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "Candle Man", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Mia", "Tv", "Tv", "Tv", "Tv", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Watcher", "Watcher", "Watcher", "Elephante", "Elephante", "Elephante", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Golem", "Golem", "Golem", "Golem", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Hearpy", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Lully", "Witch", "Witch", "Witch", "Witch", "Witch", "Witch", "Witch", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Zargo", "Sponge", "Sponge", "Sponge", "Sponge", "Frost", "Frost", "Frost", "Frost", "Frost", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Ophanim", "Ophanim", "Ophanim", "Galgalim", "Galgalim", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Gabriel", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "Saleth", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "Elle", "Elle", "Elle", "Elle", "Elle", "Elle", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Violet", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "Eye Hydra", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ], [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ] ]
 race_matrix = [ [ "Element", "Demon", "Angel", "Angel", "Object", "Object", "Angel", "Special" ], [ "Demon", "Element", "Spirit", "Angel", "Spirit", "Demon", "Angel", "Special" ], [ "Angel", "Spirit", "Element", "Demon", "Plant", "Element", "Object", "Special" ], [ "Angel", "Angel", "Demon", "Element", "Beast", "Plant", "Human", "Special" ], [ "Object", "Spirit", "Plant", "Beast", "Element", "Object", "Beast", "Special" ], [ "Object", "Demon", "Element", "Plant", "Object", "Element", "Element", "Special" ], [ "Angel", "Angel", "Object", "Human", "Beast", "Element", "Element", "Special" ], [ "Special", "Special", "Special", "Special", "Special", "Special", "Special", "Special" ] ]
 
 [node name="FusionCataloger" type="Node" parent="ViewportContainer/MainViewport/CreatureFusion"]

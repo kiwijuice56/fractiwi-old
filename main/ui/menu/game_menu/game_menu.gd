@@ -64,7 +64,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("ui_cancel", false) and open: 
 		input_pressed("Back")
-		
+		main_viewport.menu_sound_player.play_sound("Back")
 
 func input_pressed(key_name: String) -> void:
 	if disabled or not open: return
@@ -166,7 +166,7 @@ func input_pressed(key_name: String) -> void:
 			set_process_input(true)
 			if len(targets) == 0:
 				input["MainButtonContainer"].enable_input()
-				input["MainButtonContainer"].grab_focus_at(5)
+				input["MainButtonContainer"].grab_focus_at(4)
 				state = "default"
 				return
 			emit_signal("battle_action_chosen", ["Recruit", null, targets])

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main/battle/skill/active/point/PointSkill.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main/battle/graphic_effect/active_skill/flame/Flame.tscn" type="PackedScene" id=2]
+
+[node name="Trisagion" instance=ExtResource( 1 )]
+affinity = "fire"
+effect_packed = ExtResource( 2 )
+cost = 37
+accuracy = 87
+critical = 7
+power = -40
+stat = "magi"

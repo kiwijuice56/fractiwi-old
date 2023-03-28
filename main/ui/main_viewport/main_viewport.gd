@@ -58,6 +58,7 @@ func battle_started(creatures: Array) -> void:
 	in_battle = true
 	interact.disable(false)
 	transition.transition_in()
+	$MusicPlayer.pitch_scale = 1.16
 	emit_signal("battle_start", creatures)
 	yield(transition, "in_finished")
 	transition.transition_out()
@@ -66,7 +67,9 @@ func battle_ended(did_run) -> void:
 	in_battle = false
 	transition.transition_in()
 	emit_signal("battle_end", did_run)
+	
 	yield(transition, "in_finished")
+	$MusicPlayer.pitch_scale = 1
 	transition.transition_out()
 
 func death() -> void:

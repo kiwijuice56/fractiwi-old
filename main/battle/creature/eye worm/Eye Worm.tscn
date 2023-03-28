@@ -23,9 +23,7 @@ off_affinity = {
 "phys": 110
 }
 
-[node name="Strike" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
-
-[node name="Slash" parent="Skills/Active" index="1" instance=ExtResource( 2 )]
+[node name="Slash" parent="Skills/Active" index="0" instance=ExtResource( 2 )]
 
 [node name="UnlearnedSkills" parent="." index="1"]
 skill_levels = [ 6, 7, 16 ]

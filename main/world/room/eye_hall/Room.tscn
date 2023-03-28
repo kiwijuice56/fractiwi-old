@@ -1,11 +1,12 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://main/world/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/world/room/eye_hall/eye_hall_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://main/battle/creature/galgalim/Galgalim.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main/world/room/eye_hall/background.png" type="Texture" id=4]
 [ext_resource path="res://main/world/enemy/nonmoving_enemy/eye worm/Eye Worm.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/battle/creature/eye worm/Eye Worm.tscn" type="PackedScene" id=6]
-[ext_resource path="res://main/world/room/eye_hall/pipes.ogg" type="AudioStream" id=7]
+[ext_resource path="res://main/world/room/eye_hall/pipes.mp3" type="AudioStream" id=7]
 [ext_resource path="res://main/world/prop/interactable/item/pill_bottle/PillBottle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main/battle/creature/looker/Looker.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/world/prop/dynamic_scenery/follow_eye/FollowEye.tscn" type="PackedScene" id=10]
@@ -150,6 +151,7 @@ tracks/0/keys = {
 
 [node name="Room" instance=ExtResource( 1 )]
 music = ExtResource( 7 )
+db = -1
 backdrop = ExtResource( 4 )
 
 [node name="TileMap" parent="." index="0"]
@@ -671,39 +673,39 @@ position = Vector2( 0, -40 )
 
 [node name="EyeWorm5" parent="Enemies" index="1" instance=ExtResource( 5 )]
 position = Vector2( 1288, 1064 )
-creatures = [ ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 9 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ) ]
 
 [node name="EyeWorm" parent="Enemies" index="2" instance=ExtResource( 5 )]
 position = Vector2( 224, 1400 )
-creatures = [ ExtResource( 6 ), ExtResource( 9 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 3 ) ]
 
 [node name="Spawn" parent="Enemies/EyeWorm" index="3"]
 position = Vector2( 0, 24 )
 
 [node name="EyeWorm6" parent="Enemies" index="3" instance=ExtResource( 5 )]
 position = Vector2( -464, 1456 )
-creatures = [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 6 ) ]
+creatures = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 9 ) ]
 
 [node name="Spawn" parent="Enemies/EyeWorm6" index="3"]
 position = Vector2( 0, 40 )
 
 [node name="EyeWorm3" parent="Enemies" index="4" instance=ExtResource( 5 )]
 position = Vector2( -128, 992 )
-creatures = [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ) ]
 
 [node name="Spawn" parent="Enemies/EyeWorm3" index="3"]
 position = Vector2( 32, 0 )
 
 [node name="EyeWorm4" parent="Enemies" index="5" instance=ExtResource( 5 )]
 position = Vector2( 720, 1392 )
-creatures = [ ExtResource( 6 ), ExtResource( 9 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 6 ) ]
 
 [node name="Spawn" parent="Enemies/EyeWorm4" index="3"]
 position = Vector2( 0, -40 )
 
 [node name="Eye Worm" parent="Enemies" index="6" instance=ExtResource( 5 )]
 position = Vector2( 2048, 2208 )
-creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 6 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 3 ) ]
 
 [node name="Eye Worm5" parent="Enemies" index="7" instance=ExtResource( 5 )]
 position = Vector2( 3984, -200 )
@@ -714,7 +716,7 @@ position = Vector2( 0, 72 )
 
 [node name="Eye Worm6" parent="Enemies" index="8" instance=ExtResource( 5 )]
 position = Vector2( 3824, 336 )
-creatures = [ ExtResource( 9 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 9 ) ]
+creatures = [ ExtResource( 3 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 9 ) ]
 
 [node name="AnimationPlayer" parent="Enemies/Eye Worm6" index="2"]
 anims/Wriggle = SubResource( 4 )
@@ -724,7 +726,7 @@ position = Vector2( 0, 0 )
 
 [node name="Eye Worm7" parent="Enemies" index="9" instance=ExtResource( 5 )]
 position = Vector2( 4640, 448 )
-creatures = [ ExtResource( 9 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 9 ) ]
+creatures = [ ExtResource( 9 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 3 ) ]
 
 [node name="AnimationPlayer" parent="Enemies/Eye Worm7" index="2"]
 anims/Wriggle = SubResource( 5 )
@@ -744,7 +746,7 @@ position = Vector2( 0, 0 )
 
 [node name="Eye Worm9" parent="Enemies" index="11" instance=ExtResource( 5 )]
 position = Vector2( 4416, -720 )
-creatures = [ ExtResource( 9 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 9 ) ]
+creatures = [ ExtResource( 3 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 3 ) ]
 
 [node name="AnimationPlayer" parent="Enemies/Eye Worm9" index="2"]
 anims/Wriggle = SubResource( 7 )
@@ -774,14 +776,14 @@ position = Vector2( 0, 0 )
 
 [node name="Eye Worm2" parent="Enemies" index="14" instance=ExtResource( 5 )]
 position = Vector2( 1520, 2512 )
-creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 6 ) ]
+creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 6 ) ]
 
 [node name="Spawn" parent="Enemies/Eye Worm2" index="3"]
 position = Vector2( 0, -48 )
 
 [node name="Eye Worm3" parent="Enemies" index="15" instance=ExtResource( 5 )]
 position = Vector2( 2384, 2208 )
-creatures = [ ExtResource( 6 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 14 ) ]
+creatures = [ ExtResource( 14 ), ExtResource( 3 ), ExtResource( 14 ) ]
 
 [node name="Tv" parent="Enemies" index="16" instance=ExtResource( 15 )]
 position = Vector2( 2688, 2624 )

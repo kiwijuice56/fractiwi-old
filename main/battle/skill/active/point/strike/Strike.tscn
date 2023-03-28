@@ -7,5 +7,5 @@
 effect_packed = ExtResource( 1 )
 cost_type = "hp"
 accuracy = 96
-critical = 7
+critical = 5
 power = -5

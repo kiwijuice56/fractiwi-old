@@ -37,6 +37,7 @@ var age := 0
 
 signal target_action_complete
 signal death
+signal hp_ratio_updated
 
 # Set by skills targeted at this creature to use in appropriate time of animation
 var targeted_skill_data: Array
@@ -113,7 +114,7 @@ func do_turn(same: Array, opposite: Array) -> int:
 				yield(get_viewport().game.label_container, "complete")
 				return -1
 			"success":
-				get_viewport().game.label_container.show_text("Success " + targets[0].creature_name + " joined you!")
+				get_viewport().game.label_container.show_text("Success .. " + targets[0].creature_name + " joined you!")
 				yield(get_viewport().game.label_container, "complete")
 				targets[0].get_parent().remove_child(targets[0])
 				get_viewport().party.get_node("Inactive").add_child(targets[0])
@@ -165,6 +166,7 @@ func target_action() -> void:
 		panel.get_node("PointLabel/AnimationPlayer").current_animation = "show"
 	targeted_skill_data = []
 	var function = check_hp()
+	emit_signal("hp_ratio_updated", hp / float(max_hp))
 	if panel: panel.update_content()
 	if function:
 		yield(function, "completed")

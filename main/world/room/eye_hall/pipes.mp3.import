@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pipes.mp3-821f762cc35b0efc25c8ea2d4620d97f.mp3str"
+
+[deps]
+
+source_file="res://main/world/room/eye_hall/pipes.mp3"
+dest_files=[ "res://.import/pipes.mp3-821f762cc35b0efc25c8ea2d4620d97f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tv.png-77a496ade4376414e97e5ecc85e78903.stex"
+path="res://.import/looker_sprite2.png-e88b5744e5b5eacbf1e3534396aca581.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/battle/creature/tvb/tv.png"
-dest_files=[ "res://.import/tv.png-77a496ade4376414e97e5ecc85e78903.stex" ]
+source_file="res://main/battle/creature/looker/looker_sprite2.png"
+dest_files=[ "res://.import/looker_sprite2.png-e88b5744e5b5eacbf1e3534396aca581.stex" ]
 
 [params]
 

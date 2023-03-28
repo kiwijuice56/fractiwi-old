@@ -157,9 +157,9 @@ color_ramp = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 170.0
+margin_left = 184.0
 margin_top = 136.0
-margin_right = 239.0
+margin_right = 253.0
 margin_bottom = 151.0
 custom_colors/font_color = Color( 0.866667, 0.941176, 0.980392, 1 )
 custom_fonts/font = SubResource( 3 )

@@ -31,7 +31,7 @@ tracks/0/keys = {
 
 [node name="Room" instance=ExtResource( 1 )]
 music = ExtResource( 9 )
-db = -18
+db = -24
 backdrop = ExtResource( 7 )
 backdrop_dir = Vector2( 0, 0.15 )
 

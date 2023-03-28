@@ -1,6 +1,12 @@
 extends Creature
 class_name PlayerCreature
 
+func _ready() -> void:
+	connect("hp_ratio_updated", self, "update_backdrop")
+
+func update_backdrop(hurt_ratio: float) -> void:
+	get_tree().get_root().get_node("Main/ViewportContainer/MainViewport/World/CanvasLayer/Backdrop").get_material().set_shader_param("hurt", hurt_ratio)
+
 func get_def(get_extended: bool) -> Dictionary:
 	var effect_def_affinity =  get_viewport().items.get_def()
 	if get_extended:

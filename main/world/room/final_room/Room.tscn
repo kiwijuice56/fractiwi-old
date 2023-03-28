@@ -7,7 +7,7 @@
 [ext_resource path="res://main/battle/creature/saleth/Saleth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/battle/creature/violet/Violet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/battle/creature/eye hydra/Eye Hydra.tscn" type="PackedScene" id=7]
-[ext_resource path="res://main/world/room/final_room/bgm52.wav" type="AudioStream" id=8]
+[ext_resource path="res://main/world/room/final_room/bgm52.mp3" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 15 )
