@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "slash"
-length = 1.1
+length = 1.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -15,7 +15,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.65, 0.75, 0.85, 0.95, 1.05 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
@@ -53,7 +53,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.1 ),
+"times": PoolRealArray( 0, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -67,13 +67,12 @@ delay = 0.6
 anim_name = "slash"
 
 [node name="AnimationPlayer" parent="." index="0"]
-playback_speed = 1.4
 anims/slash = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
 visible = true
 texture = ExtResource( 1 )
-hframes = 11
+hframes = 12
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 3 )
