@@ -151,7 +151,7 @@ tracks/0/keys = {
 
 [node name="Room" instance=ExtResource( 1 )]
 music = ExtResource( 7 )
-db = -1
+db = -7
 backdrop = ExtResource( 4 )
 
 [node name="TileMap" parent="." index="0"]

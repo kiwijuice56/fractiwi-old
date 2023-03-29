@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://main/battle/creature/Creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main/battle/creature/looker/looker_sprite.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://main/battle/skill/active/point/heal/Heal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main/battle/skill/active/point/bubble/Bubble.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/battle/skill/active/point/bubble canon/Bubble Canon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main/battle/sounds/male_scream.wav" type="AudioStream" id=8]
 
 [node name="Looker" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
@@ -38,3 +39,8 @@ skill_levels = [ 6, 8, 12 ]
 [node name="Heal" parent="UnlearnedSkills" index="1" instance=ExtResource( 5 )]
 
 [node name="Bubble Canon" parent="UnlearnedSkills" index="2" instance=ExtResource( 7 )]
+
+[node name="Death" parent="." index="6"]
+stream = ExtResource( 8 )
+volume_db = -9.998
+pitch_scale = 1.14

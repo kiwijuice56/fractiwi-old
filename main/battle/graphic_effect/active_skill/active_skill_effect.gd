@@ -20,6 +20,7 @@ func animation_finished(_anim: String) -> void:
 
 func start(given_position: Vector2, given_targets: Array) -> void:
 	targets = given_targets
+	$AudioStreamPlayer.pitch_scale = rand_range(0.9, 1.1)
 	$Sprite.global_position = given_position
 	$Sprite.visible = true
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hit-old1.wav-e0916a8138a41b49ab6212a338a4df19.sample"
+
+[deps]
+
+source_file="res://main/battle/sounds/hit-old1.wav"
+dest_files=[ "res://.import/hit-old1.wav-e0916a8138a41b49ab6212a338a4df19.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

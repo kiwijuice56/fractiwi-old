@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/monster_scream.wav-62709ca2e1fbb6654fa10ecf2966ff5e.sample"
+
+[deps]
+
+source_file="res://main/battle/sounds/monster_scream.wav"
+dest_files=[ "res://.import/monster_scream.wav-62709ca2e1fbb6654fa10ecf2966ff5e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

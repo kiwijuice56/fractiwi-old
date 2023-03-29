@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/stab.mp3-5e8d0a925241ac5944a15b66c6b5aa56.mp3str"
+
+[deps]
+
+source_file="res://main/battle/sounds/stab.mp3"
+dest_files=[ "res://.import/stab.mp3-5e8d0a925241ac5944a15b66c6b5aa56.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
